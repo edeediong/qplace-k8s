@@ -57,4 +57,4 @@ We ran the project on Qollab with a single job per run. On the built-in simulato
 **Visual:** "What this shows / what it does not" card. Repository URL. MIT. **"This effort is supported by Qollab & IonQ"**.
 
 **Narration:**
-The classical solver is still faster and proves optimality, so we claim no quantum advantage. What QPlace shows is a working hybrid pipeline: from a cluster snapshot, to a verified quantum sample, with honest baselines. It is read-only and synthetic data only. The code is open source at github dot com slash edeediong slash qplace-k8s. This effort is supported by Qollab and IonQ.
+The classical solver is still faster and proves optimality, so we claim no quantum advantage. What QPlace shows is a working hybrid pipeline: from a cluster snapshot, to a verified quantum sample, with honest baselines. It is read-only, and the demo instance is synthetic. The code is open source at github dot com slash edeediong slash qplace-k8s. This effort is supported by Qollab and IonQ.

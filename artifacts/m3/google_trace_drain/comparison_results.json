@@ -60,15 +60,15 @@
     "m2_assessment": "REVIEW_REQUIRED",
     "timing_seconds": {
       "exact_seconds": {
-        "max": 5.595805123448372e-05,
-        "median": 4.35409601777792e-05,
-        "min": 4.2665982618927956e-05,
+        "max": 6.066588684916496e-05,
+        "median": 4.7208042815327644e-05,
+        "min": 4.6459026634693146e-05,
         "repeats": 5
       },
       "greedy_seconds": {
-        "max": 3.179092891514301e-05,
-        "median": 1.9834144040942192e-05,
-        "min": 1.7916085198521614e-05,
+        "max": 3.4041935577988625e-05,
+        "median": 2.0958948880434036e-05,
+        "min": 1.950003206729889e-05,
         "repeats": 5
       }
     }
@@ -162,7 +162,7 @@
       "ratio_to_uniform": 0.33436615752004595,
       "reps": 1,
       "sampler_jobs": 5,
-      "sampling_seconds_median": 0.0040909170638769865,
+      "sampling_seconds_median": 0.003059083130210638,
       "seeds_reaching_exact_count": 5,
       "solver_result": {
         "assignments": [
@@ -184,7 +184,7 @@
         "unplaced": []
       },
       "solver_result_seed": 11,
-      "training_seconds": 0.24932695901952684,
+      "training_seconds": 0.2183652501553297,
       "two_qubit_gates": 5,
       "uniform_probability_of_optimal_count": 0.03125
     },
@@ -269,7 +269,7 @@
       "ratio_to_uniform": 2.2016593024764637,
       "reps": 2,
       "sampler_jobs": 5,
-      "sampling_seconds_median": 0.003984207985922694,
+      "sampling_seconds_median": 0.003782915882766247,
       "seeds_reaching_exact_count": 5,
       "solver_result": {
         "assignments": [
@@ -291,7 +291,7 @@
         "unplaced": []
       },
       "solver_result_seed": 11,
-      "training_seconds": 0.5470245000906289,
+      "training_seconds": 0.45387858315370977,
       "two_qubit_gates": 10,
       "uniform_probability_of_optimal_count": 0.03125
     }
@@ -299,7 +299,7 @@
   "quantum_skipped": null,
   "source": {
     "snapshot_id": "m5-google-trace-drain",
-    "source_sha256": "f8e7a53c9022e56ea44f84b3ffc6c5f4d5e85d4f20ae15baa53bd5a6d7720226"
+    "source_sha256": "8bb83156df4b46b39a3c4445f92d73de3ca14acb9f6e579364f14119b6296db8"
   },
   "target_node": "m-1335771",
   "uniform_random_baseline": {

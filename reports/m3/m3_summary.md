@@ -5,11 +5,11 @@
 | Metric | Value |
 |---|---|
 | Tests | 347 passed, 0 failed, 0 skipped (M1 130 + M2 100 + M3 117), Python 3.14.2. 343 also passed on 3.13.6 before the hotfixes |
-| QUBO correctness | exhaustively validated on all 10 instances and 120 random problems. The reviewer's independent fuzzing covered 2,648 instances with 0 counterexamples |
-| QAOA | real Qiskit circuits, p = 1 and p = 2, on 10 instances, 5 seeds × 1024 shots each (local noiseless simulator) |
-| Best verified QAOA sample vs exact | the same full M2 objective on 10/10 instances |
-| QAOA vs random guessing (p = 2) | better than uniform on every instance where they differ: 2.3× to 15.9× |
-| QAOA vs random guessing (p = 1) | **worse** than uniform on scenario G (0.32×), about equal on M1 fixture C (1.02×) |
+| QUBO correctness | exhaustively validated on all 11 instances (10 synthetic + 1 public-trace, added in M5) and 120 random problems. The reviewer's independent fuzzing covered 2,648 instances with 0 counterexamples |
+| QAOA | real Qiskit circuits, p = 1 and p = 2, on 11 instances, 5 seeds × 1024 shots each (local noiseless simulator) |
+| Best verified QAOA sample vs exact | the same full M2 objective on 11/11 instances |
+| QAOA vs random guessing (p = 2) | better than uniform on all 11 instances: 2.0× to 15.9× (the 2.0× cases are the trivial 1–2 qubit instances) |
+| QAOA vs random guessing (p = 1) | **worse** than uniform on scenario G (0.32×) and the public-trace instance (0.33×); about equal on M1 fixture C (1.02×) |
 | Qollab demo (hosted) | **built-in simulator: 84/256 shots placed 2/2. IonQ simulator (Aria 1 noise): 83/256.** One `backend.run` per run. Results supplied by the project owner |
 | Independent review | 2 material findings and 4 minor findings fixed with regression tests. Other items documented. No critical findings |
 
@@ -272,4 +272,4 @@ result = to_solver_result(problem, decoded, config, seconds)          # None whe
 | Starting commit | `0a7f06cb7298879e4875f0d85b762071e4bb4f44` (= `origin/main`, clean) |
 | Final commit | given in the final response (a hash cannot be written into the file it identifies) |
 | Author | repo-local `Edidiong Etuk <edidiongmichael08@gmail.com>`; global config not changed |
-| Push | fast-forward to `origin/main` as `edeediong`; `gh` restored to `edidiong-mono` afterwards |
+| Push | fast-forward to `origin/main` as `edeediong`; the previously active `gh` account was restored afterwards |

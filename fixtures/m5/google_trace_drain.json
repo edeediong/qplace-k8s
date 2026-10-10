@@ -5,7 +5,7 @@
     "captured_at": "2011-05-01T00:00:00Z",
     "source_type": "public_trace_derived",
     "kubernetes_version": null,
-    "description": "Derived from the public Google cluster trace clusterdata-2011-2 (CC-BY 4.0) at trace time 0: drain machine 1335771; destinations 369002391 and 5774811. Normalized trace values x 100000 as integer units (capacities floored, requests ceiled). Not a Kubernetes cluster.",
+    "description": "Derived from the public Google cluster trace clusterdata-2011-2 by C. Reiss, J. Wilkes and J. L. Hellerstein (Google, 2011), licensed CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/), at trace time 0: drain machine 1335771; destinations 369002391 and 5774811. Normalized trace values x 100000 as integer units (capacities floored, requests ceiled). Not a Kubernetes cluster.",
     "inventory": {
       "nodes": "partial",
       "pods": "complete",

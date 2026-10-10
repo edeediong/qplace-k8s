@@ -75,4 +75,4 @@ MIT. See [LICENSE](LICENSE).
 
 ## Safety
 
-QPlace contains no Kubernetes client and no network code. It never cordons, evicts, deletes or deploys anything. All fixtures are synthetic.
+QPlace contains no Kubernetes client and no network code. It never cordons, evicts, deletes or deploys anything. All fixtures are synthetic except `fixtures/m5/google_trace_drain.json`, which is derived from Google's public cluster trace (CC-BY 4.0).
