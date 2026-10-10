@@ -1,6 +1,6 @@
 # M3 summary: Quantum Placement Optimization (QAOA) and Qollab compatibility
 
-**MILESTONE 3 STATUS: BLOCKED. The only open gate is #15, hosted Qollab execution.** All local work is done, tested and reviewed. The Qollab project has run locally through injected backends, but nobody has run it in the hosted Qollab runtime yet. I have no Qollab access. Once the procedure in §E produces real hosted output, every other gate is met.
+**MILESTONE 3 STATUS: BLOCKED. The only open gate is #15, hosted Qollab execution.** The first hosted attempt failed at compile time on a `__future__` import. That is now fixed (see §E). The re-run in Qollab is still pending. All local work is done, tested and reviewed. The Qollab project has run locally through injected backends, but nobody has run it in the hosted Qollab runtime yet. I have no Qollab access. Once the procedure in §E produces real hosted output, every other gate is met.
 
 | Metric | Value |
 |---|---|
@@ -164,7 +164,8 @@ All results are from local noiseless simulation. The QAOA rates are seed-free pr
 | Runtime model | Qollab injects `backend` and calls `main()`. Source: public Qollab hackathon projects; Qollab's own docs page could not be retrieved |
 | Local CPython run | **done**: `python main.py` falls back to BasicSimulator, labeled "LOCAL FALLBACK (not Qollab)". Result: 91/256 shots placed 2/2 (35.5%), random baseline 12.5%, best placement batch→node-b, indexer→node-a |
 | Injected-backend tests | **done**, but mocks only: exactly 1 `run` call; a single circuit, never a list; refuses to substitute a backend under `emscripten`; reports failure when no sample is feasible; prints no advantage claim on uniform noise |
-| Qollab built-in simulator (hosted) | **NOT DONE**. This is what blocks the gate |
+| Hosted run 1 (Qollab built-in simulator) | **FAILED before execution**: `SyntaxError: from __future__ imports must occur at the beginning of the file` (`<code>`, line 11, the `__future__` import in `main.py`). Fixed by removing both `__future__` imports (`qollab-runtime.md` §5). After the fix: 346 tests pass, including 3 new compatibility tests; all 6 + 27 + 61 artifact checks are ok; the local BasicSimulator demo ran (85/256 shots placed 2/2, 33.2%, random baseline 12.5%) |
+| Qollab built-in simulator (hosted, after hotfix) | **NOT DONE**. This is what blocks the gate |
 | IonQ remote simulator (hosted) | **NOT DONE** |
 | Unresolved | whether Qollab's Pyodide build ships Qiskit; whether `backend` is injected into `main.py`'s globals. The demo fails loudly if it isn't |
 

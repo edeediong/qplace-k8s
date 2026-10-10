@@ -256,3 +256,33 @@ def test_review_f5_solver_result_comes_from_the_best_seed():
     (q,) = comparison_dict(exp)["quantum"]
     if q["best_verified_sample"] is not None:
         assert q["solver_result"]["assignments"] == q["best_verified_sample"]["assignment"]
+
+
+# --- Qollab hosted-runtime compatibility (hotfix after the first hosted run) ----------------
+
+QOLLAB_FILES = ("main.py", "quantum_demo.py", "placement_data.py")
+# Stand-in for code a host may run in the same compilation unit before the project source.
+RUNTIME_PRELUDE = "import sys\nbackend = None  # injected by the host\n_qollab_ready = True\n"
+
+
+def test_qollab_files_have_no_future_imports():
+    import ast
+    for name in QOLLAB_FILES:
+        tree = ast.parse((ROOT / "qollab" / name).read_text())
+        futures = [n for n in ast.walk(tree) if isinstance(n, ast.ImportFrom) and n.module == "__future__"]
+        assert futures == [], f"{name} has a __future__ import; Qollab's hosted runtime rejects it"
+
+
+def test_qollab_files_compile_after_a_runtime_prelude():
+    for name in QOLLAB_FILES:
+        source = (ROOT / "qollab" / name).read_text()
+        compile(source, name, "exec")  # A. plain compilation
+        compile(RUNTIME_PRELUDE + source, "<code>", "exec")  # B. simulated host prelude
+
+
+def test_runtime_prelude_check_detects_the_original_failure():
+    # Guard the guard: the same check rejects the pre-hotfix pattern with the hosted error message.
+    broken = '"""doc"""\n\nfrom __future__ import annotations\n\nimport sys\n'
+    compile(broken, "main.py", "exec")  # legal on its own (docstring may precede it)
+    with pytest.raises(SyntaxError, match="from __future__ imports must occur at the beginning of the file"):
+        compile(RUNTIME_PRELUDE + broken, "<code>", "exec")

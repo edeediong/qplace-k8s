@@ -6,8 +6,6 @@ that this feasibility check agrees with qplace's independent verifier on every
 bitstring of the demo instance.
 """
 
-from __future__ import annotations
-
 from qiskit import QuantumCircuit
 
 

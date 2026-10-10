@@ -44,7 +44,42 @@ According to Qollab hackathon projects, Qollab's IonQ remote simulator accepts o
 - No numpy-specific code, network, files, threads or native extensions beyond Qiskit itself.
 - Whether Qollab's Pyodide build ships a compatible Qiskit is **unverified**.
 
-## 5. Hosted validation procedure (for the submitter)
+## 5. Hosted run 1: `__future__` import rejected (fixed)
+
+**Observed in Qollab** on the first hosted upload, during "Compiling / initializing runtime…":
+
+```text
+Traceback (most recent call last):
+  File "<code>", line 11
+SyntaxError: from __future__ imports must occur at the beginning of the file
+```
+
+**Cause:**
+
+- `qollab/main.py` line 11 was `from __future__ import annotations`.
+- `qollab/quantum_demo.py` had the same import.
+- Python accepts a `__future__` import only at the very top of a compilation unit, after at most a docstring.
+- The hosted runtime compiles the project as `<code>` in a way that does not treat the import as first. Most likely it runs setup code in the same compilation unit.
+
+The reported line number equals the line in our unmodified file. We cannot see Qollab's internals, so how the host wraps the source is an **assumption**. Removing the imports avoids the problem in either case.
+
+**Fix (commit "fix(qollab): remove incompatible future imports from hosted runtime"):**
+
+- Removed `from __future__ import annotations` from both files.
+- The remaining annotations (`str`, `int`, `bool`, `dict`, `list`, `tuple`, `QuantumCircuit`) are evaluated eagerly. All of them are defined at definition time.
+- No circuit, angle, coefficient, decoding or feasibility logic changed. `placement_data.py` is unchanged (it never had the import).
+
+**Regression tests (`tests/test_quantum_experiment.py`):**
+
+| Test | What it checks |
+|---|---|
+| `test_qollab_files_have_no_future_imports` | AST scan of `main.py`, `quantum_demo.py` and `placement_data.py` |
+| `test_qollab_files_compile_after_a_runtime_prelude` | each file compiles alone, and also with executable setup code prepended (a simulated host) |
+| `test_runtime_prelude_check_detects_the_original_failure` | the same prepend check reproduces the exact hosted `SyntaxError` on the pre-fix pattern, so the test can fail |
+
+These tests are compatibility checks. They are **not** proof of hosted execution.
+
+## 6. Hosted validation procedure (for the submitter)
 
 1. Create a Python/Qiskit project in Qollab. Upload exactly `main.py`, `quantum_demo.py`, `placement_data.py`, `requirements.txt` and `README.md` from `qollab/`. Do not upload `__pycache__/` or `.DS_Store`.
 2. Select the **built-in simulator**, press Run, and copy the console output.
