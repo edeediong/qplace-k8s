@@ -1,0 +1,104 @@
+1
+00:00:00,400 --> 00:00:07,167
+Before maintenance, an engineer drains a Kubernetes node, and every pod on it must fit somewhere else.
+
+2
+00:00:07,167 --> 00:00:13,367
+Each node has limited CPU, memory and pod slots, and some pods may only run on certain nodes.
+
+3
+00:00:13,367 --> 00:00:17,733
+QPlace checks whether that is possible before anything is evicted.
+
+4
+00:00:18,733 --> 00:00:20,200
+Here is a small trap.
+
+5
+00:00:20,200 --> 00:00:27,133
+Greedy placement handles the biggest pod first and puts batch on the first node that fits, node-a.
+
+6
+00:00:27,133 --> 00:00:29,033
+That leaves 500 millicores.
+
+7
+00:00:29,033 --> 00:00:35,167
+The indexer pod needs an SSD node, and node-a is the only one, so it has nowhere to go.
+
+8
+00:00:35,167 --> 00:00:37,500
+Greedy places one pod out of two.
+
+9
+00:00:38,500 --> 00:00:39,767
+A plan does exist.
+
+10
+00:00:39,767 --> 00:00:46,567
+Our exact branch-and-bound solver puts batch on node-b and indexer on node-a, so both pods fit.
+
+11
+00:00:46,567 --> 00:00:56,033
+An independent verifier checks every assignment against the cluster model: eligibility, CPU, memory and pod slots, added up per node.
+
+12
+00:00:57,033 --> 00:01:03,167
+For the quantum experiment, each allowed pod-to-node choice becomes one qubit, three in total.
+
+13
+00:01:03,167 --> 00:01:11,267
+The QUBO rewards every placed pod and penalizes breaking a rule: putting one pod in two places, or overloading node-a's CPU.
+
+14
+00:01:11,267 --> 00:01:19,167
+Before any quantum run, we check every bitstring to prove the lowest-energy states are exactly the best valid placements.
+
+15
+00:01:19,167 --> 00:01:21,767
+QAOA at depth two then prepares a state,
+
+16
+00:01:21,767 --> 00:01:25,100
+and each measured bitstring decodes to a placement.
+
+17
+00:01:31,100 --> 00:01:35,300
+We ran the project on Qollab with a single job per run.
+
+18
+00:01:35,300 --> 00:01:40,733
+On the built-in simulator, 84 of 256 shots gave the complete placement.
+
+19
+00:01:40,733 --> 00:01:45,567
+On IonQ's simulator with the Aria 1 noise model, 83 of 256 did.
+
+20
+00:01:45,567 --> 00:01:50,067
+Random guessing would hit it only 12.5 percent of the time.
+
+21
+00:01:50,067 --> 00:01:56,100
+Every sample was decoded and checked; invalid ones are counted, never repaired.
+
+22
+00:01:57,100 --> 00:02:03,633
+The classical solver is still faster and proves optimality, so we claim no quantum advantage.
+
+23
+00:02:03,633 --> 00:02:12,367
+What QPlace shows is a working hybrid pipeline: from a cluster snapshot, to a verified quantum sample, with honest baselines.
+
+24
+00:02:12,367 --> 00:02:16,033
+It is read-only, and the demo instance is synthetic.
+
+25
+00:02:16,033 --> 00:02:21,300
+The code is open source at github dot com slash edeediong slash qplace-k8s.
+
+26
+00:02:21,300 --> 00:02:24,367
+This effort is supported by Qollab and IonQ.
+
