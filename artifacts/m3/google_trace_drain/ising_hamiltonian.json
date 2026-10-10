@@ -1,0 +1,114 @@
+{
+  "artifact": "ising_hamiltonian",
+  "artifact_schema_version": "1.0",
+  "circuit_scale": 3.25,
+  "circuit_scale_note": "QAOA uses H / max|coefficient|; eigenvectors and their order are unchanged",
+  "fixture": "google_trace_drain",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "ising": {
+    "J": [
+      {
+        "coefficient": "5/4",
+        "i": 0,
+        "j": 1
+      },
+      {
+        "coefficient": "5/4",
+        "i": 0,
+        "j": 2
+      },
+      {
+        "coefficient": "5/4",
+        "i": 0,
+        "j": 4
+      },
+      {
+        "coefficient": "5/4",
+        "i": 1,
+        "j": 3
+      },
+      {
+        "coefficient": "5/4",
+        "i": 2,
+        "j": 3
+      }
+    ],
+    "convention": "z_i = 1 - 2 x_i; Pauli label qubit 0 = rightmost character",
+    "h": [
+      {
+        "coefficient": "-13/4",
+        "i": 0
+      },
+      {
+        "coefficient": "-2/1",
+        "i": 1
+      },
+      {
+        "coefficient": "-2/1",
+        "i": 2
+      },
+      {
+        "coefficient": "-2/1",
+        "i": 3
+      },
+      {
+        "coefficient": "-3/4",
+        "i": 4
+      }
+    ],
+    "num_qubits": 5,
+    "offset": "15/4",
+    "pauli_terms": [
+      {
+        "coefficient": -3.25,
+        "label": "IIIIZ"
+      },
+      {
+        "coefficient": -2.0,
+        "label": "IIIZI"
+      },
+      {
+        "coefficient": -2.0,
+        "label": "IIZII"
+      },
+      {
+        "coefficient": -2.0,
+        "label": "IZIII"
+      },
+      {
+        "coefficient": -0.75,
+        "label": "ZIIII"
+      },
+      {
+        "coefficient": 1.25,
+        "label": "IIIZZ"
+      },
+      {
+        "coefficient": 1.25,
+        "label": "IIZIZ"
+      },
+      {
+        "coefficient": 1.25,
+        "label": "ZIIIZ"
+      },
+      {
+        "coefficient": 1.25,
+        "label": "IZIZI"
+      },
+      {
+        "coefficient": 1.25,
+        "label": "IZZII"
+      }
+    ]
+  },
+  "source": {
+    "snapshot_id": "m5-google-trace-drain",
+    "source_sha256": "f8e7a53c9022e56ea44f84b3ffc6c5f4d5e85d4f20ae15baa53bd5a6d7720226"
+  },
+  "status": "SUPPORTED",
+  "target_node": "m-1335771"
+}

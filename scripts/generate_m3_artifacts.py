@@ -2,6 +2,7 @@
 
 Usage:
     python scripts/generate_m3_artifacts.py generate   # run all experiments, write artifacts and qollab/placement_data.py
+    python scripts/generate_m3_artifacts.py generate FIXTURE   # run one fixture only (leaves every other file untouched)
     python scripts/generate_m3_artifacts.py check      # deterministic files byte-for-byte; observational files by schema
 
 Not a product CLI. Unknown arguments are rejected.
@@ -23,7 +24,8 @@ from qplace.snapshot import load_schema
 ROOT = Path(__file__).resolve().parent.parent
 FIXTURES = (sorted((ROOT / "fixtures" / "m2").glob("scenario_*.json"))
             + sorted((ROOT / "fixtures" / "m3").glob("scenario_*.json"))
-            + sorted((ROOT / "fixtures" / "m1").glob("fixture_*.json")))
+            + sorted((ROOT / "fixtures" / "m1").glob("fixture_*.json"))
+            + sorted((ROOT / "fixtures" / "m5").glob("*.json")))
 OUT = ROOT / "artifacts" / "m3"
 DEMO_FIXTURE = "scenario_b_greedy_trap"
 DEMO_REPS = 2
@@ -33,8 +35,12 @@ def schema_for(name: str) -> dict:
     return load_schema("m3-" + name.replace(".json", "").replace("_", "-") + "-1.0.schema.json")
 
 
-def generate() -> int:
-    for path in FIXTURES:
+def generate(only: str | None = None) -> int:
+    selected = [p for p in FIXTURES if only is None or p.stem == only]
+    if not selected:
+        print(f"unknown fixture {only!r}", file=sys.stderr)
+        return 2
+    for path in selected:
         exp = run_experiment(path.stem, build_cluster_model(load_snapshot(path)))
         out = OUT / path.stem
         out.mkdir(parents=True, exist_ok=True)
@@ -85,6 +91,8 @@ def check() -> int:
 def main(argv: list[str]) -> int:
     if argv == ["generate"]:
         return generate()
+    if len(argv) == 2 and argv[0] == "generate":
+        return generate(argv[1])
     if argv == ["check"]:
         return check()
     print(f"usage: generate | check (got {argv!r})\n{__doc__}", file=sys.stderr)

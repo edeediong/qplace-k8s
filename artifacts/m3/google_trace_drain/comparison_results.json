@@ -1,0 +1,313 @@
+{
+  "artifact": "comparison_results",
+  "artifact_schema_version": "1.0",
+  "claims": {
+    "note": "QAOA results are local noiseless simulation. They inherit M2's assessment and conditions; a verified sample is a placement in the requested-resource model, not a drain approval.",
+    "operational_assessment": "REVIEW_REQUIRED",
+    "quantum_optimality_proven": false
+  },
+  "classical": {
+    "candidates": 3,
+    "exact": {
+      "assignments": [
+        {
+          "node": "m-5774811",
+          "pod": "google-trace/job-3244832720-task-217"
+        },
+        {
+          "node": "m-369002391",
+          "pod": "google-trace/job-3996125377-task-22"
+        },
+        {
+          "node": "m-369002391",
+          "pod": "google-trace/job-4476806578-task-24"
+        }
+      ],
+      "objective": {
+        "assigned": 3,
+        "balance_leximin": [
+          "163/8310",
+          "6617/50000"
+        ],
+        "min_free_fraction": "163/8310"
+      },
+      "optimality_proven": true,
+      "placed": 3,
+      "verified": true
+    },
+    "greedy": {
+      "assignments": [
+        {
+          "node": "m-369002391",
+          "pod": "google-trace/job-3244832720-task-217"
+        },
+        {
+          "node": "m-5774811",
+          "pod": "google-trace/job-3996125377-task-22"
+        }
+      ],
+      "objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "131/1250",
+          "8443/50000"
+        ],
+        "min_free_fraction": "131/1250"
+      },
+      "placed": 2,
+      "verified": true
+    },
+    "m2_assessment": "REVIEW_REQUIRED",
+    "timing_seconds": {
+      "exact_seconds": {
+        "max": 5.595805123448372e-05,
+        "median": 4.35409601777792e-05,
+        "min": 4.2665982618927956e-05,
+        "repeats": 5
+      },
+      "greedy_seconds": {
+        "max": 3.179092891514301e-05,
+        "median": 1.9834144040942192e-05,
+        "min": 1.7916085198521614e-05,
+        "repeats": 5
+      }
+    }
+  },
+  "fixture": "google_trace_drain",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "observational": true,
+  "quantum": [
+    {
+      "best_verified_sample": {
+        "assignment": [
+          {
+            "node": "m-5774811",
+            "pod": "google-trace/job-3244832720-task-217"
+          },
+          {
+            "node": "m-369002391",
+            "pod": "google-trace/job-3996125377-task-22"
+          },
+          {
+            "node": "m-369002391",
+            "pod": "google-trace/job-4476806578-task-24"
+          }
+        ],
+        "bitstring": "10110",
+        "count": 8,
+        "m2_objective": {
+          "assigned": 3,
+          "balance_leximin": [
+            "163/8310",
+            "6617/50000"
+          ],
+          "min_free_fraction": "163/8310"
+        },
+        "placed": 3,
+        "qubo_energy": -3,
+        "raw_feasible": true,
+        "verification_errors": [],
+        "verified": true
+      },
+      "better_than_uniform": false,
+      "circuit_depth": 7,
+      "estimator_evaluations": 186,
+      "exact_count_sample_rate_mean": 0.00703125,
+      "exact_probability_of_optimal_count": 0.010448942422501436,
+      "feasible_sample_rate_mean": 0.91640625,
+      "m2_objective_equals_exact": true,
+      "optimality_gap_pods": 0,
+      "per_seed": [
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.0078125,
+          "feasible_sample_rate": 0.9189453125,
+          "seed": 11,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.005859375,
+          "feasible_sample_rate": 0.9091796875,
+          "seed": 22,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.0048828125,
+          "feasible_sample_rate": 0.9208984375,
+          "seed": 33,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.0068359375,
+          "feasible_sample_rate": 0.91015625,
+          "seed": 44,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.009765625,
+          "feasible_sample_rate": 0.9228515625,
+          "seed": 55,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        }
+      ],
+      "qubits": 5,
+      "ratio_to_uniform": 0.33436615752004595,
+      "reps": 1,
+      "sampler_jobs": 5,
+      "sampling_seconds_median": 0.0040909170638769865,
+      "seeds_reaching_exact_count": 5,
+      "solver_result": {
+        "assignments": [
+          {
+            "node": "m-5774811",
+            "pod": "google-trace/job-3244832720-task-217"
+          },
+          {
+            "node": "m-369002391",
+            "pod": "google-trace/job-3996125377-task-22"
+          },
+          {
+            "node": "m-369002391",
+            "pod": "google-trace/job-4476806578-task-24"
+          }
+        ],
+        "optimality_proven": false,
+        "solver": "qaoa",
+        "unplaced": []
+      },
+      "solver_result_seed": 11,
+      "training_seconds": 0.24932695901952684,
+      "two_qubit_gates": 5,
+      "uniform_probability_of_optimal_count": 0.03125
+    },
+    {
+      "best_verified_sample": {
+        "assignment": [
+          {
+            "node": "m-5774811",
+            "pod": "google-trace/job-3244832720-task-217"
+          },
+          {
+            "node": "m-369002391",
+            "pod": "google-trace/job-3996125377-task-22"
+          },
+          {
+            "node": "m-369002391",
+            "pod": "google-trace/job-4476806578-task-24"
+          }
+        ],
+        "bitstring": "10110",
+        "count": 60,
+        "m2_objective": {
+          "assigned": 3,
+          "balance_leximin": [
+            "163/8310",
+            "6617/50000"
+          ],
+          "min_free_fraction": "163/8310"
+        },
+        "placed": 3,
+        "qubo_energy": -3,
+        "raw_feasible": true,
+        "verification_errors": [],
+        "verified": true
+      },
+      "better_than_uniform": true,
+      "circuit_depth": 12,
+      "estimator_evaluations": 294,
+      "exact_count_sample_rate_mean": 0.06484375,
+      "exact_probability_of_optimal_count": 0.06880185320238949,
+      "feasible_sample_rate_mean": 0.8912109375,
+      "m2_objective_equals_exact": true,
+      "optimality_gap_pods": 0,
+      "per_seed": [
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.05859375,
+          "feasible_sample_rate": 0.892578125,
+          "seed": 11,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.0654296875,
+          "feasible_sample_rate": 0.9091796875,
+          "seed": 22,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.072265625,
+          "feasible_sample_rate": 0.8828125,
+          "seed": 33,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.0771484375,
+          "feasible_sample_rate": 0.8896484375,
+          "seed": 44,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.05078125,
+          "feasible_sample_rate": 0.8818359375,
+          "seed": 55,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        }
+      ],
+      "qubits": 5,
+      "ratio_to_uniform": 2.2016593024764637,
+      "reps": 2,
+      "sampler_jobs": 5,
+      "sampling_seconds_median": 0.003984207985922694,
+      "seeds_reaching_exact_count": 5,
+      "solver_result": {
+        "assignments": [
+          {
+            "node": "m-5774811",
+            "pod": "google-trace/job-3244832720-task-217"
+          },
+          {
+            "node": "m-369002391",
+            "pod": "google-trace/job-3996125377-task-22"
+          },
+          {
+            "node": "m-369002391",
+            "pod": "google-trace/job-4476806578-task-24"
+          }
+        ],
+        "optimality_proven": false,
+        "solver": "qaoa",
+        "unplaced": []
+      },
+      "solver_result_seed": 11,
+      "training_seconds": 0.5470245000906289,
+      "two_qubit_gates": 10,
+      "uniform_probability_of_optimal_count": 0.03125
+    }
+  ],
+  "quantum_skipped": null,
+  "source": {
+    "snapshot_id": "m5-google-trace-drain",
+    "source_sha256": "f8e7a53c9022e56ea44f84b3ffc6c5f4d5e85d4f20ae15baa53bd5a6d7720226"
+  },
+  "target_node": "m-1335771",
+  "uniform_random_baseline": {
+    "exact_count_rate": 0.03125,
+    "feasible_rate": 0.375,
+    "nonempty_feasible_rate": 0.34375,
+    "probability_seed_hits_exact_count_in_shots": 0.9999999999999925,
+    "shots": 1024,
+    "states": 32
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "artifact": "quantum_problem",
+  "artifact_schema_version": "1.0",
+  "assignment_qubits": 5,
+  "bit_order": "Qiskit little-endian: qubit i is character [-1 - i] of a counts key",
+  "eliminated_variables": [
+    {
+      "node": "m-5774811",
+      "pod": "google-trace/job-4476806578-task-24",
+      "reason": "INDIVIDUALLY_INFEASIBLE:memory"
+    }
+  ],
+  "fixture": "google_trace_drain",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "m2_assessment": "REVIEW_REQUIRED",
+  "m2_conditions": [
+    "CAPACITY_ASSESSMENT_INCOMPLETE:cluster"
+  ],
+  "m2_variables": [
+    {
+      "node": "m-369002391",
+      "pod": "google-trace/job-3244832720-task-217"
+    },
+    {
+      "node": "m-5774811",
+      "pod": "google-trace/job-3244832720-task-217"
+    },
+    {
+      "node": "m-369002391",
+      "pod": "google-trace/job-3996125377-task-22"
+    },
+    {
+      "node": "m-5774811",
+      "pod": "google-trace/job-3996125377-task-22"
+    },
+    {
+      "node": "m-369002391",
+      "pod": "google-trace/job-4476806578-task-24"
+    },
+    {
+      "node": "m-5774811",
+      "pod": "google-trace/job-4476806578-task-24"
+    }
+  ],
+  "qubit_budget": 12,
+  "qubits": [
+    {
+      "kind": "assignment",
+      "node": "m-369002391",
+      "pod": "google-trace/job-3244832720-task-217",
+      "qubit": 0
+    },
+    {
+      "kind": "assignment",
+      "node": "m-5774811",
+      "pod": "google-trace/job-3244832720-task-217",
+      "qubit": 1
+    },
+    {
+      "kind": "assignment",
+      "node": "m-369002391",
+      "pod": "google-trace/job-3996125377-task-22",
+      "qubit": 2
+    },
+    {
+      "kind": "assignment",
+      "node": "m-5774811",
+      "pod": "google-trace/job-3996125377-task-22",
+      "qubit": 3
+    },
+    {
+      "kind": "assignment",
+      "node": "m-369002391",
+      "pod": "google-trace/job-4476806578-task-24",
+      "qubit": 4
+    }
+  ],
+  "required_qubits": 5,
+  "slack_qubits": 0,
+  "source": {
+    "snapshot_id": "m5-google-trace-drain",
+    "source_sha256": "f8e7a53c9022e56ea44f84b3ffc6c5f4d5e85d4f20ae15baa53bd5a6d7720226"
+  },
+  "status": "SUPPORTED",
+  "target_node": "m-1335771"
+}

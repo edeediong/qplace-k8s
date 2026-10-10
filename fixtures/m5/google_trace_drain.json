@@ -1,0 +1,641 @@
+{
+  "schema_version": "1.0",
+  "snapshot": {
+    "id": "m5-google-trace-drain",
+    "captured_at": "2011-05-01T00:00:00Z",
+    "source_type": "public_trace_derived",
+    "kubernetes_version": null,
+    "description": "Derived from the public Google cluster trace clusterdata-2011-2 (CC-BY 4.0) at trace time 0: drain machine 1335771; destinations 369002391 and 5774811. Normalized trace values x 100000 as integer units (capacities floored, requests ceiled). Not a Kubernetes cluster.",
+    "inventory": {
+      "nodes": "partial",
+      "pods": "complete",
+      "pod_disruption_budgets": "not_collected",
+      "notes": "Pods: every task SCHEDULE event at time 0 on the three selected machines in task_events part-00000-of-00500 (the first shard). Pod slots 110 per node are an assumption. captured_at is nominal: the trace publishes relative times only and covers May 2011."
+    }
+  },
+  "target_node": "m-1335771",
+  "nodes": [
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "m-1335771",
+        "uid": "google-2011-machine-1335771",
+        "labels": {
+          "kubernetes.io/hostname": "m-1335771"
+        },
+        "annotations": {
+          "qplace.dev/source": "machine_events part-00000-of-00001 line 1997: CPUs=0.5 Memory=0.2493"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "50000m",
+          "memory": "24930",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "50000m",
+          "memory": "24930",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True"
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "m-369002391",
+        "uid": "google-2011-machine-369002391",
+        "labels": {
+          "kubernetes.io/hostname": "m-369002391"
+        },
+        "annotations": {
+          "qplace.dev/source": "machine_events part-00000-of-00001 line 7413: CPUs=0.5 Memory=0.2493"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "50000m",
+          "memory": "24930",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "50000m",
+          "memory": "24930",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True"
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "m-5774811",
+        "uid": "google-2011-machine-5774811",
+        "labels": {
+          "kubernetes.io/hostname": "m-5774811"
+        },
+        "annotations": {
+          "qplace.dev/source": "machine_events part-00000-of-00001 line 2439: CPUs=0.5 Memory=0.2493"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "50000m",
+          "memory": "24930",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "50000m",
+          "memory": "24930",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True"
+          }
+        ]
+      }
+    }
+  ],
+  "pods": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "google-trace",
+        "name": "job-3244832720-task-217",
+        "uid": "google-2011-task-3244832720-217",
+        "labels": {
+          "trace-job": "3244832720"
+        },
+        "annotations": {
+          "qplace.dev/source": "task_events part-00000-of-00500 line 152174: CPU=0.1418 memory=0.07654 different_machines=1"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "job-3244832720",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "nodeName": "m-1335771",
+        "containers": [
+          {
+            "name": "task",
+            "resources": {
+              "requests": {
+                "cpu": "14180m",
+                "memory": "7654"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "google-trace",
+        "name": "job-3996125377-task-22",
+        "uid": "google-2011-task-3996125377-22",
+        "labels": {
+          "trace-job": "3996125377"
+        },
+        "annotations": {
+          "qplace.dev/source": "task_events part-00000-of-00500 line 154376: CPU=0.1257 memory=0.01271 different_machines=0"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "job-3996125377",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "nodeName": "m-1335771",
+        "containers": [
+          {
+            "name": "task",
+            "resources": {
+              "requests": {
+                "cpu": "12570m",
+                "memory": "1271"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "google-trace",
+        "name": "job-4476806578-task-24",
+        "uid": "google-2011-task-4476806578-24",
+        "labels": {
+          "trace-job": "4476806578"
+        },
+        "annotations": {
+          "qplace.dev/source": "task_events part-00000-of-00500 line 159226: CPU=0.03436 memory=0.08911 different_machines=1"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "job-4476806578",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "nodeName": "m-1335771",
+        "containers": [
+          {
+            "name": "task",
+            "resources": {
+              "requests": {
+                "cpu": "3436m",
+                "memory": "8911"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "google-trace",
+        "name": "job-2436304495-task-5",
+        "uid": "google-2011-task-2436304495-5",
+        "labels": {
+          "trace-job": "2436304495"
+        },
+        "annotations": {
+          "qplace.dev/source": "task_events part-00000-of-00500 line 146642: CPU=0.02499 memory=0.01476 different_machines=0"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "job-2436304495",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "nodeName": "m-369002391",
+        "containers": [
+          {
+            "name": "task",
+            "resources": {
+              "requests": {
+                "cpu": "2499m",
+                "memory": "1476"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "google-trace",
+        "name": "job-2902878580-task-3678",
+        "uid": "google-2011-task-2902878580-3678",
+        "labels": {
+          "trace-job": "2902878580"
+        },
+        "annotations": {
+          "qplace.dev/source": "task_events part-00000-of-00500 line 151627: CPU=0.0625 memory=0.0256 different_machines=1"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "job-2902878580",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "nodeName": "m-369002391",
+        "containers": [
+          {
+            "name": "task",
+            "resources": {
+              "requests": {
+                "cpu": "6250m",
+                "memory": "2560"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "google-trace",
+        "name": "job-3176007645-task-3",
+        "uid": "google-2011-task-3176007645-3",
+        "labels": {
+          "trace-job": "3176007645"
+        },
+        "annotations": {
+          "qplace.dev/source": "task_events part-00000-of-00500 line 151930: CPU=0.06061 memory=0.00544 different_machines=0"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "job-3176007645",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "nodeName": "m-369002391",
+        "containers": [
+          {
+            "name": "task",
+            "resources": {
+              "requests": {
+                "cpu": "6061m",
+                "memory": "544"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "google-trace",
+        "name": "job-4047561214-task-112",
+        "uid": "google-2011-task-4047561214-112",
+        "labels": {
+          "trace-job": "4047561214"
+        },
+        "annotations": {
+          "qplace.dev/source": "task_events part-00000-of-00500 line 157374: CPU=0.06689 memory=0.0365 different_machines=0"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "job-4047561214",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "nodeName": "m-369002391",
+        "containers": [
+          {
+            "name": "task",
+            "resources": {
+              "requests": {
+                "cpu": "6689m",
+                "memory": "3650"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "google-trace",
+        "name": "job-4476806752-task-19",
+        "uid": "google-2011-task-4476806752-19",
+        "labels": {
+          "trace-job": "4476806752"
+        },
+        "annotations": {
+          "qplace.dev/source": "task_events part-00000-of-00500 line 159381: CPU=0.05878 memory=0.01715 different_machines=1"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "job-4476806752",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "nodeName": "m-369002391",
+        "containers": [
+          {
+            "name": "task",
+            "resources": {
+              "requests": {
+                "cpu": "5878m",
+                "memory": "1715"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "google-trace",
+        "name": "job-1412625411-task-76",
+        "uid": "google-2011-task-1412625411-76",
+        "labels": {
+          "trace-job": "1412625411"
+        },
+        "annotations": {
+          "qplace.dev/source": "task_events part-00000-of-00500 line 146087: CPU=0.0625 memory=0.01746 different_machines=1"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "job-1412625411",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "nodeName": "m-5774811",
+        "containers": [
+          {
+            "name": "task",
+            "resources": {
+              "requests": {
+                "cpu": "6250m",
+                "memory": "1746"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "google-trace",
+        "name": "job-4420205420-task-10",
+        "uid": "google-2011-task-4420205420-10",
+        "labels": {
+          "trace-job": "4420205420"
+        },
+        "annotations": {
+          "qplace.dev/source": "task_events part-00000-of-00500 line 158148: CPU=0.06567 memory=0.00795 different_machines=1"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "job-4420205420",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "nodeName": "m-5774811",
+        "containers": [
+          {
+            "name": "task",
+            "resources": {
+              "requests": {
+                "cpu": "6567m",
+                "memory": "795"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "google-trace",
+        "name": "job-5017010629-task-12",
+        "uid": "google-2011-task-5017010629-12",
+        "labels": {
+          "trace-job": "5017010629"
+        },
+        "annotations": {
+          "qplace.dev/source": "task_events part-00000-of-00500 line 177781: CPU=0.06873 memory=0.03113 different_machines=0"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "job-5017010629",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "nodeName": "m-5774811",
+        "containers": [
+          {
+            "name": "task",
+            "resources": {
+              "requests": {
+                "cpu": "6873m",
+                "memory": "3113"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "google-trace",
+        "name": "job-5850685169-task-37",
+        "uid": "google-2011-task-5850685169-37",
+        "labels": {
+          "trace-job": "5850685169"
+        },
+        "annotations": {
+          "qplace.dev/source": "task_events part-00000-of-00500 line 192559: CPU=0.0625 memory=0.0636 different_machines=0"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "job-5850685169",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "nodeName": "m-5774811",
+        "containers": [
+          {
+            "name": "task",
+            "resources": {
+              "requests": {
+                "cpu": "6250m",
+                "memory": "6360"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "google-trace",
+        "name": "job-5850685286-task-19",
+        "uid": "google-2011-task-5850685286-19",
+        "labels": {
+          "trace-job": "5850685286"
+        },
+        "annotations": {
+          "qplace.dev/source": "task_events part-00000-of-00500 line 192641: CPU=0.0625 memory=0.04773 different_machines=0"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "job-5850685286",
+            "controller": true
+          }
+        ]
+      },
+      "spec": {
+        "nodeName": "m-5774811",
+        "containers": [
+          {
+            "name": "task",
+            "resources": {
+              "requests": {
+                "cpu": "6250m",
+                "memory": "4773"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    }
+  ],
+  "pod_disruption_budgets": []
+}

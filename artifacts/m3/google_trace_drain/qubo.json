@@ -1,0 +1,292 @@
+{
+  "artifact": "qubo",
+  "artifact_schema_version": "1.0",
+  "constraints": [
+    {
+      "capacity": 1,
+      "coefficients": [
+        1,
+        1
+      ],
+      "encoding": "AT_MOST_ONE_PAIRWISE",
+      "name": "one:google-trace/job-3244832720-task-217",
+      "penalty_pairs": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        1
+      ]
+    },
+    {
+      "capacity": 1,
+      "coefficients": [
+        1,
+        1
+      ],
+      "encoding": "AT_MOST_ONE_PAIRWISE",
+      "name": "one:google-trace/job-3996125377-task-22",
+      "penalty_pairs": [
+        [
+          2,
+          3
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        2,
+        3
+      ]
+    },
+    {
+      "capacity": 1,
+      "coefficients": [
+        1
+      ],
+      "encoding": "AT_MOST_ONE_PAIRWISE",
+      "name": "one:google-trace/job-4476806578-task-24",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        4
+      ]
+    },
+    {
+      "capacity": 22623,
+      "coefficients": [
+        14180,
+        12570,
+        3436
+      ],
+      "encoding": "CAPACITY_PAIRWISE_EXACT",
+      "name": "cap:m-369002391:cpu_millicores",
+      "penalty_pairs": [
+        [
+          0,
+          2
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "capacity": 14985,
+      "coefficients": [
+        7654,
+        1271,
+        8911
+      ],
+      "encoding": "CAPACITY_PAIRWISE_EXACT",
+      "name": "cap:m-369002391:memory_bytes",
+      "penalty_pairs": [
+        [
+          0,
+          4
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "capacity": 105,
+      "coefficients": [
+        1,
+        1,
+        1
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:m-369002391:pods",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "capacity": 17810,
+      "coefficients": [
+        14180,
+        12570
+      ],
+      "encoding": "CAPACITY_PAIRWISE_EXACT",
+      "name": "cap:m-5774811:cpu_millicores",
+      "penalty_pairs": [
+        [
+          1,
+          3
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        1,
+        3
+      ]
+    },
+    {
+      "capacity": 8143,
+      "coefficients": [
+        7654,
+        1271
+      ],
+      "encoding": "CAPACITY_PAIRWISE_EXACT",
+      "name": "cap:m-5774811:memory_bytes",
+      "penalty_pairs": [
+        [
+          1,
+          3
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        1,
+        3
+      ]
+    },
+    {
+      "capacity": 105,
+      "coefficients": [
+        1,
+        1
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:m-5774811:pods",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        1,
+        3
+      ]
+    }
+  ],
+  "correctness_evidence": {
+    "every_max_assignment_reaches_minimum": true,
+    "feasible_energy_exact": true,
+    "infeasible_strictly_above_minimum": true,
+    "ising_matches_qubo": true,
+    "max_feasible_pods": 3,
+    "min_energy": -3,
+    "min_infeasible_energy": 2,
+    "minima_all_feasible_max_cardinality": true,
+    "minimum_states": 1,
+    "states_enumerated": 32,
+    "valid": true
+  },
+  "fixture": "google_trace_drain",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "objective": "minimize -sum(assignment x) + penalties; primary M2 objective (pods placed) only",
+  "penalty": 5,
+  "penalty_rule": "P = number of assignment variables; any violated term costs >= P",
+  "qubo": {
+    "constant": 0,
+    "linear": [
+      {
+        "coefficient": -1,
+        "i": 0
+      },
+      {
+        "coefficient": -1,
+        "i": 1
+      },
+      {
+        "coefficient": -1,
+        "i": 2
+      },
+      {
+        "coefficient": -1,
+        "i": 3
+      },
+      {
+        "coefficient": -1,
+        "i": 4
+      }
+    ],
+    "num_variables": 5,
+    "quadratic": [
+      {
+        "coefficient": 5,
+        "i": 0,
+        "j": 1
+      },
+      {
+        "coefficient": 5,
+        "i": 0,
+        "j": 2
+      },
+      {
+        "coefficient": 5,
+        "i": 0,
+        "j": 4
+      },
+      {
+        "coefficient": 5,
+        "i": 1,
+        "j": 3
+      },
+      {
+        "coefficient": 5,
+        "i": 2,
+        "j": 3
+      }
+    ]
+  },
+  "source": {
+    "snapshot_id": "m5-google-trace-drain",
+    "source_sha256": "f8e7a53c9022e56ea44f84b3ffc6c5f4d5e85d4f20ae15baa53bd5a6d7720226"
+  },
+  "status": "SUPPORTED",
+  "target_node": "m-1335771"
+}
