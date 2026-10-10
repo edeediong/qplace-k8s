@@ -1,6 +1,6 @@
 # M3 limitations
 
-**In short:** M3 shows a correct, verified QAOA placement experiment on tiny instances. It shows **no quantum advantage**. The classical exact solver is faster, proves optimality, and is the authority on every result. Hosted Qollab and IonQ execution has not been verified by the implementer.
+**In short:** M3 shows a correct, verified QAOA placement experiment on tiny instances. It shows **no quantum advantage**. The classical exact solver is faster, proves optimality, and is the authority on every result. Hosted Qollab runs (built-in simulator and IonQ remote simulator, Aria 1 noise model) succeeded. The project owner performed and reported them (`hosted-evidence.md`).
 
 | Area | Limitation |
 |---|---|
@@ -15,7 +15,7 @@
 | Overhead | training needs about 180–300 estimator evaluations. The classical exact solver takes < 1 ms on every instance |
 | Trivial instances | 1-qubit and coupling-free instances succeed trivially |
 | Simulation only | all measured results come from local noiseless simulators. None come from hardware |
-| Hosted runtime | Qollab's injection and `main()` behavior come from public hackathon projects, not first-hand runs. The hosted gate stays BLOCKED until someone runs the project in Qollab. If a runtime ran `main.py` as `__main__` on non-browser CPython **and** auto-called `main()`, two jobs would be sent. The guard prevents this only under Pyodide (`emscripten`) |
+| Hosted runtime | Confirmed by the owner's hosted runs: `backend` injection and the `main()` call both work. Each hosted backend ran once with 256 shots, so the success rates are imprecise. If a runtime ran `main.py` as `__main__` on non-browser CPython **and** auto-called `main()`, two jobs would be sent. The guard prevents this only under Pyodide (`emscripten`) |
 | Kubernetes model | all M1/M2 limitations still apply: unknown constraints, the requested-resource model, no PDB or scheduler simulation. A verified quantum placement is not a drain approval |
 | Advantage | **no quantum advantage is claimed or supported** |
 

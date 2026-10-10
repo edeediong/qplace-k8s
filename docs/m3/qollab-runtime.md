@@ -1,6 +1,6 @@
 # Qollab runtime
 
-**In short:** `qollab/` is a self-contained Python/Qiskit project. Qollab injects the selected backend as the global `backend` and calls `main()`. The demo builds the greedy-trap QAOA circuit with angles trained offline, submits it with **exactly one** `backend.run(...)` call, then decodes and checks the counts. Hosted execution is **not verified by me**: I have no Qollab access. It must be run in the Qollab web app (see §5).
+**In short:** `qollab/` is a self-contained Python/Qiskit project. Qollab injects the selected backend as the global `backend` and calls `main()`. The demo builds the greedy-trap QAOA circuit with angles trained offline, submits it with **exactly one** `backend.run(...)` call, then decodes and checks the counts. Hosted execution **succeeded** on Qollab's built-in simulator and on the IonQ remote simulator (Aria 1 noise model), as run and reported by the project owner. See [hosted-evidence.md](hosted-evidence.md).
 
 ## 1. Files
 
@@ -84,7 +84,7 @@ These tests are compatibility checks. They are **not** proof of hosted execution
 1. Create a Python/Qiskit project in Qollab. Upload exactly `main.py`, `quantum_demo.py`, `placement_data.py`, `requirements.txt` and `README.md` from `qollab/`. Do not upload `__pycache__/` or `.DS_Store`.
 2. Select the **built-in simulator**, press Run, and copy the console output.
 3. Select **IonQ (remote simulator)**, press Run once, and copy the output.
-4. Record both runs in `reports/m3/m3_summary.md` §E. Until then, the hosted gate is **BLOCKED**.
+4. Record both runs in `reports/m3/m3_summary.md` §E and `docs/m3/hosted-evidence.md`. Done for commit `a82dc48` on 2026-10-10.
 
 Expected output shape (the values come from the actual run):
 

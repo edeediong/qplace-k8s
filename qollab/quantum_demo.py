@@ -96,6 +96,15 @@ def prepare_for_backend(qc: QuantumCircuit, backend) -> tuple:
         return qc, f"transpile failed ({type(exc).__name__}); submitted basic-gate circuit"
 
 
+def active_qubits(qc: QuantumCircuit) -> int:
+    """Qubits touched by any operation. A transpiled circuit is as wide as the backend target,
+    so its width can exceed the qubits actually used (for example, 29 on a 29-qubit simulator target)."""
+    try:
+        return len({qc.find_bit(q).index for inst in qc.data if inst.operation.name != "barrier" for q in inst.qubits})
+    except Exception:  # noqa: BLE001 - reporting only; never block the run
+        return -1
+
+
 def run_once(backend, data: dict, shots: int) -> tuple:
     """Exactly one backend.run call. Returns (counts, transpile_note, submitted_circuit)."""
     qc, note = prepare_for_backend(build_circuit(data), backend)

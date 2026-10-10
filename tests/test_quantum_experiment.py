@@ -286,3 +286,53 @@ def test_runtime_prelude_check_detects_the_original_failure():
     compile(broken, "main.py", "exec")  # legal on its own (docstring may precede it)
     with pytest.raises(SyntaxError, match="from __future__ imports must occur at the beginning of the file"):
         compile(RUNTIME_PRELUDE + broken, "<code>", "exec")
+
+
+def test_demo_reports_active_qubits_separately_from_padded_width(demo, capsys):
+    # On Qollab's IonQ simulator the transpiled circuit was 29 qubits wide (backend target size)
+    # while only 3 qubits carried the problem. The demo must report both, not "29 circuit qubits".
+    from qiskit import QuantumCircuit
+    main_mod, qd, data = demo
+    padded = QuantumCircuit(29, 3)
+    padded.compose(qd.build_circuit(data, measure=False), qubits=[0, 1, 2], inplace=True)
+    padded.measure([0, 1, 2], [0, 1, 2])
+    assert padded.num_qubits == 29 and qd.active_qubits(padded) == 3
+
+    class PaddingBackend:
+        """Mimics a 29-qubit target: transpilation pads the circuit; results come back on 3 clbits."""
+        name = "padding_sim"
+        target = None
+
+        def __init__(self):
+            self.calls = 0
+
+        def run(self, qc, shots):
+            self.calls += 1
+            assert qc.num_qubits == 29
+
+            class Job:
+                def result(self_inner):
+                    class R:
+                        def get_counts(self_r):
+                            return {"110": shots}
+                    return R()
+            return Job()
+
+    def pad(qc, backend):
+        wide = QuantumCircuit(29, qc.num_clbits)
+        wide.compose(qc, qubits=list(range(qc.num_qubits)), clbits=list(range(qc.num_clbits)), inplace=True)
+        return wide, "transpiled for backend target"
+
+    be = PaddingBackend()
+    main_mod.backend = be
+    original = qd.prepare_for_backend
+    qd.prepare_for_backend = pad
+    try:
+        result = main_mod.main(shots=64)
+    finally:
+        qd.prepare_for_backend = original
+        del main_mod.backend
+    out = capsys.readouterr().out
+    assert be.calls == 1 and result["logical_qubits"] == 3 and result["active_qubits"] == 3
+    assert result["register_width"] == 29 and "register width 29" in out and "extra qubits are idle" in out
+    assert "Logical qubits: 3" in out and "3 active qubits" in out

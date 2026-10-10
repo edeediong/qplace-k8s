@@ -1,16 +1,16 @@
 # M3 summary: Quantum Placement Optimization (QAOA) and Qollab compatibility
 
-**MILESTONE 3 STATUS: BLOCKED. The only open gate is #15, hosted Qollab execution.** The first hosted attempt failed at compile time on a `__future__` import. That is now fixed (see §E). The re-run in Qollab is still pending. All local work is done, tested and reviewed. The Qollab project has run locally through injected backends, but nobody has run it in the hosted Qollab runtime yet. I have no Qollab access. Once the procedure in §E produces real hosted output, every other gate is met.
+**MILESTONE 3 STATUS: PASS** (closed 2026-10-10). Gate 15, the last open gate, is met: the project owner ran the Qollab demo in the hosted runtime on the built-in simulator and on IonQ's remote simulator (Aria 1 noise model). Both runs sampled the verified 2/2 placement (84/256 and 83/256 shots; random guessing gives 12.5%). The agents did not repeat the hosted runs; the owner supplied the results. They are recorded with consistency checks in [`docs/m3/hosted-evidence.md`](../../docs/m3/hosted-evidence.md). The first hosted attempt failed on a `__future__` import, which was fixed in `a82dc48` (§E).
 
 | Metric | Value |
 |---|---|
-| Tests | 343 passed, 0 failed, 0 skipped (M1 130 + M2 100 + M3 113, from 36 M3 test functions), on Python 3.14.2 and 3.13.6 |
+| Tests | 347 passed, 0 failed, 0 skipped (M1 130 + M2 100 + M3 117), Python 3.14.2. 343 also passed on 3.13.6 before the hotfixes |
 | QUBO correctness | exhaustively validated on all 10 instances and 120 random problems. The reviewer's independent fuzzing covered 2,648 instances with 0 counterexamples |
 | QAOA | real Qiskit circuits, p = 1 and p = 2, on 10 instances, 5 seeds × 1024 shots each (local noiseless simulator) |
 | Best verified QAOA sample vs exact | the same full M2 objective on 10/10 instances |
 | QAOA vs random guessing (p = 2) | better than uniform on every instance where they differ: 2.3× to 15.9× |
 | QAOA vs random guessing (p = 1) | **worse** than uniform on scenario G (0.32×), about equal on M1 fixture C (1.02×) |
-| Qollab demo | one `backend.run` per run, checked with an injected counting backend. **Hosted run: not done** |
+| Qollab demo (hosted) | **built-in simulator: 84/256 shots placed 2/2. IonQ simulator (Aria 1 noise): 83/256.** One `backend.run` per run. Results supplied by the project owner |
 | Independent review | 2 material findings and 4 minor findings fixed with regression tests. Other items documented. No critical findings |
 
 ---
@@ -36,7 +36,7 @@
 - The classical exact solver is faster by orders of magnitude and proves optimality.
 - **No quantum advantage is claimed.**
 
-**M4 readiness:** the interfaces are ready (§I). Before submission, the hosted Qollab run must be done (§E).
+**M4 readiness:** the interfaces are ready (§I).
 
 | # | Gate | Result |
 |---|---|---|
@@ -54,7 +54,7 @@
 | 12 | Settings and outcomes recorded | met (`artifacts/m3`) |
 | 13 | Quantum never claims optimality | met |
 | 14 | Demo uses selected backend, ≤ 1 job | met locally (mock and BasicSimulator injection) |
-| **15** | **Hosted Qollab built-in simulator exercised** | **BLOCKED: not done** |
+| **15** | **Hosted Qollab built-in simulator exercised** | **met**: owner-supplied hosted runs on built-in and IonQ simulators (`docs/m3/hosted-evidence.md`) |
 | 16 | Success / failure / uncertainty distinguished | met |
 | 17 | Documentation complete | met (`docs/m3/*`) |
 | 18 | No unresolved critical review finding | met |
@@ -165,11 +165,12 @@ All results are from local noiseless simulation. The QAOA rates are seed-free pr
 | Local CPython run | **done**: `python main.py` falls back to BasicSimulator, labeled "LOCAL FALLBACK (not Qollab)". Result: 91/256 shots placed 2/2 (35.5%), random baseline 12.5%, best placement batch→node-b, indexer→node-a |
 | Injected-backend tests | **done**, but mocks only: exactly 1 `run` call; a single circuit, never a list; refuses to substitute a backend under `emscripten`; reports failure when no sample is feasible; prints no advantage claim on uniform noise |
 | Hosted run 1 (Qollab built-in simulator) | **FAILED before execution**: `SyntaxError: from __future__ imports must occur at the beginning of the file` (`<code>`, line 11, the `__future__` import in `main.py`). Fixed by removing both `__future__` imports (`qollab-runtime.md` §5). After the fix: 346 tests pass, including 3 new compatibility tests; all 6 + 27 + 61 artifact checks are ok; the local BasicSimulator demo ran (85/256 shots placed 2/2, 33.2%, random baseline 12.5%) |
-| Qollab built-in simulator (hosted, after hotfix) | **NOT DONE**. This is what blocks the gate |
-| IonQ remote simulator (hosted) | **NOT DONE** |
-| Unresolved | whether Qollab's Pyodide build ships Qiskit; whether `backend` is injected into `main.py`'s globals. The demo fails loudly if it isn't |
-
-To close the gate, upload the five files to a Qollab Python project. Run once on the built-in simulator and once on IonQ. Then paste both console outputs into this section.
+| Qollab built-in simulator (hosted, after hotfix, 2026-10-10) | **SUCCESS**: backend `basic_simulator` (Qollab-selected), p = 2, 3 qubits, depth 16, 256 shots. 234 feasible, **84/256 (32.8%) placed 2/2**, random baseline 12.5%. Best: batch→node-b, indexer→node-a. Optimality NOT PROVEN |
+| IonQ remote simulator (hosted, Aria 1 noise model, 2026-10-10) | **SUCCESS**: backend `ionq_simulator` (Qollab-selected), p = 2, depth 18, 256 shots, one job. 229 feasible, **83/256 (32.4%) placed 2/2**. Same best placement. A remote **simulator** with a hardware noise model, not hardware |
+| 29-qubit report on IonQ | explained: the `ionq_simulator` target is 29 qubits wide, so transpilation pads the 3-qubit circuit; active qubits are {0, 1, 2}. Reproduced locally (width 29, depth 18). Console wording now prints logical, active and padded widths separately |
+| Provenance | hosted runs performed and reported by the project owner, not repeated by an agent. All numbers are checked for internal consistency in `docs/m3/hosted-evidence.md` §3 |
+| Resolved assumptions | Qollab's Pyodide runtime provides Qiskit; `backend` is injected into `main.py`'s globals; `main()` is invoked once per run |
+| After the evidence | the console-wording change (active vs padded qubits) was made after these runs. Circuit, angles and decoding are unchanged. One confirming built-in run is requested before publication |
 
 ---
 
@@ -234,8 +235,8 @@ The reviewer was a separate agent that did not write M3.
 
 **Remaining risks:**
 
-- The hosted runtime is unverified (§E).
-- Sampling on real IonQ simulators may differ from local noiseless results.
+- Hosted evidence comes from one run per backend (256 shots each). It shows the pipeline works, not a statistically precise success rate.
+- The post-evidence console-wording change needs one confirming hosted run.
 
 ---
 

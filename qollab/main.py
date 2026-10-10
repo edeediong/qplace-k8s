@@ -11,7 +11,7 @@ Run locally:  python main.py   (falls back to Qiskit's BasicSimulator, and says 
 import sys
 
 from placement_data import DATA
-from quantum_demo import analyse, run_once, uniform_baseline
+from quantum_demo import active_qubits, analyse, run_once, uniform_baseline
 
 
 def _short(pod: str) -> str:
@@ -56,7 +56,12 @@ def main(shots: int = 256):
     print("QUANTUM")
     print("Algorithm: QAOA (p=%d, angles trained offline)" % DATA["qaoa"]["reps"])
     print(f"Backend: {name}  [{origin}]")
-    print(f"Circuit qubits: {submitted.num_qubits}   depth: {submitted.depth()}   ({note})")
+    used = active_qubits(submitted)
+    print(f"Logical qubits: {DATA['num_qubits']} (one per allowed pod->node pair)")
+    print(f"Submitted circuit: {used if used >= 0 else 'unknown'} active qubits, register width "
+          f"{submitted.num_qubits}, depth {submitted.depth()}  ({note})")
+    if submitted.num_qubits > DATA["num_qubits"]:
+        print("  (width = backend target size after transpilation; the extra qubits are idle)")
     shots = result["shots"]
     uniform = uniform_baseline(DATA)
     print(f"Measured shots: {shots}")
@@ -77,13 +82,14 @@ def main(shots: int = 256):
         print("Placement feasibility: VERIFIED by the demo's constraint check (at-most-one + CPU/memory/pod-slot),")
         print("  which the qplace test suite proves equal to its independent verifier on all bitstrings")
         print(f"Greedy placed {c['greedy_placed']}/{n_cand}; this sampled placement places {best['placed']}/{n_cand}.")
-        print(f"With only {submitted.num_qubits} qubits, random guessing also finds it: this run shows the "
+        print(f"With only {DATA['num_qubits']} qubits, random guessing also finds it: this run shows the "
               "encoding and pipeline, not an advantage.")
     print("Quantum optimality: NOT PROVEN")
     print()
     print("This is a constrained placement-model")
     print("experiment, not a safe-to-drain guarantee.")
     return {"backend": name, "origin": origin, "shots": result["shots"], "counts": counts,
+            "logical_qubits": DATA["num_qubits"], "active_qubits": used, "register_width": submitted.num_qubits,
             "best": None if best is None else {"placed": best["placed"], "pairs": best["pairs"]},
             "feasible_shots": result["feasible_shots"], "exact_count_shots": result["exact_count_shots"],
             "uniform_optimal_rate": uniform["optimal"]}
