@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qplace.invalid/schemas/resource-inventory-1.0.schema.json",
+  "title": "QPlace resource_inventory.json artifact, version 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact", "artifact_schema_version", "generator", "snapshot", "target_node", "data_completeness",
+    "accounting_policy", "nodes", "pods", "diagnostics", "summary"
+  ],
+  "properties": {
+    "artifact": {"const": "resource_inventory"},
+    "artifact_schema_version": {"const": "1.0"},
+    "generator": {"type": "object", "required": ["name", "version", "milestone"]},
+    "snapshot": {"type": "object", "required": ["schema_version", "snapshot_id", "captured_at", "source_sha256", "inventory"]},
+    "target_node": {"type": "string"},
+    "data_completeness": {"type": "object", "required": ["capacity_assessment_complete", "reasons"]},
+    "accounting_policy": {"type": "object"},
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "node", "is_drain_target", "allocatable", "reserved", "reserved_lower_bound", "remaining",
+          "remaining_upper_bound", "overcommitted", "status", "reasons", "reserving_pods"
+        ],
+        "properties": {
+          "node": {"type": "string"},
+          "is_drain_target": {"type": "boolean"},
+          "allocatable": {"$ref": "#/$defs/resources"},
+          "reserved": {"$ref": "#/$defs/resources"},
+          "reserved_lower_bound": {"$ref": "#/$defs/knownResources"},
+          "remaining": {"$ref": "#/$defs/resources"},
+          "remaining_upper_bound": {"$ref": "#/$defs/resources"},
+          "overcommitted": {"type": "array", "items": {"enum": ["cpu", "memory", "pods"]}},
+          "status": {"$ref": "#/$defs/status"},
+          "reasons": {"type": "array", "items": {"$ref": "#/$defs/code"}},
+          "reserving_pods": {"type": "array", "items": {"type": "string"}}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"status": {"enum": ["UNKNOWN", "INCOMPLETE", "REVIEW_REQUIRED"]}}},
+            "then": {"properties": {"reasons": {"minItems": 1}}}
+          }
+        ]
+      }
+    },
+    "pods": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "pod", "node", "phase", "cpu_millicores", "memory_bytes", "status", "method", "reasons", "breakdown",
+          "reservation", "placement_candidate"
+        ],
+        "properties": {
+          "pod": {"type": "string"},
+          "node": {"type": ["string", "null"]},
+          "phase": {"type": ["string", "null"]},
+          "cpu_millicores": {"type": ["integer", "null"], "minimum": 0},
+          "memory_bytes": {"type": ["integer", "null"], "minimum": 0},
+          "status": {"$ref": "#/$defs/status"},
+          "method": {"type": "array", "items": {"type": "string"}},
+          "reasons": {"type": "array", "items": {"$ref": "#/$defs/code"}},
+          "breakdown": {"type": "object"},
+          "reservation": {
+            "enum": ["RESERVED", "RESERVED_TERMINATING", "RESERVED_UNKNOWN_PHASE", "NOT_RESERVED_TERMINAL", "NOT_RESERVED_UNBOUND"]
+          },
+          "placement_candidate": {"type": "boolean"}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"status": {"const": "UNKNOWN"}}},
+            "then": {"properties": {"reasons": {"contains": {"const": "POD_REQUEST_UNKNOWN"}}}}
+          }
+        ]
+      }
+    },
+    "diagnostics": {"type": "array"},
+    "summary": {
+      "type": "object",
+      "required": [
+        "node_status_counts", "overcommitted_nodes", "ready_schedulable_destinations",
+        "remaining_total_ready_schedulable", "placement_candidate_demand", "pod_request_status_counts", "note"
+      ]
+    }
+  },
+  "$defs": {
+    "code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]*$"},
+    "status": {"enum": ["EXACT", "REVIEW_REQUIRED", "INCOMPLETE", "UNKNOWN"]},
+    "resources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cpu_millicores", "memory_bytes", "pods"],
+      "properties": {
+        "cpu_millicores": {"type": ["integer", "null"]},
+        "memory_bytes": {"type": ["integer", "null"]},
+        "pods": {"type": ["integer", "null"]}
+      }
+    },
+    "knownResources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cpu_millicores", "memory_bytes", "pods"],
+      "properties": {
+        "cpu_millicores": {"type": "integer", "minimum": 0},
+        "memory_bytes": {"type": "integer", "minimum": 0},
+        "pods": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

@@ -1,0 +1,810 @@
+{
+  "accounting_policy": {
+    "incomplete_inventory": "reserved/remaining are null; *_lower_bound / *_upper_bound fields carry observed bounds",
+    "overcommitment": "negative remaining headroom is preserved, not clamped",
+    "pod_request_formula": "max(sum(containers) + sum(sidecars), max(init_i + sidecars_started_before_i)); pod-level cpu/memory requests replace that aggregate; spec.overhead is added once",
+    "reserving_pods": "bound pods in phase Pending/Running/Unknown, including terminating pods; Succeeded/Failed pods and unbound pods do not reserve capacity",
+    "resize": "per container max(spec, status.resources.requests, status.allocatedResources); spec ignored when PodResizePending reason=Infeasible; unknown if resize is indicated without status",
+    "rounding": "quantities are parsed exactly and rounded up to the next whole unit (Quantity.MilliValue/Value)",
+    "summary_remaining_total": "sum of max(remaining, 0) over Ready, schedulable destination nodes; a necessary-condition indicator only, never a feasibility verdict",
+    "units": {
+      "cpu": "millicores (integer)",
+      "memory": "bytes (integer)",
+      "pods": "count"
+    },
+    "unknown_values": "null with a reason code; never replaced by zero"
+  },
+  "artifact": "resource_inventory",
+  "artifact_schema_version": "1.0",
+  "data_completeness": {
+    "capacity_assessment_complete": true,
+    "nodes_inventory": "complete",
+    "pod_disruption_budgets_inventory": "complete",
+    "pods_inventory": "complete",
+    "reasons": []
+  },
+  "diagnostics": [],
+  "generator": {
+    "milestone": "M1",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "nodes": [
+    {
+      "allocatable": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "is_drain_target": false,
+      "node": "gpu-01",
+      "overcommitted": [],
+      "reasons": [],
+      "remaining": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "remaining_upper_bound": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "reserved": {
+        "cpu_millicores": 0,
+        "memory_bytes": 0,
+        "pods": 0
+      },
+      "reserved_lower_bound": {
+        "cpu_millicores": 0,
+        "memory_bytes": 0,
+        "pods": 0
+      },
+      "reserving_pods": [],
+      "status": "EXACT"
+    },
+    {
+      "allocatable": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "is_drain_target": false,
+      "node": "worker-01",
+      "overcommitted": [],
+      "reasons": [],
+      "remaining": {
+        "cpu_millicores": 6300,
+        "memory_bytes": 26843545600,
+        "pods": 108
+      },
+      "remaining_upper_bound": {
+        "cpu_millicores": 6300,
+        "memory_bytes": 26843545600,
+        "pods": 108
+      },
+      "reserved": {
+        "cpu_millicores": 1500,
+        "memory_bytes": 5368709120,
+        "pods": 2
+      },
+      "reserved_lower_bound": {
+        "cpu_millicores": 1500,
+        "memory_bytes": 5368709120,
+        "pods": 2
+      },
+      "reserving_pods": [
+        "payments/api-6d5c4b-bbbbb",
+        "payments/ledger-1"
+      ],
+      "status": "EXACT"
+    },
+    {
+      "allocatable": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "is_drain_target": false,
+      "node": "worker-02",
+      "overcommitted": [],
+      "reasons": [],
+      "remaining": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "remaining_upper_bound": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "reserved": {
+        "cpu_millicores": 0,
+        "memory_bytes": 0,
+        "pods": 0
+      },
+      "reserved_lower_bound": {
+        "cpu_millicores": 0,
+        "memory_bytes": 0,
+        "pods": 0
+      },
+      "reserving_pods": [],
+      "status": "EXACT"
+    },
+    {
+      "allocatable": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "is_drain_target": true,
+      "node": "worker-03",
+      "overcommitted": [],
+      "reasons": [
+        "TERMINAL_POD_NOT_RESERVED"
+      ],
+      "remaining": {
+        "cpu_millicores": 1750,
+        "memory_bytes": 14168358912,
+        "pods": 98
+      },
+      "remaining_upper_bound": {
+        "cpu_millicores": 1750,
+        "memory_bytes": 14168358912,
+        "pods": 98
+      },
+      "reserved": {
+        "cpu_millicores": 6050,
+        "memory_bytes": 18043895808,
+        "pods": 12
+      },
+      "reserved_lower_bound": {
+        "cpu_millicores": 6050,
+        "memory_bytes": 18043895808,
+        "pods": 12
+      },
+      "reserving_pods": [
+        "analytics/etl-2b3c4d-aaaaa",
+        "batch/report-28999-xk2lp",
+        "default/debug-shell",
+        "edge/proxy-8a7b6c-aaaaa",
+        "kube-system/fluent-bit-q8w7e",
+        "kube-system/kube-proxy-worker-03",
+        "ml/trainer-7e6f5a-aaaaa",
+        "ops/agent-x7k2m",
+        "payments/api-6d5c4b-aaaaa",
+        "payments/api-old-3c2b1a-aaaaa",
+        "payments/ledger-0",
+        "secure/sandbox-5f4e3d-aaaaa"
+      ],
+      "status": "EXACT"
+    },
+    {
+      "allocatable": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "is_drain_target": false,
+      "node": "worker-04",
+      "overcommitted": [],
+      "reasons": [],
+      "remaining": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "remaining_upper_bound": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "reserved": {
+        "cpu_millicores": 0,
+        "memory_bytes": 0,
+        "pods": 0
+      },
+      "reserved_lower_bound": {
+        "cpu_millicores": 0,
+        "memory_bytes": 0,
+        "pods": 0
+      },
+      "reserving_pods": [],
+      "status": "EXACT"
+    },
+    {
+      "allocatable": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "is_drain_target": false,
+      "node": "worker-05",
+      "overcommitted": [],
+      "reasons": [],
+      "remaining": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "remaining_upper_bound": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "reserved": {
+        "cpu_millicores": 0,
+        "memory_bytes": 0,
+        "pods": 0
+      },
+      "reserved_lower_bound": {
+        "cpu_millicores": 0,
+        "memory_bytes": 0,
+        "pods": 0
+      },
+      "reserving_pods": [],
+      "status": "EXACT"
+    }
+  ],
+  "pods": [
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 500,
+          "containers": 500,
+          "effective": 500,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 1073741824,
+          "containers": 1073741824,
+          "effective": 1073741824,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 500,
+      "memory_bytes": 1073741824,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-03",
+      "phase": "Running",
+      "placement_candidate": true,
+      "pod": "analytics/etl-2b3c4d-aaaaa",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 250,
+          "containers": 250,
+          "effective": 250,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 536870912,
+          "containers": 536870912,
+          "effective": 536870912,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 250,
+      "memory_bytes": 536870912,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-03",
+      "phase": "Succeeded",
+      "placement_candidate": false,
+      "pod": "batch/report-28998-ab12c",
+      "reasons": [],
+      "reservation": "NOT_RESERVED_TERMINAL",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 250,
+          "containers": 250,
+          "effective": 250,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 536870912,
+          "containers": 536870912,
+          "effective": 536870912,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 250,
+      "memory_bytes": 536870912,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-03",
+      "phase": "Running",
+      "placement_candidate": true,
+      "pod": "batch/report-28999-xk2lp",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 50,
+          "containers": 50,
+          "effective": 50,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 67108864,
+          "containers": 67108864,
+          "effective": 67108864,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 50,
+      "memory_bytes": 67108864,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-03",
+      "phase": "Running",
+      "placement_candidate": false,
+      "pod": "default/debug-shell",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 200,
+          "containers": 200,
+          "effective": 200,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 268435456,
+          "containers": 268435456,
+          "effective": 268435456,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 200,
+      "memory_bytes": 268435456,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-03",
+      "phase": "Running",
+      "placement_candidate": true,
+      "pod": "edge/proxy-8a7b6c-aaaaa",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 100,
+          "containers": 100,
+          "effective": 100,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 134217728,
+          "containers": 134217728,
+          "effective": 134217728,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 100,
+      "memory_bytes": 134217728,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-03",
+      "phase": "Running",
+      "placement_candidate": false,
+      "pod": "kube-system/fluent-bit-q8w7e",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 100,
+          "containers": 100,
+          "effective": 100,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 134217728,
+          "containers": 134217728,
+          "effective": 134217728,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 100,
+      "memory_bytes": 134217728,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-03",
+      "phase": "Running",
+      "placement_candidate": false,
+      "pod": "kube-system/kube-proxy-worker-03",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 2000,
+          "containers": 2000,
+          "effective": 2000,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 8589934592,
+          "containers": 8589934592,
+          "effective": 8589934592,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 2000,
+      "memory_bytes": 8589934592,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-03",
+      "phase": "Running",
+      "placement_candidate": true,
+      "pod": "ml/trainer-7e6f5a-aaaaa",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 100,
+          "containers": 100,
+          "effective": 100,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 134217728,
+          "containers": 134217728,
+          "effective": 134217728,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 100,
+      "memory_bytes": 134217728,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-03",
+      "phase": "Running",
+      "placement_candidate": true,
+      "pod": "ops/agent-x7k2m",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 500,
+          "containers": 500,
+          "effective": 500,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 1073741824,
+          "containers": 1073741824,
+          "effective": 1073741824,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 500,
+      "memory_bytes": 1073741824,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-03",
+      "phase": "Running",
+      "placement_candidate": true,
+      "pod": "payments/api-6d5c4b-aaaaa",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 500,
+          "containers": 500,
+          "effective": 500,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 1073741824,
+          "containers": 1073741824,
+          "effective": 1073741824,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 500,
+      "memory_bytes": 1073741824,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-01",
+      "phase": "Running",
+      "placement_candidate": false,
+      "pod": "payments/api-6d5c4b-bbbbb",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 500,
+          "containers": 500,
+          "effective": 500,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 1073741824,
+          "containers": 1073741824,
+          "effective": 1073741824,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 500,
+      "memory_bytes": 1073741824,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-03",
+      "phase": "Running",
+      "placement_candidate": false,
+      "pod": "payments/api-old-3c2b1a-aaaaa",
+      "reasons": [],
+      "reservation": "RESERVED_TERMINATING",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 1000,
+          "containers": 1000,
+          "effective": 1000,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 4294967296,
+          "containers": 4294967296,
+          "effective": 4294967296,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 1000,
+      "memory_bytes": 4294967296,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-03",
+      "phase": "Running",
+      "placement_candidate": true,
+      "pod": "payments/ledger-0",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 1000,
+          "containers": 1000,
+          "effective": 1000,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 4294967296,
+          "containers": 4294967296,
+          "effective": 4294967296,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 1000,
+      "memory_bytes": 4294967296,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-01",
+      "phase": "Running",
+      "placement_candidate": false,
+      "pod": "payments/ledger-1",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 500,
+          "containers": 500,
+          "effective": 750,
+          "init_peak": 0,
+          "overhead": 250,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 536870912,
+          "containers": 536870912,
+          "effective": 662700032,
+          "init_peak": 0,
+          "overhead": 125829120,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 750,
+      "memory_bytes": 662700032,
+      "method": [
+        "sum_containers",
+        "overhead_added"
+      ],
+      "node": "worker-03",
+      "phase": "Running",
+      "placement_candidate": true,
+      "pod": "secure/sandbox-5f4e3d-aaaaa",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    }
+  ],
+  "snapshot": {
+    "captured_at": "2026-10-03T09:00:00Z",
+    "description": "Constraint-heavy cluster: selectors, taints, cordon, NotReady node, DaemonSet, mirror pod, restrictive PDBs and unsupported constraints.",
+    "inventory": {
+      "nodes": "complete",
+      "notes": "Synthetic fixture. All names, UIDs and images are invented.",
+      "pod_disruption_budgets": "complete",
+      "pods": "complete"
+    },
+    "kubernetes_version": "v1.34.0",
+    "schema_version": "1.0",
+    "snapshot_id": "fixture-c-constraints",
+    "source_file": "fixture_c_constraints.json",
+    "source_sha256": "6ff5166fd6a7b53a6ea3a6aad8954968fcbd9bfd445865ac0f5e83aa41fa18b0",
+    "source_type": "synthetic_fixture"
+  },
+  "summary": {
+    "node_status_counts": {
+      "EXACT": 6,
+      "INCOMPLETE": 0,
+      "REVIEW_REQUIRED": 0,
+      "UNKNOWN": 0
+    },
+    "note": "Totals are necessary-condition indicators only; M1 makes no joint-placement claim.",
+    "overcommitted_nodes": [],
+    "placement_candidate_demand": {
+      "cpu_millicores": 5300,
+      "memory_bytes": 16634609664,
+      "pods": 8
+    },
+    "pod_request_status_counts": {
+      "EXACT": 15,
+      "INCOMPLETE": 0,
+      "REVIEW_REQUIRED": 0,
+      "UNKNOWN": 0
+    },
+    "ready_schedulable_destinations": [
+      "gpu-01",
+      "worker-01",
+      "worker-04"
+    ],
+    "remaining_total_ready_schedulable": {
+      "cpu_millicores": 21900,
+      "memory_bytes": 91268055040
+    }
+  },
+  "target_node": "worker-03"
+}

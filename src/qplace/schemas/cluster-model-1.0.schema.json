@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qplace.invalid/schemas/cluster-model-1.0.schema.json",
+  "title": "QPlace cluster_model.json artifact, version 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact", "artifact_schema_version", "generator", "snapshot", "target_node", "data_completeness",
+    "nodes", "pods", "drain_inventory", "eligibility", "candidate_destinations",
+    "unsupported_constraints", "diagnostics", "summary"
+  ],
+  "properties": {
+    "artifact": {"const": "cluster_model"},
+    "artifact_schema_version": {"const": "1.0"},
+    "generator": {"$ref": "#/$defs/generator"},
+    "snapshot": {"$ref": "#/$defs/snapshot"},
+    "target_node": {"type": "string"},
+    "data_completeness": {"$ref": "#/$defs/completeness"},
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "uid", "labels", "taints", "capacity", "allocatable", "other_allocatable", "ready", "unschedulable"],
+        "properties": {
+          "name": {"type": "string"},
+          "ready": {"enum": ["True", "False", "Unknown", null]},
+          "unschedulable": {"type": "boolean"},
+          "capacity": {"$ref": "#/$defs/resources"},
+          "allocatable": {"$ref": "#/$defs/resources"},
+          "taints": {
+            "type": "array",
+            "items": {"type": "object", "required": ["key", "value", "effect"]}
+          }
+        }
+      }
+    },
+    "pods": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "key", "namespace", "name", "uid", "node_name", "phase", "deletion_timestamp", "owner_references",
+          "controller", "is_mirror", "containers", "init_containers", "overhead", "pod_level_requests",
+          "node_selector", "tolerations", "affinity", "topology_spread_constraints", "volumes",
+          "scheduler_name", "constraints"
+        ],
+        "properties": {
+          "constraints": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["kind", "code", "detail"],
+              "properties": {"kind": {"enum": ["supported", "unsupported", "soft"]}}
+            }
+          }
+        }
+      }
+    },
+    "drain_inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_node", "pods", "placement_candidates", "excluded", "kubectl_drain_flags_required", "pdb_assessments"],
+      "properties": {
+        "target_node": {"type": "string"},
+        "pods": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["pod", "drain_class", "controller", "replacement", "placement_candidate", "kubectl_drain_flags", "findings", "matching_pdbs"],
+            "properties": {
+              "drain_class": {"enum": ["CONTROLLER_MANAGED", "UNKNOWN_CONTROLLER", "DAEMONSET", "MIRROR", "UNMANAGED", "TERMINAL", "TERMINATING"]},
+              "replacement": {"enum": ["ASSUMED", "CONDITIONAL", "NOT_EXPECTED", "UNKNOWN"]},
+              "placement_candidate": {"type": "boolean"},
+              "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}}
+            }
+          }
+        },
+        "placement_candidates": {"type": "array", "items": {"type": "string"}},
+        "excluded": {"type": "array"},
+        "kubectl_drain_flags_required": {"type": "array", "items": {"type": "string"}},
+        "pdb_assessments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["pdb", "disruptions_allowed", "matching_target_pods", "assessment", "advisory"],
+            "properties": {
+              "disruptions_allowed": {"type": ["integer", "null"]},
+              "advisory": {"const": true},
+              "assessment": {"enum": ["PDB_EVICTION_BLOCKED_AT_SNAPSHOT", "PDB_MAY_BLOCK_SEQUENTIAL_EVICTION", "PDB_ADVISORY_ONLY", "PDB_STATUS_MISSING"]}
+            }
+          }
+        }
+      }
+    },
+    "eligibility": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["pod", "node", "state", "blockers", "unknowns", "soft", "capacity_fit"],
+        "properties": {
+          "pod": {"type": "string"},
+          "node": {"type": "string"},
+          "state": {"enum": ["ELIGIBLE", "INELIGIBLE", "UNKNOWN"]},
+          "blockers": {"type": "array", "items": {"$ref": "#/$defs/finding"}},
+          "unknowns": {"type": "array", "items": {"$ref": "#/$defs/finding"}},
+          "soft": {"type": "array", "items": {"$ref": "#/$defs/finding"}},
+          "capacity_fit": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["fit", "reasons"],
+            "properties": {
+              "fit": {"enum": ["FITS", "DOES_NOT_FIT", "UNKNOWN"]},
+              "reasons": {"type": "array", "items": {"$ref": "#/$defs/finding"}}
+            }
+          }
+        },
+        "allOf": [
+          {"if": {"properties": {"state": {"const": "INELIGIBLE"}}}, "then": {"properties": {"blockers": {"minItems": 1}}}},
+          {"if": {"properties": {"state": {"const": "UNKNOWN"}}}, "then": {"properties": {"blockers": {"maxItems": 0}, "unknowns": {"minItems": 1}}}},
+          {"if": {"properties": {"state": {"const": "ELIGIBLE"}}}, "then": {"properties": {"blockers": {"maxItems": 0}, "unknowns": {"maxItems": 0}}}}
+        ]
+      }
+    },
+    "candidate_destinations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["pod", "eligible", "eligible_and_individually_fits", "unknown", "ineligible"]
+      }
+    },
+    "unsupported_constraints": {
+      "type": "array",
+      "items": {"type": "object", "required": ["pod", "code", "detail"]}
+    },
+    "diagnostics": {"type": "array", "items": {"$ref": "#/$defs/diagnostic"}},
+    "summary": {
+      "type": "object",
+      "required": ["placement_decision", "placement_candidate_count", "eligibility_states", "capacity_fit", "drain_class_counts"],
+      "properties": {"placement_decision": {"const": null}}
+    }
+  },
+  "$defs": {
+    "generator": {
+      "type": "object",
+      "required": ["name", "version", "milestone"],
+      "properties": {"name": {"const": "qplace"}, "milestone": {"const": "M1"}}
+    },
+    "snapshot": {
+      "type": "object",
+      "required": ["schema_version", "snapshot_id", "captured_at", "source_type", "kubernetes_version", "source_file", "source_sha256", "inventory"],
+      "properties": {"schema_version": {"const": "1.0"}}
+    },
+    "completeness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nodes_inventory", "pods_inventory", "pod_disruption_budgets_inventory", "capacity_assessment_complete", "reasons"],
+      "properties": {
+        "nodes_inventory": {"enum": ["complete", "partial"]},
+        "pods_inventory": {"enum": ["complete", "partial"]},
+        "pod_disruption_budgets_inventory": {"enum": ["complete", "partial", "not_collected"]},
+        "capacity_assessment_complete": {"type": "boolean"},
+        "reasons": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "nullableInt": {"type": ["integer", "null"]},
+    "resources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cpu_millicores", "memory_bytes", "pods"],
+      "properties": {
+        "cpu_millicores": {"$ref": "#/$defs/nullableInt"},
+        "memory_bytes": {"$ref": "#/$defs/nullableInt"},
+        "pods": {"$ref": "#/$defs/nullableInt"}
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "detail"],
+      "properties": {"code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]*$"}, "detail": {"type": "string"}}
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "severity", "subject", "message", "details"],
+      "properties": {
+        "code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]*$"},
+        "severity": {"enum": ["error", "warning", "unsupported", "info"]},
+        "subject": {"type": "string"},
+        "message": {"type": "string"},
+        "details": {"type": "object"}
+      }
+    }
+  }
+}

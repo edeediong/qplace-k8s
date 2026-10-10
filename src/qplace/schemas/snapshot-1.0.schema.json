@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qplace.invalid/schemas/snapshot-1.0.schema.json",
+  "title": "QPlace cluster snapshot, schema version 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "snapshot", "target_node", "nodes", "pods", "pod_disruption_budgets"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "captured_at", "source_type", "kubernetes_version", "inventory"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1, "pattern": "^[A-Za-z0-9._-]+$"},
+        "captured_at": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|\\+00:00)$"
+        },
+        "source_type": {"enum": ["synthetic_fixture", "kubernetes_export"]},
+        "kubernetes_version": {
+          "type": ["string", "null"],
+          "pattern": "^v?[0-9]+\\.[0-9]+(\\.[0-9]+)?([-+].*)?$"
+        },
+        "description": {"type": "string"},
+        "inventory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["nodes", "pods", "pod_disruption_budgets"],
+          "properties": {
+            "nodes": {"enum": ["complete", "partial"]},
+            "pods": {"enum": ["complete", "partial"]},
+            "pod_disruption_budgets": {"enum": ["complete", "partial", "not_collected"]},
+            "notes": {"type": "string"}
+          }
+        }
+      }
+    },
+    "target_node": {"type": "string", "minLength": 1},
+    "nodes": {"type": "array", "items": {"$ref": "#/$defs/node"}},
+    "pods": {"type": "array", "items": {"$ref": "#/$defs/pod"}},
+    "pod_disruption_budgets": {"type": "array", "items": {"$ref": "#/$defs/pdb"}}
+  },
+  "$defs": {
+    "quantity": {"type": ["string", "integer", "number"]},
+    "resourceList": {"type": "object", "additionalProperties": {"$ref": "#/$defs/quantity"}},
+    "stringMap": {"type": "object", "additionalProperties": {"type": "string"}},
+    "metadata": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "namespace": {"type": "string"},
+        "uid": {"type": "string"},
+        "labels": {"$ref": "#/$defs/stringMap"},
+        "annotations": {"$ref": "#/$defs/stringMap"},
+        "deletionTimestamp": {"type": ["string", "null"]},
+        "ownerReferences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["apiVersion", "kind", "name"],
+            "properties": {
+              "apiVersion": {"type": "string"},
+              "kind": {"type": "string"},
+              "name": {"type": "string"},
+              "uid": {"type": "string"},
+              "controller": {"type": "boolean"}
+            }
+          }
+        }
+      }
+    },
+    "node": {
+      "type": "object",
+      "required": ["metadata", "status"],
+      "properties": {
+        "apiVersion": {"const": "v1"},
+        "kind": {"const": "Node"},
+        "metadata": {"$ref": "#/$defs/metadata"},
+        "spec": {
+          "type": "object",
+          "properties": {
+            "unschedulable": {"type": "boolean"},
+            "taints": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["key", "effect"],
+                "properties": {
+                  "key": {"type": "string"},
+                  "value": {"type": "string"},
+                  "effect": {"type": "string"}
+                }
+              }
+            }
+          }
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "capacity": {"$ref": "#/$defs/resourceList"},
+            "allocatable": {"$ref": "#/$defs/resourceList"},
+            "conditions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["type", "status"],
+                "properties": {"type": {"type": "string"}, "status": {"type": "string"}}
+              }
+            }
+          }
+        }
+      }
+    },
+    "container": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string"},
+        "restartPolicy": {"type": "string"},
+        "resources": {
+          "type": "object",
+          "properties": {
+            "requests": {"$ref": "#/$defs/resourceList"},
+            "limits": {"$ref": "#/$defs/resourceList"}
+          }
+        }
+      }
+    },
+    "pod": {
+      "type": "object",
+      "required": ["metadata", "spec"],
+      "properties": {
+        "apiVersion": {"const": "v1"},
+        "kind": {"const": "Pod"},
+        "metadata": {
+          "allOf": [
+            {"$ref": "#/$defs/metadata"},
+            {"required": ["namespace", "uid"]}
+          ]
+        },
+        "spec": {
+          "type": "object",
+          "required": ["containers"],
+          "properties": {
+            "nodeName": {"type": "string"},
+            "containers": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/container"}},
+            "initContainers": {"type": "array", "items": {"$ref": "#/$defs/container"}},
+            "overhead": {"$ref": "#/$defs/resourceList"},
+            "resources": {
+              "type": "object",
+              "properties": {
+                "requests": {"$ref": "#/$defs/resourceList"},
+                "limits": {"$ref": "#/$defs/resourceList"}
+              }
+            },
+            "nodeSelector": {"$ref": "#/$defs/stringMap"},
+            "tolerations": {"type": "array", "items": {"type": "object"}},
+            "affinity": {"type": "object"},
+            "topologySpreadConstraints": {"type": "array", "items": {"type": "object"}},
+            "volumes": {"type": "array", "items": {"type": "object", "required": ["name"]}},
+            "schedulerName": {"type": "string"},
+            "runtimeClassName": {"type": ["string", "null"]},
+            "resourceClaims": {"type": "array"}
+          }
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "phase": {"enum": ["Pending", "Running", "Succeeded", "Failed", "Unknown"]}
+          }
+        }
+      }
+    },
+    "pdb": {
+      "type": "object",
+      "required": ["metadata", "spec"],
+      "properties": {
+        "apiVersion": {"const": "policy/v1"},
+        "kind": {"const": "PodDisruptionBudget"},
+        "metadata": {
+          "allOf": [
+            {"$ref": "#/$defs/metadata"},
+            {"required": ["namespace"]}
+          ]
+        },
+        "spec": {
+          "type": "object",
+          "properties": {
+            "selector": {"type": ["object", "null"]},
+            "minAvailable": {"type": ["integer", "string"]},
+            "maxUnavailable": {"type": ["integer", "string"]},
+            "unhealthyPodEvictionPolicy": {"type": "string"}
+          }
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "disruptionsAllowed": {"type": "integer"},
+            "currentHealthy": {"type": "integer"},
+            "desiredHealthy": {"type": "integer"},
+            "expectedPods": {"type": "integer"}
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,473 @@
+{
+  "schema_version": "1.0",
+  "snapshot": {
+    "id": "fixture-b-insufficient",
+    "captured_at": "2026-10-02T09:00:00Z",
+    "source_type": "synthetic_fixture",
+    "kubernetes_version": "v1.33.2",
+    "description": "Insufficient capacity: destinations cannot absorb the largest pod on worker-02.",
+    "inventory": {
+      "nodes": "complete",
+      "pods": "complete",
+      "pod_disruption_budgets": "complete",
+      "notes": "Synthetic fixture. All names, UIDs and images are invented."
+    }
+  },
+  "target_node": "worker-02",
+  "nodes": [
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-01",
+        "uid": "b0000000-0000-4000-8000-000000000101",
+        "labels": {
+          "kubernetes.io/hostname": "worker-01",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "2",
+          "memory": "4Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "2",
+          "memory": "4Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-02",
+        "uid": "b0000000-0000-4000-8000-000000000102",
+        "labels": {
+          "kubernetes.io/hostname": "worker-02",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "8Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "4",
+          "memory": "8Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-03",
+        "uid": "b0000000-0000-4000-8000-000000000103",
+        "labels": {
+          "kubernetes.io/hostname": "worker-03",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "2",
+          "memory": "4Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "2",
+          "memory": "4Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    }
+  ],
+  "pods": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "analytics",
+        "name": "query-6f7c8d-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000000105",
+        "labels": {
+          "app": "query"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "query-6f7c8d",
+            "uid": "c0000000-0000-4000-8000-000000000104",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "query",
+            "image": "registry.example.invalid/query:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "1",
+                "memory": "1536Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-01"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "analytics",
+        "name": "query-old-5b4a3c-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000000107",
+        "labels": {
+          "app": "query-old"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "query-old-5b4a3c",
+            "uid": "c0000000-0000-4000-8000-000000000106",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ],
+        "deletionTimestamp": "2026-10-02T08:59:30Z"
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "query",
+            "image": "registry.example.invalid/query:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "1Gi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-01"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "analytics",
+        "name": "cache-7a8b9c-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000000109",
+        "labels": {
+          "app": "cache"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "cache-7a8b9c",
+            "uid": "c0000000-0000-4000-8000-000000000108",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "cache",
+            "image": "registry.example.invalid/cache:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "200m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-01"
+      },
+      "status": {
+        "phase": "Pending"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "legacy",
+        "name": "pinned-tool",
+        "uid": "a0000000-0000-4000-8000-000000000110",
+        "labels": {
+          "app": "pinned-tool"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "tool",
+            "image": "registry.example.invalid/tool:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "1",
+                "memory": "2560Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "legacy",
+        "name": "importer-4d5e6f-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000000112",
+        "labels": {
+          "app": "importer"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "importer-4d5e6f",
+            "uid": "c0000000-0000-4000-8000-000000000111",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "importer",
+            "image": "registry.example.invalid/importer:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "2Gi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "analytics",
+        "name": "batch-worker-8c9d0e-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000000114",
+        "labels": {
+          "app": "batch-worker"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "batch-worker-8c9d0e",
+            "uid": "c0000000-0000-4000-8000-000000000113",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "worker",
+            "image": "registry.example.invalid/worker:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "1500m",
+                "memory": "2Gi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-02"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "analytics",
+        "name": "ingest-1a2b3c-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000000116",
+        "labels": {
+          "app": "ingest"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "ingest-1a2b3c",
+            "uid": "c0000000-0000-4000-8000-000000000115",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "ingest",
+            "image": "registry.example.invalid/ingest:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "200m",
+                "memory": "256Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-02"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "analytics",
+        "name": "reporter-9e8d7c-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000000118",
+        "labels": {
+          "app": "reporter"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "reporter-9e8d7c",
+            "uid": "c0000000-0000-4000-8000-000000000117",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "render",
+            "image": "registry.example.invalid/render:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "200m",
+                "memory": "256Mi"
+              }
+            }
+          },
+          {
+            "name": "upload",
+            "image": "registry.example.invalid/upload:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "300m",
+                "memory": "256Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-02",
+        "resources": {
+          "requests": {
+            "cpu": "1",
+            "memory": "1Gi"
+          }
+        }
+      },
+      "status": {
+        "phase": "Running"
+      }
+    }
+  ],
+  "pod_disruption_budgets": []
+}

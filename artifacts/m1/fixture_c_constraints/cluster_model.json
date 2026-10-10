@@ -1,0 +1,3029 @@
+{
+  "artifact": "cluster_model",
+  "artifact_schema_version": "1.0",
+  "candidate_destinations": [
+    {
+      "eligible": [],
+      "eligible_and_individually_fits": [],
+      "ineligible": [
+        "gpu-01",
+        "worker-02",
+        "worker-03",
+        "worker-05"
+      ],
+      "pod": "analytics/etl-2b3c4d-aaaaa",
+      "unknown": [
+        "worker-01",
+        "worker-04"
+      ]
+    },
+    {
+      "eligible": [
+        "worker-01",
+        "worker-04"
+      ],
+      "eligible_and_individually_fits": [
+        "worker-01",
+        "worker-04"
+      ],
+      "ineligible": [
+        "gpu-01",
+        "worker-02",
+        "worker-03",
+        "worker-05"
+      ],
+      "pod": "batch/report-28999-xk2lp",
+      "unknown": []
+    },
+    {
+      "eligible": [],
+      "eligible_and_individually_fits": [],
+      "ineligible": [
+        "gpu-01",
+        "worker-02",
+        "worker-03",
+        "worker-05"
+      ],
+      "pod": "edge/proxy-8a7b6c-aaaaa",
+      "unknown": [
+        "worker-01",
+        "worker-04"
+      ]
+    },
+    {
+      "eligible": [],
+      "eligible_and_individually_fits": [],
+      "ineligible": [
+        "worker-02",
+        "worker-03",
+        "worker-05"
+      ],
+      "pod": "ml/trainer-7e6f5a-aaaaa",
+      "unknown": [
+        "gpu-01",
+        "worker-01",
+        "worker-04"
+      ]
+    },
+    {
+      "eligible": [],
+      "eligible_and_individually_fits": [],
+      "ineligible": [
+        "gpu-01",
+        "worker-02",
+        "worker-03",
+        "worker-05"
+      ],
+      "pod": "ops/agent-x7k2m",
+      "unknown": [
+        "worker-01",
+        "worker-04"
+      ]
+    },
+    {
+      "eligible": [
+        "worker-01"
+      ],
+      "eligible_and_individually_fits": [
+        "worker-01"
+      ],
+      "ineligible": [
+        "gpu-01",
+        "worker-02",
+        "worker-03",
+        "worker-04",
+        "worker-05"
+      ],
+      "pod": "payments/api-6d5c4b-aaaaa",
+      "unknown": []
+    },
+    {
+      "eligible": [],
+      "eligible_and_individually_fits": [],
+      "ineligible": [
+        "gpu-01",
+        "worker-02",
+        "worker-03",
+        "worker-05"
+      ],
+      "pod": "payments/ledger-0",
+      "unknown": [
+        "worker-01",
+        "worker-04"
+      ]
+    },
+    {
+      "eligible": [],
+      "eligible_and_individually_fits": [],
+      "ineligible": [
+        "gpu-01",
+        "worker-02",
+        "worker-03",
+        "worker-05"
+      ],
+      "pod": "secure/sandbox-5f4e3d-aaaaa",
+      "unknown": [
+        "worker-01",
+        "worker-04"
+      ]
+    }
+  ],
+  "data_completeness": {
+    "capacity_assessment_complete": true,
+    "nodes_inventory": "complete",
+    "pod_disruption_budgets_inventory": "complete",
+    "pods_inventory": "complete",
+    "reasons": []
+  },
+  "diagnostics": [
+    {
+      "code": "PDB_EVICTION_BLOCKED_AT_SNAPSHOT",
+      "details": {
+        "disruptions_allowed": 0,
+        "matching_target_pods": [
+          "payments/ledger-0"
+        ]
+      },
+      "message": "advisory PDB assessment at snapshot time; does not establish drain safety",
+      "severity": "warning",
+      "subject": "pdb/payments/ledger-pdb"
+    },
+    {
+      "code": "PDB_MAY_BLOCK_SEQUENTIAL_EVICTION",
+      "details": {
+        "disruptions_allowed": 1,
+        "matching_target_pods": [
+          "payments/api-6d5c4b-aaaaa",
+          "payments/ledger-0"
+        ]
+      },
+      "message": "advisory PDB assessment at snapshot time; does not establish drain safety",
+      "severity": "warning",
+      "subject": "pdb/payments/payments-all"
+    },
+    {
+      "code": "MULTIPLE_PDBS_MATCH",
+      "details": {
+        "pdbs": [
+          "payments/ledger-pdb",
+          "payments/payments-all"
+        ]
+      },
+      "message": "the eviction API refuses to evict a pod covered by more than one PDB",
+      "severity": "warning",
+      "subject": "pod/payments/ledger-0"
+    }
+  ],
+  "drain_inventory": {
+    "excluded": [
+      {
+        "drain_class": "TERMINAL",
+        "pod": "batch/report-28998-ab12c",
+        "replacement": "NOT_EXPECTED"
+      },
+      {
+        "drain_class": "UNMANAGED",
+        "pod": "default/debug-shell",
+        "replacement": "NOT_EXPECTED"
+      },
+      {
+        "drain_class": "DAEMONSET",
+        "pod": "kube-system/fluent-bit-q8w7e",
+        "replacement": "NOT_EXPECTED"
+      },
+      {
+        "drain_class": "MIRROR",
+        "pod": "kube-system/kube-proxy-worker-03",
+        "replacement": "NOT_EXPECTED"
+      },
+      {
+        "drain_class": "TERMINATING",
+        "pod": "payments/api-old-3c2b1a-aaaaa",
+        "replacement": "UNKNOWN"
+      }
+    ],
+    "kubectl_drain_flags_required": [
+      "--delete-emptydir-data",
+      "--force",
+      "--ignore-daemonsets"
+    ],
+    "pdb_assessments": [
+      {
+        "advisory": true,
+        "assessment": "PDB_EVICTION_BLOCKED_AT_SNAPSHOT",
+        "current_healthy": 2,
+        "desired_healthy": 2,
+        "disruptions_allowed": 0,
+        "expected_pods": 2,
+        "matching_target_pods": [
+          "payments/ledger-0"
+        ],
+        "pdb": "payments/ledger-pdb",
+        "selector": "app=ledger",
+        "selector_uncertain": false,
+        "unhealthy_pod_eviction_policy": null
+      },
+      {
+        "advisory": true,
+        "assessment": "PDB_MAY_BLOCK_SEQUENTIAL_EVICTION",
+        "current_healthy": 4,
+        "desired_healthy": 3,
+        "disruptions_allowed": 1,
+        "expected_pods": 4,
+        "matching_target_pods": [
+          "payments/api-6d5c4b-aaaaa",
+          "payments/ledger-0"
+        ],
+        "pdb": "payments/payments-all",
+        "selector": "<empty: matches all pods in namespace>",
+        "selector_uncertain": false,
+        "unhealthy_pod_eviction_policy": "AlwaysAllow"
+      }
+    ],
+    "placement_candidates": [
+      "analytics/etl-2b3c4d-aaaaa",
+      "batch/report-28999-xk2lp",
+      "edge/proxy-8a7b6c-aaaaa",
+      "ml/trainer-7e6f5a-aaaaa",
+      "ops/agent-x7k2m",
+      "payments/api-6d5c4b-aaaaa",
+      "payments/ledger-0",
+      "secure/sandbox-5f4e3d-aaaaa"
+    ],
+    "pods": [
+      {
+        "controller": {
+          "api_version": "apps/v1",
+          "kind": "ReplicaSet",
+          "known": true,
+          "name": "etl-2b3c4d"
+        },
+        "drain_class": "CONTROLLER_MANAGED",
+        "findings": [
+          {
+            "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+            "detail": "replacement modeled from the current pod spec; controller template not in snapshot"
+          }
+        ],
+        "kubectl_drain_flags": [],
+        "matching_pdbs": [],
+        "placement_candidate": true,
+        "pod": "analytics/etl-2b3c4d-aaaaa",
+        "replacement": "ASSUMED"
+      },
+      {
+        "controller": {
+          "api_version": "batch/v1",
+          "kind": "Job",
+          "known": true,
+          "name": "report-28998"
+        },
+        "drain_class": "TERMINAL",
+        "findings": [
+          {
+            "code": "TERMINAL_POD",
+            "detail": "phase=Succeeded"
+          }
+        ],
+        "kubectl_drain_flags": [],
+        "matching_pdbs": [],
+        "placement_candidate": false,
+        "pod": "batch/report-28998-ab12c",
+        "replacement": "NOT_EXPECTED"
+      },
+      {
+        "controller": {
+          "api_version": "batch/v1",
+          "kind": "Job",
+          "known": true,
+          "name": "report-28999"
+        },
+        "drain_class": "CONTROLLER_MANAGED",
+        "findings": [
+          {
+            "code": "JOB_REPLACEMENT_CONDITIONAL",
+            "detail": "depends on Job backoff/podFailurePolicy"
+          },
+          {
+            "code": "LOCAL_EMPTYDIR_DATA",
+            "detail": "emptyDir data is lost on eviction"
+          },
+          {
+            "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+            "detail": "replacement modeled from the current pod spec; controller template not in snapshot"
+          }
+        ],
+        "kubectl_drain_flags": [
+          "--delete-emptydir-data"
+        ],
+        "matching_pdbs": [],
+        "placement_candidate": true,
+        "pod": "batch/report-28999-xk2lp",
+        "replacement": "CONDITIONAL"
+      },
+      {
+        "controller": {
+          "api_version": null,
+          "kind": null,
+          "known": false,
+          "name": null
+        },
+        "drain_class": "UNMANAGED",
+        "findings": [
+          {
+            "code": "UNMANAGED_POD",
+            "detail": "no controller ownerReference; deletion would be permanent"
+          }
+        ],
+        "kubectl_drain_flags": [
+          "--force"
+        ],
+        "matching_pdbs": [],
+        "placement_candidate": false,
+        "pod": "default/debug-shell",
+        "replacement": "NOT_EXPECTED"
+      },
+      {
+        "controller": {
+          "api_version": "apps/v1",
+          "kind": "ReplicaSet",
+          "known": true,
+          "name": "proxy-8a7b6c"
+        },
+        "drain_class": "CONTROLLER_MANAGED",
+        "findings": [
+          {
+            "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+            "detail": "replacement modeled from the current pod spec; controller template not in snapshot"
+          }
+        ],
+        "kubectl_drain_flags": [],
+        "matching_pdbs": [],
+        "placement_candidate": true,
+        "pod": "edge/proxy-8a7b6c-aaaaa",
+        "replacement": "ASSUMED"
+      },
+      {
+        "controller": {
+          "api_version": "apps/v1",
+          "kind": "DaemonSet",
+          "known": true,
+          "name": "fluent-bit"
+        },
+        "drain_class": "DAEMONSET",
+        "findings": [
+          {
+            "code": "DAEMONSET_POD",
+            "detail": "fluent-bit"
+          },
+          {
+            "code": "HOST_PATH_VOLUME",
+            "detail": "node-local hostPath data does not move"
+          }
+        ],
+        "kubectl_drain_flags": [
+          "--ignore-daemonsets"
+        ],
+        "matching_pdbs": [],
+        "placement_candidate": false,
+        "pod": "kube-system/fluent-bit-q8w7e",
+        "replacement": "NOT_EXPECTED"
+      },
+      {
+        "controller": {
+          "api_version": "v1",
+          "kind": "Node",
+          "known": false,
+          "name": "worker-03"
+        },
+        "drain_class": "MIRROR",
+        "findings": [
+          {
+            "code": "MIRROR_POD",
+            "detail": "static pod managed by kubelet"
+          }
+        ],
+        "kubectl_drain_flags": [],
+        "matching_pdbs": [],
+        "placement_candidate": false,
+        "pod": "kube-system/kube-proxy-worker-03",
+        "replacement": "NOT_EXPECTED"
+      },
+      {
+        "controller": {
+          "api_version": "apps/v1",
+          "kind": "ReplicaSet",
+          "known": true,
+          "name": "trainer-7e6f5a"
+        },
+        "drain_class": "CONTROLLER_MANAGED",
+        "findings": [
+          {
+            "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+            "detail": "replacement modeled from the current pod spec; controller template not in snapshot"
+          }
+        ],
+        "kubectl_drain_flags": [],
+        "matching_pdbs": [],
+        "placement_candidate": true,
+        "pod": "ml/trainer-7e6f5a-aaaaa",
+        "replacement": "ASSUMED"
+      },
+      {
+        "controller": {
+          "api_version": "workloads.example.com/v1",
+          "kind": "CustomWorkload",
+          "known": false,
+          "name": "agent"
+        },
+        "drain_class": "UNKNOWN_CONTROLLER",
+        "findings": [
+          {
+            "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+            "detail": "replacement modeled from the current pod spec; controller template not in snapshot"
+          },
+          {
+            "code": "UNKNOWN_CONTROLLER",
+            "detail": "workloads.example.com/v1/CustomWorkload agent"
+          }
+        ],
+        "kubectl_drain_flags": [],
+        "matching_pdbs": [],
+        "placement_candidate": true,
+        "pod": "ops/agent-x7k2m",
+        "replacement": "UNKNOWN"
+      },
+      {
+        "controller": {
+          "api_version": "apps/v1",
+          "kind": "ReplicaSet",
+          "known": true,
+          "name": "api-6d5c4b"
+        },
+        "drain_class": "CONTROLLER_MANAGED",
+        "findings": [
+          {
+            "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+            "detail": "replacement modeled from the current pod spec; controller template not in snapshot"
+          }
+        ],
+        "kubectl_drain_flags": [],
+        "matching_pdbs": [
+          "payments/payments-all"
+        ],
+        "placement_candidate": true,
+        "pod": "payments/api-6d5c4b-aaaaa",
+        "replacement": "ASSUMED"
+      },
+      {
+        "controller": {
+          "api_version": "apps/v1",
+          "kind": "ReplicaSet",
+          "known": true,
+          "name": "api-old-3c2b1a"
+        },
+        "drain_class": "TERMINATING",
+        "findings": [
+          {
+            "code": "ALREADY_TERMINATING",
+            "detail": "deletionTimestamp=2026-10-03T08:59:00Z"
+          }
+        ],
+        "kubectl_drain_flags": [],
+        "matching_pdbs": [],
+        "placement_candidate": false,
+        "pod": "payments/api-old-3c2b1a-aaaaa",
+        "replacement": "UNKNOWN"
+      },
+      {
+        "controller": {
+          "api_version": "apps/v1",
+          "kind": "StatefulSet",
+          "known": true,
+          "name": "ledger"
+        },
+        "drain_class": "CONTROLLER_MANAGED",
+        "findings": [
+          {
+            "code": "MULTIPLE_PDBS_MATCH",
+            "detail": "payments/ledger-pdb, payments/payments-all"
+          },
+          {
+            "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+            "detail": "replacement modeled from the current pod spec; controller template not in snapshot"
+          },
+          {
+            "code": "STATEFUL_IDENTITY",
+            "detail": "replacement keeps the same identity and volume claims"
+          }
+        ],
+        "kubectl_drain_flags": [],
+        "matching_pdbs": [
+          "payments/ledger-pdb",
+          "payments/payments-all"
+        ],
+        "placement_candidate": true,
+        "pod": "payments/ledger-0",
+        "replacement": "ASSUMED"
+      },
+      {
+        "controller": {
+          "api_version": "apps/v1",
+          "kind": "ReplicaSet",
+          "known": true,
+          "name": "sandbox-5f4e3d"
+        },
+        "drain_class": "CONTROLLER_MANAGED",
+        "findings": [
+          {
+            "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+            "detail": "replacement modeled from the current pod spec; controller template not in snapshot"
+          }
+        ],
+        "kubectl_drain_flags": [],
+        "matching_pdbs": [],
+        "placement_candidate": true,
+        "pod": "secure/sandbox-5f4e3d-aaaaa",
+        "replacement": "ASSUMED"
+      }
+    ],
+    "target_node": "worker-03"
+  },
+  "eligibility": [
+    {
+      "blockers": [
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "nvidia.com/gpu=present:NoSchedule"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "gpu-01",
+      "pod": "analytics/etl-2b3c4d-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "REQUIRED_NODE_AFFINITY_NOT_MODELED",
+          "detail": "nodeAffinity.required"
+        }
+      ]
+    },
+    {
+      "blockers": [],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-01",
+      "pod": "analytics/etl-2b3c4d-aaaaa",
+      "soft": [],
+      "state": "UNKNOWN",
+      "unknowns": [
+        {
+          "code": "REQUIRED_NODE_AFFINITY_NOT_MODELED",
+          "detail": "nodeAffinity.required"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_UNSCHEDULABLE",
+          "detail": "spec.unschedulable=true"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "node.kubernetes.io/unschedulable:NoSchedule"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-02",
+      "pod": "analytics/etl-2b3c4d-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "REQUIRED_NODE_AFFINITY_NOT_MODELED",
+          "detail": "nodeAffinity.required"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "DRAIN_TARGET",
+          "detail": "worker-03"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-03",
+      "pod": "analytics/etl-2b3c4d-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "REQUIRED_NODE_AFFINITY_NOT_MODELED",
+          "detail": "nodeAffinity.required"
+        }
+      ]
+    },
+    {
+      "blockers": [],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-04",
+      "pod": "analytics/etl-2b3c4d-aaaaa",
+      "soft": [
+        {
+          "code": "UNTOLERATED_PREFER_NO_SCHEDULE_TAINT",
+          "detail": "dedicated=batch:PreferNoSchedule"
+        }
+      ],
+      "state": "UNKNOWN",
+      "unknowns": [
+        {
+          "code": "REQUIRED_NODE_AFFINITY_NOT_MODELED",
+          "detail": "nodeAffinity.required"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_NOT_READY",
+          "detail": "Ready=False"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "node.kubernetes.io/not-ready:NoExecute"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-05",
+      "pod": "analytics/etl-2b3c4d-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "REQUIRED_NODE_AFFINITY_NOT_MODELED",
+          "detail": "nodeAffinity.required"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "nvidia.com/gpu=present:NoSchedule"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "gpu-01",
+      "pod": "batch/report-28999-xk2lp",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": []
+    },
+    {
+      "blockers": [],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-01",
+      "pod": "batch/report-28999-xk2lp",
+      "soft": [],
+      "state": "ELIGIBLE",
+      "unknowns": []
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_UNSCHEDULABLE",
+          "detail": "spec.unschedulable=true"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "node.kubernetes.io/unschedulable:NoSchedule"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-02",
+      "pod": "batch/report-28999-xk2lp",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": []
+    },
+    {
+      "blockers": [
+        {
+          "code": "DRAIN_TARGET",
+          "detail": "worker-03"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-03",
+      "pod": "batch/report-28999-xk2lp",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": []
+    },
+    {
+      "blockers": [],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-04",
+      "pod": "batch/report-28999-xk2lp",
+      "soft": [],
+      "state": "ELIGIBLE",
+      "unknowns": []
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_NOT_READY",
+          "detail": "Ready=False"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "node.kubernetes.io/not-ready:NoExecute"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-05",
+      "pod": "batch/report-28999-xk2lp",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": []
+    },
+    {
+      "blockers": [
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "nvidia.com/gpu=present:NoSchedule"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "gpu-01",
+      "pod": "edge/proxy-8a7b6c-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "HOST_PORT_NOT_MODELED",
+          "detail": "hostPort 8443"
+        }
+      ]
+    },
+    {
+      "blockers": [],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-01",
+      "pod": "edge/proxy-8a7b6c-aaaaa",
+      "soft": [],
+      "state": "UNKNOWN",
+      "unknowns": [
+        {
+          "code": "HOST_PORT_NOT_MODELED",
+          "detail": "hostPort 8443"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_UNSCHEDULABLE",
+          "detail": "spec.unschedulable=true"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "node.kubernetes.io/unschedulable:NoSchedule"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-02",
+      "pod": "edge/proxy-8a7b6c-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "HOST_PORT_NOT_MODELED",
+          "detail": "hostPort 8443"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "DRAIN_TARGET",
+          "detail": "worker-03"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-03",
+      "pod": "edge/proxy-8a7b6c-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "HOST_PORT_NOT_MODELED",
+          "detail": "hostPort 8443"
+        }
+      ]
+    },
+    {
+      "blockers": [],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-04",
+      "pod": "edge/proxy-8a7b6c-aaaaa",
+      "soft": [
+        {
+          "code": "UNTOLERATED_PREFER_NO_SCHEDULE_TAINT",
+          "detail": "dedicated=batch:PreferNoSchedule"
+        }
+      ],
+      "state": "UNKNOWN",
+      "unknowns": [
+        {
+          "code": "HOST_PORT_NOT_MODELED",
+          "detail": "hostPort 8443"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_NOT_READY",
+          "detail": "Ready=False"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "node.kubernetes.io/not-ready:NoExecute"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-05",
+      "pod": "edge/proxy-8a7b6c-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "HOST_PORT_NOT_MODELED",
+          "detail": "hostPort 8443"
+        }
+      ]
+    },
+    {
+      "blockers": [],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "gpu-01",
+      "pod": "ml/trainer-7e6f5a-aaaaa",
+      "soft": [],
+      "state": "UNKNOWN",
+      "unknowns": [
+        {
+          "code": "EXTENDED_RESOURCE_NOT_MODELED",
+          "detail": "nvidia.com/gpu"
+        }
+      ]
+    },
+    {
+      "blockers": [],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-01",
+      "pod": "ml/trainer-7e6f5a-aaaaa",
+      "soft": [],
+      "state": "UNKNOWN",
+      "unknowns": [
+        {
+          "code": "EXTENDED_RESOURCE_NOT_MODELED",
+          "detail": "nvidia.com/gpu"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_UNSCHEDULABLE",
+          "detail": "spec.unschedulable=true"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "node.kubernetes.io/unschedulable:NoSchedule"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-02",
+      "pod": "ml/trainer-7e6f5a-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "EXTENDED_RESOURCE_NOT_MODELED",
+          "detail": "nvidia.com/gpu"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "DRAIN_TARGET",
+          "detail": "worker-03"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "DOES_NOT_FIT",
+        "reasons": [
+          {
+            "code": "INSUFFICIENT_CPU",
+            "detail": "needs 2000, remaining 1750"
+          }
+        ]
+      },
+      "node": "worker-03",
+      "pod": "ml/trainer-7e6f5a-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "EXTENDED_RESOURCE_NOT_MODELED",
+          "detail": "nvidia.com/gpu"
+        }
+      ]
+    },
+    {
+      "blockers": [],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-04",
+      "pod": "ml/trainer-7e6f5a-aaaaa",
+      "soft": [
+        {
+          "code": "UNTOLERATED_PREFER_NO_SCHEDULE_TAINT",
+          "detail": "dedicated=batch:PreferNoSchedule"
+        }
+      ],
+      "state": "UNKNOWN",
+      "unknowns": [
+        {
+          "code": "EXTENDED_RESOURCE_NOT_MODELED",
+          "detail": "nvidia.com/gpu"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_NOT_READY",
+          "detail": "Ready=False"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "node.kubernetes.io/not-ready:NoExecute"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-05",
+      "pod": "ml/trainer-7e6f5a-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "EXTENDED_RESOURCE_NOT_MODELED",
+          "detail": "nvidia.com/gpu"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "nvidia.com/gpu=present:NoSchedule"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "gpu-01",
+      "pod": "ops/agent-x7k2m",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "CUSTOM_SCHEDULER",
+          "detail": "volcano"
+        },
+        {
+          "code": "TOPOLOGY_SPREAD_NOT_MODELED",
+          "detail": "topologySpreadConstraints[0] topologyKey=topology.kubernetes.io/zone"
+        }
+      ]
+    },
+    {
+      "blockers": [],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-01",
+      "pod": "ops/agent-x7k2m",
+      "soft": [],
+      "state": "UNKNOWN",
+      "unknowns": [
+        {
+          "code": "CUSTOM_SCHEDULER",
+          "detail": "volcano"
+        },
+        {
+          "code": "TOPOLOGY_SPREAD_NOT_MODELED",
+          "detail": "topologySpreadConstraints[0] topologyKey=topology.kubernetes.io/zone"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_UNSCHEDULABLE",
+          "detail": "spec.unschedulable=true"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "node.kubernetes.io/unschedulable:NoSchedule"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-02",
+      "pod": "ops/agent-x7k2m",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "CUSTOM_SCHEDULER",
+          "detail": "volcano"
+        },
+        {
+          "code": "TOPOLOGY_SPREAD_NOT_MODELED",
+          "detail": "topologySpreadConstraints[0] topologyKey=topology.kubernetes.io/zone"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "DRAIN_TARGET",
+          "detail": "worker-03"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-03",
+      "pod": "ops/agent-x7k2m",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "CUSTOM_SCHEDULER",
+          "detail": "volcano"
+        },
+        {
+          "code": "TOPOLOGY_SPREAD_NOT_MODELED",
+          "detail": "topologySpreadConstraints[0] topologyKey=topology.kubernetes.io/zone"
+        }
+      ]
+    },
+    {
+      "blockers": [],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-04",
+      "pod": "ops/agent-x7k2m",
+      "soft": [
+        {
+          "code": "UNTOLERATED_PREFER_NO_SCHEDULE_TAINT",
+          "detail": "dedicated=batch:PreferNoSchedule"
+        }
+      ],
+      "state": "UNKNOWN",
+      "unknowns": [
+        {
+          "code": "CUSTOM_SCHEDULER",
+          "detail": "volcano"
+        },
+        {
+          "code": "TOPOLOGY_SPREAD_NOT_MODELED",
+          "detail": "topologySpreadConstraints[0] topologyKey=topology.kubernetes.io/zone"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_NOT_READY",
+          "detail": "Ready=False"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "node.kubernetes.io/not-ready:NoExecute"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-05",
+      "pod": "ops/agent-x7k2m",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "CUSTOM_SCHEDULER",
+          "detail": "volcano"
+        },
+        {
+          "code": "TOPOLOGY_SPREAD_NOT_MODELED",
+          "detail": "topologySpreadConstraints[0] topologyKey=topology.kubernetes.io/zone"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_SELECTOR_MISMATCH",
+          "detail": "disktype=ssd (label absent)"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "nvidia.com/gpu=present:NoSchedule"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "gpu-01",
+      "pod": "payments/api-6d5c4b-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": []
+    },
+    {
+      "blockers": [],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-01",
+      "pod": "payments/api-6d5c4b-aaaaa",
+      "soft": [],
+      "state": "ELIGIBLE",
+      "unknowns": []
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_UNSCHEDULABLE",
+          "detail": "spec.unschedulable=true"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "node.kubernetes.io/unschedulable:NoSchedule"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-02",
+      "pod": "payments/api-6d5c4b-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": []
+    },
+    {
+      "blockers": [
+        {
+          "code": "DRAIN_TARGET",
+          "detail": "worker-03"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-03",
+      "pod": "payments/api-6d5c4b-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": []
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_SELECTOR_MISMATCH",
+          "detail": "disktype=ssd (node has disktype=hdd)"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-04",
+      "pod": "payments/api-6d5c4b-aaaaa",
+      "soft": [
+        {
+          "code": "UNTOLERATED_PREFER_NO_SCHEDULE_TAINT",
+          "detail": "dedicated=batch:PreferNoSchedule"
+        }
+      ],
+      "state": "INELIGIBLE",
+      "unknowns": []
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_NOT_READY",
+          "detail": "Ready=False"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "node.kubernetes.io/not-ready:NoExecute"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-05",
+      "pod": "payments/api-6d5c4b-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": []
+    },
+    {
+      "blockers": [
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "nvidia.com/gpu=present:NoSchedule"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "gpu-01",
+      "pod": "payments/ledger-0",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "PERSISTENT_VOLUME_TOPOLOGY_NOT_MODELED",
+          "detail": "volume data (persistentVolumeClaim data-ledger-0)"
+        },
+        {
+          "code": "REQUIRED_POD_ANTI_AFFINITY_NOT_MODELED",
+          "detail": "podAntiAffinity.required"
+        }
+      ]
+    },
+    {
+      "blockers": [],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-01",
+      "pod": "payments/ledger-0",
+      "soft": [],
+      "state": "UNKNOWN",
+      "unknowns": [
+        {
+          "code": "PERSISTENT_VOLUME_TOPOLOGY_NOT_MODELED",
+          "detail": "volume data (persistentVolumeClaim data-ledger-0)"
+        },
+        {
+          "code": "REQUIRED_POD_ANTI_AFFINITY_NOT_MODELED",
+          "detail": "podAntiAffinity.required"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_UNSCHEDULABLE",
+          "detail": "spec.unschedulable=true"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "node.kubernetes.io/unschedulable:NoSchedule"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-02",
+      "pod": "payments/ledger-0",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "PERSISTENT_VOLUME_TOPOLOGY_NOT_MODELED",
+          "detail": "volume data (persistentVolumeClaim data-ledger-0)"
+        },
+        {
+          "code": "REQUIRED_POD_ANTI_AFFINITY_NOT_MODELED",
+          "detail": "podAntiAffinity.required"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "DRAIN_TARGET",
+          "detail": "worker-03"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-03",
+      "pod": "payments/ledger-0",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "PERSISTENT_VOLUME_TOPOLOGY_NOT_MODELED",
+          "detail": "volume data (persistentVolumeClaim data-ledger-0)"
+        },
+        {
+          "code": "REQUIRED_POD_ANTI_AFFINITY_NOT_MODELED",
+          "detail": "podAntiAffinity.required"
+        }
+      ]
+    },
+    {
+      "blockers": [],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-04",
+      "pod": "payments/ledger-0",
+      "soft": [
+        {
+          "code": "UNTOLERATED_PREFER_NO_SCHEDULE_TAINT",
+          "detail": "dedicated=batch:PreferNoSchedule"
+        }
+      ],
+      "state": "UNKNOWN",
+      "unknowns": [
+        {
+          "code": "PERSISTENT_VOLUME_TOPOLOGY_NOT_MODELED",
+          "detail": "volume data (persistentVolumeClaim data-ledger-0)"
+        },
+        {
+          "code": "REQUIRED_POD_ANTI_AFFINITY_NOT_MODELED",
+          "detail": "podAntiAffinity.required"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_NOT_READY",
+          "detail": "Ready=False"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "node.kubernetes.io/not-ready:NoExecute"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-05",
+      "pod": "payments/ledger-0",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "PERSISTENT_VOLUME_TOPOLOGY_NOT_MODELED",
+          "detail": "volume data (persistentVolumeClaim data-ledger-0)"
+        },
+        {
+          "code": "REQUIRED_POD_ANTI_AFFINITY_NOT_MODELED",
+          "detail": "podAntiAffinity.required"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "nvidia.com/gpu=present:NoSchedule"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "gpu-01",
+      "pod": "secure/sandbox-5f4e3d-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "RUNTIME_CLASS_NOT_MODELED",
+          "detail": "gvisor"
+        }
+      ]
+    },
+    {
+      "blockers": [],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-01",
+      "pod": "secure/sandbox-5f4e3d-aaaaa",
+      "soft": [],
+      "state": "UNKNOWN",
+      "unknowns": [
+        {
+          "code": "RUNTIME_CLASS_NOT_MODELED",
+          "detail": "gvisor"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_UNSCHEDULABLE",
+          "detail": "spec.unschedulable=true"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "node.kubernetes.io/unschedulable:NoSchedule"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-02",
+      "pod": "secure/sandbox-5f4e3d-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "RUNTIME_CLASS_NOT_MODELED",
+          "detail": "gvisor"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "DRAIN_TARGET",
+          "detail": "worker-03"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-03",
+      "pod": "secure/sandbox-5f4e3d-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "RUNTIME_CLASS_NOT_MODELED",
+          "detail": "gvisor"
+        }
+      ]
+    },
+    {
+      "blockers": [],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-04",
+      "pod": "secure/sandbox-5f4e3d-aaaaa",
+      "soft": [
+        {
+          "code": "UNTOLERATED_PREFER_NO_SCHEDULE_TAINT",
+          "detail": "dedicated=batch:PreferNoSchedule"
+        }
+      ],
+      "state": "UNKNOWN",
+      "unknowns": [
+        {
+          "code": "RUNTIME_CLASS_NOT_MODELED",
+          "detail": "gvisor"
+        }
+      ]
+    },
+    {
+      "blockers": [
+        {
+          "code": "NODE_NOT_READY",
+          "detail": "Ready=False"
+        },
+        {
+          "code": "UNTOLERATED_TAINT",
+          "detail": "node.kubernetes.io/not-ready:NoExecute"
+        }
+      ],
+      "capacity_fit": {
+        "fit": "FITS",
+        "reasons": []
+      },
+      "node": "worker-05",
+      "pod": "secure/sandbox-5f4e3d-aaaaa",
+      "soft": [],
+      "state": "INELIGIBLE",
+      "unknowns": [
+        {
+          "code": "RUNTIME_CLASS_NOT_MODELED",
+          "detail": "gvisor"
+        }
+      ]
+    }
+  ],
+  "generator": {
+    "milestone": "M1",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "nodes": [
+    {
+      "allocatable": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "annotations": {},
+      "capacity": {
+        "cpu_millicores": 8000,
+        "memory_bytes": 34359738368,
+        "pods": 110
+      },
+      "kubelet_version": "v1.34.1",
+      "labels": {
+        "accelerator": "nvidia",
+        "kubernetes.io/arch": "amd64",
+        "kubernetes.io/hostname": "gpu-01",
+        "kubernetes.io/os": "linux",
+        "topology.kubernetes.io/zone": "zone-a"
+      },
+      "name": "gpu-01",
+      "other_allocatable": {
+        "nvidia.com/gpu": "1"
+      },
+      "ready": "True",
+      "taints": [
+        {
+          "effect": "NoSchedule",
+          "key": "nvidia.com/gpu",
+          "value": "present"
+        }
+      ],
+      "uid": "b0000000-0000-4000-8000-000000000206",
+      "unschedulable": false
+    },
+    {
+      "allocatable": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "annotations": {},
+      "capacity": {
+        "cpu_millicores": 8000,
+        "memory_bytes": 34359738368,
+        "pods": 110
+      },
+      "kubelet_version": "v1.34.1",
+      "labels": {
+        "disktype": "ssd",
+        "kubernetes.io/arch": "amd64",
+        "kubernetes.io/hostname": "worker-01",
+        "kubernetes.io/os": "linux",
+        "topology.kubernetes.io/zone": "zone-a"
+      },
+      "name": "worker-01",
+      "other_allocatable": {},
+      "ready": "True",
+      "taints": [],
+      "uid": "b0000000-0000-4000-8000-000000000201",
+      "unschedulable": false
+    },
+    {
+      "allocatable": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "annotations": {},
+      "capacity": {
+        "cpu_millicores": 8000,
+        "memory_bytes": 34359738368,
+        "pods": 110
+      },
+      "kubelet_version": "v1.34.1",
+      "labels": {
+        "disktype": "ssd",
+        "kubernetes.io/arch": "amd64",
+        "kubernetes.io/hostname": "worker-02",
+        "kubernetes.io/os": "linux",
+        "topology.kubernetes.io/zone": "zone-b"
+      },
+      "name": "worker-02",
+      "other_allocatable": {},
+      "ready": "True",
+      "taints": [
+        {
+          "effect": "NoSchedule",
+          "key": "node.kubernetes.io/unschedulable",
+          "value": ""
+        }
+      ],
+      "uid": "b0000000-0000-4000-8000-000000000202",
+      "unschedulable": true
+    },
+    {
+      "allocatable": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "annotations": {},
+      "capacity": {
+        "cpu_millicores": 8000,
+        "memory_bytes": 34359738368,
+        "pods": 110
+      },
+      "kubelet_version": "v1.34.1",
+      "labels": {
+        "disktype": "ssd",
+        "kubernetes.io/arch": "amd64",
+        "kubernetes.io/hostname": "worker-03",
+        "kubernetes.io/os": "linux",
+        "topology.kubernetes.io/zone": "zone-a"
+      },
+      "name": "worker-03",
+      "other_allocatable": {},
+      "ready": "True",
+      "taints": [],
+      "uid": "b0000000-0000-4000-8000-000000000203",
+      "unschedulable": false
+    },
+    {
+      "allocatable": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "annotations": {},
+      "capacity": {
+        "cpu_millicores": 8000,
+        "memory_bytes": 34359738368,
+        "pods": 110
+      },
+      "kubelet_version": "v1.34.1",
+      "labels": {
+        "disktype": "hdd",
+        "kubernetes.io/arch": "amd64",
+        "kubernetes.io/hostname": "worker-04",
+        "kubernetes.io/os": "linux",
+        "topology.kubernetes.io/zone": "zone-b"
+      },
+      "name": "worker-04",
+      "other_allocatable": {},
+      "ready": "True",
+      "taints": [
+        {
+          "effect": "PreferNoSchedule",
+          "key": "dedicated",
+          "value": "batch"
+        }
+      ],
+      "uid": "b0000000-0000-4000-8000-000000000204",
+      "unschedulable": false
+    },
+    {
+      "allocatable": {
+        "cpu_millicores": 7800,
+        "memory_bytes": 32212254720,
+        "pods": 110
+      },
+      "annotations": {},
+      "capacity": {
+        "cpu_millicores": 8000,
+        "memory_bytes": 34359738368,
+        "pods": 110
+      },
+      "kubelet_version": "v1.34.1",
+      "labels": {
+        "disktype": "ssd",
+        "kubernetes.io/arch": "amd64",
+        "kubernetes.io/hostname": "worker-05",
+        "kubernetes.io/os": "linux",
+        "topology.kubernetes.io/zone": "zone-c"
+      },
+      "name": "worker-05",
+      "other_allocatable": {},
+      "ready": "False",
+      "taints": [
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/not-ready",
+          "value": ""
+        }
+      ],
+      "uid": "b0000000-0000-4000-8000-000000000205",
+      "unschedulable": false
+    }
+  ],
+  "pods": [
+    {
+      "affinity": {
+        "nodeAffinity": {
+          "requiredDuringSchedulingIgnoredDuringExecution": {
+            "nodeSelectorTerms": [
+              {
+                "matchExpressions": [
+                  {
+                    "key": "topology.kubernetes.io/zone",
+                    "operator": "In",
+                    "values": [
+                      "zone-a"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "annotations": {},
+      "constraints": [
+        {
+          "code": "REQUIRED_NODE_AFFINITY_NOT_MODELED",
+          "detail": "nodeAffinity.required",
+          "kind": "unsupported"
+        }
+      ],
+      "containers": [
+        {
+          "host_ports": [],
+          "limits": {},
+          "name": "etl",
+          "requests": {
+            "cpu": "500m",
+            "memory": "1Gi"
+          },
+          "role": "container"
+        }
+      ],
+      "controller": {
+        "api_version": "apps/v1",
+        "controller": true,
+        "kind": "ReplicaSet",
+        "name": "etl-2b3c4d",
+        "uid": "c0000000-0000-4000-8000-000000000219"
+      },
+      "deletion_timestamp": null,
+      "init_containers": [],
+      "is_mirror": false,
+      "key": "analytics/etl-2b3c4d-aaaaa",
+      "labels": {
+        "app": "etl"
+      },
+      "name": "etl-2b3c4d-aaaaa",
+      "namespace": "analytics",
+      "node_name": "worker-03",
+      "node_selector": {},
+      "nominated_node_name": null,
+      "overhead": {},
+      "owner_references": [
+        {
+          "api_version": "apps/v1",
+          "controller": true,
+          "kind": "ReplicaSet",
+          "name": "etl-2b3c4d",
+          "uid": "c0000000-0000-4000-8000-000000000219"
+        }
+      ],
+      "phase": "Running",
+      "pod_level_limits": {},
+      "pod_level_requests": {},
+      "priority": null,
+      "priority_class_name": null,
+      "qos_class": null,
+      "resize": {
+        "conditions": [],
+        "legacy_status_resize": null
+      },
+      "resource_claims": [],
+      "runtime_class_name": null,
+      "scheduler_name": "default-scheduler",
+      "tolerations": [],
+      "topology_spread_constraints": [],
+      "uid": "a0000000-0000-4000-8000-000000000220",
+      "volumes": []
+    },
+    {
+      "affinity": {},
+      "annotations": {},
+      "constraints": [],
+      "containers": [
+        {
+          "host_ports": [],
+          "limits": {},
+          "name": "report",
+          "requests": {
+            "cpu": "250m",
+            "memory": "512Mi"
+          },
+          "role": "container"
+        }
+      ],
+      "controller": {
+        "api_version": "batch/v1",
+        "controller": true,
+        "kind": "Job",
+        "name": "report-28998",
+        "uid": "c0000000-0000-4000-8000-000000000217"
+      },
+      "deletion_timestamp": null,
+      "init_containers": [],
+      "is_mirror": false,
+      "key": "batch/report-28998-ab12c",
+      "labels": {
+        "job": "report"
+      },
+      "name": "report-28998-ab12c",
+      "namespace": "batch",
+      "node_name": "worker-03",
+      "node_selector": {},
+      "nominated_node_name": null,
+      "overhead": {},
+      "owner_references": [
+        {
+          "api_version": "batch/v1",
+          "controller": true,
+          "kind": "Job",
+          "name": "report-28998",
+          "uid": "c0000000-0000-4000-8000-000000000217"
+        }
+      ],
+      "phase": "Succeeded",
+      "pod_level_limits": {},
+      "pod_level_requests": {},
+      "priority": null,
+      "priority_class_name": null,
+      "qos_class": null,
+      "resize": {
+        "conditions": [],
+        "legacy_status_resize": null
+      },
+      "resource_claims": [],
+      "runtime_class_name": null,
+      "scheduler_name": "default-scheduler",
+      "tolerations": [],
+      "topology_spread_constraints": [],
+      "uid": "a0000000-0000-4000-8000-000000000218",
+      "volumes": []
+    },
+    {
+      "affinity": {},
+      "annotations": {},
+      "constraints": [
+        {
+          "code": "TOLERATIONS",
+          "detail": "1 toleration(s)",
+          "kind": "supported"
+        }
+      ],
+      "containers": [
+        {
+          "host_ports": [],
+          "limits": {},
+          "name": "report",
+          "requests": {
+            "cpu": "250m",
+            "memory": "512Mi"
+          },
+          "role": "container"
+        }
+      ],
+      "controller": {
+        "api_version": "batch/v1",
+        "controller": true,
+        "kind": "Job",
+        "name": "report-28999",
+        "uid": "c0000000-0000-4000-8000-000000000215"
+      },
+      "deletion_timestamp": null,
+      "init_containers": [],
+      "is_mirror": false,
+      "key": "batch/report-28999-xk2lp",
+      "labels": {
+        "job": "report"
+      },
+      "name": "report-28999-xk2lp",
+      "namespace": "batch",
+      "node_name": "worker-03",
+      "node_selector": {},
+      "nominated_node_name": null,
+      "overhead": {},
+      "owner_references": [
+        {
+          "api_version": "batch/v1",
+          "controller": true,
+          "kind": "Job",
+          "name": "report-28999",
+          "uid": "c0000000-0000-4000-8000-000000000215"
+        }
+      ],
+      "phase": "Running",
+      "pod_level_limits": {},
+      "pod_level_requests": {},
+      "priority": null,
+      "priority_class_name": null,
+      "qos_class": null,
+      "resize": {
+        "conditions": [],
+        "legacy_status_resize": null
+      },
+      "resource_claims": [],
+      "runtime_class_name": null,
+      "scheduler_name": "default-scheduler",
+      "tolerations": [
+        {
+          "effect": "PreferNoSchedule",
+          "key": "dedicated",
+          "operator": "Equal",
+          "toleration_seconds": null,
+          "value": "batch"
+        }
+      ],
+      "topology_spread_constraints": [],
+      "uid": "a0000000-0000-4000-8000-000000000216",
+      "volumes": [
+        {
+          "claim_name": null,
+          "name": "scratch",
+          "source": "emptyDir"
+        }
+      ]
+    },
+    {
+      "affinity": {},
+      "annotations": {},
+      "constraints": [],
+      "containers": [
+        {
+          "host_ports": [],
+          "limits": {},
+          "name": "shell",
+          "requests": {
+            "cpu": "50m",
+            "memory": "64Mi"
+          },
+          "role": "container"
+        }
+      ],
+      "controller": null,
+      "deletion_timestamp": null,
+      "init_containers": [],
+      "is_mirror": false,
+      "key": "default/debug-shell",
+      "labels": {
+        "run": "debug-shell"
+      },
+      "name": "debug-shell",
+      "namespace": "default",
+      "node_name": "worker-03",
+      "node_selector": {},
+      "nominated_node_name": null,
+      "overhead": {},
+      "owner_references": [],
+      "phase": "Running",
+      "pod_level_limits": {},
+      "pod_level_requests": {},
+      "priority": null,
+      "priority_class_name": null,
+      "qos_class": null,
+      "resize": {
+        "conditions": [],
+        "legacy_status_resize": null
+      },
+      "resource_claims": [],
+      "runtime_class_name": null,
+      "scheduler_name": "default-scheduler",
+      "tolerations": [],
+      "topology_spread_constraints": [],
+      "uid": "a0000000-0000-4000-8000-000000000227",
+      "volumes": []
+    },
+    {
+      "affinity": {},
+      "annotations": {},
+      "constraints": [
+        {
+          "code": "HOST_PORT_NOT_MODELED",
+          "detail": "hostPort 8443",
+          "kind": "unsupported"
+        }
+      ],
+      "containers": [
+        {
+          "host_ports": [
+            8443
+          ],
+          "limits": {},
+          "name": "proxy",
+          "requests": {
+            "cpu": "200m",
+            "memory": "256Mi"
+          },
+          "role": "container"
+        }
+      ],
+      "controller": {
+        "api_version": "apps/v1",
+        "controller": true,
+        "kind": "ReplicaSet",
+        "name": "proxy-8a7b6c",
+        "uid": "c0000000-0000-4000-8000-000000000225"
+      },
+      "deletion_timestamp": null,
+      "init_containers": [],
+      "is_mirror": false,
+      "key": "edge/proxy-8a7b6c-aaaaa",
+      "labels": {
+        "app": "edge-proxy"
+      },
+      "name": "proxy-8a7b6c-aaaaa",
+      "namespace": "edge",
+      "node_name": "worker-03",
+      "node_selector": {},
+      "nominated_node_name": null,
+      "overhead": {},
+      "owner_references": [
+        {
+          "api_version": "apps/v1",
+          "controller": true,
+          "kind": "ReplicaSet",
+          "name": "proxy-8a7b6c",
+          "uid": "c0000000-0000-4000-8000-000000000225"
+        }
+      ],
+      "phase": "Running",
+      "pod_level_limits": {},
+      "pod_level_requests": {},
+      "priority": null,
+      "priority_class_name": null,
+      "qos_class": null,
+      "resize": {
+        "conditions": [],
+        "legacy_status_resize": null
+      },
+      "resource_claims": [],
+      "runtime_class_name": null,
+      "scheduler_name": "default-scheduler",
+      "tolerations": [],
+      "topology_spread_constraints": [],
+      "uid": "a0000000-0000-4000-8000-000000000226",
+      "volumes": []
+    },
+    {
+      "affinity": {},
+      "annotations": {},
+      "constraints": [
+        {
+          "code": "TOLERATIONS",
+          "detail": "1 toleration(s)",
+          "kind": "supported"
+        }
+      ],
+      "containers": [
+        {
+          "host_ports": [],
+          "limits": {},
+          "name": "fluent-bit",
+          "requests": {
+            "cpu": "100m",
+            "memory": "128Mi"
+          },
+          "role": "container"
+        }
+      ],
+      "controller": {
+        "api_version": "apps/v1",
+        "controller": true,
+        "kind": "DaemonSet",
+        "name": "fluent-bit",
+        "uid": "c0000000-0000-4000-8000-000000000228"
+      },
+      "deletion_timestamp": null,
+      "init_containers": [],
+      "is_mirror": false,
+      "key": "kube-system/fluent-bit-q8w7e",
+      "labels": {
+        "app": "fluent-bit"
+      },
+      "name": "fluent-bit-q8w7e",
+      "namespace": "kube-system",
+      "node_name": "worker-03",
+      "node_selector": {},
+      "nominated_node_name": null,
+      "overhead": {},
+      "owner_references": [
+        {
+          "api_version": "apps/v1",
+          "controller": true,
+          "kind": "DaemonSet",
+          "name": "fluent-bit",
+          "uid": "c0000000-0000-4000-8000-000000000228"
+        }
+      ],
+      "phase": "Running",
+      "pod_level_limits": {},
+      "pod_level_requests": {},
+      "priority": null,
+      "priority_class_name": null,
+      "qos_class": null,
+      "resize": {
+        "conditions": [],
+        "legacy_status_resize": null
+      },
+      "resource_claims": [],
+      "runtime_class_name": null,
+      "scheduler_name": "default-scheduler",
+      "tolerations": [
+        {
+          "effect": "",
+          "key": "",
+          "operator": "Exists",
+          "toleration_seconds": null,
+          "value": ""
+        }
+      ],
+      "topology_spread_constraints": [],
+      "uid": "a0000000-0000-4000-8000-000000000229",
+      "volumes": [
+        {
+          "claim_name": null,
+          "name": "varlog",
+          "source": "hostPath"
+        }
+      ]
+    },
+    {
+      "affinity": {},
+      "annotations": {
+        "kubernetes.io/config.mirror": "0123456789abcdef0123456789abcdef",
+        "kubernetes.io/config.source": "file"
+      },
+      "constraints": [],
+      "containers": [
+        {
+          "host_ports": [],
+          "limits": {},
+          "name": "kube-proxy",
+          "requests": {
+            "cpu": "100m",
+            "memory": "128Mi"
+          },
+          "role": "container"
+        }
+      ],
+      "controller": {
+        "api_version": "v1",
+        "controller": true,
+        "kind": "Node",
+        "name": "worker-03",
+        "uid": "c0000000-0000-4000-8000-000000000230"
+      },
+      "deletion_timestamp": null,
+      "init_containers": [],
+      "is_mirror": true,
+      "key": "kube-system/kube-proxy-worker-03",
+      "labels": {
+        "component": "kube-proxy"
+      },
+      "name": "kube-proxy-worker-03",
+      "namespace": "kube-system",
+      "node_name": "worker-03",
+      "node_selector": {},
+      "nominated_node_name": null,
+      "overhead": {},
+      "owner_references": [
+        {
+          "api_version": "v1",
+          "controller": true,
+          "kind": "Node",
+          "name": "worker-03",
+          "uid": "c0000000-0000-4000-8000-000000000230"
+        }
+      ],
+      "phase": "Running",
+      "pod_level_limits": {},
+      "pod_level_requests": {},
+      "priority": null,
+      "priority_class_name": "system-node-critical",
+      "qos_class": null,
+      "resize": {
+        "conditions": [],
+        "legacy_status_resize": null
+      },
+      "resource_claims": [],
+      "runtime_class_name": null,
+      "scheduler_name": "default-scheduler",
+      "tolerations": [],
+      "topology_spread_constraints": [],
+      "uid": "a0000000-0000-4000-8000-000000000231",
+      "volumes": []
+    },
+    {
+      "affinity": {},
+      "annotations": {},
+      "constraints": [
+        {
+          "code": "TOLERATIONS",
+          "detail": "1 toleration(s)",
+          "kind": "supported"
+        },
+        {
+          "code": "EXTENDED_RESOURCE_NOT_MODELED",
+          "detail": "nvidia.com/gpu",
+          "kind": "unsupported"
+        }
+      ],
+      "containers": [
+        {
+          "host_ports": [],
+          "limits": {},
+          "name": "trainer",
+          "requests": {
+            "cpu": "2",
+            "memory": "8Gi",
+            "nvidia.com/gpu": "1"
+          },
+          "role": "container"
+        }
+      ],
+      "controller": {
+        "api_version": "apps/v1",
+        "controller": true,
+        "kind": "ReplicaSet",
+        "name": "trainer-7e6f5a",
+        "uid": "c0000000-0000-4000-8000-000000000213"
+      },
+      "deletion_timestamp": null,
+      "init_containers": [],
+      "is_mirror": false,
+      "key": "ml/trainer-7e6f5a-aaaaa",
+      "labels": {
+        "app": "trainer"
+      },
+      "name": "trainer-7e6f5a-aaaaa",
+      "namespace": "ml",
+      "node_name": "worker-03",
+      "node_selector": {},
+      "nominated_node_name": null,
+      "overhead": {},
+      "owner_references": [
+        {
+          "api_version": "apps/v1",
+          "controller": true,
+          "kind": "ReplicaSet",
+          "name": "trainer-7e6f5a",
+          "uid": "c0000000-0000-4000-8000-000000000213"
+        }
+      ],
+      "phase": "Running",
+      "pod_level_limits": {},
+      "pod_level_requests": {},
+      "priority": null,
+      "priority_class_name": null,
+      "qos_class": null,
+      "resize": {
+        "conditions": [],
+        "legacy_status_resize": null
+      },
+      "resource_claims": [],
+      "runtime_class_name": null,
+      "scheduler_name": "default-scheduler",
+      "tolerations": [
+        {
+          "effect": "NoSchedule",
+          "key": "nvidia.com/gpu",
+          "operator": "Exists",
+          "toleration_seconds": null,
+          "value": ""
+        }
+      ],
+      "topology_spread_constraints": [],
+      "uid": "a0000000-0000-4000-8000-000000000214",
+      "volumes": []
+    },
+    {
+      "affinity": {},
+      "annotations": {},
+      "constraints": [
+        {
+          "code": "CUSTOM_SCHEDULER",
+          "detail": "volcano",
+          "kind": "unsupported"
+        },
+        {
+          "code": "TOPOLOGY_SPREAD_NOT_MODELED",
+          "detail": "topologySpreadConstraints[0] topologyKey=topology.kubernetes.io/zone",
+          "kind": "unsupported"
+        }
+      ],
+      "containers": [
+        {
+          "host_ports": [],
+          "limits": {},
+          "name": "agent",
+          "requests": {
+            "cpu": "100m",
+            "memory": "128Mi"
+          },
+          "role": "container"
+        }
+      ],
+      "controller": {
+        "api_version": "workloads.example.com/v1",
+        "controller": true,
+        "kind": "CustomWorkload",
+        "name": "agent",
+        "uid": "c0000000-0000-4000-8000-000000000221"
+      },
+      "deletion_timestamp": null,
+      "init_containers": [],
+      "is_mirror": false,
+      "key": "ops/agent-x7k2m",
+      "labels": {
+        "app": "agent"
+      },
+      "name": "agent-x7k2m",
+      "namespace": "ops",
+      "node_name": "worker-03",
+      "node_selector": {},
+      "nominated_node_name": null,
+      "overhead": {},
+      "owner_references": [
+        {
+          "api_version": "workloads.example.com/v1",
+          "controller": true,
+          "kind": "CustomWorkload",
+          "name": "agent",
+          "uid": "c0000000-0000-4000-8000-000000000221"
+        }
+      ],
+      "phase": "Running",
+      "pod_level_limits": {},
+      "pod_level_requests": {},
+      "priority": null,
+      "priority_class_name": null,
+      "qos_class": null,
+      "resize": {
+        "conditions": [],
+        "legacy_status_resize": null
+      },
+      "resource_claims": [],
+      "runtime_class_name": null,
+      "scheduler_name": "volcano",
+      "tolerations": [],
+      "topology_spread_constraints": [
+        {
+          "labelSelector": {
+            "matchLabels": {
+              "app": "agent"
+            }
+          },
+          "maxSkew": 1,
+          "topologyKey": "topology.kubernetes.io/zone",
+          "whenUnsatisfiable": "DoNotSchedule"
+        }
+      ],
+      "uid": "a0000000-0000-4000-8000-000000000222",
+      "volumes": []
+    },
+    {
+      "affinity": {},
+      "annotations": {},
+      "constraints": [
+        {
+          "code": "NODE_SELECTOR",
+          "detail": "disktype",
+          "kind": "supported"
+        }
+      ],
+      "containers": [
+        {
+          "host_ports": [],
+          "limits": {},
+          "name": "api",
+          "requests": {
+            "cpu": "500m",
+            "memory": "1Gi"
+          },
+          "role": "container"
+        }
+      ],
+      "controller": {
+        "api_version": "apps/v1",
+        "controller": true,
+        "kind": "ReplicaSet",
+        "name": "api-6d5c4b",
+        "uid": "c0000000-0000-4000-8000-000000000207"
+      },
+      "deletion_timestamp": null,
+      "init_containers": [],
+      "is_mirror": false,
+      "key": "payments/api-6d5c4b-aaaaa",
+      "labels": {
+        "app": "payments-api"
+      },
+      "name": "api-6d5c4b-aaaaa",
+      "namespace": "payments",
+      "node_name": "worker-03",
+      "node_selector": {
+        "disktype": "ssd"
+      },
+      "nominated_node_name": null,
+      "overhead": {},
+      "owner_references": [
+        {
+          "api_version": "apps/v1",
+          "controller": true,
+          "kind": "ReplicaSet",
+          "name": "api-6d5c4b",
+          "uid": "c0000000-0000-4000-8000-000000000207"
+        }
+      ],
+      "phase": "Running",
+      "pod_level_limits": {},
+      "pod_level_requests": {},
+      "priority": null,
+      "priority_class_name": null,
+      "qos_class": null,
+      "resize": {
+        "conditions": [],
+        "legacy_status_resize": null
+      },
+      "resource_claims": [],
+      "runtime_class_name": null,
+      "scheduler_name": "default-scheduler",
+      "tolerations": [],
+      "topology_spread_constraints": [],
+      "uid": "a0000000-0000-4000-8000-000000000208",
+      "volumes": []
+    },
+    {
+      "affinity": {},
+      "annotations": {},
+      "constraints": [
+        {
+          "code": "NODE_SELECTOR",
+          "detail": "disktype",
+          "kind": "supported"
+        }
+      ],
+      "containers": [
+        {
+          "host_ports": [],
+          "limits": {},
+          "name": "api",
+          "requests": {
+            "cpu": "500m",
+            "memory": "1Gi"
+          },
+          "role": "container"
+        }
+      ],
+      "controller": {
+        "api_version": "apps/v1",
+        "controller": true,
+        "kind": "ReplicaSet",
+        "name": "api-6d5c4b",
+        "uid": "c0000000-0000-4000-8000-000000000232"
+      },
+      "deletion_timestamp": null,
+      "init_containers": [],
+      "is_mirror": false,
+      "key": "payments/api-6d5c4b-bbbbb",
+      "labels": {
+        "app": "payments-api"
+      },
+      "name": "api-6d5c4b-bbbbb",
+      "namespace": "payments",
+      "node_name": "worker-01",
+      "node_selector": {
+        "disktype": "ssd"
+      },
+      "nominated_node_name": null,
+      "overhead": {},
+      "owner_references": [
+        {
+          "api_version": "apps/v1",
+          "controller": true,
+          "kind": "ReplicaSet",
+          "name": "api-6d5c4b",
+          "uid": "c0000000-0000-4000-8000-000000000232"
+        }
+      ],
+      "phase": "Running",
+      "pod_level_limits": {},
+      "pod_level_requests": {},
+      "priority": null,
+      "priority_class_name": null,
+      "qos_class": null,
+      "resize": {
+        "conditions": [],
+        "legacy_status_resize": null
+      },
+      "resource_claims": [],
+      "runtime_class_name": null,
+      "scheduler_name": "default-scheduler",
+      "tolerations": [],
+      "topology_spread_constraints": [],
+      "uid": "a0000000-0000-4000-8000-000000000233",
+      "volumes": []
+    },
+    {
+      "affinity": {},
+      "annotations": {},
+      "constraints": [],
+      "containers": [
+        {
+          "host_ports": [],
+          "limits": {},
+          "name": "api",
+          "requests": {
+            "cpu": "500m",
+            "memory": "1Gi"
+          },
+          "role": "container"
+        }
+      ],
+      "controller": {
+        "api_version": "apps/v1",
+        "controller": true,
+        "kind": "ReplicaSet",
+        "name": "api-old-3c2b1a",
+        "uid": "c0000000-0000-4000-8000-000000000211"
+      },
+      "deletion_timestamp": "2026-10-03T08:59:00Z",
+      "init_containers": [],
+      "is_mirror": false,
+      "key": "payments/api-old-3c2b1a-aaaaa",
+      "labels": {
+        "app": "payments-api-old"
+      },
+      "name": "api-old-3c2b1a-aaaaa",
+      "namespace": "payments",
+      "node_name": "worker-03",
+      "node_selector": {},
+      "nominated_node_name": null,
+      "overhead": {},
+      "owner_references": [
+        {
+          "api_version": "apps/v1",
+          "controller": true,
+          "kind": "ReplicaSet",
+          "name": "api-old-3c2b1a",
+          "uid": "c0000000-0000-4000-8000-000000000211"
+        }
+      ],
+      "phase": "Running",
+      "pod_level_limits": {},
+      "pod_level_requests": {},
+      "priority": null,
+      "priority_class_name": null,
+      "qos_class": null,
+      "resize": {
+        "conditions": [],
+        "legacy_status_resize": null
+      },
+      "resource_claims": [],
+      "runtime_class_name": null,
+      "scheduler_name": "default-scheduler",
+      "tolerations": [],
+      "topology_spread_constraints": [],
+      "uid": "a0000000-0000-4000-8000-000000000212",
+      "volumes": []
+    },
+    {
+      "affinity": {
+        "podAntiAffinity": {
+          "requiredDuringSchedulingIgnoredDuringExecution": [
+            {
+              "labelSelector": {
+                "matchLabels": {
+                  "app": "ledger"
+                }
+              },
+              "topologyKey": "kubernetes.io/hostname"
+            }
+          ]
+        }
+      },
+      "annotations": {},
+      "constraints": [
+        {
+          "code": "PERSISTENT_VOLUME_TOPOLOGY_NOT_MODELED",
+          "detail": "volume data (persistentVolumeClaim data-ledger-0)",
+          "kind": "unsupported"
+        },
+        {
+          "code": "REQUIRED_POD_ANTI_AFFINITY_NOT_MODELED",
+          "detail": "podAntiAffinity.required",
+          "kind": "unsupported"
+        }
+      ],
+      "containers": [
+        {
+          "host_ports": [],
+          "limits": {},
+          "name": "ledger",
+          "requests": {
+            "cpu": "1",
+            "memory": "4Gi"
+          },
+          "role": "container"
+        }
+      ],
+      "controller": {
+        "api_version": "apps/v1",
+        "controller": true,
+        "kind": "StatefulSet",
+        "name": "ledger",
+        "uid": "c0000000-0000-4000-8000-000000000209"
+      },
+      "deletion_timestamp": null,
+      "init_containers": [],
+      "is_mirror": false,
+      "key": "payments/ledger-0",
+      "labels": {
+        "app": "ledger"
+      },
+      "name": "ledger-0",
+      "namespace": "payments",
+      "node_name": "worker-03",
+      "node_selector": {},
+      "nominated_node_name": null,
+      "overhead": {},
+      "owner_references": [
+        {
+          "api_version": "apps/v1",
+          "controller": true,
+          "kind": "StatefulSet",
+          "name": "ledger",
+          "uid": "c0000000-0000-4000-8000-000000000209"
+        }
+      ],
+      "phase": "Running",
+      "pod_level_limits": {},
+      "pod_level_requests": {},
+      "priority": null,
+      "priority_class_name": null,
+      "qos_class": null,
+      "resize": {
+        "conditions": [],
+        "legacy_status_resize": null
+      },
+      "resource_claims": [],
+      "runtime_class_name": null,
+      "scheduler_name": "default-scheduler",
+      "tolerations": [],
+      "topology_spread_constraints": [],
+      "uid": "a0000000-0000-4000-8000-000000000210",
+      "volumes": [
+        {
+          "claim_name": "data-ledger-0",
+          "name": "data",
+          "source": "persistentVolumeClaim"
+        }
+      ]
+    },
+    {
+      "affinity": {},
+      "annotations": {},
+      "constraints": [
+        {
+          "code": "PERSISTENT_VOLUME_TOPOLOGY_NOT_MODELED",
+          "detail": "volume data (persistentVolumeClaim data-ledger-1)",
+          "kind": "unsupported"
+        }
+      ],
+      "containers": [
+        {
+          "host_ports": [],
+          "limits": {},
+          "name": "ledger",
+          "requests": {
+            "cpu": "1",
+            "memory": "4Gi"
+          },
+          "role": "container"
+        }
+      ],
+      "controller": {
+        "api_version": "apps/v1",
+        "controller": true,
+        "kind": "StatefulSet",
+        "name": "ledger",
+        "uid": "c0000000-0000-4000-8000-000000000234"
+      },
+      "deletion_timestamp": null,
+      "init_containers": [],
+      "is_mirror": false,
+      "key": "payments/ledger-1",
+      "labels": {
+        "app": "ledger"
+      },
+      "name": "ledger-1",
+      "namespace": "payments",
+      "node_name": "worker-01",
+      "node_selector": {},
+      "nominated_node_name": null,
+      "overhead": {},
+      "owner_references": [
+        {
+          "api_version": "apps/v1",
+          "controller": true,
+          "kind": "StatefulSet",
+          "name": "ledger",
+          "uid": "c0000000-0000-4000-8000-000000000234"
+        }
+      ],
+      "phase": "Running",
+      "pod_level_limits": {},
+      "pod_level_requests": {},
+      "priority": null,
+      "priority_class_name": null,
+      "qos_class": null,
+      "resize": {
+        "conditions": [],
+        "legacy_status_resize": null
+      },
+      "resource_claims": [],
+      "runtime_class_name": null,
+      "scheduler_name": "default-scheduler",
+      "tolerations": [],
+      "topology_spread_constraints": [],
+      "uid": "a0000000-0000-4000-8000-000000000235",
+      "volumes": [
+        {
+          "claim_name": "data-ledger-1",
+          "name": "data",
+          "source": "persistentVolumeClaim"
+        }
+      ]
+    },
+    {
+      "affinity": {},
+      "annotations": {},
+      "constraints": [
+        {
+          "code": "RUNTIME_CLASS_NOT_MODELED",
+          "detail": "gvisor",
+          "kind": "unsupported"
+        }
+      ],
+      "containers": [
+        {
+          "host_ports": [],
+          "limits": {},
+          "name": "sandbox",
+          "requests": {
+            "cpu": "500m",
+            "memory": "512Mi"
+          },
+          "role": "container"
+        }
+      ],
+      "controller": {
+        "api_version": "apps/v1",
+        "controller": true,
+        "kind": "ReplicaSet",
+        "name": "sandbox-5f4e3d",
+        "uid": "c0000000-0000-4000-8000-000000000223"
+      },
+      "deletion_timestamp": null,
+      "init_containers": [],
+      "is_mirror": false,
+      "key": "secure/sandbox-5f4e3d-aaaaa",
+      "labels": {
+        "app": "sandbox"
+      },
+      "name": "sandbox-5f4e3d-aaaaa",
+      "namespace": "secure",
+      "node_name": "worker-03",
+      "node_selector": {},
+      "nominated_node_name": null,
+      "overhead": {
+        "cpu": "250m",
+        "memory": "120Mi"
+      },
+      "owner_references": [
+        {
+          "api_version": "apps/v1",
+          "controller": true,
+          "kind": "ReplicaSet",
+          "name": "sandbox-5f4e3d",
+          "uid": "c0000000-0000-4000-8000-000000000223"
+        }
+      ],
+      "phase": "Running",
+      "pod_level_limits": {},
+      "pod_level_requests": {},
+      "priority": null,
+      "priority_class_name": null,
+      "qos_class": null,
+      "resize": {
+        "conditions": [],
+        "legacy_status_resize": null
+      },
+      "resource_claims": [],
+      "runtime_class_name": "gvisor",
+      "scheduler_name": "default-scheduler",
+      "tolerations": [],
+      "topology_spread_constraints": [],
+      "uid": "a0000000-0000-4000-8000-000000000224",
+      "volumes": []
+    }
+  ],
+  "snapshot": {
+    "captured_at": "2026-10-03T09:00:00Z",
+    "description": "Constraint-heavy cluster: selectors, taints, cordon, NotReady node, DaemonSet, mirror pod, restrictive PDBs and unsupported constraints.",
+    "inventory": {
+      "nodes": "complete",
+      "notes": "Synthetic fixture. All names, UIDs and images are invented.",
+      "pod_disruption_budgets": "complete",
+      "pods": "complete"
+    },
+    "kubernetes_version": "v1.34.0",
+    "schema_version": "1.0",
+    "snapshot_id": "fixture-c-constraints",
+    "source_file": "fixture_c_constraints.json",
+    "source_sha256": "6ff5166fd6a7b53a6ea3a6aad8954968fcbd9bfd445865ac0f5e83aa41fa18b0",
+    "source_type": "synthetic_fixture"
+  },
+  "summary": {
+    "capacity_fit": {
+      "DOES_NOT_FIT": 1,
+      "FITS": 47,
+      "UNKNOWN": 0
+    },
+    "drain_class_counts": {
+      "CONTROLLER_MANAGED": 7,
+      "DAEMONSET": 1,
+      "MIRROR": 1,
+      "TERMINAL": 1,
+      "TERMINATING": 1,
+      "UNKNOWN_CONTROLLER": 1,
+      "UNMANAGED": 1
+    },
+    "eligibility_states": {
+      "ELIGIBLE": 3,
+      "INELIGIBLE": 32,
+      "UNKNOWN": 13
+    },
+    "node_count": 6,
+    "placement_candidate_count": 8,
+    "placement_decision": null,
+    "placement_decision_note": "M1 models eligibility only; no assignment has been computed",
+    "pod_count": 15,
+    "target_pod_count": 13
+  },
+  "target_node": "worker-03",
+  "unsupported_constraints": [
+    {
+      "code": "REQUIRED_NODE_AFFINITY_NOT_MODELED",
+      "detail": "nodeAffinity.required",
+      "pod": "analytics/etl-2b3c4d-aaaaa"
+    },
+    {
+      "code": "HOST_PORT_NOT_MODELED",
+      "detail": "hostPort 8443",
+      "pod": "edge/proxy-8a7b6c-aaaaa"
+    },
+    {
+      "code": "EXTENDED_RESOURCE_NOT_MODELED",
+      "detail": "nvidia.com/gpu",
+      "pod": "ml/trainer-7e6f5a-aaaaa"
+    },
+    {
+      "code": "CUSTOM_SCHEDULER",
+      "detail": "volcano",
+      "pod": "ops/agent-x7k2m"
+    },
+    {
+      "code": "TOPOLOGY_SPREAD_NOT_MODELED",
+      "detail": "topologySpreadConstraints[0] topologyKey=topology.kubernetes.io/zone",
+      "pod": "ops/agent-x7k2m"
+    },
+    {
+      "code": "PERSISTENT_VOLUME_TOPOLOGY_NOT_MODELED",
+      "detail": "volume data (persistentVolumeClaim data-ledger-0)",
+      "pod": "payments/ledger-0"
+    },
+    {
+      "code": "REQUIRED_POD_ANTI_AFFINITY_NOT_MODELED",
+      "detail": "podAntiAffinity.required",
+      "pod": "payments/ledger-0"
+    },
+    {
+      "code": "PERSISTENT_VOLUME_TOPOLOGY_NOT_MODELED",
+      "detail": "volume data (persistentVolumeClaim data-ledger-1)",
+      "pod": "payments/ledger-1"
+    },
+    {
+      "code": "RUNTIME_CLASS_NOT_MODELED",
+      "detail": "gvisor",
+      "pod": "secure/sandbox-5f4e3d-aaaaa"
+    }
+  ]
+}

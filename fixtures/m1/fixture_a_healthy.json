@@ -1,0 +1,645 @@
+{
+  "schema_version": "1.0",
+  "snapshot": {
+    "id": "fixture-a-healthy",
+    "captured_at": "2026-10-01T09:00:00Z",
+    "source_type": "synthetic_fixture",
+    "kubernetes_version": "v1.34.1",
+    "description": "Healthy cluster: managed workloads on worker-03, ample headroom elsewhere.",
+    "inventory": {
+      "nodes": "complete",
+      "pods": "complete",
+      "pod_disruption_budgets": "complete",
+      "notes": "Synthetic fixture. All names, UIDs and images are invented."
+    }
+  },
+  "target_node": "worker-03",
+  "nodes": [
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-01",
+        "uid": "b0000000-0000-4000-8000-000000000003",
+        "labels": {
+          "kubernetes.io/hostname": "worker-01",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "3900m",
+          "memory": "15Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-02",
+        "uid": "b0000000-0000-4000-8000-000000000004",
+        "labels": {
+          "kubernetes.io/hostname": "worker-02",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "3900m",
+          "memory": "15Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-03",
+        "uid": "b0000000-0000-4000-8000-000000000005",
+        "labels": {
+          "kubernetes.io/hostname": "worker-03",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "3900m",
+          "memory": "15Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    }
+  ],
+  "pods": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "shop",
+        "name": "web-7d9f8c-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000000006",
+        "labels": {
+          "app": "web"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "web-7d9f8c",
+            "uid": "c0000000-0000-4000-8000-000000000001",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "web",
+            "image": "registry.example.invalid/web:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              },
+              "limits": {
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "shop",
+        "name": "web-7d9f8c-bbbbb",
+        "uid": "a0000000-0000-4000-8000-000000000007",
+        "labels": {
+          "app": "web"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "web-7d9f8c",
+            "uid": "c0000000-0000-4000-8000-000000000001",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "web",
+            "image": "registry.example.invalid/web:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              },
+              "limits": {
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03",
+        "initContainers": [
+          {
+            "name": "log-shipper",
+            "image": "registry.example.invalid/log-shipper:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            },
+            "restartPolicy": "Always"
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "shop",
+        "name": "web-7d9f8c-ccccc",
+        "uid": "a0000000-0000-4000-8000-000000000008",
+        "labels": {
+          "app": "web"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "web-7d9f8c",
+            "uid": "c0000000-0000-4000-8000-000000000001",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "web",
+            "image": "registry.example.invalid/web:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              },
+              "limits": {
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-01"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "shop",
+        "name": "api-5c6b7d-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000000009",
+        "labels": {
+          "app": "api"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "api-5c6b7d",
+            "uid": "c0000000-0000-4000-8000-000000000002",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "api",
+            "image": "registry.example.invalid/api:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "250m",
+                "memory": "256Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03",
+        "initContainers": [
+          {
+            "name": "migrate",
+            "image": "registry.example.invalid/migrate:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "1",
+                "memory": "256Mi"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "shop",
+        "name": "api-5c6b7d-bbbbb",
+        "uid": "a0000000-0000-4000-8000-000000000010",
+        "labels": {
+          "app": "api"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "api-5c6b7d",
+            "uid": "c0000000-0000-4000-8000-000000000002",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "api",
+            "image": "registry.example.invalid/api:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "250m",
+                "memory": "256Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-02",
+        "initContainers": [
+          {
+            "name": "migrate",
+            "image": "registry.example.invalid/migrate:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "1",
+                "memory": "256Mi"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "shop",
+        "name": "cart-0",
+        "uid": "a0000000-0000-4000-8000-000000000012",
+        "labels": {
+          "app": "cart"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "cart",
+            "uid": "c0000000-0000-4000-8000-000000000011",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "cart",
+            "image": "registry.example.invalid/cart:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "300m",
+                "memory": "1Gi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "shop",
+        "name": "nightly-report-29012345-abcde",
+        "uid": "a0000000-0000-4000-8000-000000000014",
+        "labels": {
+          "job": "nightly-report"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "nightly-report-29012345",
+            "uid": "c0000000-0000-4000-8000-000000000013",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "report",
+            "image": "registry.example.invalid/report:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "2",
+                "memory": "2Gi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Never",
+        "nodeName": "worker-01"
+      },
+      "status": {
+        "phase": "Succeeded"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "kube-system",
+        "name": "node-exporter-worker-01",
+        "uid": "a0000000-0000-4000-8000-000000000016",
+        "labels": {
+          "app": "node-exporter"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "DaemonSet",
+            "name": "node-exporter",
+            "uid": "c0000000-0000-4000-8000-000000000015",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "node-exporter",
+            "image": "registry.example.invalid/node-exporter:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "64Mi"
+              },
+              "limits": {
+                "memory": "64Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-01",
+        "tolerations": [
+          {
+            "operator": "Exists"
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "kube-system",
+        "name": "node-exporter-worker-02",
+        "uid": "a0000000-0000-4000-8000-000000000018",
+        "labels": {
+          "app": "node-exporter"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "DaemonSet",
+            "name": "node-exporter",
+            "uid": "c0000000-0000-4000-8000-000000000017",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "node-exporter",
+            "image": "registry.example.invalid/node-exporter:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "64Mi"
+              },
+              "limits": {
+                "memory": "64Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-02",
+        "tolerations": [
+          {
+            "operator": "Exists"
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "kube-system",
+        "name": "node-exporter-worker-03",
+        "uid": "a0000000-0000-4000-8000-000000000020",
+        "labels": {
+          "app": "node-exporter"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "DaemonSet",
+            "name": "node-exporter",
+            "uid": "c0000000-0000-4000-8000-000000000019",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "node-exporter",
+            "image": "registry.example.invalid/node-exporter:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "64Mi"
+              },
+              "limits": {
+                "memory": "64Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03",
+        "tolerations": [
+          {
+            "operator": "Exists"
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    }
+  ],
+  "pod_disruption_budgets": [
+    {
+      "apiVersion": "policy/v1",
+      "kind": "PodDisruptionBudget",
+      "metadata": {
+        "namespace": "shop",
+        "name": "web-pdb",
+        "uid": "d0000000-0000-4000-8000-000000000021"
+      },
+      "spec": {
+        "selector": {
+          "matchLabels": {
+            "app": "web"
+          }
+        },
+        "minAvailable": 1
+      },
+      "status": {
+        "disruptionsAllowed": 2,
+        "currentHealthy": 3,
+        "desiredHealthy": 1,
+        "expectedPods": 3,
+        "observedGeneration": 1
+      }
+    }
+  ]
+}

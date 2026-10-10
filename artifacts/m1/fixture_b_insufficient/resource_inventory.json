@@ -1,0 +1,516 @@
+{
+  "accounting_policy": {
+    "incomplete_inventory": "reserved/remaining are null; *_lower_bound / *_upper_bound fields carry observed bounds",
+    "overcommitment": "negative remaining headroom is preserved, not clamped",
+    "pod_request_formula": "max(sum(containers) + sum(sidecars), max(init_i + sidecars_started_before_i)); pod-level cpu/memory requests replace that aggregate; spec.overhead is added once",
+    "reserving_pods": "bound pods in phase Pending/Running/Unknown, including terminating pods; Succeeded/Failed pods and unbound pods do not reserve capacity",
+    "resize": "per container max(spec, status.resources.requests, status.allocatedResources); spec ignored when PodResizePending reason=Infeasible; unknown if resize is indicated without status",
+    "rounding": "quantities are parsed exactly and rounded up to the next whole unit (Quantity.MilliValue/Value)",
+    "summary_remaining_total": "sum of max(remaining, 0) over Ready, schedulable destination nodes; a necessary-condition indicator only, never a feasibility verdict",
+    "units": {
+      "cpu": "millicores (integer)",
+      "memory": "bytes (integer)",
+      "pods": "count"
+    },
+    "unknown_values": "null with a reason code; never replaced by zero"
+  },
+  "artifact": "resource_inventory",
+  "artifact_schema_version": "1.0",
+  "data_completeness": {
+    "capacity_assessment_complete": true,
+    "nodes_inventory": "complete",
+    "pod_disruption_budgets_inventory": "complete",
+    "pods_inventory": "complete",
+    "reasons": []
+  },
+  "diagnostics": [
+    {
+      "code": "OVERCOMMITTED",
+      "details": {
+        "resources": [
+          "memory"
+        ]
+      },
+      "message": "reserved requests exceed allocatable; negative headroom preserved",
+      "severity": "warning",
+      "subject": "node/worker-03"
+    },
+    {
+      "code": "POD_LEVEL_FEATURE_STATE_UNCERTAIN",
+      "details": {
+        "kubernetes_version": "1.33"
+      },
+      "message": "pod-level resources are only enabled by default from Kubernetes 1.34; scheduler feature state is unknown for this snapshot",
+      "severity": "warning",
+      "subject": "pod/analytics/reporter-9e8d7c-aaaaa"
+    },
+    {
+      "code": "POD_LEVEL_REQUESTS_APPLIED",
+      "details": {
+        "resource": "cpu"
+      },
+      "message": "pod-level cpu request replaces the container aggregate",
+      "severity": "info",
+      "subject": "pod/analytics/reporter-9e8d7c-aaaaa"
+    },
+    {
+      "code": "POD_LEVEL_REQUESTS_APPLIED",
+      "details": {
+        "resource": "memory"
+      },
+      "message": "pod-level memory request replaces the container aggregate",
+      "severity": "info",
+      "subject": "pod/analytics/reporter-9e8d7c-aaaaa"
+    }
+  ],
+  "generator": {
+    "milestone": "M1",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "nodes": [
+    {
+      "allocatable": {
+        "cpu_millicores": 2000,
+        "memory_bytes": 4294967296,
+        "pods": 110
+      },
+      "is_drain_target": false,
+      "node": "worker-01",
+      "overcommitted": [],
+      "reasons": [],
+      "remaining": {
+        "cpu_millicores": 300,
+        "memory_bytes": 1073741824,
+        "pods": 107
+      },
+      "remaining_upper_bound": {
+        "cpu_millicores": 300,
+        "memory_bytes": 1073741824,
+        "pods": 107
+      },
+      "reserved": {
+        "cpu_millicores": 1700,
+        "memory_bytes": 3221225472,
+        "pods": 3
+      },
+      "reserved_lower_bound": {
+        "cpu_millicores": 1700,
+        "memory_bytes": 3221225472,
+        "pods": 3
+      },
+      "reserving_pods": [
+        "analytics/cache-7a8b9c-aaaaa",
+        "analytics/query-6f7c8d-aaaaa",
+        "analytics/query-old-5b4a3c-aaaaa"
+      ],
+      "status": "EXACT"
+    },
+    {
+      "allocatable": {
+        "cpu_millicores": 4000,
+        "memory_bytes": 8589934592,
+        "pods": 110
+      },
+      "is_drain_target": true,
+      "node": "worker-02",
+      "overcommitted": [],
+      "reasons": [
+        "POD_REQUEST_REVIEW_REQUIRED"
+      ],
+      "remaining": {
+        "cpu_millicores": 1300,
+        "memory_bytes": 5100273664,
+        "pods": 107
+      },
+      "remaining_upper_bound": {
+        "cpu_millicores": 1300,
+        "memory_bytes": 5100273664,
+        "pods": 107
+      },
+      "reserved": {
+        "cpu_millicores": 2700,
+        "memory_bytes": 3489660928,
+        "pods": 3
+      },
+      "reserved_lower_bound": {
+        "cpu_millicores": 2700,
+        "memory_bytes": 3489660928,
+        "pods": 3
+      },
+      "reserving_pods": [
+        "analytics/batch-worker-8c9d0e-aaaaa",
+        "analytics/ingest-1a2b3c-aaaaa",
+        "analytics/reporter-9e8d7c-aaaaa"
+      ],
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "allocatable": {
+        "cpu_millicores": 2000,
+        "memory_bytes": 4294967296,
+        "pods": 110
+      },
+      "is_drain_target": false,
+      "node": "worker-03",
+      "overcommitted": [
+        "memory"
+      ],
+      "reasons": [
+        "OVERCOMMITTED"
+      ],
+      "remaining": {
+        "cpu_millicores": 500,
+        "memory_bytes": -536870912,
+        "pods": 108
+      },
+      "remaining_upper_bound": {
+        "cpu_millicores": 500,
+        "memory_bytes": -536870912,
+        "pods": 108
+      },
+      "reserved": {
+        "cpu_millicores": 1500,
+        "memory_bytes": 4831838208,
+        "pods": 2
+      },
+      "reserved_lower_bound": {
+        "cpu_millicores": 1500,
+        "memory_bytes": 4831838208,
+        "pods": 2
+      },
+      "reserving_pods": [
+        "legacy/importer-4d5e6f-aaaaa",
+        "legacy/pinned-tool"
+      ],
+      "status": "EXACT"
+    }
+  ],
+  "pods": [
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 1500,
+          "containers": 1500,
+          "effective": 1500,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 2147483648,
+          "containers": 2147483648,
+          "effective": 2147483648,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 1500,
+      "memory_bytes": 2147483648,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-02",
+      "phase": "Running",
+      "placement_candidate": true,
+      "pod": "analytics/batch-worker-8c9d0e-aaaaa",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 200,
+          "containers": 200,
+          "effective": 200,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 536870912,
+          "containers": 536870912,
+          "effective": 536870912,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 200,
+      "memory_bytes": 536870912,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-01",
+      "phase": "Pending",
+      "placement_candidate": false,
+      "pod": "analytics/cache-7a8b9c-aaaaa",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 200,
+          "containers": 200,
+          "effective": 200,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 268435456,
+          "containers": 268435456,
+          "effective": 268435456,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 200,
+      "memory_bytes": 268435456,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-02",
+      "phase": "Running",
+      "placement_candidate": true,
+      "pod": "analytics/ingest-1a2b3c-aaaaa",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 1000,
+          "containers": 1000,
+          "effective": 1000,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 1610612736,
+          "containers": 1610612736,
+          "effective": 1610612736,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 1000,
+      "memory_bytes": 1610612736,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-01",
+      "phase": "Running",
+      "placement_candidate": false,
+      "pod": "analytics/query-6f7c8d-aaaaa",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 500,
+          "containers": 500,
+          "effective": 500,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 1073741824,
+          "containers": 1073741824,
+          "effective": 1073741824,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 500,
+      "memory_bytes": 1073741824,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-01",
+      "phase": "Running",
+      "placement_candidate": false,
+      "pod": "analytics/query-old-5b4a3c-aaaaa",
+      "reasons": [],
+      "reservation": "RESERVED_TERMINATING",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 500,
+          "containers": 500,
+          "effective": 1000,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": 1000,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 536870912,
+          "containers": 536870912,
+          "effective": 1073741824,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": 1073741824,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 1000,
+      "memory_bytes": 1073741824,
+      "method": [
+        "sum_containers",
+        "pod_level_requests_applied"
+      ],
+      "node": "worker-02",
+      "phase": "Running",
+      "placement_candidate": true,
+      "pod": "analytics/reporter-9e8d7c-aaaaa",
+      "reasons": [
+        "POD_LEVEL_FEATURE_STATE_UNCERTAIN",
+        "POD_LEVEL_REQUESTS_APPLIED",
+        "POD_REQUEST_REVIEW_REQUIRED"
+      ],
+      "reservation": "RESERVED",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 500,
+          "containers": 500,
+          "effective": 500,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 2147483648,
+          "containers": 2147483648,
+          "effective": 2147483648,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 500,
+      "memory_bytes": 2147483648,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-03",
+      "phase": "Running",
+      "placement_candidate": false,
+      "pod": "legacy/importer-4d5e6f-aaaaa",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    },
+    {
+      "breakdown": {
+        "cpu": {
+          "container_aggregate": 1000,
+          "containers": 1000,
+          "effective": 1000,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        },
+        "memory": {
+          "container_aggregate": 2684354560,
+          "containers": 2684354560,
+          "effective": 2684354560,
+          "init_peak": 0,
+          "overhead": 0,
+          "pod_level": null,
+          "restartable_init_containers": 0
+        }
+      },
+      "cpu_millicores": 1000,
+      "memory_bytes": 2684354560,
+      "method": [
+        "sum_containers"
+      ],
+      "node": "worker-03",
+      "phase": "Running",
+      "placement_candidate": false,
+      "pod": "legacy/pinned-tool",
+      "reasons": [],
+      "reservation": "RESERVED",
+      "status": "EXACT"
+    }
+  ],
+  "snapshot": {
+    "captured_at": "2026-10-02T09:00:00Z",
+    "description": "Insufficient capacity: destinations cannot absorb the largest pod on worker-02.",
+    "inventory": {
+      "nodes": "complete",
+      "notes": "Synthetic fixture. All names, UIDs and images are invented.",
+      "pod_disruption_budgets": "complete",
+      "pods": "complete"
+    },
+    "kubernetes_version": "v1.33.2",
+    "schema_version": "1.0",
+    "snapshot_id": "fixture-b-insufficient",
+    "source_file": "fixture_b_insufficient.json",
+    "source_sha256": "6959fbc701e487288f5caeab3e42963506b4c1b773811f3d371a0316846ea04a",
+    "source_type": "synthetic_fixture"
+  },
+  "summary": {
+    "node_status_counts": {
+      "EXACT": 2,
+      "INCOMPLETE": 0,
+      "REVIEW_REQUIRED": 1,
+      "UNKNOWN": 0
+    },
+    "note": "Totals are necessary-condition indicators only; M1 makes no joint-placement claim.",
+    "overcommitted_nodes": [
+      "worker-03"
+    ],
+    "placement_candidate_demand": {
+      "cpu_millicores": 2700,
+      "memory_bytes": 3489660928,
+      "pods": 3
+    },
+    "pod_request_status_counts": {
+      "EXACT": 7,
+      "INCOMPLETE": 0,
+      "REVIEW_REQUIRED": 1,
+      "UNKNOWN": 0
+    },
+    "ready_schedulable_destinations": [
+      "worker-01",
+      "worker-03"
+    ],
+    "remaining_total_ready_schedulable": {
+      "cpu_millicores": 800,
+      "memory_bytes": 1073741824
+    }
+  },
+  "target_node": "worker-02"
+}

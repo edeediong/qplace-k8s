@@ -1,0 +1,1070 @@
+{
+  "schema_version": "1.0",
+  "snapshot": {
+    "id": "fixture-c-constraints",
+    "captured_at": "2026-10-03T09:00:00Z",
+    "source_type": "synthetic_fixture",
+    "kubernetes_version": "v1.34.0",
+    "description": "Constraint-heavy cluster: selectors, taints, cordon, NotReady node, DaemonSet, mirror pod, restrictive PDBs and unsupported constraints.",
+    "inventory": {
+      "nodes": "complete",
+      "pods": "complete",
+      "pod_disruption_budgets": "complete",
+      "notes": "Synthetic fixture. All names, UIDs and images are invented."
+    }
+  },
+  "target_node": "worker-03",
+  "nodes": [
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-01",
+        "uid": "b0000000-0000-4000-8000-000000000201",
+        "labels": {
+          "kubernetes.io/hostname": "worker-01",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64",
+          "disktype": "ssd",
+          "topology.kubernetes.io/zone": "zone-a"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "8",
+          "memory": "32Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "7800m",
+          "memory": "30Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-02",
+        "uid": "b0000000-0000-4000-8000-000000000202",
+        "labels": {
+          "kubernetes.io/hostname": "worker-02",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64",
+          "disktype": "ssd",
+          "topology.kubernetes.io/zone": "zone-b"
+        }
+      },
+      "spec": {
+        "taints": [
+          {
+            "key": "node.kubernetes.io/unschedulable",
+            "effect": "NoSchedule",
+            "timeAdded": "2026-10-03T08:00:00Z"
+          }
+        ],
+        "unschedulable": true
+      },
+      "status": {
+        "capacity": {
+          "cpu": "8",
+          "memory": "32Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "7800m",
+          "memory": "30Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-03",
+        "uid": "b0000000-0000-4000-8000-000000000203",
+        "labels": {
+          "kubernetes.io/hostname": "worker-03",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64",
+          "disktype": "ssd",
+          "topology.kubernetes.io/zone": "zone-a"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "8",
+          "memory": "32Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "7800m",
+          "memory": "30Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-04",
+        "uid": "b0000000-0000-4000-8000-000000000204",
+        "labels": {
+          "kubernetes.io/hostname": "worker-04",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64",
+          "disktype": "hdd",
+          "topology.kubernetes.io/zone": "zone-b"
+        }
+      },
+      "spec": {
+        "taints": [
+          {
+            "key": "dedicated",
+            "value": "batch",
+            "effect": "PreferNoSchedule"
+          }
+        ]
+      },
+      "status": {
+        "capacity": {
+          "cpu": "8",
+          "memory": "32Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "7800m",
+          "memory": "30Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-05",
+        "uid": "b0000000-0000-4000-8000-000000000205",
+        "labels": {
+          "kubernetes.io/hostname": "worker-05",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64",
+          "disktype": "ssd",
+          "topology.kubernetes.io/zone": "zone-c"
+        }
+      },
+      "spec": {
+        "taints": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "effect": "NoExecute",
+            "timeAdded": "2026-10-03T08:30:00Z"
+          }
+        ]
+      },
+      "status": {
+        "capacity": {
+          "cpu": "8",
+          "memory": "32Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "7800m",
+          "memory": "30Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "False",
+            "reason": "KubeletNotReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "gpu-01",
+        "uid": "b0000000-0000-4000-8000-000000000206",
+        "labels": {
+          "kubernetes.io/hostname": "gpu-01",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64",
+          "accelerator": "nvidia",
+          "topology.kubernetes.io/zone": "zone-a"
+        }
+      },
+      "spec": {
+        "taints": [
+          {
+            "key": "nvidia.com/gpu",
+            "value": "present",
+            "effect": "NoSchedule"
+          }
+        ]
+      },
+      "status": {
+        "capacity": {
+          "cpu": "8",
+          "memory": "32Gi",
+          "pods": "110",
+          "nvidia.com/gpu": "1"
+        },
+        "allocatable": {
+          "cpu": "7800m",
+          "memory": "30Gi",
+          "pods": "110",
+          "nvidia.com/gpu": "1"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    }
+  ],
+  "pods": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "payments",
+        "name": "api-6d5c4b-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000000208",
+        "labels": {
+          "app": "payments-api"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "api-6d5c4b",
+            "uid": "c0000000-0000-4000-8000-000000000207",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "api",
+            "image": "registry.example.invalid/api:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "1Gi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03",
+        "nodeSelector": {
+          "disktype": "ssd"
+        }
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "payments",
+        "name": "ledger-0",
+        "uid": "a0000000-0000-4000-8000-000000000210",
+        "labels": {
+          "app": "ledger"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "ledger",
+            "uid": "c0000000-0000-4000-8000-000000000209",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "ledger",
+            "image": "registry.example.invalid/ledger:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "1",
+                "memory": "4Gi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03",
+        "volumes": [
+          {
+            "name": "data",
+            "persistentVolumeClaim": {
+              "claimName": "data-ledger-0"
+            }
+          }
+        ],
+        "affinity": {
+          "podAntiAffinity": {
+            "requiredDuringSchedulingIgnoredDuringExecution": [
+              {
+                "labelSelector": {
+                  "matchLabels": {
+                    "app": "ledger"
+                  }
+                },
+                "topologyKey": "kubernetes.io/hostname"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "payments",
+        "name": "api-old-3c2b1a-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000000212",
+        "labels": {
+          "app": "payments-api-old"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "api-old-3c2b1a",
+            "uid": "c0000000-0000-4000-8000-000000000211",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ],
+        "deletionTimestamp": "2026-10-03T08:59:00Z"
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "api",
+            "image": "registry.example.invalid/api:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "1Gi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "ml",
+        "name": "trainer-7e6f5a-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000000214",
+        "labels": {
+          "app": "trainer"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "trainer-7e6f5a",
+            "uid": "c0000000-0000-4000-8000-000000000213",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "trainer",
+            "image": "registry.example.invalid/trainer:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "2",
+                "memory": "8Gi",
+                "nvidia.com/gpu": "1"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03",
+        "tolerations": [
+          {
+            "key": "nvidia.com/gpu",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "batch",
+        "name": "report-28999-xk2lp",
+        "uid": "a0000000-0000-4000-8000-000000000216",
+        "labels": {
+          "job": "report"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "report-28999",
+            "uid": "c0000000-0000-4000-8000-000000000215",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "report",
+            "image": "registry.example.invalid/report:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "250m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "OnFailure",
+        "nodeName": "worker-03",
+        "tolerations": [
+          {
+            "key": "dedicated",
+            "operator": "Equal",
+            "value": "batch",
+            "effect": "PreferNoSchedule"
+          }
+        ],
+        "volumes": [
+          {
+            "name": "scratch",
+            "emptyDir": {}
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "batch",
+        "name": "report-28998-ab12c",
+        "uid": "a0000000-0000-4000-8000-000000000218",
+        "labels": {
+          "job": "report"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "report-28998",
+            "uid": "c0000000-0000-4000-8000-000000000217",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "report",
+            "image": "registry.example.invalid/report:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "250m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "OnFailure",
+        "nodeName": "worker-03"
+      },
+      "status": {
+        "phase": "Succeeded"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "analytics",
+        "name": "etl-2b3c4d-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000000220",
+        "labels": {
+          "app": "etl"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "etl-2b3c4d",
+            "uid": "c0000000-0000-4000-8000-000000000219",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "etl",
+            "image": "registry.example.invalid/etl:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "1Gi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03",
+        "affinity": {
+          "nodeAffinity": {
+            "requiredDuringSchedulingIgnoredDuringExecution": {
+              "nodeSelectorTerms": [
+                {
+                  "matchExpressions": [
+                    {
+                      "key": "topology.kubernetes.io/zone",
+                      "operator": "In",
+                      "values": [
+                        "zone-a"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "ops",
+        "name": "agent-x7k2m",
+        "uid": "a0000000-0000-4000-8000-000000000222",
+        "labels": {
+          "app": "agent"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "workloads.example.com/v1",
+            "kind": "CustomWorkload",
+            "name": "agent",
+            "uid": "c0000000-0000-4000-8000-000000000221",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "agent",
+            "image": "registry.example.invalid/agent:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "volcano",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03",
+        "topologySpreadConstraints": [
+          {
+            "maxSkew": 1,
+            "topologyKey": "topology.kubernetes.io/zone",
+            "whenUnsatisfiable": "DoNotSchedule",
+            "labelSelector": {
+              "matchLabels": {
+                "app": "agent"
+              }
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "secure",
+        "name": "sandbox-5f4e3d-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000000224",
+        "labels": {
+          "app": "sandbox"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "sandbox-5f4e3d",
+            "uid": "c0000000-0000-4000-8000-000000000223",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "sandbox",
+            "image": "registry.example.invalid/sandbox:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03",
+        "runtimeClassName": "gvisor",
+        "overhead": {
+          "cpu": "250m",
+          "memory": "120Mi"
+        }
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "edge",
+        "name": "proxy-8a7b6c-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000000226",
+        "labels": {
+          "app": "edge-proxy"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "proxy-8a7b6c",
+            "uid": "c0000000-0000-4000-8000-000000000225",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "proxy",
+            "image": "registry.example.invalid/proxy:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "200m",
+                "memory": "256Mi"
+              }
+            },
+            "ports": [
+              {
+                "containerPort": 8443,
+                "hostPort": 8443,
+                "protocol": "TCP"
+              }
+            ]
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "default",
+        "name": "debug-shell",
+        "uid": "a0000000-0000-4000-8000-000000000227",
+        "labels": {
+          "run": "debug-shell"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "shell",
+            "image": "registry.example.invalid/shell:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "kube-system",
+        "name": "fluent-bit-q8w7e",
+        "uid": "a0000000-0000-4000-8000-000000000229",
+        "labels": {
+          "app": "fluent-bit"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "DaemonSet",
+            "name": "fluent-bit",
+            "uid": "c0000000-0000-4000-8000-000000000228",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "fluent-bit",
+            "image": "registry.example.invalid/fluent-bit:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03",
+        "tolerations": [
+          {
+            "operator": "Exists"
+          }
+        ],
+        "volumes": [
+          {
+            "name": "varlog",
+            "hostPath": {
+              "path": "/var/log"
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "kube-system",
+        "name": "kube-proxy-worker-03",
+        "uid": "a0000000-0000-4000-8000-000000000231",
+        "labels": {
+          "component": "kube-proxy"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "v1",
+            "kind": "Node",
+            "name": "worker-03",
+            "uid": "c0000000-0000-4000-8000-000000000230",
+            "controller": true
+          }
+        ],
+        "annotations": {
+          "kubernetes.io/config.mirror": "0123456789abcdef0123456789abcdef",
+          "kubernetes.io/config.source": "file"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "kube-proxy",
+            "image": "registry.example.invalid/kube-proxy:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-03",
+        "priorityClassName": "system-node-critical"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "payments",
+        "name": "api-6d5c4b-bbbbb",
+        "uid": "a0000000-0000-4000-8000-000000000233",
+        "labels": {
+          "app": "payments-api"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "api-6d5c4b",
+            "uid": "c0000000-0000-4000-8000-000000000232",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "api",
+            "image": "registry.example.invalid/api:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "1Gi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-01",
+        "nodeSelector": {
+          "disktype": "ssd"
+        }
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "payments",
+        "name": "ledger-1",
+        "uid": "a0000000-0000-4000-8000-000000000235",
+        "labels": {
+          "app": "ledger"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "ledger",
+            "uid": "c0000000-0000-4000-8000-000000000234",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "ledger",
+            "image": "registry.example.invalid/ledger:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "1",
+                "memory": "4Gi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "worker-01",
+        "volumes": [
+          {
+            "name": "data",
+            "persistentVolumeClaim": {
+              "claimName": "data-ledger-1"
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    }
+  ],
+  "pod_disruption_budgets": [
+    {
+      "apiVersion": "policy/v1",
+      "kind": "PodDisruptionBudget",
+      "metadata": {
+        "namespace": "payments",
+        "name": "ledger-pdb",
+        "uid": "d0000000-0000-4000-8000-000000000236"
+      },
+      "spec": {
+        "selector": {
+          "matchLabels": {
+            "app": "ledger"
+          }
+        },
+        "maxUnavailable": 0
+      },
+      "status": {
+        "disruptionsAllowed": 0,
+        "currentHealthy": 2,
+        "desiredHealthy": 2,
+        "expectedPods": 2,
+        "observedGeneration": 1
+      }
+    },
+    {
+      "apiVersion": "policy/v1",
+      "kind": "PodDisruptionBudget",
+      "metadata": {
+        "namespace": "payments",
+        "name": "payments-all",
+        "uid": "d0000000-0000-4000-8000-000000000237"
+      },
+      "spec": {
+        "selector": {},
+        "maxUnavailable": 1,
+        "unhealthyPodEvictionPolicy": "AlwaysAllow"
+      },
+      "status": {
+        "disruptionsAllowed": 1,
+        "currentHealthy": 4,
+        "desiredHealthy": 3,
+        "expectedPods": 4,
+        "observedGeneration": 1
+      }
+    }
+  ]
+}
