@@ -1,0 +1,316 @@
+{
+  "artifact": "placement_results",
+  "artifact_schema_version": "1.0",
+  "assessment": "MODELED_FEASIBLE",
+  "conditions": [],
+  "disclaimer": "Requested-resource model only. MODELED_FEASIBLE is not SAFE_TO_DRAIN: it does not predict the Kubernetes scheduler's choices, does not simulate controller reconciliation, and does not establish that evictions will be permitted by PodDisruptionBudgets.",
+  "exact": {
+    "assignments": [
+      {
+        "node": "worker-01",
+        "pod": "shop/api-5c6b7d-aaaaa"
+      },
+      {
+        "node": "worker-02",
+        "pod": "shop/cart-0"
+      },
+      {
+        "node": "worker-01",
+        "pod": "shop/web-7d9f8c-aaaaa"
+      },
+      {
+        "node": "worker-02",
+        "pod": "shop/web-7d9f8c-bbbbb"
+      }
+    ],
+    "config": {
+      "deadline_seconds": null,
+      "max_candidates": 8,
+      "max_destinations": 6,
+      "max_states": 2000000
+    },
+    "metrics": {
+      "assigned": 4,
+      "candidates": 4,
+      "unplaced": 0,
+      "verified": true
+    },
+    "objective": {
+      "assigned": 4,
+      "balance_leximin": [
+        "6/13",
+        "19/39"
+      ],
+      "min_free_fraction": "6/13"
+    },
+    "optimality_proven": true,
+    "outcome": "COMPLETE",
+    "remaining_capacity": [
+      {
+        "assigned": {
+          "cpu_millicores": 1500,
+          "memory_bytes": 805306368,
+          "pods": 2
+        },
+        "node": "worker-01",
+        "remaining_after": {
+          "cpu_millicores": 1800,
+          "memory_bytes": 14696841216,
+          "pods": 106
+        },
+        "usable": true
+      },
+      {
+        "assigned": {
+          "cpu_millicores": 900,
+          "memory_bytes": 1744830464,
+          "pods": 2
+        },
+        "node": "worker-02",
+        "remaining_after": {
+          "cpu_millicores": 1900,
+          "memory_bytes": 14025752576,
+          "pods": 106
+        },
+        "usable": true
+      }
+    ],
+    "search": {
+      "branches_pruned": 15,
+      "states_explored": 31
+    },
+    "solver": "exact-bnb-v1",
+    "termination": "SEARCH_COMPLETED",
+    "unplaced": [],
+    "verification": {
+      "errors": [],
+      "node_usage": [
+        {
+          "assigned": {
+            "cpu_millicores": 1500,
+            "memory_bytes": 805306368,
+            "pods": 2
+          },
+          "assigned_pods": [
+            "shop/api-5c6b7d-aaaaa",
+            "shop/web-7d9f8c-aaaaa"
+          ],
+          "node": "worker-01",
+          "remaining_after": {
+            "cpu_millicores": 1800,
+            "memory_bytes": 14696841216,
+            "pods": 106
+          },
+          "remaining_before": {
+            "cpu_millicores": 3300,
+            "memory_bytes": 15502147584,
+            "pods": 108
+          }
+        },
+        {
+          "assigned": {
+            "cpu_millicores": 900,
+            "memory_bytes": 1744830464,
+            "pods": 2
+          },
+          "assigned_pods": [
+            "shop/cart-0",
+            "shop/web-7d9f8c-bbbbb"
+          ],
+          "node": "worker-02",
+          "remaining_after": {
+            "cpu_millicores": 1900,
+            "memory_bytes": 14025752576,
+            "pods": 106
+          },
+          "remaining_before": {
+            "cpu_millicores": 2800,
+            "memory_bytes": 15770583040,
+            "pods": 108
+          }
+        }
+      ],
+      "review_required": [],
+      "valid": true
+    }
+  },
+  "findings": [
+    "COMPLETE_ASSIGNMENT_FOUND"
+  ],
+  "generator": {
+    "milestone": "M2",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "greedy": {
+    "assignments": [
+      {
+        "node": "worker-01",
+        "pod": "shop/api-5c6b7d-aaaaa"
+      },
+      {
+        "node": "worker-01",
+        "pod": "shop/cart-0"
+      },
+      {
+        "node": "worker-01",
+        "pod": "shop/web-7d9f8c-aaaaa"
+      },
+      {
+        "node": "worker-01",
+        "pod": "shop/web-7d9f8c-bbbbb"
+      }
+    ],
+    "config": {
+      "candidate_order": "cpu desc, memory desc, pod key asc",
+      "destination_order": "node name asc"
+    },
+    "metrics": {
+      "assigned": 4,
+      "candidates": 4,
+      "unplaced": 0,
+      "verified": true
+    },
+    "objective": {
+      "assigned": 4,
+      "balance_leximin": [
+        "3/13",
+        "28/39"
+      ],
+      "min_free_fraction": "3/13"
+    },
+    "optimality_proven": false,
+    "outcome": "COMPLETE",
+    "remaining_capacity": [
+      {
+        "assigned": {
+          "cpu_millicores": 2400,
+          "memory_bytes": 2550136832,
+          "pods": 4
+        },
+        "node": "worker-01",
+        "remaining_after": {
+          "cpu_millicores": 900,
+          "memory_bytes": 12952010752,
+          "pods": 104
+        },
+        "usable": true
+      },
+      {
+        "assigned": {
+          "cpu_millicores": 0,
+          "memory_bytes": 0,
+          "pods": 0
+        },
+        "node": "worker-02",
+        "remaining_after": {
+          "cpu_millicores": 2800,
+          "memory_bytes": 15770583040,
+          "pods": 108
+        },
+        "usable": true
+      }
+    ],
+    "search": {
+      "branches_pruned": 0,
+      "states_explored": 4
+    },
+    "solver": "greedy-ffd-v1",
+    "termination": "COMPLETED",
+    "unplaced": [],
+    "verification": {
+      "errors": [],
+      "node_usage": [
+        {
+          "assigned": {
+            "cpu_millicores": 2400,
+            "memory_bytes": 2550136832,
+            "pods": 4
+          },
+          "assigned_pods": [
+            "shop/api-5c6b7d-aaaaa",
+            "shop/cart-0",
+            "shop/web-7d9f8c-aaaaa",
+            "shop/web-7d9f8c-bbbbb"
+          ],
+          "node": "worker-01",
+          "remaining_after": {
+            "cpu_millicores": 900,
+            "memory_bytes": 12952010752,
+            "pods": 104
+          },
+          "remaining_before": {
+            "cpu_millicores": 3300,
+            "memory_bytes": 15502147584,
+            "pods": 108
+          }
+        }
+      ],
+      "review_required": [],
+      "valid": true
+    }
+  },
+  "greedy_gap": 0,
+  "limitations": [
+    {
+      "code": "NON_CANDIDATE_TARGET_PODS",
+      "detail": "kube-system/node-exporter-worker-03:DAEMONSET",
+      "subject": "worker-03"
+    },
+    {
+      "code": "PDB_ADVISORY",
+      "detail": "PDB_ADVISORY_ONLY",
+      "subject": "shop/web-pdb"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "shop/api-5c6b7d-aaaaa"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "shop/cart-0"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "shop/web-7d9f8c-aaaaa"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "shop/web-7d9f8c-bbbbb"
+    }
+  ],
+  "source": {
+    "capacity_assessment_complete": true,
+    "captured_at": "2026-10-01T09:00:00Z",
+    "kubernetes_version": "v1.34.1",
+    "snapshot_id": "fixture-a-healthy",
+    "snapshot_schema_version": "1.0",
+    "source_file": "fixture_a_healthy.json",
+    "source_sha256": "9525703e0b2d45e72369401fdbc70ef241b97a18b4063538e9759ba4d55843b0",
+    "source_type": "synthetic_fixture"
+  },
+  "target_node": "worker-03",
+  "verified_assignments": [
+    {
+      "node": "worker-01",
+      "pod": "shop/api-5c6b7d-aaaaa"
+    },
+    {
+      "node": "worker-02",
+      "pod": "shop/cart-0"
+    },
+    {
+      "node": "worker-01",
+      "pod": "shop/web-7d9f8c-aaaaa"
+    },
+    {
+      "node": "worker-02",
+      "pod": "shop/web-7d9f8c-bbbbb"
+    }
+  ],
+  "verified_assignments_source": "exact"
+}

@@ -1,0 +1,220 @@
+{
+  "schema_version": "1.0",
+  "snapshot": {
+    "id": "m2-scenario-b-greedy-trap",
+    "captured_at": "2026-10-10T09:00:00Z",
+    "source_type": "synthetic_fixture",
+    "kubernetes_version": "v1.34.1",
+    "description": "First-fit puts the large unconstrained pod on node-a, which the selector-bound pod needs.",
+    "inventory": {
+      "nodes": "complete",
+      "pods": "complete",
+      "pod_disruption_budgets": "complete",
+      "notes": "Synthetic fixture. All names, UIDs and images are invented."
+    }
+  },
+  "target_node": "source",
+  "nodes": [
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "node-a",
+        "uid": "b0000000-0000-4000-8000-000000001101",
+        "labels": {
+          "kubernetes.io/hostname": "node-a",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64",
+          "disk": "ssd"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "2500m",
+          "memory": "4Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "2500m",
+          "memory": "4Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "node-b",
+        "uid": "b0000000-0000-4000-8000-000000001102",
+        "labels": {
+          "kubernetes.io/hostname": "node-b",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64",
+          "disk": "hdd"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "2500m",
+          "memory": "4Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "2500m",
+          "memory": "4Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "source",
+        "uid": "b0000000-0000-4000-8000-000000001103",
+        "labels": {
+          "kubernetes.io/hostname": "source",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64",
+          "disk": "ssd"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "8Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "4",
+          "memory": "8Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    }
+  ],
+  "pods": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "apps",
+        "name": "batch-7a6b5c-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000001105",
+        "labels": {
+          "app": "batch"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "batch-7a6b5c",
+            "uid": "c0000000-0000-4000-8000-000000001104",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "batch",
+            "image": "registry.example.invalid/batch:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "2",
+                "memory": "1Gi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "source"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "apps",
+        "name": "indexer-8b7c6d-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000001107",
+        "labels": {
+          "app": "indexer"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "indexer-8b7c6d",
+            "uid": "c0000000-0000-4000-8000-000000001106",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "indexer",
+            "image": "registry.example.invalid/indexer:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "1500m",
+                "memory": "1Gi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "source",
+        "nodeSelector": {
+          "disk": "ssd"
+        }
+      },
+      "status": {
+        "phase": "Running"
+      }
+    }
+  ],
+  "pod_disruption_budgets": []
+}

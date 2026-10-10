@@ -1,0 +1,306 @@
+{
+  "schema_version": "1.0",
+  "snapshot": {
+    "id": "m2-scenario-f-pod-slots",
+    "captured_at": "2026-10-10T09:00:00Z",
+    "source_type": "synthetic_fixture",
+    "kubernetes_version": "v1.34.1",
+    "description": "node-1 has ample CPU and memory but one free pod slot; node-2 is cordoned.",
+    "inventory": {
+      "nodes": "complete",
+      "pods": "complete",
+      "pod_disruption_budgets": "complete",
+      "notes": "Synthetic fixture. All names, UIDs and images are invented."
+    }
+  },
+  "target_node": "source",
+  "nodes": [
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "node-1",
+        "uid": "b0000000-0000-4000-8000-000000001501",
+        "labels": {
+          "kubernetes.io/hostname": "node-1",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "8",
+          "memory": "32Gi",
+          "pods": "3"
+        },
+        "allocatable": {
+          "cpu": "8",
+          "memory": "32Gi",
+          "pods": "3"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "node-2",
+        "uid": "b0000000-0000-4000-8000-000000001502",
+        "labels": {
+          "kubernetes.io/hostname": "node-2",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64"
+        }
+      },
+      "spec": {
+        "taints": [
+          {
+            "key": "node.kubernetes.io/unschedulable",
+            "effect": "NoSchedule"
+          }
+        ],
+        "unschedulable": true
+      },
+      "status": {
+        "capacity": {
+          "cpu": "8",
+          "memory": "32Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "8",
+          "memory": "32Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "source",
+        "uid": "b0000000-0000-4000-8000-000000001503",
+        "labels": {
+          "kubernetes.io/hostname": "source",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "8",
+          "memory": "32Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "8",
+          "memory": "32Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    }
+  ],
+  "pods": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "infra",
+        "name": "agent-a",
+        "uid": "a0000000-0000-4000-8000-000000001505",
+        "labels": {
+          "app": "agent-a"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "agent-1",
+            "uid": "c0000000-0000-4000-8000-000000001504",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "agent",
+            "image": "registry.example.invalid/agent:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "node-1"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "infra",
+        "name": "agent-b",
+        "uid": "a0000000-0000-4000-8000-000000001507",
+        "labels": {
+          "app": "agent-b"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "agent-2",
+            "uid": "c0000000-0000-4000-8000-000000001506",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "agent",
+            "image": "registry.example.invalid/agent:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "node-1"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "apps",
+        "name": "tiny-6f7a8b-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000001509",
+        "labels": {
+          "app": "tiny"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "tiny-6f7a8b",
+            "uid": "c0000000-0000-4000-8000-000000001508",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "tiny",
+            "image": "registry.example.invalid/tiny:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "source"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "apps",
+        "name": "tiny-6f7a8b-bbbbb",
+        "uid": "a0000000-0000-4000-8000-000000001511",
+        "labels": {
+          "app": "tiny"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "tiny-6f7a8b",
+            "uid": "c0000000-0000-4000-8000-000000001510",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "tiny",
+            "image": "registry.example.invalid/tiny:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "source"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    }
+  ],
+  "pod_disruption_budgets": []
+}

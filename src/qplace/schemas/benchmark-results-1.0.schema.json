@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qplace.invalid/schemas/benchmark-results-1.0.schema.json",
+  "title": "QPlace benchmark_results.json artifact, version 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["artifact", "artifact_schema_version", "generator", "source", "target_node", "fixture",
+               "solver_configuration", "deterministic", "runtime_observations"],
+  "properties": {
+    "artifact": {"const": "benchmark_results"},
+    "artifact_schema_version": {"const": "1.0"},
+    "generator": {"type": "object"},
+    "source": {"type": "object"},
+    "target_node": {"type": "string"},
+    "fixture": {"type": "string"},
+    "solver_configuration": {"type": "object", "required": ["greedy", "exact"]},
+    "deterministic": {
+      "type": "object",
+      "required": ["candidates", "usable_candidates", "usable_destinations", "variables", "greedy", "exact",
+                   "greedy_optimality_gap", "assessment"],
+      "properties": {
+        "greedy": {"type": "object", "required": ["placed", "outcome", "verified"]},
+        "exact": {"type": "object", "required": ["placed", "outcome", "verified", "optimality_proven", "termination",
+                                                  "states_explored", "branches_pruned"]},
+        "greedy_optimality_gap": {"type": ["integer", "null"], "minimum": 0},
+        "assessment": {"enum": ["MODELED_FEASIBLE", "MODELED_BLOCKED", "REVIEW_REQUIRED"]}
+      }
+    },
+    "runtime_observations": {
+      "type": "object",
+      "required": ["note", "repeats", "greedy_seconds", "exact_seconds"],
+      "properties": {
+        "repeats": {"type": "integer", "minimum": 1},
+        "greedy_seconds": {"$ref": "#/$defs/timing"},
+        "exact_seconds": {"$ref": "#/$defs/timing"}
+      }
+    }
+  },
+  "$defs": {
+    "timing": {"type": "object", "additionalProperties": false, "required": ["min", "median", "max"],
+               "properties": {"min": {"type": "number", "minimum": 0}, "median": {"type": "number", "minimum": 0},
+                              "max": {"type": "number", "minimum": 0}}}
+  }
+}

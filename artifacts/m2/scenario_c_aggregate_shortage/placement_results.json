@@ -1,0 +1,321 @@
+{
+  "artifact": "placement_results",
+  "artifact_schema_version": "1.0",
+  "assessment": "MODELED_BLOCKED",
+  "conditions": [],
+  "disclaimer": "Requested-resource model only. MODELED_FEASIBLE is not SAFE_TO_DRAIN: it does not predict the Kubernetes scheduler's choices, does not simulate controller reconciliation, and does not establish that evictions will be permitted by PodDisruptionBudgets.",
+  "exact": {
+    "assignments": [
+      {
+        "node": "node-1",
+        "pod": "apps/worker-9c8d7e-aaaaa"
+      },
+      {
+        "node": "node-2",
+        "pod": "apps/worker-9c8d7e-bbbbb"
+      }
+    ],
+    "config": {
+      "deadline_seconds": null,
+      "max_candidates": 8,
+      "max_destinations": 6,
+      "max_states": 2000000
+    },
+    "metrics": {
+      "assigned": 2,
+      "candidates": 3,
+      "unplaced": 1,
+      "verified": true
+    },
+    "objective": {
+      "assigned": 2,
+      "balance_leximin": [
+        "1/4",
+        "1/4"
+      ],
+      "min_free_fraction": "1/4"
+    },
+    "optimality_proven": true,
+    "outcome": "PARTIAL",
+    "remaining_capacity": [
+      {
+        "assigned": {
+          "cpu_millicores": 1500,
+          "memory_bytes": 1073741824,
+          "pods": 1
+        },
+        "node": "node-1",
+        "remaining_after": {
+          "cpu_millicores": 500,
+          "memory_bytes": 3221225472,
+          "pods": 109
+        },
+        "usable": true
+      },
+      {
+        "assigned": {
+          "cpu_millicores": 1500,
+          "memory_bytes": 1073741824,
+          "pods": 1
+        },
+        "node": "node-2",
+        "remaining_after": {
+          "cpu_millicores": 500,
+          "memory_bytes": 3221225472,
+          "pods": 109
+        },
+        "usable": true
+      }
+    ],
+    "search": {
+      "branches_pruned": 5,
+      "states_explored": 21
+    },
+    "solver": "exact-bnb-v1",
+    "termination": "SEARCH_COMPLETED",
+    "unplaced": [
+      {
+        "pod": "apps/worker-9c8d7e-ccccc",
+        "reasons": [
+          "NOT_SELECTED"
+        ],
+        "rejections": []
+      }
+    ],
+    "verification": {
+      "errors": [],
+      "node_usage": [
+        {
+          "assigned": {
+            "cpu_millicores": 1500,
+            "memory_bytes": 1073741824,
+            "pods": 1
+          },
+          "assigned_pods": [
+            "apps/worker-9c8d7e-aaaaa"
+          ],
+          "node": "node-1",
+          "remaining_after": {
+            "cpu_millicores": 500,
+            "memory_bytes": 3221225472,
+            "pods": 109
+          },
+          "remaining_before": {
+            "cpu_millicores": 2000,
+            "memory_bytes": 4294967296,
+            "pods": 110
+          }
+        },
+        {
+          "assigned": {
+            "cpu_millicores": 1500,
+            "memory_bytes": 1073741824,
+            "pods": 1
+          },
+          "assigned_pods": [
+            "apps/worker-9c8d7e-bbbbb"
+          ],
+          "node": "node-2",
+          "remaining_after": {
+            "cpu_millicores": 500,
+            "memory_bytes": 3221225472,
+            "pods": 109
+          },
+          "remaining_before": {
+            "cpu_millicores": 2000,
+            "memory_bytes": 4294967296,
+            "pods": 110
+          }
+        }
+      ],
+      "review_required": [],
+      "valid": true
+    }
+  },
+  "findings": [
+    "COMPLETE_ASSIGNMENT_IMPOSSIBLE_IN_MODEL",
+    "KNOWN_SHORTAGE_AMONG_MODELED_CANDIDATES"
+  ],
+  "generator": {
+    "milestone": "M2",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "greedy": {
+    "assignments": [
+      {
+        "node": "node-1",
+        "pod": "apps/worker-9c8d7e-aaaaa"
+      },
+      {
+        "node": "node-2",
+        "pod": "apps/worker-9c8d7e-bbbbb"
+      }
+    ],
+    "config": {
+      "candidate_order": "cpu desc, memory desc, pod key asc",
+      "destination_order": "node name asc"
+    },
+    "metrics": {
+      "assigned": 2,
+      "candidates": 3,
+      "unplaced": 1,
+      "verified": true
+    },
+    "objective": {
+      "assigned": 2,
+      "balance_leximin": [
+        "1/4",
+        "1/4"
+      ],
+      "min_free_fraction": "1/4"
+    },
+    "optimality_proven": false,
+    "outcome": "PARTIAL",
+    "remaining_capacity": [
+      {
+        "assigned": {
+          "cpu_millicores": 1500,
+          "memory_bytes": 1073741824,
+          "pods": 1
+        },
+        "node": "node-1",
+        "remaining_after": {
+          "cpu_millicores": 500,
+          "memory_bytes": 3221225472,
+          "pods": 109
+        },
+        "usable": true
+      },
+      {
+        "assigned": {
+          "cpu_millicores": 1500,
+          "memory_bytes": 1073741824,
+          "pods": 1
+        },
+        "node": "node-2",
+        "remaining_after": {
+          "cpu_millicores": 500,
+          "memory_bytes": 3221225472,
+          "pods": 109
+        },
+        "usable": true
+      }
+    ],
+    "search": {
+      "branches_pruned": 0,
+      "states_explored": 5
+    },
+    "solver": "greedy-ffd-v1",
+    "termination": "COMPLETED",
+    "unplaced": [
+      {
+        "pod": "apps/worker-9c8d7e-ccccc",
+        "reasons": [
+          "NOT_SELECTED"
+        ],
+        "rejections": [
+          {
+            "code": "INSUFFICIENT_CPU",
+            "detail": "needs 1500, has 500",
+            "node": "node-1"
+          },
+          {
+            "code": "INSUFFICIENT_CPU",
+            "detail": "needs 1500, has 500",
+            "node": "node-2"
+          }
+        ]
+      }
+    ],
+    "verification": {
+      "errors": [],
+      "node_usage": [
+        {
+          "assigned": {
+            "cpu_millicores": 1500,
+            "memory_bytes": 1073741824,
+            "pods": 1
+          },
+          "assigned_pods": [
+            "apps/worker-9c8d7e-aaaaa"
+          ],
+          "node": "node-1",
+          "remaining_after": {
+            "cpu_millicores": 500,
+            "memory_bytes": 3221225472,
+            "pods": 109
+          },
+          "remaining_before": {
+            "cpu_millicores": 2000,
+            "memory_bytes": 4294967296,
+            "pods": 110
+          }
+        },
+        {
+          "assigned": {
+            "cpu_millicores": 1500,
+            "memory_bytes": 1073741824,
+            "pods": 1
+          },
+          "assigned_pods": [
+            "apps/worker-9c8d7e-bbbbb"
+          ],
+          "node": "node-2",
+          "remaining_after": {
+            "cpu_millicores": 500,
+            "memory_bytes": 3221225472,
+            "pods": 109
+          },
+          "remaining_before": {
+            "cpu_millicores": 2000,
+            "memory_bytes": 4294967296,
+            "pods": 110
+          }
+        }
+      ],
+      "review_required": [],
+      "valid": true
+    }
+  },
+  "greedy_gap": 0,
+  "limitations": [
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "apps/worker-9c8d7e-aaaaa"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "apps/worker-9c8d7e-bbbbb"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "apps/worker-9c8d7e-ccccc"
+    }
+  ],
+  "source": {
+    "capacity_assessment_complete": true,
+    "captured_at": "2026-10-10T09:00:00Z",
+    "kubernetes_version": "v1.34.1",
+    "snapshot_id": "m2-scenario-c-aggregate-shortage",
+    "snapshot_schema_version": "1.0",
+    "source_file": "scenario_c_aggregate_shortage.json",
+    "source_sha256": "5c383c7a611bb77f9a0cbc97fa5df5f729b5134e887d657acc21065849d461fd",
+    "source_type": "synthetic_fixture"
+  },
+  "target_node": "source",
+  "verified_assignments": [
+    {
+      "node": "node-1",
+      "pod": "apps/worker-9c8d7e-aaaaa"
+    },
+    {
+      "node": "node-2",
+      "pod": "apps/worker-9c8d7e-bbbbb"
+    }
+  ],
+  "verified_assignments_source": "exact"
+}

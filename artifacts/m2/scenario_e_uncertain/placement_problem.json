@@ -1,0 +1,185 @@
+{
+  "artifact": "placement_problem",
+  "artifact_schema_version": "1.0",
+  "candidates": [
+    {
+      "allowed_nodes": [
+        "node-1",
+        "node-2"
+      ],
+      "cpu_millicores": 500,
+      "exclusion_reasons": [],
+      "ineligible_nodes": [],
+      "memory_bytes": 536870912,
+      "pod": "apps/plain-3c4d5e-aaaaa",
+      "replacement": "ASSUMED",
+      "request_status": "EXACT",
+      "unknown_nodes": [],
+      "usable": true
+    },
+    {
+      "allowed_nodes": [
+        "node-1",
+        "node-2"
+      ],
+      "cpu_millicores": null,
+      "exclusion_reasons": [
+        "REQUEST_UNKNOWN"
+      ],
+      "ineligible_nodes": [],
+      "memory_bytes": null,
+      "pod": "apps/resizer-4d5e6f-aaaaa",
+      "replacement": "ASSUMED",
+      "request_status": "UNKNOWN",
+      "unknown_nodes": [],
+      "usable": false
+    },
+    {
+      "allowed_nodes": [],
+      "cpu_millicores": 500,
+      "exclusion_reasons": [
+        "NO_ALLOWED_DESTINATION"
+      ],
+      "ineligible_nodes": [],
+      "memory_bytes": 536870912,
+      "pod": "apps/spread-5e6f7a-aaaaa",
+      "replacement": "ASSUMED",
+      "request_status": "EXACT",
+      "unknown_nodes": [
+        "node-1",
+        "node-2"
+      ],
+      "usable": false
+    }
+  ],
+  "conditions": [
+    {
+      "code": "CANDIDATE_REQUEST_UNKNOWN",
+      "detail": "POD_REQUEST_UNKNOWN,RESIZE_STATUS_INCOMPLETE",
+      "subject": "apps/resizer-4d5e6f-aaaaa"
+    },
+    {
+      "code": "CAPACITY_ASSESSMENT_INCOMPLETE",
+      "detail": "POD_REQUEST_UNKNOWN: apps/resizer-4d5e6f-aaaaa",
+      "subject": "cluster"
+    },
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "REQUIRED_POD_ANTI_AFFINITY_NOT_MODELED",
+      "subject": "apps/spread-5e6f7a-aaaaa@node-1"
+    },
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "REQUIRED_POD_ANTI_AFFINITY_NOT_MODELED",
+      "subject": "apps/spread-5e6f7a-aaaaa@node-2"
+    }
+  ],
+  "destinations": [
+    {
+      "accounting_status": "EXACT",
+      "allocatable": {
+        "cpu_millicores": 4000,
+        "memory_bytes": 8589934592,
+        "pods": 110
+      },
+      "exclusion_reasons": [],
+      "node": "node-1",
+      "remaining": {
+        "cpu_millicores": 4000,
+        "memory_bytes": 8589934592,
+        "pods": 110
+      },
+      "usable": true
+    },
+    {
+      "accounting_status": "EXACT",
+      "allocatable": {
+        "cpu_millicores": 4000,
+        "memory_bytes": 8589934592,
+        "pods": 110
+      },
+      "exclusion_reasons": [],
+      "node": "node-2",
+      "remaining": {
+        "cpu_millicores": 4000,
+        "memory_bytes": 8589934592,
+        "pods": 110
+      },
+      "usable": true
+    }
+  ],
+  "formulation": {
+    "constraints": [
+      "sum_n x[p,n] <= 1 for every candidate p (at most one destination)",
+      "x[p,n] exists only for M1-ELIGIBLE pairs on usable destinations (eligibility)",
+      "sum_p cpu[p] * x[p,n] <= remaining_cpu[n] for every destination n",
+      "sum_p mem[p] * x[p,n] <= remaining_memory[n] for every destination n",
+      "sum_p x[p,n] <= remaining_pods[n] for every destination n"
+    ],
+    "objective": [
+      "1. maximize sum x[p,n] (pods placed)",
+      "2. maximize, lexicographically, the ascending vector over usable destinations of min_r (remaining_r[n] - used_r[n]) / allocatable_r[n] for r in cpu, memory, pods (leximin balance)",
+      "3. minimize the tie-break vector over candidates in pod-key order: (0, node) if placed, (1, '') if not"
+    ],
+    "variables": "x[p,n] in {0,1} for each allowed (candidate p, destination n) pair listed in 'variables'"
+  },
+  "generator": {
+    "milestone": "M2",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "limitations": [
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "apps/plain-3c4d5e-aaaaa"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "apps/resizer-4d5e6f-aaaaa"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "apps/spread-5e6f7a-aaaaa"
+    }
+  ],
+  "policy_excluded_pairs": [],
+  "source": {
+    "capacity_assessment_complete": false,
+    "captured_at": "2026-10-10T09:00:00Z",
+    "kubernetes_version": "v1.34.1",
+    "snapshot_id": "m2-scenario-e-uncertain",
+    "snapshot_schema_version": "1.0",
+    "source_file": "scenario_e_uncertain.json",
+    "source_sha256": "1d1932678fdda115a06e567d4e9438d17485779fe24a5ded9e0f11fc0c24140f",
+    "source_type": "synthetic_fixture"
+  },
+  "summary": {
+    "candidates": 3,
+    "conditional": true,
+    "destinations": 2,
+    "usable_candidates": 1,
+    "usable_destinations": 2,
+    "variables": 2
+  },
+  "target_node": "source",
+  "units": {
+    "cpu": "millicores",
+    "memory": "bytes",
+    "pods": "count"
+  },
+  "variables": [
+    {
+      "index": 0,
+      "node": "node-1",
+      "pod": "apps/plain-3c4d5e-aaaaa"
+    },
+    {
+      "index": 1,
+      "node": "node-2",
+      "pod": "apps/plain-3c4d5e-aaaaa"
+    }
+  ]
+}

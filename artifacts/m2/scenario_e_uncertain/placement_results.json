@@ -1,0 +1,302 @@
+{
+  "artifact": "placement_results",
+  "artifact_schema_version": "1.0",
+  "assessment": "REVIEW_REQUIRED",
+  "conditions": [
+    {
+      "code": "CANDIDATE_REQUEST_UNKNOWN",
+      "detail": "POD_REQUEST_UNKNOWN,RESIZE_STATUS_INCOMPLETE",
+      "subject": "apps/resizer-4d5e6f-aaaaa"
+    },
+    {
+      "code": "CAPACITY_ASSESSMENT_INCOMPLETE",
+      "detail": "POD_REQUEST_UNKNOWN: apps/resizer-4d5e6f-aaaaa",
+      "subject": "cluster"
+    },
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "REQUIRED_POD_ANTI_AFFINITY_NOT_MODELED",
+      "subject": "apps/spread-5e6f7a-aaaaa@node-1"
+    },
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "REQUIRED_POD_ANTI_AFFINITY_NOT_MODELED",
+      "subject": "apps/spread-5e6f7a-aaaaa@node-2"
+    }
+  ],
+  "disclaimer": "Requested-resource model only. MODELED_FEASIBLE is not SAFE_TO_DRAIN: it does not predict the Kubernetes scheduler's choices, does not simulate controller reconciliation, and does not establish that evictions will be permitted by PodDisruptionBudgets.",
+  "exact": {
+    "assignments": [
+      {
+        "node": "node-1",
+        "pod": "apps/plain-3c4d5e-aaaaa"
+      }
+    ],
+    "config": {
+      "deadline_seconds": null,
+      "max_candidates": 8,
+      "max_destinations": 6,
+      "max_states": 2000000
+    },
+    "metrics": {
+      "assigned": 1,
+      "candidates": 3,
+      "unplaced": 2,
+      "verified": true
+    },
+    "objective": {
+      "assigned": 1,
+      "balance_leximin": [
+        "7/8",
+        "1/1"
+      ],
+      "min_free_fraction": "7/8"
+    },
+    "optimality_proven": true,
+    "outcome": "PARTIAL",
+    "remaining_capacity": [
+      {
+        "assigned": {
+          "cpu_millicores": 500,
+          "memory_bytes": 536870912,
+          "pods": 1
+        },
+        "node": "node-1",
+        "remaining_after": {
+          "cpu_millicores": 3500,
+          "memory_bytes": 8053063680,
+          "pods": 109
+        },
+        "usable": true
+      },
+      {
+        "assigned": {
+          "cpu_millicores": 0,
+          "memory_bytes": 0,
+          "pods": 0
+        },
+        "node": "node-2",
+        "remaining_after": {
+          "cpu_millicores": 4000,
+          "memory_bytes": 8589934592,
+          "pods": 110
+        },
+        "usable": true
+      }
+    ],
+    "search": {
+      "branches_pruned": 1,
+      "states_explored": 4
+    },
+    "solver": "exact-bnb-v1",
+    "termination": "SEARCH_COMPLETED",
+    "unplaced": [
+      {
+        "pod": "apps/resizer-4d5e6f-aaaaa",
+        "reasons": [
+          "REQUEST_UNKNOWN"
+        ],
+        "rejections": []
+      },
+      {
+        "pod": "apps/spread-5e6f7a-aaaaa",
+        "reasons": [
+          "NO_ALLOWED_DESTINATION"
+        ],
+        "rejections": []
+      }
+    ],
+    "verification": {
+      "errors": [],
+      "node_usage": [
+        {
+          "assigned": {
+            "cpu_millicores": 500,
+            "memory_bytes": 536870912,
+            "pods": 1
+          },
+          "assigned_pods": [
+            "apps/plain-3c4d5e-aaaaa"
+          ],
+          "node": "node-1",
+          "remaining_after": {
+            "cpu_millicores": 3500,
+            "memory_bytes": 8053063680,
+            "pods": 109
+          },
+          "remaining_before": {
+            "cpu_millicores": 4000,
+            "memory_bytes": 8589934592,
+            "pods": 110
+          }
+        }
+      ],
+      "review_required": [],
+      "valid": true
+    }
+  },
+  "findings": [
+    "CONDITIONAL_INPUTS",
+    "UNMODELED_CANDIDATES_UNPLACED"
+  ],
+  "generator": {
+    "milestone": "M2",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "greedy": {
+    "assignments": [
+      {
+        "node": "node-1",
+        "pod": "apps/plain-3c4d5e-aaaaa"
+      }
+    ],
+    "config": {
+      "candidate_order": "cpu desc, memory desc, pod key asc",
+      "destination_order": "node name asc"
+    },
+    "metrics": {
+      "assigned": 1,
+      "candidates": 3,
+      "unplaced": 2,
+      "verified": true
+    },
+    "objective": {
+      "assigned": 1,
+      "balance_leximin": [
+        "7/8",
+        "1/1"
+      ],
+      "min_free_fraction": "7/8"
+    },
+    "optimality_proven": false,
+    "outcome": "PARTIAL",
+    "remaining_capacity": [
+      {
+        "assigned": {
+          "cpu_millicores": 500,
+          "memory_bytes": 536870912,
+          "pods": 1
+        },
+        "node": "node-1",
+        "remaining_after": {
+          "cpu_millicores": 3500,
+          "memory_bytes": 8053063680,
+          "pods": 109
+        },
+        "usable": true
+      },
+      {
+        "assigned": {
+          "cpu_millicores": 0,
+          "memory_bytes": 0,
+          "pods": 0
+        },
+        "node": "node-2",
+        "remaining_after": {
+          "cpu_millicores": 4000,
+          "memory_bytes": 8589934592,
+          "pods": 110
+        },
+        "usable": true
+      }
+    ],
+    "search": {
+      "branches_pruned": 0,
+      "states_explored": 1
+    },
+    "solver": "greedy-ffd-v1",
+    "termination": "COMPLETED",
+    "unplaced": [
+      {
+        "pod": "apps/resizer-4d5e6f-aaaaa",
+        "reasons": [
+          "REQUEST_UNKNOWN"
+        ],
+        "rejections": []
+      },
+      {
+        "pod": "apps/spread-5e6f7a-aaaaa",
+        "reasons": [
+          "NO_ALLOWED_DESTINATION"
+        ],
+        "rejections": [
+          {
+            "code": "ELIGIBILITY_UNKNOWN_PAIR",
+            "detail": "M1 eligibility UNKNOWN",
+            "node": "node-1"
+          },
+          {
+            "code": "ELIGIBILITY_UNKNOWN_PAIR",
+            "detail": "M1 eligibility UNKNOWN",
+            "node": "node-2"
+          }
+        ]
+      }
+    ],
+    "verification": {
+      "errors": [],
+      "node_usage": [
+        {
+          "assigned": {
+            "cpu_millicores": 500,
+            "memory_bytes": 536870912,
+            "pods": 1
+          },
+          "assigned_pods": [
+            "apps/plain-3c4d5e-aaaaa"
+          ],
+          "node": "node-1",
+          "remaining_after": {
+            "cpu_millicores": 3500,
+            "memory_bytes": 8053063680,
+            "pods": 109
+          },
+          "remaining_before": {
+            "cpu_millicores": 4000,
+            "memory_bytes": 8589934592,
+            "pods": 110
+          }
+        }
+      ],
+      "review_required": [],
+      "valid": true
+    }
+  },
+  "greedy_gap": 0,
+  "limitations": [
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "apps/plain-3c4d5e-aaaaa"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "apps/resizer-4d5e6f-aaaaa"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "apps/spread-5e6f7a-aaaaa"
+    }
+  ],
+  "source": {
+    "capacity_assessment_complete": false,
+    "captured_at": "2026-10-10T09:00:00Z",
+    "kubernetes_version": "v1.34.1",
+    "snapshot_id": "m2-scenario-e-uncertain",
+    "snapshot_schema_version": "1.0",
+    "source_file": "scenario_e_uncertain.json",
+    "source_sha256": "1d1932678fdda115a06e567d4e9438d17485779fe24a5ded9e0f11fc0c24140f",
+    "source_type": "synthetic_fixture"
+  },
+  "target_node": "source",
+  "verified_assignments": [
+    {
+      "node": "node-1",
+      "pod": "apps/plain-3c4d5e-aaaaa"
+    }
+  ],
+  "verified_assignments_source": "exact"
+}

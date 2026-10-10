@@ -1,0 +1,727 @@
+{
+  "artifact": "placement_results",
+  "artifact_schema_version": "1.0",
+  "assessment": "REVIEW_REQUIRED",
+  "conditions": [
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "REQUIRED_NODE_AFFINITY_NOT_MODELED",
+      "subject": "analytics/etl-2b3c4d-aaaaa@worker-01"
+    },
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "REQUIRED_NODE_AFFINITY_NOT_MODELED",
+      "subject": "analytics/etl-2b3c4d-aaaaa@worker-04"
+    },
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "HOST_PORT_NOT_MODELED",
+      "subject": "edge/proxy-8a7b6c-aaaaa@worker-01"
+    },
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "HOST_PORT_NOT_MODELED",
+      "subject": "edge/proxy-8a7b6c-aaaaa@worker-04"
+    },
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "EXTENDED_RESOURCE_NOT_MODELED",
+      "subject": "ml/trainer-7e6f5a-aaaaa@gpu-01"
+    },
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "EXTENDED_RESOURCE_NOT_MODELED",
+      "subject": "ml/trainer-7e6f5a-aaaaa@worker-01"
+    },
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "EXTENDED_RESOURCE_NOT_MODELED",
+      "subject": "ml/trainer-7e6f5a-aaaaa@worker-04"
+    },
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "CUSTOM_SCHEDULER,TOPOLOGY_SPREAD_NOT_MODELED",
+      "subject": "ops/agent-x7k2m@worker-01"
+    },
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "CUSTOM_SCHEDULER,TOPOLOGY_SPREAD_NOT_MODELED",
+      "subject": "ops/agent-x7k2m@worker-04"
+    },
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "PERSISTENT_VOLUME_TOPOLOGY_NOT_MODELED,REQUIRED_POD_ANTI_AFFINITY_NOT_MODELED",
+      "subject": "payments/ledger-0@worker-01"
+    },
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "PERSISTENT_VOLUME_TOPOLOGY_NOT_MODELED,REQUIRED_POD_ANTI_AFFINITY_NOT_MODELED",
+      "subject": "payments/ledger-0@worker-04"
+    },
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "RUNTIME_CLASS_NOT_MODELED",
+      "subject": "secure/sandbox-5f4e3d-aaaaa@worker-01"
+    },
+    {
+      "code": "ELIGIBILITY_UNKNOWN",
+      "detail": "RUNTIME_CLASS_NOT_MODELED",
+      "subject": "secure/sandbox-5f4e3d-aaaaa@worker-04"
+    },
+    {
+      "code": "REPLACEMENT_CONDITIONAL",
+      "detail": "controller Job",
+      "subject": "batch/report-28999-xk2lp"
+    },
+    {
+      "code": "REPLACEMENT_UNKNOWN",
+      "detail": "controller workloads.example.com/v1/CustomWorkload",
+      "subject": "ops/agent-x7k2m"
+    },
+    {
+      "code": "TERMINATING_TARGET_POD",
+      "detail": "replacement may already compete for destination capacity",
+      "subject": "payments/api-old-3c2b1a-aaaaa"
+    }
+  ],
+  "disclaimer": "Requested-resource model only. MODELED_FEASIBLE is not SAFE_TO_DRAIN: it does not predict the Kubernetes scheduler's choices, does not simulate controller reconciliation, and does not establish that evictions will be permitted by PodDisruptionBudgets.",
+  "exact": {
+    "assignments": [
+      {
+        "node": "worker-04",
+        "pod": "batch/report-28999-xk2lp"
+      },
+      {
+        "node": "worker-01",
+        "pod": "payments/api-6d5c4b-aaaaa"
+      }
+    ],
+    "config": {
+      "deadline_seconds": null,
+      "max_candidates": 8,
+      "max_destinations": 6,
+      "max_states": 2000000
+    },
+    "metrics": {
+      "assigned": 2,
+      "candidates": 8,
+      "unplaced": 6,
+      "verified": true
+    },
+    "objective": {
+      "assigned": 2,
+      "balance_leximin": [
+        "29/39",
+        "151/156",
+        "1/1",
+        "1/1",
+        "1/1"
+      ],
+      "min_free_fraction": "29/39"
+    },
+    "optimality_proven": true,
+    "outcome": "PARTIAL",
+    "remaining_capacity": [
+      {
+        "assigned": {
+          "cpu_millicores": 0,
+          "memory_bytes": 0,
+          "pods": 0
+        },
+        "node": "gpu-01",
+        "remaining_after": {
+          "cpu_millicores": 7800,
+          "memory_bytes": 32212254720,
+          "pods": 110
+        },
+        "usable": true
+      },
+      {
+        "assigned": {
+          "cpu_millicores": 500,
+          "memory_bytes": 1073741824,
+          "pods": 1
+        },
+        "node": "worker-01",
+        "remaining_after": {
+          "cpu_millicores": 5800,
+          "memory_bytes": 25769803776,
+          "pods": 107
+        },
+        "usable": true
+      },
+      {
+        "assigned": {
+          "cpu_millicores": 0,
+          "memory_bytes": 0,
+          "pods": 0
+        },
+        "node": "worker-02",
+        "remaining_after": {
+          "cpu_millicores": 7800,
+          "memory_bytes": 32212254720,
+          "pods": 110
+        },
+        "usable": true
+      },
+      {
+        "assigned": {
+          "cpu_millicores": 250,
+          "memory_bytes": 536870912,
+          "pods": 1
+        },
+        "node": "worker-04",
+        "remaining_after": {
+          "cpu_millicores": 7550,
+          "memory_bytes": 31675383808,
+          "pods": 109
+        },
+        "usable": true
+      },
+      {
+        "assigned": {
+          "cpu_millicores": 0,
+          "memory_bytes": 0,
+          "pods": 0
+        },
+        "node": "worker-05",
+        "remaining_after": {
+          "cpu_millicores": 7800,
+          "memory_bytes": 32212254720,
+          "pods": 110
+        },
+        "usable": true
+      }
+    ],
+    "search": {
+      "branches_pruned": 2,
+      "states_explored": 6
+    },
+    "solver": "exact-bnb-v1",
+    "termination": "SEARCH_COMPLETED",
+    "unplaced": [
+      {
+        "pod": "analytics/etl-2b3c4d-aaaaa",
+        "reasons": [
+          "NO_ALLOWED_DESTINATION"
+        ],
+        "rejections": []
+      },
+      {
+        "pod": "edge/proxy-8a7b6c-aaaaa",
+        "reasons": [
+          "NO_ALLOWED_DESTINATION"
+        ],
+        "rejections": []
+      },
+      {
+        "pod": "ml/trainer-7e6f5a-aaaaa",
+        "reasons": [
+          "NO_ALLOWED_DESTINATION"
+        ],
+        "rejections": []
+      },
+      {
+        "pod": "ops/agent-x7k2m",
+        "reasons": [
+          "NO_ALLOWED_DESTINATION"
+        ],
+        "rejections": []
+      },
+      {
+        "pod": "payments/ledger-0",
+        "reasons": [
+          "NO_ALLOWED_DESTINATION"
+        ],
+        "rejections": []
+      },
+      {
+        "pod": "secure/sandbox-5f4e3d-aaaaa",
+        "reasons": [
+          "NO_ALLOWED_DESTINATION"
+        ],
+        "rejections": []
+      }
+    ],
+    "verification": {
+      "errors": [],
+      "node_usage": [
+        {
+          "assigned": {
+            "cpu_millicores": 500,
+            "memory_bytes": 1073741824,
+            "pods": 1
+          },
+          "assigned_pods": [
+            "payments/api-6d5c4b-aaaaa"
+          ],
+          "node": "worker-01",
+          "remaining_after": {
+            "cpu_millicores": 5800,
+            "memory_bytes": 25769803776,
+            "pods": 107
+          },
+          "remaining_before": {
+            "cpu_millicores": 6300,
+            "memory_bytes": 26843545600,
+            "pods": 108
+          }
+        },
+        {
+          "assigned": {
+            "cpu_millicores": 250,
+            "memory_bytes": 536870912,
+            "pods": 1
+          },
+          "assigned_pods": [
+            "batch/report-28999-xk2lp"
+          ],
+          "node": "worker-04",
+          "remaining_after": {
+            "cpu_millicores": 7550,
+            "memory_bytes": 31675383808,
+            "pods": 109
+          },
+          "remaining_before": {
+            "cpu_millicores": 7800,
+            "memory_bytes": 32212254720,
+            "pods": 110
+          }
+        }
+      ],
+      "review_required": [],
+      "valid": true
+    }
+  },
+  "findings": [
+    "CONDITIONAL_INPUTS",
+    "UNMODELED_CANDIDATES_UNPLACED"
+  ],
+  "generator": {
+    "milestone": "M2",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "greedy": {
+    "assignments": [
+      {
+        "node": "worker-01",
+        "pod": "batch/report-28999-xk2lp"
+      },
+      {
+        "node": "worker-01",
+        "pod": "payments/api-6d5c4b-aaaaa"
+      }
+    ],
+    "config": {
+      "candidate_order": "cpu desc, memory desc, pod key asc",
+      "destination_order": "node name asc"
+    },
+    "metrics": {
+      "assigned": 2,
+      "candidates": 8,
+      "unplaced": 6,
+      "verified": true
+    },
+    "objective": {
+      "assigned": 2,
+      "balance_leximin": [
+        "37/52",
+        "1/1",
+        "1/1",
+        "1/1",
+        "1/1"
+      ],
+      "min_free_fraction": "37/52"
+    },
+    "optimality_proven": false,
+    "outcome": "PARTIAL",
+    "remaining_capacity": [
+      {
+        "assigned": {
+          "cpu_millicores": 0,
+          "memory_bytes": 0,
+          "pods": 0
+        },
+        "node": "gpu-01",
+        "remaining_after": {
+          "cpu_millicores": 7800,
+          "memory_bytes": 32212254720,
+          "pods": 110
+        },
+        "usable": true
+      },
+      {
+        "assigned": {
+          "cpu_millicores": 750,
+          "memory_bytes": 1610612736,
+          "pods": 2
+        },
+        "node": "worker-01",
+        "remaining_after": {
+          "cpu_millicores": 5550,
+          "memory_bytes": 25232932864,
+          "pods": 106
+        },
+        "usable": true
+      },
+      {
+        "assigned": {
+          "cpu_millicores": 0,
+          "memory_bytes": 0,
+          "pods": 0
+        },
+        "node": "worker-02",
+        "remaining_after": {
+          "cpu_millicores": 7800,
+          "memory_bytes": 32212254720,
+          "pods": 110
+        },
+        "usable": true
+      },
+      {
+        "assigned": {
+          "cpu_millicores": 0,
+          "memory_bytes": 0,
+          "pods": 0
+        },
+        "node": "worker-04",
+        "remaining_after": {
+          "cpu_millicores": 7800,
+          "memory_bytes": 32212254720,
+          "pods": 110
+        },
+        "usable": true
+      },
+      {
+        "assigned": {
+          "cpu_millicores": 0,
+          "memory_bytes": 0,
+          "pods": 0
+        },
+        "node": "worker-05",
+        "remaining_after": {
+          "cpu_millicores": 7800,
+          "memory_bytes": 32212254720,
+          "pods": 110
+        },
+        "usable": true
+      }
+    ],
+    "search": {
+      "branches_pruned": 0,
+      "states_explored": 2
+    },
+    "solver": "greedy-ffd-v1",
+    "termination": "COMPLETED",
+    "unplaced": [
+      {
+        "pod": "analytics/etl-2b3c4d-aaaaa",
+        "reasons": [
+          "NO_ALLOWED_DESTINATION"
+        ],
+        "rejections": [
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "gpu-01"
+          },
+          {
+            "code": "ELIGIBILITY_UNKNOWN_PAIR",
+            "detail": "M1 eligibility UNKNOWN",
+            "node": "worker-01"
+          },
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "worker-02"
+          },
+          {
+            "code": "ELIGIBILITY_UNKNOWN_PAIR",
+            "detail": "M1 eligibility UNKNOWN",
+            "node": "worker-04"
+          },
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "worker-05"
+          }
+        ]
+      },
+      {
+        "pod": "edge/proxy-8a7b6c-aaaaa",
+        "reasons": [
+          "NO_ALLOWED_DESTINATION"
+        ],
+        "rejections": [
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "gpu-01"
+          },
+          {
+            "code": "ELIGIBILITY_UNKNOWN_PAIR",
+            "detail": "M1 eligibility UNKNOWN",
+            "node": "worker-01"
+          },
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "worker-02"
+          },
+          {
+            "code": "ELIGIBILITY_UNKNOWN_PAIR",
+            "detail": "M1 eligibility UNKNOWN",
+            "node": "worker-04"
+          },
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "worker-05"
+          }
+        ]
+      },
+      {
+        "pod": "ml/trainer-7e6f5a-aaaaa",
+        "reasons": [
+          "NO_ALLOWED_DESTINATION"
+        ],
+        "rejections": [
+          {
+            "code": "ELIGIBILITY_UNKNOWN_PAIR",
+            "detail": "M1 eligibility UNKNOWN",
+            "node": "gpu-01"
+          },
+          {
+            "code": "ELIGIBILITY_UNKNOWN_PAIR",
+            "detail": "M1 eligibility UNKNOWN",
+            "node": "worker-01"
+          },
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "worker-02"
+          },
+          {
+            "code": "ELIGIBILITY_UNKNOWN_PAIR",
+            "detail": "M1 eligibility UNKNOWN",
+            "node": "worker-04"
+          },
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "worker-05"
+          }
+        ]
+      },
+      {
+        "pod": "ops/agent-x7k2m",
+        "reasons": [
+          "NO_ALLOWED_DESTINATION"
+        ],
+        "rejections": [
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "gpu-01"
+          },
+          {
+            "code": "ELIGIBILITY_UNKNOWN_PAIR",
+            "detail": "M1 eligibility UNKNOWN",
+            "node": "worker-01"
+          },
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "worker-02"
+          },
+          {
+            "code": "ELIGIBILITY_UNKNOWN_PAIR",
+            "detail": "M1 eligibility UNKNOWN",
+            "node": "worker-04"
+          },
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "worker-05"
+          }
+        ]
+      },
+      {
+        "pod": "payments/ledger-0",
+        "reasons": [
+          "NO_ALLOWED_DESTINATION"
+        ],
+        "rejections": [
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "gpu-01"
+          },
+          {
+            "code": "ELIGIBILITY_UNKNOWN_PAIR",
+            "detail": "M1 eligibility UNKNOWN",
+            "node": "worker-01"
+          },
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "worker-02"
+          },
+          {
+            "code": "ELIGIBILITY_UNKNOWN_PAIR",
+            "detail": "M1 eligibility UNKNOWN",
+            "node": "worker-04"
+          },
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "worker-05"
+          }
+        ]
+      },
+      {
+        "pod": "secure/sandbox-5f4e3d-aaaaa",
+        "reasons": [
+          "NO_ALLOWED_DESTINATION"
+        ],
+        "rejections": [
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "gpu-01"
+          },
+          {
+            "code": "ELIGIBILITY_UNKNOWN_PAIR",
+            "detail": "M1 eligibility UNKNOWN",
+            "node": "worker-01"
+          },
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "worker-02"
+          },
+          {
+            "code": "ELIGIBILITY_UNKNOWN_PAIR",
+            "detail": "M1 eligibility UNKNOWN",
+            "node": "worker-04"
+          },
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "worker-05"
+          }
+        ]
+      }
+    ],
+    "verification": {
+      "errors": [],
+      "node_usage": [
+        {
+          "assigned": {
+            "cpu_millicores": 750,
+            "memory_bytes": 1610612736,
+            "pods": 2
+          },
+          "assigned_pods": [
+            "batch/report-28999-xk2lp",
+            "payments/api-6d5c4b-aaaaa"
+          ],
+          "node": "worker-01",
+          "remaining_after": {
+            "cpu_millicores": 5550,
+            "memory_bytes": 25232932864,
+            "pods": 106
+          },
+          "remaining_before": {
+            "cpu_millicores": 6300,
+            "memory_bytes": 26843545600,
+            "pods": 108
+          }
+        }
+      ],
+      "review_required": [],
+      "valid": true
+    }
+  },
+  "greedy_gap": 0,
+  "limitations": [
+    {
+      "code": "NON_CANDIDATE_TARGET_PODS",
+      "detail": "batch/report-28998-ab12c:TERMINAL, default/debug-shell:UNMANAGED, kube-system/fluent-bit-q8w7e:DAEMONSET, kube-system/kube-proxy-worker-03:MIRROR, payments/api-old-3c2b1a-aaaaa:TERMINATING",
+      "subject": "worker-03"
+    },
+    {
+      "code": "PDB_ADVISORY",
+      "detail": "PDB_EVICTION_BLOCKED_AT_SNAPSHOT",
+      "subject": "payments/ledger-pdb"
+    },
+    {
+      "code": "PDB_ADVISORY",
+      "detail": "PDB_MAY_BLOCK_SEQUENTIAL_EVICTION",
+      "subject": "payments/payments-all"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "analytics/etl-2b3c4d-aaaaa"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "batch/report-28999-xk2lp"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "edge/proxy-8a7b6c-aaaaa"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "ml/trainer-7e6f5a-aaaaa"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "ops/agent-x7k2m"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "payments/api-6d5c4b-aaaaa"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "payments/ledger-0"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "secure/sandbox-5f4e3d-aaaaa"
+    }
+  ],
+  "source": {
+    "capacity_assessment_complete": true,
+    "captured_at": "2026-10-03T09:00:00Z",
+    "kubernetes_version": "v1.34.0",
+    "snapshot_id": "fixture-c-constraints",
+    "snapshot_schema_version": "1.0",
+    "source_file": "fixture_c_constraints.json",
+    "source_sha256": "6ff5166fd6a7b53a6ea3a6aad8954968fcbd9bfd445865ac0f5e83aa41fa18b0",
+    "source_type": "synthetic_fixture"
+  },
+  "target_node": "worker-03",
+  "verified_assignments": [
+    {
+      "node": "worker-04",
+      "pod": "batch/report-28999-xk2lp"
+    },
+    {
+      "node": "worker-01",
+      "pod": "payments/api-6d5c4b-aaaaa"
+    }
+  ],
+  "verified_assignments_source": "exact"
+}

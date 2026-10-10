@@ -1,0 +1,180 @@
+{
+  "artifact": "placement_problem",
+  "artifact_schema_version": "1.0",
+  "candidates": [
+    {
+      "allowed_nodes": [
+        "worker-01",
+        "worker-02"
+      ],
+      "cpu_millicores": 800,
+      "exclusion_reasons": [],
+      "ineligible_nodes": [],
+      "memory_bytes": 1073741824,
+      "pod": "shop/api-6e5d4c-aaaaa",
+      "replacement": "ASSUMED",
+      "request_status": "EXACT",
+      "unknown_nodes": [],
+      "usable": true
+    },
+    {
+      "allowed_nodes": [
+        "worker-01",
+        "worker-02"
+      ],
+      "cpu_millicores": 500,
+      "exclusion_reasons": [],
+      "ineligible_nodes": [],
+      "memory_bytes": 3221225472,
+      "pod": "shop/cache-0",
+      "replacement": "ASSUMED",
+      "request_status": "EXACT",
+      "unknown_nodes": [],
+      "usable": true
+    },
+    {
+      "allowed_nodes": [
+        "worker-01",
+        "worker-02"
+      ],
+      "cpu_millicores": 1000,
+      "exclusion_reasons": [],
+      "ineligible_nodes": [],
+      "memory_bytes": 2147483648,
+      "pod": "shop/web-5d4c3b-bbbbb",
+      "replacement": "ASSUMED",
+      "request_status": "EXACT",
+      "unknown_nodes": [],
+      "usable": true
+    }
+  ],
+  "conditions": [],
+  "destinations": [
+    {
+      "accounting_status": "EXACT",
+      "allocatable": {
+        "cpu_millicores": 4000,
+        "memory_bytes": 8589934592,
+        "pods": 110
+      },
+      "exclusion_reasons": [],
+      "node": "worker-01",
+      "remaining": {
+        "cpu_millicores": 3000,
+        "memory_bytes": 6442450944,
+        "pods": 109
+      },
+      "usable": true
+    },
+    {
+      "accounting_status": "EXACT",
+      "allocatable": {
+        "cpu_millicores": 4000,
+        "memory_bytes": 8589934592,
+        "pods": 110
+      },
+      "exclusion_reasons": [],
+      "node": "worker-02",
+      "remaining": {
+        "cpu_millicores": 4000,
+        "memory_bytes": 8589934592,
+        "pods": 110
+      },
+      "usable": true
+    }
+  ],
+  "formulation": {
+    "constraints": [
+      "sum_n x[p,n] <= 1 for every candidate p (at most one destination)",
+      "x[p,n] exists only for M1-ELIGIBLE pairs on usable destinations (eligibility)",
+      "sum_p cpu[p] * x[p,n] <= remaining_cpu[n] for every destination n",
+      "sum_p mem[p] * x[p,n] <= remaining_memory[n] for every destination n",
+      "sum_p x[p,n] <= remaining_pods[n] for every destination n"
+    ],
+    "objective": [
+      "1. maximize sum x[p,n] (pods placed)",
+      "2. maximize, lexicographically, the ascending vector over usable destinations of min_r (remaining_r[n] - used_r[n]) / allocatable_r[n] for r in cpu, memory, pods (leximin balance)",
+      "3. minimize the tie-break vector over candidates in pod-key order: (0, node) if placed, (1, '') if not"
+    ],
+    "variables": "x[p,n] in {0,1} for each allowed (candidate p, destination n) pair listed in 'variables'"
+  },
+  "generator": {
+    "milestone": "M2",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "limitations": [
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "shop/api-6e5d4c-aaaaa"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "shop/cache-0"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "shop/web-5d4c3b-bbbbb"
+    }
+  ],
+  "policy_excluded_pairs": [],
+  "source": {
+    "capacity_assessment_complete": true,
+    "captured_at": "2026-10-10T09:00:00Z",
+    "kubernetes_version": "v1.34.1",
+    "snapshot_id": "m2-scenario-a-feasible",
+    "snapshot_schema_version": "1.0",
+    "source_file": "scenario_a_feasible.json",
+    "source_sha256": "c63654c225a1f1ae508046a1f8cde3275e886e82ccc9ba1eafeb51c2a657db47",
+    "source_type": "synthetic_fixture"
+  },
+  "summary": {
+    "candidates": 3,
+    "conditional": false,
+    "destinations": 2,
+    "usable_candidates": 3,
+    "usable_destinations": 2,
+    "variables": 6
+  },
+  "target_node": "worker-03",
+  "units": {
+    "cpu": "millicores",
+    "memory": "bytes",
+    "pods": "count"
+  },
+  "variables": [
+    {
+      "index": 0,
+      "node": "worker-01",
+      "pod": "shop/api-6e5d4c-aaaaa"
+    },
+    {
+      "index": 1,
+      "node": "worker-02",
+      "pod": "shop/api-6e5d4c-aaaaa"
+    },
+    {
+      "index": 2,
+      "node": "worker-01",
+      "pod": "shop/cache-0"
+    },
+    {
+      "index": 3,
+      "node": "worker-02",
+      "pod": "shop/cache-0"
+    },
+    {
+      "index": 4,
+      "node": "worker-01",
+      "pod": "shop/web-5d4c3b-bbbbb"
+    },
+    {
+      "index": 5,
+      "node": "worker-02",
+      "pod": "shop/web-5d4c3b-bbbbb"
+    }
+  ]
+}

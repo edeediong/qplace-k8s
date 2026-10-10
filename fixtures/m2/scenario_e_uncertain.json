@@ -1,0 +1,277 @@
+{
+  "schema_version": "1.0",
+  "snapshot": {
+    "id": "m2-scenario-e-uncertain",
+    "captured_at": "2026-10-10T09:00:00Z",
+    "source_type": "synthetic_fixture",
+    "kubernetes_version": "v1.34.1",
+    "description": "One pod has unmodeled anti-affinity, one has an unknown request mid-resize.",
+    "inventory": {
+      "nodes": "complete",
+      "pods": "complete",
+      "pod_disruption_budgets": "complete",
+      "notes": "Synthetic fixture. All names, UIDs and images are invented."
+    }
+  },
+  "target_node": "source",
+  "nodes": [
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "node-1",
+        "uid": "b0000000-0000-4000-8000-000000001403",
+        "labels": {
+          "kubernetes.io/hostname": "node-1",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "8Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "4",
+          "memory": "8Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "node-2",
+        "uid": "b0000000-0000-4000-8000-000000001404",
+        "labels": {
+          "kubernetes.io/hostname": "node-2",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "8Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "4",
+          "memory": "8Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "source",
+        "uid": "b0000000-0000-4000-8000-000000001405",
+        "labels": {
+          "kubernetes.io/hostname": "source",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "8Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "4",
+          "memory": "8Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    }
+  ],
+  "pods": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "apps",
+        "name": "plain-3c4d5e-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000001407",
+        "labels": {
+          "app": "plain"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "plain-3c4d5e",
+            "uid": "c0000000-0000-4000-8000-000000001406",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "plain",
+            "image": "registry.example.invalid/plain:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "source"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "apps",
+        "name": "spread-5e6f7a-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000001409",
+        "labels": {
+          "app": "spread"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "spread-5e6f7a",
+            "uid": "c0000000-0000-4000-8000-000000001408",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "spread",
+            "image": "registry.example.invalid/spread:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "source",
+        "affinity": {
+          "podAntiAffinity": {
+            "requiredDuringSchedulingIgnoredDuringExecution": [
+              {
+                "labelSelector": {
+                  "matchLabels": {
+                    "app": "spread"
+                  }
+                },
+                "topologyKey": "kubernetes.io/hostname"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "apps",
+        "name": "resizer-4d5e6f-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000001402",
+        "labels": {
+          "app": "resizer"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "resizer-4d5e6f",
+            "uid": "c0000000-0000-4000-8000-000000001401",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "resizer",
+            "image": "registry.example.invalid/resizer:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "source"
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "PodResizePending",
+            "status": "True",
+            "reason": "Deferred"
+          }
+        ]
+      }
+    }
+  ],
+  "pod_disruption_budgets": []
+}

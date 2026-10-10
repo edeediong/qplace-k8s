@@ -1,0 +1,142 @@
+{
+  "artifact": "placement_problem",
+  "artifact_schema_version": "1.0",
+  "candidates": [
+    {
+      "allowed_nodes": [
+        "node-1"
+      ],
+      "cpu_millicores": 100,
+      "exclusion_reasons": [],
+      "ineligible_nodes": [
+        "node-2"
+      ],
+      "memory_bytes": 134217728,
+      "pod": "apps/tiny-6f7a8b-aaaaa",
+      "replacement": "ASSUMED",
+      "request_status": "EXACT",
+      "unknown_nodes": [],
+      "usable": true
+    },
+    {
+      "allowed_nodes": [
+        "node-1"
+      ],
+      "cpu_millicores": 100,
+      "exclusion_reasons": [],
+      "ineligible_nodes": [
+        "node-2"
+      ],
+      "memory_bytes": 134217728,
+      "pod": "apps/tiny-6f7a8b-bbbbb",
+      "replacement": "ASSUMED",
+      "request_status": "EXACT",
+      "unknown_nodes": [],
+      "usable": true
+    }
+  ],
+  "conditions": [],
+  "destinations": [
+    {
+      "accounting_status": "EXACT",
+      "allocatable": {
+        "cpu_millicores": 8000,
+        "memory_bytes": 34359738368,
+        "pods": 3
+      },
+      "exclusion_reasons": [],
+      "node": "node-1",
+      "remaining": {
+        "cpu_millicores": 7900,
+        "memory_bytes": 34225520640,
+        "pods": 1
+      },
+      "usable": true
+    },
+    {
+      "accounting_status": "EXACT",
+      "allocatable": {
+        "cpu_millicores": 8000,
+        "memory_bytes": 34359738368,
+        "pods": 110
+      },
+      "exclusion_reasons": [],
+      "node": "node-2",
+      "remaining": {
+        "cpu_millicores": 8000,
+        "memory_bytes": 34359738368,
+        "pods": 110
+      },
+      "usable": true
+    }
+  ],
+  "formulation": {
+    "constraints": [
+      "sum_n x[p,n] <= 1 for every candidate p (at most one destination)",
+      "x[p,n] exists only for M1-ELIGIBLE pairs on usable destinations (eligibility)",
+      "sum_p cpu[p] * x[p,n] <= remaining_cpu[n] for every destination n",
+      "sum_p mem[p] * x[p,n] <= remaining_memory[n] for every destination n",
+      "sum_p x[p,n] <= remaining_pods[n] for every destination n"
+    ],
+    "objective": [
+      "1. maximize sum x[p,n] (pods placed)",
+      "2. maximize, lexicographically, the ascending vector over usable destinations of min_r (remaining_r[n] - used_r[n]) / allocatable_r[n] for r in cpu, memory, pods (leximin balance)",
+      "3. minimize the tie-break vector over candidates in pod-key order: (0, node) if placed, (1, '') if not"
+    ],
+    "variables": "x[p,n] in {0,1} for each allowed (candidate p, destination n) pair listed in 'variables'"
+  },
+  "generator": {
+    "milestone": "M2",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "limitations": [
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "apps/tiny-6f7a8b-aaaaa"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "apps/tiny-6f7a8b-bbbbb"
+    }
+  ],
+  "policy_excluded_pairs": [],
+  "source": {
+    "capacity_assessment_complete": true,
+    "captured_at": "2026-10-10T09:00:00Z",
+    "kubernetes_version": "v1.34.1",
+    "snapshot_id": "m2-scenario-f-pod-slots",
+    "snapshot_schema_version": "1.0",
+    "source_file": "scenario_f_pod_slots.json",
+    "source_sha256": "b285404b3f20ebc7b5ced01fa9b2ee582806df1816d08939e2bdc3221e621587",
+    "source_type": "synthetic_fixture"
+  },
+  "summary": {
+    "candidates": 2,
+    "conditional": false,
+    "destinations": 2,
+    "usable_candidates": 2,
+    "usable_destinations": 2,
+    "variables": 2
+  },
+  "target_node": "source",
+  "units": {
+    "cpu": "millicores",
+    "memory": "bytes",
+    "pods": "count"
+  },
+  "variables": [
+    {
+      "index": 0,
+      "node": "node-1",
+      "pod": "apps/tiny-6f7a8b-aaaaa"
+    },
+    {
+      "index": 1,
+      "node": "node-1",
+      "pod": "apps/tiny-6f7a8b-bbbbb"
+    }
+  ]
+}

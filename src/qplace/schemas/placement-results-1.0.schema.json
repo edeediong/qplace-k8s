@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qplace.invalid/schemas/placement-results-1.0.schema.json",
+  "title": "QPlace placement_results.json artifact, version 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["artifact", "artifact_schema_version", "generator", "source", "target_node", "assessment",
+               "findings", "disclaimer", "greedy", "exact", "verified_assignments", "verified_assignments_source",
+               "greedy_gap", "conditions",
+               "limitations"],
+  "properties": {
+    "artifact": {"const": "placement_results"},
+    "artifact_schema_version": {"const": "1.0"},
+    "generator": {"type": "object", "required": ["name", "version", "milestone"]},
+    "source": {"type": "object", "required": ["snapshot_id", "source_sha256"]},
+    "target_node": {"type": "string"},
+    "assessment": {"enum": ["MODELED_FEASIBLE", "MODELED_BLOCKED", "REVIEW_REQUIRED"]},
+    "findings": {"type": "array", "items": {"$ref": "#/$defs/code"}},
+    "disclaimer": {"type": "string", "minLength": 1},
+    "greedy": {"$ref": "#/$defs/evaluation"},
+    "exact": {"$ref": "#/$defs/evaluation"},
+    "verified_assignments": {"type": "array", "items": {"$ref": "#/$defs/assignment"}},
+    "verified_assignments_source": {"enum": ["exact", "greedy", null]},
+    "greedy_gap": {"type": ["integer", "null"], "minimum": 0},
+    "conditions": {"type": "array"},
+    "limitations": {"type": "array"}
+  },
+  "allOf": [
+    {"if": {"properties": {"assessment": {"const": "MODELED_FEASIBLE"}}},
+     "then": {"properties": {"conditions": {"maxItems": 0},
+                             "verified_assignments_source": {"enum": ["exact", "greedy"]}}}},
+    {"if": {"properties": {"assessment": {"const": "MODELED_BLOCKED"}}},
+     "then": {"properties": {"conditions": {"maxItems": 0},
+                             "exact": {"properties": {"optimality_proven": {"const": true},
+                                                      "outcome": {"enum": ["PARTIAL", "NONE"]}}}}}}
+  ],
+  "$defs": {
+    "code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]*$"},
+    "assignment": {"type": "object", "additionalProperties": false, "required": ["pod", "node"],
+                   "properties": {"pod": {"type": "string"}, "node": {"type": "string"}}},
+    "evaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["solver", "config", "outcome", "optimality_proven", "termination", "assignments", "unplaced",
+                   "objective", "verification", "remaining_capacity", "search", "metrics"],
+      "properties": {
+        "solver": {"type": "string"},
+        "config": {"type": "object"},
+        "outcome": {"enum": ["COMPLETE", "PARTIAL", "NONE", "INDETERMINATE"]},
+        "optimality_proven": {"type": "boolean"},
+        "termination": {"enum": ["COMPLETED", "SEARCH_COMPLETED", "STATE_LIMIT_REACHED", "DEADLINE_EXCEEDED",
+                                 "SIZE_LIMIT_EXCEEDED"]},
+        "assignments": {"type": "array", "items": {"$ref": "#/$defs/assignment"}},
+        "unplaced": {"type": "array", "items": {"type": "object", "required": ["pod", "reasons", "rejections"]}},
+        "objective": {"type": "object", "required": ["assigned", "balance_leximin", "min_free_fraction"],
+                      "properties": {"assigned": {"type": "integer", "minimum": 0},
+                                     "balance_leximin": {"type": "array",
+                                                         "items": {"type": "string", "pattern": "^-?[0-9]+/[0-9]+$"}}}},
+        "verification": {"type": "object", "required": ["valid", "errors", "review_required", "node_usage"],
+                         "properties": {"valid": {"type": "boolean"}, "errors": {"type": "array"}}},
+        "remaining_capacity": {"type": "array"},
+        "search": {"type": "object", "additionalProperties": false, "required": ["states_explored", "branches_pruned"],
+                   "properties": {"states_explored": {"type": "integer", "minimum": 0},
+                                  "branches_pruned": {"type": "integer", "minimum": 0}}},
+        "metrics": {"type": "object", "required": ["candidates", "assigned", "unplaced", "verified"]}
+      },
+      "allOf": [
+        {"if": {"properties": {"optimality_proven": {"const": true}}},
+         "then": {"properties": {"termination": {"const": "SEARCH_COMPLETED"}}}},
+        {"if": {"properties": {"outcome": {"const": "COMPLETE"}}},
+         "then": {"properties": {"unplaced": {"maxItems": 0}}}}
+      ]
+    }
+  }
+}

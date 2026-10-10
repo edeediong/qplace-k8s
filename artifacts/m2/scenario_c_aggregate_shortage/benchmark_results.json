@@ -1,0 +1,69 @@
+{
+  "artifact": "benchmark_results",
+  "artifact_schema_version": "1.0",
+  "deterministic": {
+    "assessment": "MODELED_BLOCKED",
+    "candidates": 3,
+    "exact": {
+      "branches_pruned": 5,
+      "optimality_proven": true,
+      "outcome": "PARTIAL",
+      "placed": 2,
+      "states_explored": 21,
+      "termination": "SEARCH_COMPLETED",
+      "verified": true
+    },
+    "greedy": {
+      "outcome": "PARTIAL",
+      "placed": 2,
+      "verified": true
+    },
+    "greedy_optimality_gap": 0,
+    "usable_candidates": 3,
+    "usable_destinations": 2,
+    "variables": 6
+  },
+  "fixture": "scenario_c_aggregate_shortage",
+  "generator": {
+    "milestone": "M2",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "runtime_observations": {
+    "exact_seconds": {
+      "max": 0.00018520792946219444,
+      "median": 0.00016024988144636154,
+      "min": 0.00015870900824666023
+    },
+    "greedy_seconds": {
+      "max": 2.474989742040634e-05,
+      "median": 2.133287489414215e-05,
+      "min": 2.054101787507534e-05
+    },
+    "note": "Wall-clock seconds on the machine that generated this file; varies between runs.",
+    "repeats": 5
+  },
+  "solver_configuration": {
+    "exact": {
+      "deadline_seconds": null,
+      "max_candidates": 8,
+      "max_destinations": 6,
+      "max_states": 2000000
+    },
+    "greedy": {
+      "candidate_order": "cpu desc, memory desc, pod key asc",
+      "destination_order": "node name asc"
+    }
+  },
+  "source": {
+    "capacity_assessment_complete": true,
+    "captured_at": "2026-10-10T09:00:00Z",
+    "kubernetes_version": "v1.34.1",
+    "snapshot_id": "m2-scenario-c-aggregate-shortage",
+    "snapshot_schema_version": "1.0",
+    "source_file": "scenario_c_aggregate_shortage.json",
+    "source_sha256": "5c383c7a611bb77f9a0cbc97fa5df5f729b5134e887d657acc21065849d461fd",
+    "source_type": "synthetic_fixture"
+  },
+  "target_node": "source"
+}

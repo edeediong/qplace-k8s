@@ -88,3 +88,27 @@ def make_node(**kwargs: Any) -> NodeModel:
 @pytest.fixture(params=FIXTURE_FILES, ids=lambda p: p.stem)
 def fixture_path(request: pytest.FixtureRequest) -> Path:
     return request.param
+
+
+def snapshot_data(nodes: list, pods: list, target: str, pods_inventory: str = "complete",
+                  version: str | None = "v1.34.1") -> dict:
+    return {
+        "schema_version": "1.0",
+        "snapshot": {
+            "id": "test", "captured_at": "2026-10-10T00:00:00Z", "source_type": "synthetic_fixture",
+            "kubernetes_version": version,
+            "inventory": {"nodes": "complete", "pods": pods_inventory, "pod_disruption_budgets": "complete"},
+        },
+        "target_node": target, "nodes": nodes, "pods": pods, "pod_disruption_budgets": [],
+    }
+
+
+def build_model(nodes: list, pods: list, target: str = "src", **kwargs: Any):
+    from qplace import build_cluster_model, load_snapshot_data
+
+    return build_cluster_model(load_snapshot_data(snapshot_data(nodes, pods, target, **kwargs)))
+
+
+def cand(name: str, cpu: str = "1", mem: str = "1Gi", node: str = "src", **kw: Any) -> dict:
+    """A ReplicaSet-managed pod on the drain target (a placement candidate)."""
+    return raw_pod(name=name, node=node, containers=[container(requests={"cpu": cpu, "memory": mem})], **kw)

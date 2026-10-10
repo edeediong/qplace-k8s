@@ -1,0 +1,278 @@
+{
+  "schema_version": "1.0",
+  "snapshot": {
+    "id": "m2-scenario-d-eligibility",
+    "captured_at": "2026-10-10T09:00:00Z",
+    "source_type": "synthetic_fixture",
+    "kubernetes_version": "v1.34.1",
+    "description": "Taint and nodeSelector confine pods; node-general is filled to exact capacity.",
+    "inventory": {
+      "nodes": "complete",
+      "pods": "complete",
+      "pod_disruption_budgets": "complete",
+      "notes": "Synthetic fixture. All names, UIDs and images are invented."
+    }
+  },
+  "target_node": "source",
+  "nodes": [
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "node-db",
+        "uid": "b0000000-0000-4000-8000-000000001301",
+        "labels": {
+          "kubernetes.io/hostname": "node-db",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64",
+          "role": "db"
+        }
+      },
+      "spec": {
+        "taints": [
+          {
+            "key": "dedicated",
+            "value": "db",
+            "effect": "NoSchedule"
+          }
+        ]
+      },
+      "status": {
+        "capacity": {
+          "cpu": "8",
+          "memory": "32Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "8",
+          "memory": "32Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "node-general",
+        "uid": "b0000000-0000-4000-8000-000000001302",
+        "labels": {
+          "kubernetes.io/hostname": "node-general",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64",
+          "role": "general"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "1",
+          "memory": "2Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "1",
+          "memory": "2Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "source",
+        "uid": "b0000000-0000-4000-8000-000000001303",
+        "labels": {
+          "kubernetes.io/hostname": "source",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64",
+          "role": "general"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "8",
+          "memory": "32Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "8",
+          "memory": "32Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    }
+  ],
+  "pods": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "data",
+        "name": "db-1a2b3c-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000001305",
+        "labels": {
+          "app": "db"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "db-1a2b3c",
+            "uid": "c0000000-0000-4000-8000-000000001304",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "db",
+            "image": "registry.example.invalid/db:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "2",
+                "memory": "4Gi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "source",
+        "nodeSelector": {
+          "role": "db"
+        },
+        "tolerations": [
+          {
+            "key": "dedicated",
+            "operator": "Equal",
+            "value": "db",
+            "effect": "NoSchedule"
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "web",
+        "name": "front-2b3c4d-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000001307",
+        "labels": {
+          "app": "front"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "front-2b3c4d",
+            "uid": "c0000000-0000-4000-8000-000000001306",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "front",
+            "image": "registry.example.invalid/front:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "1Gi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "source"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "web",
+        "name": "front-2b3c4d-bbbbb",
+        "uid": "a0000000-0000-4000-8000-000000001309",
+        "labels": {
+          "app": "front"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "front-2b3c4d",
+            "uid": "c0000000-0000-4000-8000-000000001308",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "front",
+            "image": "registry.example.invalid/front:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "500m",
+                "memory": "1Gi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "source"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    }
+  ],
+  "pod_disruption_budgets": []
+}

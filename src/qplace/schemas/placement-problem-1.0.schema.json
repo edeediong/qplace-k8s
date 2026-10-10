@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qplace.invalid/schemas/placement-problem-1.0.schema.json",
+  "title": "QPlace placement_problem.json artifact, version 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["artifact", "artifact_schema_version", "generator", "source", "target_node", "units", "candidates",
+               "destinations", "variables", "conditions", "limitations", "policy_excluded_pairs", "formulation",
+               "summary"],
+  "properties": {
+    "artifact": {"const": "placement_problem"},
+    "artifact_schema_version": {"const": "1.0"},
+    "generator": {"$ref": "#/$defs/generator"},
+    "source": {"$ref": "#/$defs/source"},
+    "target_node": {"type": "string"},
+    "units": {"const": {"cpu": "millicores", "memory": "bytes", "pods": "count"}},
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["pod", "cpu_millicores", "memory_bytes", "request_status", "replacement", "allowed_nodes",
+                     "unknown_nodes", "ineligible_nodes", "usable", "exclusion_reasons"],
+        "properties": {
+          "pod": {"type": "string", "pattern": "^[^/]+/[^/]+$"},
+          "cpu_millicores": {"type": ["integer", "null"], "minimum": 0},
+          "memory_bytes": {"type": ["integer", "null"], "minimum": 0},
+          "request_status": {"$ref": "#/$defs/accounting"},
+          "replacement": {"enum": ["ASSUMED", "CONDITIONAL", "NOT_EXPECTED", "UNKNOWN"]},
+          "allowed_nodes": {"$ref": "#/$defs/strings"},
+          "unknown_nodes": {"$ref": "#/$defs/strings"},
+          "ineligible_nodes": {"$ref": "#/$defs/strings"},
+          "usable": {"type": "boolean"},
+          "exclusion_reasons": {"type": "array", "items": {"$ref": "#/$defs/code"}}
+        },
+        "allOf": [
+          {"if": {"properties": {"usable": {"const": true}}},
+           "then": {"properties": {"cpu_millicores": {"type": "integer"}, "memory_bytes": {"type": "integer"},
+                                   "exclusion_reasons": {"maxItems": 0}, "allowed_nodes": {"minItems": 1}}},
+           "else": {"properties": {"exclusion_reasons": {"minItems": 1}}}}
+        ]
+      }
+    },
+    "destinations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["node", "remaining", "allocatable", "accounting_status", "usable", "exclusion_reasons"],
+        "properties": {
+          "node": {"type": "string"},
+          "remaining": {"$ref": "#/$defs/resources"},
+          "allocatable": {"$ref": "#/$defs/resources"},
+          "accounting_status": {"$ref": "#/$defs/accounting"},
+          "usable": {"type": "boolean"},
+          "exclusion_reasons": {"type": "array", "items": {"$ref": "#/$defs/code"}}
+        }
+      }
+    },
+    "variables": {
+      "type": "array",
+      "items": {"type": "object", "additionalProperties": false, "required": ["index", "pod", "node"],
+                "properties": {"index": {"type": "integer", "minimum": 0}, "pod": {"type": "string"},
+                               "node": {"type": "string"}}}
+    },
+    "conditions": {"type": "array", "items": {"$ref": "#/$defs/condition"}},
+    "limitations": {"type": "array", "items": {"$ref": "#/$defs/condition"}},
+    "policy_excluded_pairs": {
+      "type": "array",
+      "items": {"type": "object", "additionalProperties": false, "required": ["pod", "node"],
+                "properties": {"pod": {"type": "string"}, "node": {"type": "string"}}}
+    },
+    "formulation": {"type": "object", "required": ["variables", "constraints", "objective"]},
+    "summary": {"type": "object", "required": ["candidates", "usable_candidates", "destinations",
+                                                "usable_destinations", "variables", "conditional"]}
+  },
+  "$defs": {
+    "generator": {"type": "object", "required": ["name", "version", "milestone"],
+                  "properties": {"name": {"const": "qplace"}, "milestone": {"const": "M2"}}},
+    "source": {"type": "object", "required": ["snapshot_id", "captured_at", "source_type", "source_file",
+                                               "source_sha256", "kubernetes_version", "snapshot_schema_version",
+                                               "capacity_assessment_complete"]},
+    "strings": {"type": "array", "items": {"type": "string"}},
+    "code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]*$"},
+    "accounting": {"enum": ["EXACT", "REVIEW_REQUIRED", "INCOMPLETE", "UNKNOWN"]},
+    "resources": {"type": "object", "additionalProperties": false,
+                  "required": ["cpu_millicores", "memory_bytes", "pods"],
+                  "properties": {"cpu_millicores": {"type": ["integer", "null"]},
+                                 "memory_bytes": {"type": ["integer", "null"]},
+                                 "pods": {"type": ["integer", "null"]}}},
+    "condition": {"type": "object", "additionalProperties": false, "required": ["code", "subject", "detail"],
+                  "properties": {"code": {"$ref": "#/$defs/code"}, "subject": {"type": "string"},
+                                 "detail": {"type": "string"}}}
+  }
+}

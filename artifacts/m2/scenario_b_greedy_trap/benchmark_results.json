@@ -1,0 +1,69 @@
+{
+  "artifact": "benchmark_results",
+  "artifact_schema_version": "1.0",
+  "deterministic": {
+    "assessment": "MODELED_FEASIBLE",
+    "candidates": 2,
+    "exact": {
+      "branches_pruned": 2,
+      "optimality_proven": true,
+      "outcome": "COMPLETE",
+      "placed": 2,
+      "states_explored": 7,
+      "termination": "SEARCH_COMPLETED",
+      "verified": true
+    },
+    "greedy": {
+      "outcome": "PARTIAL",
+      "placed": 1,
+      "verified": true
+    },
+    "greedy_optimality_gap": 1,
+    "usable_candidates": 2,
+    "usable_destinations": 2,
+    "variables": 3
+  },
+  "fixture": "scenario_b_greedy_trap",
+  "generator": {
+    "milestone": "M2",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "runtime_observations": {
+    "exact_seconds": {
+      "max": 4.045804962515831e-05,
+      "median": 3.816699609160423e-05,
+      "min": 3.6499928683042526e-05
+    },
+    "greedy_seconds": {
+      "max": 1.895800232887268e-05,
+      "median": 1.637497916817665e-05,
+      "min": 1.550000160932541e-05
+    },
+    "note": "Wall-clock seconds on the machine that generated this file; varies between runs.",
+    "repeats": 5
+  },
+  "solver_configuration": {
+    "exact": {
+      "deadline_seconds": null,
+      "max_candidates": 8,
+      "max_destinations": 6,
+      "max_states": 2000000
+    },
+    "greedy": {
+      "candidate_order": "cpu desc, memory desc, pod key asc",
+      "destination_order": "node name asc"
+    }
+  },
+  "source": {
+    "capacity_assessment_complete": true,
+    "captured_at": "2026-10-10T09:00:00Z",
+    "kubernetes_version": "v1.34.1",
+    "snapshot_id": "m2-scenario-b-greedy-trap",
+    "snapshot_schema_version": "1.0",
+    "source_file": "scenario_b_greedy_trap.json",
+    "source_sha256": "eafeae381b34f7d4749591bff4823a8055a14c6c1bb52e803154e72af39a9031",
+    "source_type": "synthetic_fixture"
+  },
+  "target_node": "source"
+}

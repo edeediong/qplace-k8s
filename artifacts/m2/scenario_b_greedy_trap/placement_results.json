@@ -1,0 +1,284 @@
+{
+  "artifact": "placement_results",
+  "artifact_schema_version": "1.0",
+  "assessment": "MODELED_FEASIBLE",
+  "conditions": [],
+  "disclaimer": "Requested-resource model only. MODELED_FEASIBLE is not SAFE_TO_DRAIN: it does not predict the Kubernetes scheduler's choices, does not simulate controller reconciliation, and does not establish that evictions will be permitted by PodDisruptionBudgets.",
+  "exact": {
+    "assignments": [
+      {
+        "node": "node-b",
+        "pod": "apps/batch-7a6b5c-aaaaa"
+      },
+      {
+        "node": "node-a",
+        "pod": "apps/indexer-8b7c6d-aaaaa"
+      }
+    ],
+    "config": {
+      "deadline_seconds": null,
+      "max_candidates": 8,
+      "max_destinations": 6,
+      "max_states": 2000000
+    },
+    "metrics": {
+      "assigned": 2,
+      "candidates": 2,
+      "unplaced": 0,
+      "verified": true
+    },
+    "objective": {
+      "assigned": 2,
+      "balance_leximin": [
+        "1/5",
+        "2/5"
+      ],
+      "min_free_fraction": "1/5"
+    },
+    "optimality_proven": true,
+    "outcome": "COMPLETE",
+    "remaining_capacity": [
+      {
+        "assigned": {
+          "cpu_millicores": 1500,
+          "memory_bytes": 1073741824,
+          "pods": 1
+        },
+        "node": "node-a",
+        "remaining_after": {
+          "cpu_millicores": 1000,
+          "memory_bytes": 3221225472,
+          "pods": 109
+        },
+        "usable": true
+      },
+      {
+        "assigned": {
+          "cpu_millicores": 2000,
+          "memory_bytes": 1073741824,
+          "pods": 1
+        },
+        "node": "node-b",
+        "remaining_after": {
+          "cpu_millicores": 500,
+          "memory_bytes": 3221225472,
+          "pods": 109
+        },
+        "usable": true
+      }
+    ],
+    "search": {
+      "branches_pruned": 2,
+      "states_explored": 7
+    },
+    "solver": "exact-bnb-v1",
+    "termination": "SEARCH_COMPLETED",
+    "unplaced": [],
+    "verification": {
+      "errors": [],
+      "node_usage": [
+        {
+          "assigned": {
+            "cpu_millicores": 1500,
+            "memory_bytes": 1073741824,
+            "pods": 1
+          },
+          "assigned_pods": [
+            "apps/indexer-8b7c6d-aaaaa"
+          ],
+          "node": "node-a",
+          "remaining_after": {
+            "cpu_millicores": 1000,
+            "memory_bytes": 3221225472,
+            "pods": 109
+          },
+          "remaining_before": {
+            "cpu_millicores": 2500,
+            "memory_bytes": 4294967296,
+            "pods": 110
+          }
+        },
+        {
+          "assigned": {
+            "cpu_millicores": 2000,
+            "memory_bytes": 1073741824,
+            "pods": 1
+          },
+          "assigned_pods": [
+            "apps/batch-7a6b5c-aaaaa"
+          ],
+          "node": "node-b",
+          "remaining_after": {
+            "cpu_millicores": 500,
+            "memory_bytes": 3221225472,
+            "pods": 109
+          },
+          "remaining_before": {
+            "cpu_millicores": 2500,
+            "memory_bytes": 4294967296,
+            "pods": 110
+          }
+        }
+      ],
+      "review_required": [],
+      "valid": true
+    }
+  },
+  "findings": [
+    "COMPLETE_ASSIGNMENT_FOUND",
+    "GREEDY_MISSED_FEASIBLE_ASSIGNMENT",
+    "GREEDY_SUBOPTIMAL"
+  ],
+  "generator": {
+    "milestone": "M2",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "greedy": {
+    "assignments": [
+      {
+        "node": "node-a",
+        "pod": "apps/batch-7a6b5c-aaaaa"
+      }
+    ],
+    "config": {
+      "candidate_order": "cpu desc, memory desc, pod key asc",
+      "destination_order": "node name asc"
+    },
+    "metrics": {
+      "assigned": 1,
+      "candidates": 2,
+      "unplaced": 1,
+      "verified": true
+    },
+    "objective": {
+      "assigned": 1,
+      "balance_leximin": [
+        "1/5",
+        "1/1"
+      ],
+      "min_free_fraction": "1/5"
+    },
+    "optimality_proven": false,
+    "outcome": "PARTIAL",
+    "remaining_capacity": [
+      {
+        "assigned": {
+          "cpu_millicores": 2000,
+          "memory_bytes": 1073741824,
+          "pods": 1
+        },
+        "node": "node-a",
+        "remaining_after": {
+          "cpu_millicores": 500,
+          "memory_bytes": 3221225472,
+          "pods": 109
+        },
+        "usable": true
+      },
+      {
+        "assigned": {
+          "cpu_millicores": 0,
+          "memory_bytes": 0,
+          "pods": 0
+        },
+        "node": "node-b",
+        "remaining_after": {
+          "cpu_millicores": 2500,
+          "memory_bytes": 4294967296,
+          "pods": 110
+        },
+        "usable": true
+      }
+    ],
+    "search": {
+      "branches_pruned": 0,
+      "states_explored": 2
+    },
+    "solver": "greedy-ffd-v1",
+    "termination": "COMPLETED",
+    "unplaced": [
+      {
+        "pod": "apps/indexer-8b7c6d-aaaaa",
+        "reasons": [
+          "NOT_SELECTED"
+        ],
+        "rejections": [
+          {
+            "code": "INSUFFICIENT_CPU",
+            "detail": "needs 1500, has 500",
+            "node": "node-a"
+          },
+          {
+            "code": "NOT_ELIGIBLE",
+            "detail": "M1 eligibility INELIGIBLE",
+            "node": "node-b"
+          }
+        ]
+      }
+    ],
+    "verification": {
+      "errors": [],
+      "node_usage": [
+        {
+          "assigned": {
+            "cpu_millicores": 2000,
+            "memory_bytes": 1073741824,
+            "pods": 1
+          },
+          "assigned_pods": [
+            "apps/batch-7a6b5c-aaaaa"
+          ],
+          "node": "node-a",
+          "remaining_after": {
+            "cpu_millicores": 500,
+            "memory_bytes": 3221225472,
+            "pods": 109
+          },
+          "remaining_before": {
+            "cpu_millicores": 2500,
+            "memory_bytes": 4294967296,
+            "pods": 110
+          }
+        }
+      ],
+      "review_required": [],
+      "valid": true
+    }
+  },
+  "greedy_gap": 1,
+  "limitations": [
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "apps/batch-7a6b5c-aaaaa"
+    },
+    {
+      "code": "REPLACEMENT_TEMPLATE_UNKNOWN",
+      "detail": "replacement modeled from the current pod spec",
+      "subject": "apps/indexer-8b7c6d-aaaaa"
+    }
+  ],
+  "source": {
+    "capacity_assessment_complete": true,
+    "captured_at": "2026-10-10T09:00:00Z",
+    "kubernetes_version": "v1.34.1",
+    "snapshot_id": "m2-scenario-b-greedy-trap",
+    "snapshot_schema_version": "1.0",
+    "source_file": "scenario_b_greedy_trap.json",
+    "source_sha256": "eafeae381b34f7d4749591bff4823a8055a14c6c1bb52e803154e72af39a9031",
+    "source_type": "synthetic_fixture"
+  },
+  "target_node": "source",
+  "verified_assignments": [
+    {
+      "node": "node-b",
+      "pod": "apps/batch-7a6b5c-aaaaa"
+    },
+    {
+      "node": "node-a",
+      "pod": "apps/indexer-8b7c6d-aaaaa"
+    }
+  ],
+  "verified_assignments_source": "exact"
+}

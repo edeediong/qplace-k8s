@@ -1,0 +1,69 @@
+{
+  "artifact": "benchmark_results",
+  "artifact_schema_version": "1.0",
+  "deterministic": {
+    "assessment": "MODELED_FEASIBLE",
+    "candidates": 4,
+    "exact": {
+      "branches_pruned": 15,
+      "optimality_proven": true,
+      "outcome": "COMPLETE",
+      "placed": 4,
+      "states_explored": 31,
+      "termination": "SEARCH_COMPLETED",
+      "verified": true
+    },
+    "greedy": {
+      "outcome": "COMPLETE",
+      "placed": 4,
+      "verified": true
+    },
+    "greedy_optimality_gap": 0,
+    "usable_candidates": 4,
+    "usable_destinations": 2,
+    "variables": 8
+  },
+  "fixture": "fixture_a_healthy",
+  "generator": {
+    "milestone": "M2",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "runtime_observations": {
+    "exact_seconds": {
+      "max": 0.0010454170405864716,
+      "median": 0.00021766708232462406,
+      "min": 0.00021283398382365704
+    },
+    "greedy_seconds": {
+      "max": 2.0292121917009354e-05,
+      "median": 1.7958926036953926e-05,
+      "min": 1.7625046893954277e-05
+    },
+    "note": "Wall-clock seconds on the machine that generated this file; varies between runs.",
+    "repeats": 5
+  },
+  "solver_configuration": {
+    "exact": {
+      "deadline_seconds": null,
+      "max_candidates": 8,
+      "max_destinations": 6,
+      "max_states": 2000000
+    },
+    "greedy": {
+      "candidate_order": "cpu desc, memory desc, pod key asc",
+      "destination_order": "node name asc"
+    }
+  },
+  "source": {
+    "capacity_assessment_complete": true,
+    "captured_at": "2026-10-01T09:00:00Z",
+    "kubernetes_version": "v1.34.1",
+    "snapshot_id": "fixture-a-healthy",
+    "snapshot_schema_version": "1.0",
+    "source_file": "fixture_a_healthy.json",
+    "source_sha256": "9525703e0b2d45e72369401fdbc70ef241b97a18b4063538e9759ba4d55843b0",
+    "source_type": "synthetic_fixture"
+  },
+  "target_node": "worker-03"
+}
