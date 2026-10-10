@@ -1,0 +1,75 @@
+{
+  "artifact": "quantum_problem",
+  "artifact_schema_version": "1.0",
+  "assignment_qubits": 3,
+  "bit_order": "Qiskit little-endian: qubit i is character [-1 - i] of a counts key",
+  "eliminated_variables": [],
+  "fixture": "fixture_c_constraints",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "m2_assessment": "REVIEW_REQUIRED",
+  "m2_conditions": [
+    "ELIGIBILITY_UNKNOWN:analytics/etl-2b3c4d-aaaaa@worker-01",
+    "ELIGIBILITY_UNKNOWN:analytics/etl-2b3c4d-aaaaa@worker-04",
+    "ELIGIBILITY_UNKNOWN:edge/proxy-8a7b6c-aaaaa@worker-01",
+    "ELIGIBILITY_UNKNOWN:edge/proxy-8a7b6c-aaaaa@worker-04",
+    "ELIGIBILITY_UNKNOWN:ml/trainer-7e6f5a-aaaaa@gpu-01",
+    "ELIGIBILITY_UNKNOWN:ml/trainer-7e6f5a-aaaaa@worker-01",
+    "ELIGIBILITY_UNKNOWN:ml/trainer-7e6f5a-aaaaa@worker-04",
+    "ELIGIBILITY_UNKNOWN:ops/agent-x7k2m@worker-01",
+    "ELIGIBILITY_UNKNOWN:ops/agent-x7k2m@worker-04",
+    "ELIGIBILITY_UNKNOWN:payments/ledger-0@worker-01",
+    "ELIGIBILITY_UNKNOWN:payments/ledger-0@worker-04",
+    "ELIGIBILITY_UNKNOWN:secure/sandbox-5f4e3d-aaaaa@worker-01",
+    "ELIGIBILITY_UNKNOWN:secure/sandbox-5f4e3d-aaaaa@worker-04",
+    "REPLACEMENT_CONDITIONAL:batch/report-28999-xk2lp",
+    "REPLACEMENT_UNKNOWN:ops/agent-x7k2m",
+    "TERMINATING_TARGET_POD:payments/api-old-3c2b1a-aaaaa"
+  ],
+  "m2_variables": [
+    {
+      "node": "worker-01",
+      "pod": "batch/report-28999-xk2lp"
+    },
+    {
+      "node": "worker-04",
+      "pod": "batch/report-28999-xk2lp"
+    },
+    {
+      "node": "worker-01",
+      "pod": "payments/api-6d5c4b-aaaaa"
+    }
+  ],
+  "qubit_budget": 12,
+  "qubits": [
+    {
+      "kind": "assignment",
+      "node": "worker-01",
+      "pod": "batch/report-28999-xk2lp",
+      "qubit": 0
+    },
+    {
+      "kind": "assignment",
+      "node": "worker-04",
+      "pod": "batch/report-28999-xk2lp",
+      "qubit": 1
+    },
+    {
+      "kind": "assignment",
+      "node": "worker-01",
+      "pod": "payments/api-6d5c4b-aaaaa",
+      "qubit": 2
+    }
+  ],
+  "required_qubits": 3,
+  "slack_qubits": 0,
+  "source": {
+    "snapshot_id": "fixture-c-constraints",
+    "source_sha256": "6ff5166fd6a7b53a6ea3a6aad8954968fcbd9bfd445865ac0f5e83aa41fa18b0"
+  },
+  "status": "SUPPORTED",
+  "target_node": "worker-03"
+}

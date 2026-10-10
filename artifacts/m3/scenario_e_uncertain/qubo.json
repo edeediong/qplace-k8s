@@ -1,0 +1,181 @@
+{
+  "artifact": "qubo",
+  "artifact_schema_version": "1.0",
+  "constraints": [
+    {
+      "capacity": 1,
+      "coefficients": [
+        1,
+        1
+      ],
+      "encoding": "AT_MOST_ONE_PAIRWISE",
+      "name": "one:apps/plain-3c4d5e-aaaaa",
+      "penalty_pairs": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        1
+      ]
+    },
+    {
+      "capacity": 4000,
+      "coefficients": [
+        500
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-1:cpu_millicores",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0
+      ]
+    },
+    {
+      "capacity": 8589934592,
+      "coefficients": [
+        536870912
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-1:memory_bytes",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0
+      ]
+    },
+    {
+      "capacity": 110,
+      "coefficients": [
+        1
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-1:pods",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0
+      ]
+    },
+    {
+      "capacity": 4000,
+      "coefficients": [
+        500
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-2:cpu_millicores",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        1
+      ]
+    },
+    {
+      "capacity": 8589934592,
+      "coefficients": [
+        536870912
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-2:memory_bytes",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        1
+      ]
+    },
+    {
+      "capacity": 110,
+      "coefficients": [
+        1
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-2:pods",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        1
+      ]
+    }
+  ],
+  "correctness_evidence": {
+    "every_max_assignment_reaches_minimum": true,
+    "feasible_energy_exact": true,
+    "infeasible_strictly_above_minimum": true,
+    "ising_matches_qubo": true,
+    "max_feasible_pods": 1,
+    "min_energy": -1,
+    "min_infeasible_energy": 0,
+    "minima_all_feasible_max_cardinality": true,
+    "minimum_states": 2,
+    "states_enumerated": 4,
+    "valid": true
+  },
+  "fixture": "scenario_e_uncertain",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "objective": "minimize -sum(assignment x) + penalties; primary M2 objective (pods placed) only",
+  "penalty": 2,
+  "penalty_rule": "P = number of assignment variables; any violated term costs >= P",
+  "qubo": {
+    "constant": 0,
+    "linear": [
+      {
+        "coefficient": -1,
+        "i": 0
+      },
+      {
+        "coefficient": -1,
+        "i": 1
+      }
+    ],
+    "num_variables": 2,
+    "quadratic": [
+      {
+        "coefficient": 2,
+        "i": 0,
+        "j": 1
+      }
+    ]
+  },
+  "source": {
+    "snapshot_id": "m2-scenario-e-uncertain",
+    "source_sha256": "1d1932678fdda115a06e567d4e9438d17485779fe24a5ded9e0f11fc0c24140f"
+  },
+  "status": "SUPPORTED",
+  "target_node": "source"
+}

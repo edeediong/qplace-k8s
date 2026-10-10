@@ -1,0 +1,37 @@
+{
+  "artifact": "ising_hamiltonian",
+  "artifact_schema_version": "1.0",
+  "circuit_scale": 0.5,
+  "circuit_scale_note": "QAOA uses H / max|coefficient|; eigenvectors and their order are unchanged",
+  "fixture": "scenario_f_pod_slots",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "ising": {
+    "J": [
+      {
+        "coefficient": "1/2",
+        "i": 0,
+        "j": 1
+      }
+    ],
+    "convention": "z_i = 1 - 2 x_i; Pauli label qubit 0 = rightmost character",
+    "h": [],
+    "num_qubits": 2,
+    "offset": "-1/2",
+    "pauli_terms": [
+      {
+        "coefficient": 0.5,
+        "label": "ZZ"
+      }
+    ]
+  },
+  "source": {
+    "snapshot_id": "m2-scenario-f-pod-slots",
+    "source_sha256": "b285404b3f20ebc7b5ced01fa9b2ee582806df1816d08939e2bdc3221e621587"
+  },
+  "status": "SUPPORTED",
+  "target_node": "source"
+}

@@ -1,0 +1,134 @@
+{
+  "artifact": "qaoa_experiment",
+  "artifact_schema_version": "1.0",
+  "backend": "qiskit.primitives.StatevectorSampler (local, noiseless, shot-based sampling of the exact statevector)",
+  "config": {
+    "grid_points": 12,
+    "maxiter": 150,
+    "reps": 1,
+    "reps_evaluated": [
+      1,
+      2
+    ],
+    "sampling_seeds": [
+      11,
+      22,
+      33,
+      44,
+      55
+    ],
+    "seed": 20261011,
+    "shots": 1024
+  },
+  "fixture": "scenario_g_triple_capacity",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "observational": true,
+  "runs": [
+    {
+      "circuit": {
+        "depth": 14,
+        "gate_counts": {
+          "barrier": 1,
+          "h": 10,
+          "measure": 10,
+          "rx": 10,
+          "rz": 10,
+          "rzz": 25
+        },
+        "qubits": 10,
+        "size": 65,
+        "two_qubit_gates": 25
+      },
+      "estimator_evaluations": 179,
+      "final_parameters": {
+        "beta": [
+          0.18957634506716045
+        ],
+        "gamma": [
+          1.8446461061673092
+        ]
+      },
+      "initial_parameters": {
+        "beta": [
+          0.20229952693570635
+        ],
+        "gamma": [
+          1.832595714594046
+        ]
+      },
+      "optimizer": {
+        "maxiter": 150,
+        "name": "COBYLA",
+        "objective": "exact <H/s> via StatevectorEstimator",
+        "source": "qiskit_optimization.optimizers",
+        "start": "best of 12x12 (gamma, beta) grid"
+      },
+      "reps": 1,
+      "scaled_energy": {
+        "final": -0.13183892219340768,
+        "initial": -0.13094013496933293
+      },
+      "training_seconds": 0.5611362499184906
+    },
+    {
+      "circuit": {
+        "depth": 22,
+        "gate_counts": {
+          "barrier": 1,
+          "h": 10,
+          "measure": 10,
+          "rx": 20,
+          "rz": 20,
+          "rzz": 50
+        },
+        "qubits": 10,
+        "size": 110,
+        "two_qubit_gates": 50
+      },
+      "estimator_evaluations": 294,
+      "final_parameters": {
+        "beta": [
+          1.2148944802470507,
+          1.5513653282500388
+        ],
+        "gamma": [
+          0.38539288401325794,
+          0.08768725948601636
+        ]
+      },
+      "initial_parameters": {
+        "beta": [
+          1.4339466468089774,
+          1.4339466468089774
+        ],
+        "gamma": [
+          0.2617993877991494,
+          0.2617993877991494
+        ]
+      },
+      "optimizer": {
+        "maxiter": 150,
+        "name": "COBYLA",
+        "objective": "exact <H/s> via StatevectorEstimator",
+        "source": "qiskit_optimization.optimizers",
+        "start": "best of 12x12 (gamma, beta) grid"
+      },
+      "reps": 2,
+      "scaled_energy": {
+        "final": -2.896550049538461,
+        "initial": -1.8578776325764152
+      },
+      "training_seconds": 1.4377177918795496
+    }
+  ],
+  "skipped": null,
+  "source": {
+    "snapshot_id": "m3-scenario-g-triple-capacity",
+    "source_sha256": "d2a82a960b2b770cd5111e2f3a553b321992e9113a09fb5ac70c0a94b20b8fe8"
+  },
+  "target_node": "source"
+}

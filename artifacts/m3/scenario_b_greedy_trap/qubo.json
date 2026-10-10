@@ -1,0 +1,218 @@
+{
+  "artifact": "qubo",
+  "artifact_schema_version": "1.0",
+  "constraints": [
+    {
+      "capacity": 1,
+      "coefficients": [
+        1,
+        1
+      ],
+      "encoding": "AT_MOST_ONE_PAIRWISE",
+      "name": "one:apps/batch-7a6b5c-aaaaa",
+      "penalty_pairs": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        1
+      ]
+    },
+    {
+      "capacity": 1,
+      "coefficients": [
+        1
+      ],
+      "encoding": "AT_MOST_ONE_PAIRWISE",
+      "name": "one:apps/indexer-8b7c6d-aaaaa",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        2
+      ]
+    },
+    {
+      "capacity": 2500,
+      "coefficients": [
+        2000,
+        1500
+      ],
+      "encoding": "CAPACITY_PAIRWISE_EXACT",
+      "name": "cap:node-a:cpu_millicores",
+      "penalty_pairs": [
+        [
+          0,
+          2
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        2
+      ]
+    },
+    {
+      "capacity": 4294967296,
+      "coefficients": [
+        1073741824,
+        1073741824
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-a:memory_bytes",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        2
+      ]
+    },
+    {
+      "capacity": 110,
+      "coefficients": [
+        1,
+        1
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-a:pods",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        2
+      ]
+    },
+    {
+      "capacity": 2500,
+      "coefficients": [
+        2000
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-b:cpu_millicores",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        1
+      ]
+    },
+    {
+      "capacity": 4294967296,
+      "coefficients": [
+        1073741824
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-b:memory_bytes",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        1
+      ]
+    },
+    {
+      "capacity": 110,
+      "coefficients": [
+        1
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-b:pods",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        1
+      ]
+    }
+  ],
+  "correctness_evidence": {
+    "every_max_assignment_reaches_minimum": true,
+    "feasible_energy_exact": true,
+    "infeasible_strictly_above_minimum": true,
+    "ising_matches_qubo": true,
+    "max_feasible_pods": 2,
+    "min_energy": -2,
+    "min_infeasible_energy": 1,
+    "minima_all_feasible_max_cardinality": true,
+    "minimum_states": 1,
+    "states_enumerated": 8,
+    "valid": true
+  },
+  "fixture": "scenario_b_greedy_trap",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "objective": "minimize -sum(assignment x) + penalties; primary M2 objective (pods placed) only",
+  "penalty": 3,
+  "penalty_rule": "P = number of assignment variables; any violated term costs >= P",
+  "qubo": {
+    "constant": 0,
+    "linear": [
+      {
+        "coefficient": -1,
+        "i": 0
+      },
+      {
+        "coefficient": -1,
+        "i": 1
+      },
+      {
+        "coefficient": -1,
+        "i": 2
+      }
+    ],
+    "num_variables": 3,
+    "quadratic": [
+      {
+        "coefficient": 3,
+        "i": 0,
+        "j": 1
+      },
+      {
+        "coefficient": 3,
+        "i": 0,
+        "j": 2
+      }
+    ]
+  },
+  "source": {
+    "snapshot_id": "m2-scenario-b-greedy-trap",
+    "source_sha256": "eafeae381b34f7d4749591bff4823a8055a14c6c1bb52e803154e72af39a9031"
+  },
+  "status": "SUPPORTED",
+  "target_node": "source"
+}

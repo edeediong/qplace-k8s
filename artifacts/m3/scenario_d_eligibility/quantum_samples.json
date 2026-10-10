@@ -1,0 +1,591 @@
+{
+  "artifact": "quantum_samples",
+  "artifact_schema_version": "1.0",
+  "backend": "qiskit.primitives.StatevectorSampler (local, noiseless, shot-based sampling of the exact statevector)",
+  "bitstrings": {
+    "111": {
+      "assignment": [
+        {
+          "node": "node-db",
+          "pod": "data/db-1a2b3c-aaaaa"
+        },
+        {
+          "node": "node-general",
+          "pod": "web/front-2b3c4d-aaaaa"
+        },
+        {
+          "node": "node-general",
+          "pod": "web/front-2b3c4d-bbbbb"
+        }
+      ],
+      "bitstring": "111",
+      "m2_objective": {
+        "assigned": 3,
+        "balance_leximin": [
+          "0/1",
+          "3/4"
+        ],
+        "min_free_fraction": "0/1"
+      },
+      "placed": 3,
+      "qubo_energy": -3,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    }
+  },
+  "fixture": "scenario_d_eligibility",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "observational": true,
+  "runs": [
+    {
+      "counts": {
+        "111": 1024
+      },
+      "decode_verify_seconds": 7.816590368747711e-05,
+      "reps": 1,
+      "sampling_seconds": 0.0026961250696331263,
+      "seed": 11,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-db",
+              "pod": "data/db-1a2b3c-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-bbbbb"
+            }
+          ],
+          "bitstring": "111",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "0/1",
+              "3/4"
+            ],
+            "min_free_fraction": "0/1"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "111": 1024
+      },
+      "decode_verify_seconds": 5.508307367563248e-05,
+      "reps": 1,
+      "sampling_seconds": 0.002291582990437746,
+      "seed": 22,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-db",
+              "pod": "data/db-1a2b3c-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-bbbbb"
+            }
+          ],
+          "bitstring": "111",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "0/1",
+              "3/4"
+            ],
+            "min_free_fraction": "0/1"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "111": 1024
+      },
+      "decode_verify_seconds": 4.495796747505665e-05,
+      "reps": 1,
+      "sampling_seconds": 0.0023197911214083433,
+      "seed": 33,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-db",
+              "pod": "data/db-1a2b3c-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-bbbbb"
+            }
+          ],
+          "bitstring": "111",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "0/1",
+              "3/4"
+            ],
+            "min_free_fraction": "0/1"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "111": 1024
+      },
+      "decode_verify_seconds": 4.116678610444069e-05,
+      "reps": 1,
+      "sampling_seconds": 0.00233429204672575,
+      "seed": 44,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-db",
+              "pod": "data/db-1a2b3c-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-bbbbb"
+            }
+          ],
+          "bitstring": "111",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "0/1",
+              "3/4"
+            ],
+            "min_free_fraction": "0/1"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "111": 1024
+      },
+      "decode_verify_seconds": 5.466584116220474e-05,
+      "reps": 1,
+      "sampling_seconds": 0.0022381250746548176,
+      "seed": 55,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-db",
+              "pod": "data/db-1a2b3c-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-bbbbb"
+            }
+          ],
+          "bitstring": "111",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "0/1",
+              "3/4"
+            ],
+            "min_free_fraction": "0/1"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "111": 1024
+      },
+      "decode_verify_seconds": 7.124990224838257e-05,
+      "reps": 2,
+      "sampling_seconds": 0.0026990422047674656,
+      "seed": 11,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-db",
+              "pod": "data/db-1a2b3c-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-bbbbb"
+            }
+          ],
+          "bitstring": "111",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "0/1",
+              "3/4"
+            ],
+            "min_free_fraction": "0/1"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "111": 1024
+      },
+      "decode_verify_seconds": 6.570899859070778e-05,
+      "reps": 2,
+      "sampling_seconds": 0.002524083945900202,
+      "seed": 22,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-db",
+              "pod": "data/db-1a2b3c-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-bbbbb"
+            }
+          ],
+          "bitstring": "111",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "0/1",
+              "3/4"
+            ],
+            "min_free_fraction": "0/1"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "111": 1024
+      },
+      "decode_verify_seconds": 5.2582938224077225e-05,
+      "reps": 2,
+      "sampling_seconds": 0.0027026250027120113,
+      "seed": 33,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-db",
+              "pod": "data/db-1a2b3c-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-bbbbb"
+            }
+          ],
+          "bitstring": "111",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "0/1",
+              "3/4"
+            ],
+            "min_free_fraction": "0/1"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "111": 1024
+      },
+      "decode_verify_seconds": 5.0833215937018394e-05,
+      "reps": 2,
+      "sampling_seconds": 0.002478417009115219,
+      "seed": 44,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-db",
+              "pod": "data/db-1a2b3c-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-bbbbb"
+            }
+          ],
+          "bitstring": "111",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "0/1",
+              "3/4"
+            ],
+            "min_free_fraction": "0/1"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "111": 1024
+      },
+      "decode_verify_seconds": 4.254188388586044e-05,
+      "reps": 2,
+      "sampling_seconds": 0.0024827499873936176,
+      "seed": 55,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-db",
+              "pod": "data/db-1a2b3c-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-aaaaa"
+            },
+            {
+              "node": "node-general",
+              "pod": "web/front-2b3c4d-bbbbb"
+            }
+          ],
+          "bitstring": "111",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "0/1",
+              "3/4"
+            ],
+            "min_free_fraction": "0/1"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    }
+  ],
+  "source": {
+    "snapshot_id": "m2-scenario-d-eligibility",
+    "source_sha256": "db51a686c6be132912f4446a006a90d1e742e9e88ee232ea395766220789f690"
+  },
+  "target_node": "source"
+}

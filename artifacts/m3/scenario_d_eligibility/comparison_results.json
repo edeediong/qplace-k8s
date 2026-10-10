@@ -1,0 +1,317 @@
+{
+  "artifact": "comparison_results",
+  "artifact_schema_version": "1.0",
+  "claims": {
+    "note": "QAOA results are local noiseless simulation. They inherit M2's assessment and conditions; a verified sample is a placement in the requested-resource model, not a drain approval.",
+    "operational_assessment": "MODELED_FEASIBLE",
+    "quantum_optimality_proven": false
+  },
+  "classical": {
+    "candidates": 3,
+    "exact": {
+      "assignments": [
+        {
+          "node": "node-db",
+          "pod": "data/db-1a2b3c-aaaaa"
+        },
+        {
+          "node": "node-general",
+          "pod": "web/front-2b3c4d-aaaaa"
+        },
+        {
+          "node": "node-general",
+          "pod": "web/front-2b3c4d-bbbbb"
+        }
+      ],
+      "objective": {
+        "assigned": 3,
+        "balance_leximin": [
+          "0/1",
+          "3/4"
+        ],
+        "min_free_fraction": "0/1"
+      },
+      "optimality_proven": true,
+      "placed": 3,
+      "verified": true
+    },
+    "greedy": {
+      "assignments": [
+        {
+          "node": "node-db",
+          "pod": "data/db-1a2b3c-aaaaa"
+        },
+        {
+          "node": "node-general",
+          "pod": "web/front-2b3c4d-aaaaa"
+        },
+        {
+          "node": "node-general",
+          "pod": "web/front-2b3c4d-bbbbb"
+        }
+      ],
+      "objective": {
+        "assigned": 3,
+        "balance_leximin": [
+          "0/1",
+          "3/4"
+        ],
+        "min_free_fraction": "0/1"
+      },
+      "placed": 3,
+      "verified": true
+    },
+    "m2_assessment": "MODELED_FEASIBLE",
+    "timing_seconds": {
+      "exact_seconds": {
+        "max": 3.579095937311649e-05,
+        "median": 3.024982288479805e-05,
+        "min": 2.9165996238589287e-05,
+        "repeats": 5
+      },
+      "greedy_seconds": {
+        "max": 2.404092811048031e-05,
+        "median": 1.7833895981311798e-05,
+        "min": 1.6834121197462082e-05,
+        "repeats": 5
+      }
+    }
+  },
+  "fixture": "scenario_d_eligibility",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "observational": true,
+  "quantum": [
+    {
+      "best_verified_sample": {
+        "assignment": [
+          {
+            "node": "node-db",
+            "pod": "data/db-1a2b3c-aaaaa"
+          },
+          {
+            "node": "node-general",
+            "pod": "web/front-2b3c4d-aaaaa"
+          },
+          {
+            "node": "node-general",
+            "pod": "web/front-2b3c4d-bbbbb"
+          }
+        ],
+        "bitstring": "111",
+        "count": 1024,
+        "m2_objective": {
+          "assigned": 3,
+          "balance_leximin": [
+            "0/1",
+            "3/4"
+          ],
+          "min_free_fraction": "0/1"
+        },
+        "placed": 3,
+        "qubo_energy": -3,
+        "raw_feasible": true,
+        "verification_errors": [],
+        "verified": true
+      },
+      "better_than_uniform": true,
+      "circuit_depth": 4,
+      "estimator_evaluations": 176,
+      "exact_count_sample_rate_mean": 1.0,
+      "exact_probability_of_optimal_count": 0.9999999930078869,
+      "feasible_sample_rate_mean": 1.0,
+      "m2_objective_equals_exact": true,
+      "optimality_gap_pods": 0,
+      "per_seed": [
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 1.0,
+          "feasible_sample_rate": 1.0,
+          "seed": 11,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 1.0,
+          "feasible_sample_rate": 1.0,
+          "seed": 22,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 1.0,
+          "feasible_sample_rate": 1.0,
+          "seed": 33,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 1.0,
+          "feasible_sample_rate": 1.0,
+          "seed": 44,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 1.0,
+          "feasible_sample_rate": 1.0,
+          "seed": 55,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        }
+      ],
+      "qubits": 3,
+      "ratio_to_uniform": 7.999999944063095,
+      "reps": 1,
+      "sampler_jobs": 5,
+      "sampling_seconds_median": 0.0023197911214083433,
+      "seeds_reaching_exact_count": 5,
+      "solver_result": {
+        "assignments": [
+          {
+            "node": "node-db",
+            "pod": "data/db-1a2b3c-aaaaa"
+          },
+          {
+            "node": "node-general",
+            "pod": "web/front-2b3c4d-aaaaa"
+          },
+          {
+            "node": "node-general",
+            "pod": "web/front-2b3c4d-bbbbb"
+          }
+        ],
+        "optimality_proven": false,
+        "solver": "qaoa",
+        "unplaced": []
+      },
+      "solver_result_seed": 11,
+      "training_seconds": 0.11042316583916545,
+      "two_qubit_gates": 0,
+      "uniform_probability_of_optimal_count": 0.125
+    },
+    {
+      "best_verified_sample": {
+        "assignment": [
+          {
+            "node": "node-db",
+            "pod": "data/db-1a2b3c-aaaaa"
+          },
+          {
+            "node": "node-general",
+            "pod": "web/front-2b3c4d-aaaaa"
+          },
+          {
+            "node": "node-general",
+            "pod": "web/front-2b3c4d-bbbbb"
+          }
+        ],
+        "bitstring": "111",
+        "count": 1024,
+        "m2_objective": {
+          "assigned": 3,
+          "balance_leximin": [
+            "0/1",
+            "3/4"
+          ],
+          "min_free_fraction": "0/1"
+        },
+        "placed": 3,
+        "qubo_energy": -3,
+        "raw_feasible": true,
+        "verification_errors": [],
+        "verified": true
+      },
+      "better_than_uniform": true,
+      "circuit_depth": 6,
+      "estimator_evaluations": 186,
+      "exact_count_sample_rate_mean": 1.0,
+      "exact_probability_of_optimal_count": 0.9999999910644761,
+      "feasible_sample_rate_mean": 1.0,
+      "m2_objective_equals_exact": true,
+      "optimality_gap_pods": 0,
+      "per_seed": [
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 1.0,
+          "feasible_sample_rate": 1.0,
+          "seed": 11,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 1.0,
+          "feasible_sample_rate": 1.0,
+          "seed": 22,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 1.0,
+          "feasible_sample_rate": 1.0,
+          "seed": 33,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 1.0,
+          "feasible_sample_rate": 1.0,
+          "seed": 44,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 1.0,
+          "feasible_sample_rate": 1.0,
+          "seed": 55,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        }
+      ],
+      "qubits": 3,
+      "ratio_to_uniform": 7.999999928515809,
+      "reps": 2,
+      "sampler_jobs": 5,
+      "sampling_seconds_median": 0.002524083945900202,
+      "seeds_reaching_exact_count": 5,
+      "solver_result": {
+        "assignments": [
+          {
+            "node": "node-db",
+            "pod": "data/db-1a2b3c-aaaaa"
+          },
+          {
+            "node": "node-general",
+            "pod": "web/front-2b3c4d-aaaaa"
+          },
+          {
+            "node": "node-general",
+            "pod": "web/front-2b3c4d-bbbbb"
+          }
+        ],
+        "optimality_proven": false,
+        "solver": "qaoa",
+        "unplaced": []
+      },
+      "solver_result_seed": 11,
+      "training_seconds": 0.1418011251371354,
+      "two_qubit_gates": 0,
+      "uniform_probability_of_optimal_count": 0.125
+    }
+  ],
+  "quantum_skipped": null,
+  "source": {
+    "snapshot_id": "m2-scenario-d-eligibility",
+    "source_sha256": "db51a686c6be132912f4446a006a90d1e742e9e88ee232ea395766220789f690"
+  },
+  "target_node": "source",
+  "uniform_random_baseline": {
+    "exact_count_rate": 0.125,
+    "feasible_rate": 1.0,
+    "nonempty_feasible_rate": 0.875,
+    "probability_seed_hits_exact_count_in_shots": 1.0,
+    "shots": 1024,
+    "states": 8
+  }
+}

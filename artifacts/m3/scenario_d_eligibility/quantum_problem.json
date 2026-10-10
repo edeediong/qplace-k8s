@@ -1,0 +1,58 @@
+{
+  "artifact": "quantum_problem",
+  "artifact_schema_version": "1.0",
+  "assignment_qubits": 3,
+  "bit_order": "Qiskit little-endian: qubit i is character [-1 - i] of a counts key",
+  "eliminated_variables": [],
+  "fixture": "scenario_d_eligibility",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "m2_assessment": "MODELED_FEASIBLE",
+  "m2_conditions": [],
+  "m2_variables": [
+    {
+      "node": "node-db",
+      "pod": "data/db-1a2b3c-aaaaa"
+    },
+    {
+      "node": "node-general",
+      "pod": "web/front-2b3c4d-aaaaa"
+    },
+    {
+      "node": "node-general",
+      "pod": "web/front-2b3c4d-bbbbb"
+    }
+  ],
+  "qubit_budget": 12,
+  "qubits": [
+    {
+      "kind": "assignment",
+      "node": "node-db",
+      "pod": "data/db-1a2b3c-aaaaa",
+      "qubit": 0
+    },
+    {
+      "kind": "assignment",
+      "node": "node-general",
+      "pod": "web/front-2b3c4d-aaaaa",
+      "qubit": 1
+    },
+    {
+      "kind": "assignment",
+      "node": "node-general",
+      "pod": "web/front-2b3c4d-bbbbb",
+      "qubit": 2
+    }
+  ],
+  "required_qubits": 3,
+  "slack_qubits": 0,
+  "source": {
+    "snapshot_id": "m2-scenario-d-eligibility",
+    "source_sha256": "db51a686c6be132912f4446a006a90d1e742e9e88ee232ea395766220789f690"
+  },
+  "status": "SUPPORTED",
+  "target_node": "source"
+}

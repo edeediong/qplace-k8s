@@ -1,0 +1,88 @@
+{
+  "artifact": "quantum_problem",
+  "artifact_schema_version": "1.0",
+  "assignment_qubits": 6,
+  "bit_order": "Qiskit little-endian: qubit i is character [-1 - i] of a counts key",
+  "eliminated_variables": [],
+  "fixture": "scenario_c_aggregate_shortage",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "m2_assessment": "MODELED_BLOCKED",
+  "m2_conditions": [],
+  "m2_variables": [
+    {
+      "node": "node-1",
+      "pod": "apps/worker-9c8d7e-aaaaa"
+    },
+    {
+      "node": "node-2",
+      "pod": "apps/worker-9c8d7e-aaaaa"
+    },
+    {
+      "node": "node-1",
+      "pod": "apps/worker-9c8d7e-bbbbb"
+    },
+    {
+      "node": "node-2",
+      "pod": "apps/worker-9c8d7e-bbbbb"
+    },
+    {
+      "node": "node-1",
+      "pod": "apps/worker-9c8d7e-ccccc"
+    },
+    {
+      "node": "node-2",
+      "pod": "apps/worker-9c8d7e-ccccc"
+    }
+  ],
+  "qubit_budget": 12,
+  "qubits": [
+    {
+      "kind": "assignment",
+      "node": "node-1",
+      "pod": "apps/worker-9c8d7e-aaaaa",
+      "qubit": 0
+    },
+    {
+      "kind": "assignment",
+      "node": "node-2",
+      "pod": "apps/worker-9c8d7e-aaaaa",
+      "qubit": 1
+    },
+    {
+      "kind": "assignment",
+      "node": "node-1",
+      "pod": "apps/worker-9c8d7e-bbbbb",
+      "qubit": 2
+    },
+    {
+      "kind": "assignment",
+      "node": "node-2",
+      "pod": "apps/worker-9c8d7e-bbbbb",
+      "qubit": 3
+    },
+    {
+      "kind": "assignment",
+      "node": "node-1",
+      "pod": "apps/worker-9c8d7e-ccccc",
+      "qubit": 4
+    },
+    {
+      "kind": "assignment",
+      "node": "node-2",
+      "pod": "apps/worker-9c8d7e-ccccc",
+      "qubit": 5
+    }
+  ],
+  "required_qubits": 6,
+  "slack_qubits": 0,
+  "source": {
+    "snapshot_id": "m2-scenario-c-aggregate-shortage",
+    "source_sha256": "5c383c7a611bb77f9a0cbc97fa5df5f729b5134e887d657acc21065849d461fd"
+  },
+  "status": "SUPPORTED",
+  "target_node": "source"
+}

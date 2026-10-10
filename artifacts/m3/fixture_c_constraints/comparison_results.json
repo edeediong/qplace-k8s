@@ -1,0 +1,319 @@
+{
+  "artifact": "comparison_results",
+  "artifact_schema_version": "1.0",
+  "claims": {
+    "note": "QAOA results are local noiseless simulation. They inherit M2's assessment and conditions; a verified sample is a placement in the requested-resource model, not a drain approval.",
+    "operational_assessment": "REVIEW_REQUIRED",
+    "quantum_optimality_proven": false
+  },
+  "classical": {
+    "candidates": 8,
+    "exact": {
+      "assignments": [
+        {
+          "node": "worker-04",
+          "pod": "batch/report-28999-xk2lp"
+        },
+        {
+          "node": "worker-01",
+          "pod": "payments/api-6d5c4b-aaaaa"
+        }
+      ],
+      "objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "29/39",
+          "151/156",
+          "1/1",
+          "1/1",
+          "1/1"
+        ],
+        "min_free_fraction": "29/39"
+      },
+      "optimality_proven": true,
+      "placed": 2,
+      "verified": true
+    },
+    "greedy": {
+      "assignments": [
+        {
+          "node": "worker-01",
+          "pod": "batch/report-28999-xk2lp"
+        },
+        {
+          "node": "worker-01",
+          "pod": "payments/api-6d5c4b-aaaaa"
+        }
+      ],
+      "objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "37/52",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1"
+        ],
+        "min_free_fraction": "37/52"
+      },
+      "placed": 2,
+      "verified": true
+    },
+    "m2_assessment": "REVIEW_REQUIRED",
+    "timing_seconds": {
+      "exact_seconds": {
+        "max": 9.429105557501316e-05,
+        "median": 9.216601029038429e-05,
+        "min": 8.899997919797897e-05,
+        "repeats": 5
+      },
+      "greedy_seconds": {
+        "max": 5.149981006979942e-05,
+        "median": 4.6457862481474876e-05,
+        "min": 4.458311013877392e-05,
+        "repeats": 5
+      }
+    }
+  },
+  "fixture": "fixture_c_constraints",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "observational": true,
+  "quantum": [
+    {
+      "best_verified_sample": {
+        "assignment": [
+          {
+            "node": "worker-04",
+            "pod": "batch/report-28999-xk2lp"
+          },
+          {
+            "node": "worker-01",
+            "pod": "payments/api-6d5c4b-aaaaa"
+          }
+        ],
+        "bitstring": "110",
+        "count": 125,
+        "m2_objective": {
+          "assigned": 2,
+          "balance_leximin": [
+            "29/39",
+            "151/156",
+            "1/1",
+            "1/1",
+            "1/1"
+          ],
+          "min_free_fraction": "29/39"
+        },
+        "placed": 2,
+        "qubo_energy": -2,
+        "raw_feasible": true,
+        "verification_errors": [],
+        "verified": true
+      },
+      "better_than_uniform": true,
+      "circuit_depth": 5,
+      "estimator_evaluations": 176,
+      "exact_count_sample_rate_mean": 0.24765625,
+      "exact_probability_of_optimal_count": 0.2542648849224576,
+      "feasible_sample_rate_mean": 0.9115234375,
+      "m2_objective_equals_exact": true,
+      "optimality_gap_pods": 0,
+      "per_seed": [
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.2373046875,
+          "feasible_sample_rate": 0.9150390625,
+          "seed": 11,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.240234375,
+          "feasible_sample_rate": 0.8994140625,
+          "seed": 22,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.2470703125,
+          "feasible_sample_rate": 0.9111328125,
+          "seed": 33,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.248046875,
+          "feasible_sample_rate": 0.912109375,
+          "seed": 44,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.265625,
+          "feasible_sample_rate": 0.919921875,
+          "seed": 55,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        }
+      ],
+      "qubits": 3,
+      "ratio_to_uniform": 1.0170595396898303,
+      "reps": 1,
+      "sampler_jobs": 5,
+      "sampling_seconds_median": 0.00235183397307992,
+      "seeds_reaching_exact_count": 5,
+      "solver_result": {
+        "assignments": [
+          {
+            "node": "worker-04",
+            "pod": "batch/report-28999-xk2lp"
+          },
+          {
+            "node": "worker-01",
+            "pod": "payments/api-6d5c4b-aaaaa"
+          }
+        ],
+        "optimality_proven": false,
+        "solver": "qaoa",
+        "unplaced": [
+          "analytics/etl-2b3c4d-aaaaa",
+          "edge/proxy-8a7b6c-aaaaa",
+          "ml/trainer-7e6f5a-aaaaa",
+          "ops/agent-x7k2m",
+          "payments/ledger-0",
+          "secure/sandbox-5f4e3d-aaaaa"
+        ]
+      },
+      "solver_result_seed": 11,
+      "training_seconds": 0.11859200010076165,
+      "two_qubit_gates": 1,
+      "uniform_probability_of_optimal_count": 0.25
+    },
+    {
+      "best_verified_sample": {
+        "assignment": [
+          {
+            "node": "worker-04",
+            "pod": "batch/report-28999-xk2lp"
+          },
+          {
+            "node": "worker-01",
+            "pod": "payments/api-6d5c4b-aaaaa"
+          }
+        ],
+        "bitstring": "110",
+        "count": 330,
+        "m2_objective": {
+          "assigned": 2,
+          "balance_leximin": [
+            "29/39",
+            "151/156",
+            "1/1",
+            "1/1",
+            "1/1"
+          ],
+          "min_free_fraction": "29/39"
+        },
+        "placed": 2,
+        "qubo_energy": -2,
+        "raw_feasible": true,
+        "verification_errors": [],
+        "verified": true
+      },
+      "better_than_uniform": true,
+      "circuit_depth": 8,
+      "estimator_evaluations": 294,
+      "exact_count_sample_rate_mean": 0.68125,
+      "exact_probability_of_optimal_count": 0.6962052790716817,
+      "feasible_sample_rate_mean": 0.983984375,
+      "m2_objective_equals_exact": true,
+      "optimality_gap_pods": 0,
+      "per_seed": [
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.6884765625,
+          "feasible_sample_rate": 0.986328125,
+          "seed": 11,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.6865234375,
+          "feasible_sample_rate": 0.9814453125,
+          "seed": 22,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.6826171875,
+          "feasible_sample_rate": 0.9833984375,
+          "seed": 33,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.666015625,
+          "feasible_sample_rate": 0.9833984375,
+          "seed": 44,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.6826171875,
+          "feasible_sample_rate": 0.9853515625,
+          "seed": 55,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        }
+      ],
+      "qubits": 3,
+      "ratio_to_uniform": 2.784821116286727,
+      "reps": 2,
+      "sampler_jobs": 5,
+      "sampling_seconds_median": 0.0024709999561309814,
+      "seeds_reaching_exact_count": 5,
+      "solver_result": {
+        "assignments": [
+          {
+            "node": "worker-04",
+            "pod": "batch/report-28999-xk2lp"
+          },
+          {
+            "node": "worker-01",
+            "pod": "payments/api-6d5c4b-aaaaa"
+          }
+        ],
+        "optimality_proven": false,
+        "solver": "qaoa",
+        "unplaced": [
+          "analytics/etl-2b3c4d-aaaaa",
+          "edge/proxy-8a7b6c-aaaaa",
+          "ml/trainer-7e6f5a-aaaaa",
+          "ops/agent-x7k2m",
+          "payments/ledger-0",
+          "secure/sandbox-5f4e3d-aaaaa"
+        ]
+      },
+      "solver_result_seed": 11,
+      "training_seconds": 0.2937275830190629,
+      "two_qubit_gates": 2,
+      "uniform_probability_of_optimal_count": 0.25
+    }
+  ],
+  "quantum_skipped": null,
+  "source": {
+    "snapshot_id": "fixture-c-constraints",
+    "source_sha256": "6ff5166fd6a7b53a6ea3a6aad8954968fcbd9bfd445865ac0f5e83aa41fa18b0"
+  },
+  "target_node": "worker-03",
+  "uniform_random_baseline": {
+    "exact_count_rate": 0.25,
+    "feasible_rate": 0.75,
+    "nonempty_feasible_rate": 0.625,
+    "probability_seed_hits_exact_count_in_shots": 1.0,
+    "shots": 1024,
+    "states": 8
+  }
+}

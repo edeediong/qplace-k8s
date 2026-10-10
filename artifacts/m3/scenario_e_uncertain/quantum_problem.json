@@ -1,0 +1,53 @@
+{
+  "artifact": "quantum_problem",
+  "artifact_schema_version": "1.0",
+  "assignment_qubits": 2,
+  "bit_order": "Qiskit little-endian: qubit i is character [-1 - i] of a counts key",
+  "eliminated_variables": [],
+  "fixture": "scenario_e_uncertain",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "m2_assessment": "REVIEW_REQUIRED",
+  "m2_conditions": [
+    "CANDIDATE_REQUEST_UNKNOWN:apps/resizer-4d5e6f-aaaaa",
+    "CAPACITY_ASSESSMENT_INCOMPLETE:cluster",
+    "ELIGIBILITY_UNKNOWN:apps/spread-5e6f7a-aaaaa@node-1",
+    "ELIGIBILITY_UNKNOWN:apps/spread-5e6f7a-aaaaa@node-2"
+  ],
+  "m2_variables": [
+    {
+      "node": "node-1",
+      "pod": "apps/plain-3c4d5e-aaaaa"
+    },
+    {
+      "node": "node-2",
+      "pod": "apps/plain-3c4d5e-aaaaa"
+    }
+  ],
+  "qubit_budget": 12,
+  "qubits": [
+    {
+      "kind": "assignment",
+      "node": "node-1",
+      "pod": "apps/plain-3c4d5e-aaaaa",
+      "qubit": 0
+    },
+    {
+      "kind": "assignment",
+      "node": "node-2",
+      "pod": "apps/plain-3c4d5e-aaaaa",
+      "qubit": 1
+    }
+  ],
+  "required_qubits": 2,
+  "slack_qubits": 0,
+  "source": {
+    "snapshot_id": "m2-scenario-e-uncertain",
+    "source_sha256": "1d1932678fdda115a06e567d4e9438d17485779fe24a5ded9e0f11fc0c24140f"
+  },
+  "status": "SUPPORTED",
+  "target_node": "source"
+}

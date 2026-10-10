@@ -1,0 +1,289 @@
+{
+  "artifact": "comparison_results",
+  "artifact_schema_version": "1.0",
+  "claims": {
+    "note": "QAOA results are local noiseless simulation. They inherit M2's assessment and conditions; a verified sample is a placement in the requested-resource model, not a drain approval.",
+    "operational_assessment": "MODELED_FEASIBLE",
+    "quantum_optimality_proven": false
+  },
+  "classical": {
+    "candidates": 2,
+    "exact": {
+      "assignments": [
+        {
+          "node": "node-b",
+          "pod": "apps/batch-7a6b5c-aaaaa"
+        },
+        {
+          "node": "node-a",
+          "pod": "apps/indexer-8b7c6d-aaaaa"
+        }
+      ],
+      "objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "1/5",
+          "2/5"
+        ],
+        "min_free_fraction": "1/5"
+      },
+      "optimality_proven": true,
+      "placed": 2,
+      "verified": true
+    },
+    "greedy": {
+      "assignments": [
+        {
+          "node": "node-a",
+          "pod": "apps/batch-7a6b5c-aaaaa"
+        }
+      ],
+      "objective": {
+        "assigned": 1,
+        "balance_leximin": [
+          "1/5",
+          "1/1"
+        ],
+        "min_free_fraction": "1/5"
+      },
+      "placed": 1,
+      "verified": true
+    },
+    "m2_assessment": "MODELED_FEASIBLE",
+    "timing_seconds": {
+      "exact_seconds": {
+        "max": 4.329206421971321e-05,
+        "median": 3.774999640882015e-05,
+        "min": 3.52498609572649e-05,
+        "repeats": 5
+      },
+      "greedy_seconds": {
+        "max": 2.437504008412361e-05,
+        "median": 1.5625031664967537e-05,
+        "min": 1.5166820958256721e-05,
+        "repeats": 5
+      }
+    }
+  },
+  "fixture": "scenario_b_greedy_trap",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "observational": true,
+  "quantum": [
+    {
+      "best_verified_sample": {
+        "assignment": [
+          {
+            "node": "node-b",
+            "pod": "apps/batch-7a6b5c-aaaaa"
+          },
+          {
+            "node": "node-a",
+            "pod": "apps/indexer-8b7c6d-aaaaa"
+          }
+        ],
+        "bitstring": "110",
+        "count": 143,
+        "m2_objective": {
+          "assigned": 2,
+          "balance_leximin": [
+            "1/5",
+            "2/5"
+          ],
+          "min_free_fraction": "1/5"
+        },
+        "placed": 2,
+        "qubo_energy": -2,
+        "raw_feasible": true,
+        "verification_errors": [],
+        "verified": true
+      },
+      "better_than_uniform": true,
+      "circuit_depth": 6,
+      "estimator_evaluations": 183,
+      "exact_count_sample_rate_mean": 0.1427734375,
+      "exact_probability_of_optimal_count": 0.15405921358402344,
+      "feasible_sample_rate_mean": 0.937890625,
+      "m2_objective_equals_exact": true,
+      "optimality_gap_pods": 0,
+      "per_seed": [
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.1396484375,
+          "feasible_sample_rate": 0.93359375,
+          "seed": 11,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.134765625,
+          "feasible_sample_rate": 0.9462890625,
+          "seed": 22,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.1435546875,
+          "feasible_sample_rate": 0.9365234375,
+          "seed": 33,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.1494140625,
+          "feasible_sample_rate": 0.943359375,
+          "seed": 44,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.146484375,
+          "feasible_sample_rate": 0.9296875,
+          "seed": 55,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        }
+      ],
+      "qubits": 3,
+      "ratio_to_uniform": 1.2324737086721875,
+      "reps": 1,
+      "sampler_jobs": 5,
+      "sampling_seconds_median": 0.002385959029197693,
+      "seeds_reaching_exact_count": 5,
+      "solver_result": {
+        "assignments": [
+          {
+            "node": "node-b",
+            "pod": "apps/batch-7a6b5c-aaaaa"
+          },
+          {
+            "node": "node-a",
+            "pod": "apps/indexer-8b7c6d-aaaaa"
+          }
+        ],
+        "optimality_proven": false,
+        "solver": "qaoa",
+        "unplaced": []
+      },
+      "solver_result_seed": 11,
+      "training_seconds": 0.13800704199820757,
+      "two_qubit_gates": 2,
+      "uniform_probability_of_optimal_count": 0.125
+    },
+    {
+      "best_verified_sample": {
+        "assignment": [
+          {
+            "node": "node-b",
+            "pod": "apps/batch-7a6b5c-aaaaa"
+          },
+          {
+            "node": "node-a",
+            "pod": "apps/indexer-8b7c6d-aaaaa"
+          }
+        ],
+        "bitstring": "110",
+        "count": 317,
+        "m2_objective": {
+          "assigned": 2,
+          "balance_leximin": [
+            "1/5",
+            "2/5"
+          ],
+          "min_free_fraction": "1/5"
+        },
+        "placed": 2,
+        "qubo_energy": -2,
+        "raw_feasible": true,
+        "verification_errors": [],
+        "verified": true
+      },
+      "better_than_uniform": true,
+      "circuit_depth": 10,
+      "estimator_evaluations": 254,
+      "exact_count_sample_rate_mean": 0.32421875,
+      "exact_probability_of_optimal_count": 0.33332065831301716,
+      "feasible_sample_rate_mean": 0.9244140625,
+      "m2_objective_equals_exact": true,
+      "optimality_gap_pods": 0,
+      "per_seed": [
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.3095703125,
+          "feasible_sample_rate": 0.923828125,
+          "seed": 11,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.32421875,
+          "feasible_sample_rate": 0.921875,
+          "seed": 22,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.3212890625,
+          "feasible_sample_rate": 0.9248046875,
+          "seed": 33,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.3330078125,
+          "feasible_sample_rate": 0.9375,
+          "seed": 44,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.3330078125,
+          "feasible_sample_rate": 0.9140625,
+          "seed": 55,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        }
+      ],
+      "qubits": 3,
+      "ratio_to_uniform": 2.6665652665041373,
+      "reps": 2,
+      "sampler_jobs": 5,
+      "sampling_seconds_median": 0.002697958843782544,
+      "seeds_reaching_exact_count": 5,
+      "solver_result": {
+        "assignments": [
+          {
+            "node": "node-b",
+            "pod": "apps/batch-7a6b5c-aaaaa"
+          },
+          {
+            "node": "node-a",
+            "pod": "apps/indexer-8b7c6d-aaaaa"
+          }
+        ],
+        "optimality_proven": false,
+        "solver": "qaoa",
+        "unplaced": []
+      },
+      "solver_result_seed": 11,
+      "training_seconds": 0.26353695895522833,
+      "two_qubit_gates": 4,
+      "uniform_probability_of_optimal_count": 0.125
+    }
+  ],
+  "quantum_skipped": null,
+  "source": {
+    "snapshot_id": "m2-scenario-b-greedy-trap",
+    "source_sha256": "eafeae381b34f7d4749591bff4823a8055a14c6c1bb52e803154e72af39a9031"
+  },
+  "target_node": "source",
+  "uniform_random_baseline": {
+    "exact_count_rate": 0.125,
+    "feasible_rate": 0.625,
+    "nonempty_feasible_rate": 0.5,
+    "probability_seed_hits_exact_count_in_shots": 1.0,
+    "shots": 1024,
+    "states": 8
+  }
+}

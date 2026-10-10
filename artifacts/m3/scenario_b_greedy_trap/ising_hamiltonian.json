@@ -1,0 +1,71 @@
+{
+  "artifact": "ising_hamiltonian",
+  "artifact_schema_version": "1.0",
+  "circuit_scale": 1.0,
+  "circuit_scale_note": "QAOA uses H / max|coefficient|; eigenvectors and their order are unchanged",
+  "fixture": "scenario_b_greedy_trap",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "ising": {
+    "J": [
+      {
+        "coefficient": "3/4",
+        "i": 0,
+        "j": 1
+      },
+      {
+        "coefficient": "3/4",
+        "i": 0,
+        "j": 2
+      }
+    ],
+    "convention": "z_i = 1 - 2 x_i; Pauli label qubit 0 = rightmost character",
+    "h": [
+      {
+        "coefficient": "-1/1",
+        "i": 0
+      },
+      {
+        "coefficient": "-1/4",
+        "i": 1
+      },
+      {
+        "coefficient": "-1/4",
+        "i": 2
+      }
+    ],
+    "num_qubits": 3,
+    "offset": "0/1",
+    "pauli_terms": [
+      {
+        "coefficient": -1.0,
+        "label": "IIZ"
+      },
+      {
+        "coefficient": -0.25,
+        "label": "IZI"
+      },
+      {
+        "coefficient": -0.25,
+        "label": "ZII"
+      },
+      {
+        "coefficient": 0.75,
+        "label": "IZZ"
+      },
+      {
+        "coefficient": 0.75,
+        "label": "ZIZ"
+      }
+    ]
+  },
+  "source": {
+    "snapshot_id": "m2-scenario-b-greedy-trap",
+    "source_sha256": "eafeae381b34f7d4749591bff4823a8055a14c6c1bb52e803154e72af39a9031"
+  },
+  "status": "SUPPORTED",
+  "target_node": "source"
+}

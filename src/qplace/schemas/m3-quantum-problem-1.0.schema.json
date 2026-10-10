@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qplace.invalid/schemas/m3-quantum-problem-1.0.schema.json",
+  "title": "QPlace quantum_problem.json artifact (M3), version 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact",
+    "artifact_schema_version",
+    "generator",
+    "fixture",
+    "source",
+    "target_node",
+    "status",
+    "qubit_budget",
+    "required_qubits",
+    "assignment_qubits",
+    "slack_qubits",
+    "qubits",
+    "eliminated_variables",
+    "m2_variables",
+    "m2_assessment",
+    "m2_conditions",
+    "bit_order"
+  ],
+  "properties": {
+    "artifact": {
+      "const": "quantum_problem"
+    },
+    "artifact_schema_version": {
+      "const": "1.0"
+    },
+    "generator": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "milestone"
+      ],
+      "properties": {
+        "milestone": {
+          "const": "M3"
+        }
+      }
+    },
+    "fixture": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "snapshot_id",
+        "source_sha256"
+      ]
+    },
+    "target_node": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "SUPPORTED",
+        "EMPTY",
+        "UNSUPPORTED_SIZE"
+      ]
+    },
+    "qubit_budget": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "required_qubits": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "assignment_qubits": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "slack_qubits": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "qubits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "qubit",
+          "kind"
+        ],
+        "properties": {
+          "qubit": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "kind": {
+            "enum": [
+              "assignment",
+              "slack"
+            ]
+          }
+        }
+      }
+    },
+    "eliminated_variables": {
+      "type": "array"
+    },
+    "m2_variables": {
+      "type": "array"
+    },
+    "m2_assessment": {
+      "enum": [
+        "MODELED_FEASIBLE",
+        "MODELED_BLOCKED",
+        "REVIEW_REQUIRED"
+      ]
+    },
+    "m2_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "bit_order": {
+      "type": "string"
+    }
+  }
+}

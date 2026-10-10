@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qplace.invalid/schemas/m3-quantum-samples-1.0.schema.json",
+  "title": "QPlace quantum_samples.json artifact (M3), version 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact",
+    "artifact_schema_version",
+    "generator",
+    "fixture",
+    "source",
+    "target_node",
+    "observational",
+    "backend",
+    "bitstrings",
+    "runs"
+  ],
+  "properties": {
+    "artifact": {
+      "const": "quantum_samples"
+    },
+    "artifact_schema_version": {
+      "const": "1.0"
+    },
+    "generator": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "milestone"
+      ],
+      "properties": {
+        "milestone": {
+          "const": "M3"
+        }
+      }
+    },
+    "fixture": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "snapshot_id",
+        "source_sha256"
+      ]
+    },
+    "target_node": {
+      "type": "string"
+    },
+    "observational": {
+      "const": true
+    },
+    "backend": {
+      "type": "string"
+    },
+    "bitstrings": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "bitstring",
+          "qubo_energy",
+          "assignment",
+          "raw_feasible",
+          "verified",
+          "placed"
+        ],
+        "properties": {
+          "bitstring": {
+            "type": "string",
+            "pattern": "^[01]+$"
+          },
+          "qubo_energy": {
+            "type": "integer"
+          },
+          "raw_feasible": {
+            "type": "boolean"
+          },
+          "verified": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "reps",
+          "seed",
+          "shots",
+          "counts",
+          "summary",
+          "sampling_seconds",
+          "decode_verify_seconds"
+        ],
+        "properties": {
+          "shots": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "counts": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "summary": {
+            "type": "object",
+            "required": [
+              "status",
+              "feasible_sample_rate",
+              "best"
+            ],
+            "properties": {
+              "status": {
+                "enum": [
+                  "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT",
+                  "FEASIBLE_SAMPLE_BELOW_EXACT_COUNT",
+                  "NO_FEASIBLE_SAMPLE"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

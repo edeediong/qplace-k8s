@@ -1,0 +1,334 @@
+{
+  "artifact": "ising_hamiltonian",
+  "artifact_schema_version": "1.0",
+  "circuit_scale": 9.5,
+  "circuit_scale_note": "QAOA uses H / max|coefficient|; eigenvectors and their order are unchanged",
+  "fixture": "scenario_g_triple_capacity",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "ising": {
+    "J": [
+      {
+        "coefficient": "2/1",
+        "i": 0,
+        "j": 1
+      },
+      {
+        "coefficient": "4/1",
+        "i": 0,
+        "j": 2
+      },
+      {
+        "coefficient": "4/1",
+        "i": 0,
+        "j": 4
+      },
+      {
+        "coefficient": "4/1",
+        "i": 0,
+        "j": 6
+      },
+      {
+        "coefficient": "4/1",
+        "i": 0,
+        "j": 8
+      },
+      {
+        "coefficient": "4/1",
+        "i": 0,
+        "j": 9
+      },
+      {
+        "coefficient": "2/1",
+        "i": 1,
+        "j": 3
+      },
+      {
+        "coefficient": "2/1",
+        "i": 1,
+        "j": 5
+      },
+      {
+        "coefficient": "2/1",
+        "i": 1,
+        "j": 7
+      },
+      {
+        "coefficient": "2/1",
+        "i": 2,
+        "j": 3
+      },
+      {
+        "coefficient": "4/1",
+        "i": 2,
+        "j": 4
+      },
+      {
+        "coefficient": "4/1",
+        "i": 2,
+        "j": 6
+      },
+      {
+        "coefficient": "4/1",
+        "i": 2,
+        "j": 8
+      },
+      {
+        "coefficient": "4/1",
+        "i": 2,
+        "j": 9
+      },
+      {
+        "coefficient": "2/1",
+        "i": 3,
+        "j": 5
+      },
+      {
+        "coefficient": "2/1",
+        "i": 3,
+        "j": 7
+      },
+      {
+        "coefficient": "2/1",
+        "i": 4,
+        "j": 5
+      },
+      {
+        "coefficient": "4/1",
+        "i": 4,
+        "j": 6
+      },
+      {
+        "coefficient": "4/1",
+        "i": 4,
+        "j": 8
+      },
+      {
+        "coefficient": "4/1",
+        "i": 4,
+        "j": 9
+      },
+      {
+        "coefficient": "2/1",
+        "i": 5,
+        "j": 7
+      },
+      {
+        "coefficient": "2/1",
+        "i": 6,
+        "j": 7
+      },
+      {
+        "coefficient": "4/1",
+        "i": 6,
+        "j": 8
+      },
+      {
+        "coefficient": "4/1",
+        "i": 6,
+        "j": 9
+      },
+      {
+        "coefficient": "4/1",
+        "i": 8,
+        "j": 9
+      }
+    ],
+    "convention": "z_i = 1 - 2 x_i; Pauli label qubit 0 = rightmost character",
+    "h": [
+      {
+        "coefficient": "-19/2",
+        "i": 0
+      },
+      {
+        "coefficient": "-15/2",
+        "i": 1
+      },
+      {
+        "coefficient": "-19/2",
+        "i": 2
+      },
+      {
+        "coefficient": "-15/2",
+        "i": 3
+      },
+      {
+        "coefficient": "-19/2",
+        "i": 4
+      },
+      {
+        "coefficient": "-15/2",
+        "i": 5
+      },
+      {
+        "coefficient": "-19/2",
+        "i": 6
+      },
+      {
+        "coefficient": "-15/2",
+        "i": 7
+      },
+      {
+        "coefficient": "-8/1",
+        "i": 8
+      },
+      {
+        "coefficient": "-8/1",
+        "i": 9
+      }
+    ],
+    "num_qubits": 10,
+    "offset": "36/1",
+    "pauli_terms": [
+      {
+        "coefficient": -9.5,
+        "label": "IIIIIIIIIZ"
+      },
+      {
+        "coefficient": -7.5,
+        "label": "IIIIIIIIZI"
+      },
+      {
+        "coefficient": -9.5,
+        "label": "IIIIIIIZII"
+      },
+      {
+        "coefficient": -7.5,
+        "label": "IIIIIIZIII"
+      },
+      {
+        "coefficient": -9.5,
+        "label": "IIIIIZIIII"
+      },
+      {
+        "coefficient": -7.5,
+        "label": "IIIIZIIIII"
+      },
+      {
+        "coefficient": -9.5,
+        "label": "IIIZIIIIII"
+      },
+      {
+        "coefficient": -7.5,
+        "label": "IIZIIIIIII"
+      },
+      {
+        "coefficient": -8.0,
+        "label": "IZIIIIIIII"
+      },
+      {
+        "coefficient": -8.0,
+        "label": "ZIIIIIIIII"
+      },
+      {
+        "coefficient": 2.0,
+        "label": "IIIIIIIIZZ"
+      },
+      {
+        "coefficient": 4.0,
+        "label": "IIIIIIIZIZ"
+      },
+      {
+        "coefficient": 4.0,
+        "label": "IIIIIZIIIZ"
+      },
+      {
+        "coefficient": 4.0,
+        "label": "IIIZIIIIIZ"
+      },
+      {
+        "coefficient": 4.0,
+        "label": "IZIIIIIIIZ"
+      },
+      {
+        "coefficient": 4.0,
+        "label": "ZIIIIIIIIZ"
+      },
+      {
+        "coefficient": 2.0,
+        "label": "IIIIIIZIZI"
+      },
+      {
+        "coefficient": 2.0,
+        "label": "IIIIZIIIZI"
+      },
+      {
+        "coefficient": 2.0,
+        "label": "IIZIIIIIZI"
+      },
+      {
+        "coefficient": 2.0,
+        "label": "IIIIIIZZII"
+      },
+      {
+        "coefficient": 4.0,
+        "label": "IIIIIZIZII"
+      },
+      {
+        "coefficient": 4.0,
+        "label": "IIIZIIIZII"
+      },
+      {
+        "coefficient": 4.0,
+        "label": "IZIIIIIZII"
+      },
+      {
+        "coefficient": 4.0,
+        "label": "ZIIIIIIZII"
+      },
+      {
+        "coefficient": 2.0,
+        "label": "IIIIZIZIII"
+      },
+      {
+        "coefficient": 2.0,
+        "label": "IIZIIIZIII"
+      },
+      {
+        "coefficient": 2.0,
+        "label": "IIIIZZIIII"
+      },
+      {
+        "coefficient": 4.0,
+        "label": "IIIZIZIIII"
+      },
+      {
+        "coefficient": 4.0,
+        "label": "IZIIIZIIII"
+      },
+      {
+        "coefficient": 4.0,
+        "label": "ZIIIIZIIII"
+      },
+      {
+        "coefficient": 2.0,
+        "label": "IIZIZIIIII"
+      },
+      {
+        "coefficient": 2.0,
+        "label": "IIZZIIIIII"
+      },
+      {
+        "coefficient": 4.0,
+        "label": "IZIZIIIIII"
+      },
+      {
+        "coefficient": 4.0,
+        "label": "ZIIZIIIIII"
+      },
+      {
+        "coefficient": 4.0,
+        "label": "ZZIIIIIIII"
+      }
+    ]
+  },
+  "source": {
+    "snapshot_id": "m3-scenario-g-triple-capacity",
+    "source_sha256": "d2a82a960b2b770cd5111e2f3a553b321992e9113a09fb5ac70c0a94b20b8fe8"
+  },
+  "status": "SUPPORTED",
+  "target_node": "source"
+}

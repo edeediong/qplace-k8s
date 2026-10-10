@@ -1,0 +1,321 @@
+{
+  "artifact": "comparison_results",
+  "artifact_schema_version": "1.0",
+  "claims": {
+    "note": "QAOA results are local noiseless simulation. They inherit M2's assessment and conditions; a verified sample is a placement in the requested-resource model, not a drain approval.",
+    "operational_assessment": "MODELED_BLOCKED",
+    "quantum_optimality_proven": false
+  },
+  "classical": {
+    "candidates": 4,
+    "exact": {
+      "assignments": [
+        {
+          "node": "node-big",
+          "pod": "apps/api-7b8c9d-aaaaa"
+        },
+        {
+          "node": "node-big",
+          "pod": "apps/api-7b8c9d-bbbbb"
+        },
+        {
+          "node": "node-small",
+          "pod": "apps/api-7b8c9d-ccccc"
+        }
+      ],
+      "objective": {
+        "assigned": 3,
+        "balance_leximin": [
+          "0/1",
+          "1/5"
+        ],
+        "min_free_fraction": "0/1"
+      },
+      "optimality_proven": true,
+      "placed": 3,
+      "verified": true
+    },
+    "greedy": {
+      "assignments": [
+        {
+          "node": "node-big",
+          "pod": "apps/api-7b8c9d-aaaaa"
+        },
+        {
+          "node": "node-big",
+          "pod": "apps/api-7b8c9d-bbbbb"
+        },
+        {
+          "node": "node-small",
+          "pod": "apps/api-7b8c9d-ccccc"
+        }
+      ],
+      "objective": {
+        "assigned": 3,
+        "balance_leximin": [
+          "0/1",
+          "1/5"
+        ],
+        "min_free_fraction": "0/1"
+      },
+      "placed": 3,
+      "verified": true
+    },
+    "m2_assessment": "MODELED_BLOCKED",
+    "timing_seconds": {
+      "exact_seconds": {
+        "max": 0.00037612486630678177,
+        "median": 0.0003660419024527073,
+        "min": 0.00035754102282226086,
+        "repeats": 5
+      },
+      "greedy_seconds": {
+        "max": 4.083290696144104e-05,
+        "median": 2.204091288149357e-05,
+        "min": 2.13750172406435e-05,
+        "repeats": 5
+      }
+    }
+  },
+  "fixture": "scenario_g_triple_capacity",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "observational": true,
+  "quantum": [
+    {
+      "best_verified_sample": {
+        "assignment": [
+          {
+            "node": "node-big",
+            "pod": "apps/api-7b8c9d-aaaaa"
+          },
+          {
+            "node": "node-big",
+            "pod": "apps/api-7b8c9d-bbbbb"
+          },
+          {
+            "node": "node-small",
+            "pod": "apps/api-7b8c9d-ccccc"
+          }
+        ],
+        "bitstring": "1000100101",
+        "count": 1,
+        "m2_objective": {
+          "assigned": 3,
+          "balance_leximin": [
+            "0/1",
+            "1/5"
+          ],
+          "min_free_fraction": "0/1"
+        },
+        "placed": 3,
+        "qubo_energy": 5,
+        "raw_feasible": true,
+        "verification_errors": [],
+        "verified": true
+      },
+      "better_than_uniform": false,
+      "circuit_depth": 14,
+      "estimator_evaluations": 179,
+      "exact_count_sample_rate_mean": 0.01484375,
+      "exact_probability_of_optimal_count": 0.015056112961459877,
+      "feasible_sample_rate_mean": 0.061328125,
+      "m2_objective_equals_exact": true,
+      "optimality_gap_pods": 0,
+      "per_seed": [
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.0107421875,
+          "feasible_sample_rate": 0.056640625,
+          "seed": 11,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.015625,
+          "feasible_sample_rate": 0.064453125,
+          "seed": 22,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.0205078125,
+          "feasible_sample_rate": 0.056640625,
+          "seed": 33,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.015625,
+          "feasible_sample_rate": 0.060546875,
+          "seed": 44,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.01171875,
+          "feasible_sample_rate": 0.068359375,
+          "seed": 55,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        }
+      ],
+      "qubits": 10,
+      "ratio_to_uniform": 0.32119707651114404,
+      "reps": 1,
+      "sampler_jobs": 5,
+      "sampling_seconds_median": 0.00784787512384355,
+      "seeds_reaching_exact_count": 5,
+      "solver_result": {
+        "assignments": [
+          {
+            "node": "node-big",
+            "pod": "apps/api-7b8c9d-aaaaa"
+          },
+          {
+            "node": "node-big",
+            "pod": "apps/api-7b8c9d-bbbbb"
+          },
+          {
+            "node": "node-small",
+            "pod": "apps/api-7b8c9d-ccccc"
+          }
+        ],
+        "optimality_proven": false,
+        "solver": "qaoa",
+        "unplaced": [
+          "apps/api-7b8c9d-ddddd"
+        ]
+      },
+      "solver_result_seed": 22,
+      "training_seconds": 0.5611362499184906,
+      "two_qubit_gates": 25,
+      "uniform_probability_of_optimal_count": 0.046875
+    },
+    {
+      "best_verified_sample": {
+        "assignment": [
+          {
+            "node": "node-big",
+            "pod": "apps/api-7b8c9d-aaaaa"
+          },
+          {
+            "node": "node-big",
+            "pod": "apps/api-7b8c9d-bbbbb"
+          },
+          {
+            "node": "node-small",
+            "pod": "apps/api-7b8c9d-ccccc"
+          }
+        ],
+        "bitstring": "0000100101",
+        "count": 8,
+        "m2_objective": {
+          "assigned": 3,
+          "balance_leximin": [
+            "0/1",
+            "1/5"
+          ],
+          "min_free_fraction": "0/1"
+        },
+        "placed": 3,
+        "qubo_energy": -3,
+        "raw_feasible": true,
+        "verification_errors": [],
+        "verified": true
+      },
+      "better_than_uniform": true,
+      "circuit_depth": 22,
+      "estimator_evaluations": 294,
+      "exact_count_sample_rate_mean": 0.11015625,
+      "exact_probability_of_optimal_count": 0.1061153067269101,
+      "feasible_sample_rate_mean": 0.49921875,
+      "m2_objective_equals_exact": true,
+      "optimality_gap_pods": 0,
+      "per_seed": [
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.0947265625,
+          "feasible_sample_rate": 0.4658203125,
+          "seed": 11,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.1201171875,
+          "feasible_sample_rate": 0.5,
+          "seed": 22,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.1240234375,
+          "feasible_sample_rate": 0.5263671875,
+          "seed": 33,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.109375,
+          "feasible_sample_rate": 0.5078125,
+          "seed": 44,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 3,
+          "exact_count_sample_rate": 0.1025390625,
+          "feasible_sample_rate": 0.49609375,
+          "seed": 55,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        }
+      ],
+      "qubits": 10,
+      "ratio_to_uniform": 2.263793210174082,
+      "reps": 2,
+      "sampler_jobs": 5,
+      "sampling_seconds_median": 0.009675749810412526,
+      "seeds_reaching_exact_count": 5,
+      "solver_result": {
+        "assignments": [
+          {
+            "node": "node-big",
+            "pod": "apps/api-7b8c9d-aaaaa"
+          },
+          {
+            "node": "node-big",
+            "pod": "apps/api-7b8c9d-bbbbb"
+          },
+          {
+            "node": "node-small",
+            "pod": "apps/api-7b8c9d-ccccc"
+          }
+        ],
+        "optimality_proven": false,
+        "solver": "qaoa",
+        "unplaced": [
+          "apps/api-7b8c9d-ddddd"
+        ]
+      },
+      "solver_result_seed": 11,
+      "training_seconds": 1.4377177918795496,
+      "two_qubit_gates": 50,
+      "uniform_probability_of_optimal_count": 0.046875
+    }
+  ],
+  "quantum_skipped": null,
+  "source": {
+    "snapshot_id": "m3-scenario-g-triple-capacity",
+    "source_sha256": "d2a82a960b2b770cd5111e2f3a553b321992e9113a09fb5ac70c0a94b20b8fe8"
+  },
+  "target_node": "source",
+  "uniform_random_baseline": {
+    "exact_count_rate": 0.046875,
+    "feasible_rate": 0.15234375,
+    "nonempty_feasible_rate": 0.1484375,
+    "probability_seed_hits_exact_count_in_shots": 1.0,
+    "shots": 1024,
+    "states": 1024
+  }
+}

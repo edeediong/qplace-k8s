@@ -1,0 +1,535 @@
+{
+  "artifact": "quantum_samples",
+  "artifact_schema_version": "1.0",
+  "backend": "qiskit.primitives.StatevectorSampler (local, noiseless, shot-based sampling of the exact statevector)",
+  "bitstrings": {
+    "01": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/plain-3c4d5e-aaaaa"
+        }
+      ],
+      "bitstring": "01",
+      "m2_objective": {
+        "assigned": 1,
+        "balance_leximin": [
+          "7/8",
+          "1/1"
+        ],
+        "min_free_fraction": "7/8"
+      },
+      "placed": 1,
+      "qubo_energy": -1,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "10": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/plain-3c4d5e-aaaaa"
+        }
+      ],
+      "bitstring": "10",
+      "m2_objective": {
+        "assigned": 1,
+        "balance_leximin": [
+          "7/8",
+          "1/1"
+        ],
+        "min_free_fraction": "7/8"
+      },
+      "placed": 1,
+      "qubo_energy": -1,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    }
+  },
+  "fixture": "scenario_e_uncertain",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "observational": true,
+  "runs": [
+    {
+      "counts": {
+        "01": 532,
+        "10": 492
+      },
+      "decode_verify_seconds": 7.895799353718758e-05,
+      "reps": 1,
+      "sampling_seconds": 0.0022354579996317625,
+      "seed": 11,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/plain-3c4d5e-aaaaa"
+            }
+          ],
+          "bitstring": "01",
+          "count": 532,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "7/8",
+              "1/1"
+            ],
+            "min_free_fraction": "7/8"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 2,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "01": 517,
+        "10": 507
+      },
+      "decode_verify_seconds": 7.145805284380913e-05,
+      "reps": 1,
+      "sampling_seconds": 0.0020287921652197838,
+      "seed": 22,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/plain-3c4d5e-aaaaa"
+            }
+          ],
+          "bitstring": "01",
+          "count": 517,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "7/8",
+              "1/1"
+            ],
+            "min_free_fraction": "7/8"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 2,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "01": 543,
+        "10": 481
+      },
+      "decode_verify_seconds": 6.879190914332867e-05,
+      "reps": 1,
+      "sampling_seconds": 0.0020409999415278435,
+      "seed": 33,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/plain-3c4d5e-aaaaa"
+            }
+          ],
+          "bitstring": "01",
+          "count": 543,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "7/8",
+              "1/1"
+            ],
+            "min_free_fraction": "7/8"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 2,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "01": 552,
+        "10": 472
+      },
+      "decode_verify_seconds": 6.037508137524128e-05,
+      "reps": 1,
+      "sampling_seconds": 0.0020397501066327095,
+      "seed": 44,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/plain-3c4d5e-aaaaa"
+            }
+          ],
+          "bitstring": "01",
+          "count": 552,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "7/8",
+              "1/1"
+            ],
+            "min_free_fraction": "7/8"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 2,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "01": 504,
+        "10": 520
+      },
+      "decode_verify_seconds": 6.0957856476306915e-05,
+      "reps": 1,
+      "sampling_seconds": 0.002025374909862876,
+      "seed": 55,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/plain-3c4d5e-aaaaa"
+            }
+          ],
+          "bitstring": "01",
+          "count": 504,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "7/8",
+              "1/1"
+            ],
+            "min_free_fraction": "7/8"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 2,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "01": 532,
+        "10": 492
+      },
+      "decode_verify_seconds": 9.808293543756008e-05,
+      "reps": 2,
+      "sampling_seconds": 0.0023393339943140745,
+      "seed": 11,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/plain-3c4d5e-aaaaa"
+            }
+          ],
+          "bitstring": "01",
+          "count": 532,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "7/8",
+              "1/1"
+            ],
+            "min_free_fraction": "7/8"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 2,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "01": 517,
+        "10": 507
+      },
+      "decode_verify_seconds": 6.791693158447742e-05,
+      "reps": 2,
+      "sampling_seconds": 0.0022467910312116146,
+      "seed": 22,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/plain-3c4d5e-aaaaa"
+            }
+          ],
+          "bitstring": "01",
+          "count": 517,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "7/8",
+              "1/1"
+            ],
+            "min_free_fraction": "7/8"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 2,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "01": 543,
+        "10": 481
+      },
+      "decode_verify_seconds": 6.012478843331337e-05,
+      "reps": 2,
+      "sampling_seconds": 0.0021240420173853636,
+      "seed": 33,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/plain-3c4d5e-aaaaa"
+            }
+          ],
+          "bitstring": "01",
+          "count": 543,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "7/8",
+              "1/1"
+            ],
+            "min_free_fraction": "7/8"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 2,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "01": 552,
+        "10": 472
+      },
+      "decode_verify_seconds": 5.7999975979328156e-05,
+      "reps": 2,
+      "sampling_seconds": 0.0021634160075336695,
+      "seed": 44,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/plain-3c4d5e-aaaaa"
+            }
+          ],
+          "bitstring": "01",
+          "count": 552,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "7/8",
+              "1/1"
+            ],
+            "min_free_fraction": "7/8"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 2,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "01": 504,
+        "10": 520
+      },
+      "decode_verify_seconds": 6.787502206861973e-05,
+      "reps": 2,
+      "sampling_seconds": 0.0021129169035702944,
+      "seed": 55,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/plain-3c4d5e-aaaaa"
+            }
+          ],
+          "bitstring": "01",
+          "count": 504,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "7/8",
+              "1/1"
+            ],
+            "min_free_fraction": "7/8"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 2,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    }
+  ],
+  "source": {
+    "snapshot_id": "m2-scenario-e-uncertain",
+    "source_sha256": "1d1932678fdda115a06e567d4e9438d17485779fe24a5ded9e0f11fc0c24140f"
+  },
+  "target_node": "source"
+}

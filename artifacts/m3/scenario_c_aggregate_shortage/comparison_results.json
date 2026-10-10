@@ -1,0 +1,297 @@
+{
+  "artifact": "comparison_results",
+  "artifact_schema_version": "1.0",
+  "claims": {
+    "note": "QAOA results are local noiseless simulation. They inherit M2's assessment and conditions; a verified sample is a placement in the requested-resource model, not a drain approval.",
+    "operational_assessment": "MODELED_BLOCKED",
+    "quantum_optimality_proven": false
+  },
+  "classical": {
+    "candidates": 3,
+    "exact": {
+      "assignments": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        }
+      ],
+      "objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "1/4",
+          "1/4"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "optimality_proven": true,
+      "placed": 2,
+      "verified": true
+    },
+    "greedy": {
+      "assignments": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        }
+      ],
+      "objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "1/4",
+          "1/4"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "placed": 2,
+      "verified": true
+    },
+    "m2_assessment": "MODELED_BLOCKED",
+    "timing_seconds": {
+      "exact_seconds": {
+        "max": 0.00017454102635383606,
+        "median": 0.00016700010746717453,
+        "min": 0.0001526661217212677,
+        "repeats": 5
+      },
+      "greedy_seconds": {
+        "max": 2.583395689725876e-05,
+        "median": 1.8875114619731903e-05,
+        "min": 1.787487417459488e-05,
+        "repeats": 5
+      }
+    }
+  },
+  "fixture": "scenario_c_aggregate_shortage",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "observational": true,
+  "quantum": [
+    {
+      "best_verified_sample": {
+        "assignment": [
+          {
+            "node": "node-1",
+            "pod": "apps/worker-9c8d7e-aaaaa"
+          },
+          {
+            "node": "node-2",
+            "pod": "apps/worker-9c8d7e-bbbbb"
+          }
+        ],
+        "bitstring": "001001",
+        "count": 20,
+        "m2_objective": {
+          "assigned": 2,
+          "balance_leximin": [
+            "1/4",
+            "1/4"
+          ],
+          "min_free_fraction": "1/4"
+        },
+        "placed": 2,
+        "qubo_energy": -2,
+        "raw_feasible": true,
+        "verification_errors": [],
+        "verified": true
+      },
+      "better_than_uniform": true,
+      "circuit_depth": 9,
+      "estimator_evaluations": 192,
+      "exact_count_sample_rate_mean": 0.1220703125,
+      "exact_probability_of_optimal_count": 0.13462741168637818,
+      "feasible_sample_rate_mean": 0.9322265625,
+      "m2_objective_equals_exact": true,
+      "optimality_gap_pods": 0,
+      "per_seed": [
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.109375,
+          "feasible_sample_rate": 0.9228515625,
+          "seed": 11,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.1298828125,
+          "feasible_sample_rate": 0.94140625,
+          "seed": 22,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.1298828125,
+          "feasible_sample_rate": 0.939453125,
+          "seed": 33,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.1220703125,
+          "feasible_sample_rate": 0.9306640625,
+          "seed": 44,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.119140625,
+          "feasible_sample_rate": 0.9267578125,
+          "seed": 55,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        }
+      ],
+      "qubits": 6,
+      "ratio_to_uniform": 1.4360257246547006,
+      "reps": 1,
+      "sampler_jobs": 5,
+      "sampling_seconds_median": 0.003362707793712616,
+      "seeds_reaching_exact_count": 5,
+      "solver_result": {
+        "assignments": [
+          {
+            "node": "node-1",
+            "pod": "apps/worker-9c8d7e-aaaaa"
+          },
+          {
+            "node": "node-2",
+            "pod": "apps/worker-9c8d7e-bbbbb"
+          }
+        ],
+        "optimality_proven": false,
+        "solver": "qaoa",
+        "unplaced": [
+          "apps/worker-9c8d7e-ccccc"
+        ]
+      },
+      "solver_result_seed": 11,
+      "training_seconds": 0.2611240828409791,
+      "two_qubit_gates": 9,
+      "uniform_probability_of_optimal_count": 0.09375
+    },
+    {
+      "best_verified_sample": {
+        "assignment": [
+          {
+            "node": "node-1",
+            "pod": "apps/worker-9c8d7e-aaaaa"
+          },
+          {
+            "node": "node-2",
+            "pod": "apps/worker-9c8d7e-bbbbb"
+          }
+        ],
+        "bitstring": "001001",
+        "count": 111,
+        "m2_objective": {
+          "assigned": 2,
+          "balance_leximin": [
+            "1/4",
+            "1/4"
+          ],
+          "min_free_fraction": "1/4"
+        },
+        "placed": 2,
+        "qubo_energy": -2,
+        "raw_feasible": true,
+        "verification_errors": [],
+        "verified": true
+      },
+      "better_than_uniform": true,
+      "circuit_depth": 14,
+      "estimator_evaluations": 265,
+      "exact_count_sample_rate_mean": 0.5630859375,
+      "exact_probability_of_optimal_count": 0.5779750548521106,
+      "feasible_sample_rate_mean": 0.9587890625,
+      "m2_objective_equals_exact": true,
+      "optimality_gap_pods": 0,
+      "per_seed": [
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.583984375,
+          "feasible_sample_rate": 0.958984375,
+          "seed": 11,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.556640625,
+          "feasible_sample_rate": 0.9638671875,
+          "seed": 22,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.5537109375,
+          "feasible_sample_rate": 0.953125,
+          "seed": 33,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.5634765625,
+          "feasible_sample_rate": 0.9580078125,
+          "seed": 44,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        },
+        {
+          "best_placed": 2,
+          "exact_count_sample_rate": 0.5576171875,
+          "feasible_sample_rate": 0.9599609375,
+          "seed": 55,
+          "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+        }
+      ],
+      "qubits": 6,
+      "ratio_to_uniform": 6.165067251755847,
+      "reps": 2,
+      "sampler_jobs": 5,
+      "sampling_seconds_median": 0.004162583965808153,
+      "seeds_reaching_exact_count": 5,
+      "solver_result": {
+        "assignments": [
+          {
+            "node": "node-1",
+            "pod": "apps/worker-9c8d7e-aaaaa"
+          },
+          {
+            "node": "node-2",
+            "pod": "apps/worker-9c8d7e-bbbbb"
+          }
+        ],
+        "optimality_proven": false,
+        "solver": "qaoa",
+        "unplaced": [
+          "apps/worker-9c8d7e-ccccc"
+        ]
+      },
+      "solver_result_seed": 11,
+      "training_seconds": 0.5032952919136733,
+      "two_qubit_gates": 18,
+      "uniform_probability_of_optimal_count": 0.09375
+    }
+  ],
+  "quantum_skipped": null,
+  "source": {
+    "snapshot_id": "m2-scenario-c-aggregate-shortage",
+    "source_sha256": "5c383c7a611bb77f9a0cbc97fa5df5f729b5134e887d657acc21065849d461fd"
+  },
+  "target_node": "source",
+  "uniform_random_baseline": {
+    "exact_count_rate": 0.09375,
+    "feasible_rate": 0.203125,
+    "nonempty_feasible_rate": 0.1875,
+    "probability_seed_hits_exact_count_in_shots": 1.0,
+    "shots": 1024,
+    "states": 64
+  }
+}

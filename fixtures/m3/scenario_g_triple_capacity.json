@@ -1,0 +1,298 @@
+{
+  "schema_version": "1.0",
+  "snapshot": {
+    "id": "m3-scenario-g-triple-capacity",
+    "captured_at": "2026-10-10T09:00:00Z",
+    "source_type": "synthetic_fixture",
+    "kubernetes_version": "v1.34.1",
+    "description": "Every pair of pods fits node-big (2500m) but any three exceed it; node-small fits one pod.",
+    "inventory": {
+      "nodes": "complete",
+      "pods": "complete",
+      "pod_disruption_budgets": "complete",
+      "notes": "Synthetic fixture. All names, UIDs and images are invented."
+    }
+  },
+  "target_node": "source",
+  "nodes": [
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "node-big",
+        "uid": "b0000000-0000-4000-8000-000000002001",
+        "labels": {
+          "kubernetes.io/hostname": "node-big",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "2500m",
+          "memory": "8Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "2500m",
+          "memory": "8Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "node-small",
+        "uid": "b0000000-0000-4000-8000-000000002002",
+        "labels": {
+          "kubernetes.io/hostname": "node-small",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "1",
+          "memory": "4Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "1",
+          "memory": "4Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "source",
+        "uid": "b0000000-0000-4000-8000-000000002003",
+        "labels": {
+          "kubernetes.io/hostname": "source",
+          "kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "8",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "8",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady"
+          }
+        ],
+        "nodeInfo": {
+          "kubeletVersion": "v1.34.1"
+        }
+      }
+    }
+  ],
+  "pods": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "apps",
+        "name": "api-7b8c9d-aaaaa",
+        "uid": "a0000000-0000-4000-8000-000000002005",
+        "labels": {
+          "app": "api"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "api-7b8c9d",
+            "uid": "c0000000-0000-4000-8000-000000002004",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "api",
+            "image": "registry.example.invalid/api:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "1",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "source"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "apps",
+        "name": "api-7b8c9d-bbbbb",
+        "uid": "a0000000-0000-4000-8000-000000002007",
+        "labels": {
+          "app": "api"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "api-7b8c9d",
+            "uid": "c0000000-0000-4000-8000-000000002006",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "api",
+            "image": "registry.example.invalid/api:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "1",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "source"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "apps",
+        "name": "api-7b8c9d-ccccc",
+        "uid": "a0000000-0000-4000-8000-000000002009",
+        "labels": {
+          "app": "api"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "api-7b8c9d",
+            "uid": "c0000000-0000-4000-8000-000000002008",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "api",
+            "image": "registry.example.invalid/api:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "1",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "source"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "namespace": "apps",
+        "name": "api-7b8c9d-ddddd",
+        "uid": "a0000000-0000-4000-8000-000000002011",
+        "labels": {
+          "app": "api"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "api-7b8c9d",
+            "uid": "c0000000-0000-4000-8000-000000002010",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "api",
+            "image": "registry.example.invalid/api:1.0",
+            "resources": {
+              "requests": {
+                "cpu": "1",
+                "memory": "512Mi"
+              }
+            }
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "restartPolicy": "Always",
+        "nodeName": "source"
+      },
+      "status": {
+        "phase": "Running"
+      }
+    }
+  ],
+  "pod_disruption_budgets": []
+}

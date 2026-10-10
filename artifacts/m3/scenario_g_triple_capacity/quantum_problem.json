@@ -1,0 +1,118 @@
+{
+  "artifact": "quantum_problem",
+  "artifact_schema_version": "1.0",
+  "assignment_qubits": 8,
+  "bit_order": "Qiskit little-endian: qubit i is character [-1 - i] of a counts key",
+  "eliminated_variables": [],
+  "fixture": "scenario_g_triple_capacity",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "m2_assessment": "MODELED_BLOCKED",
+  "m2_conditions": [],
+  "m2_variables": [
+    {
+      "node": "node-big",
+      "pod": "apps/api-7b8c9d-aaaaa"
+    },
+    {
+      "node": "node-small",
+      "pod": "apps/api-7b8c9d-aaaaa"
+    },
+    {
+      "node": "node-big",
+      "pod": "apps/api-7b8c9d-bbbbb"
+    },
+    {
+      "node": "node-small",
+      "pod": "apps/api-7b8c9d-bbbbb"
+    },
+    {
+      "node": "node-big",
+      "pod": "apps/api-7b8c9d-ccccc"
+    },
+    {
+      "node": "node-small",
+      "pod": "apps/api-7b8c9d-ccccc"
+    },
+    {
+      "node": "node-big",
+      "pod": "apps/api-7b8c9d-ddddd"
+    },
+    {
+      "node": "node-small",
+      "pod": "apps/api-7b8c9d-ddddd"
+    }
+  ],
+  "qubit_budget": 12,
+  "qubits": [
+    {
+      "kind": "assignment",
+      "node": "node-big",
+      "pod": "apps/api-7b8c9d-aaaaa",
+      "qubit": 0
+    },
+    {
+      "kind": "assignment",
+      "node": "node-small",
+      "pod": "apps/api-7b8c9d-aaaaa",
+      "qubit": 1
+    },
+    {
+      "kind": "assignment",
+      "node": "node-big",
+      "pod": "apps/api-7b8c9d-bbbbb",
+      "qubit": 2
+    },
+    {
+      "kind": "assignment",
+      "node": "node-small",
+      "pod": "apps/api-7b8c9d-bbbbb",
+      "qubit": 3
+    },
+    {
+      "kind": "assignment",
+      "node": "node-big",
+      "pod": "apps/api-7b8c9d-ccccc",
+      "qubit": 4
+    },
+    {
+      "kind": "assignment",
+      "node": "node-small",
+      "pod": "apps/api-7b8c9d-ccccc",
+      "qubit": 5
+    },
+    {
+      "kind": "assignment",
+      "node": "node-big",
+      "pod": "apps/api-7b8c9d-ddddd",
+      "qubit": 6
+    },
+    {
+      "kind": "assignment",
+      "node": "node-small",
+      "pod": "apps/api-7b8c9d-ddddd",
+      "qubit": 7
+    },
+    {
+      "constraint": "cap:node-big:cpu_millicores",
+      "kind": "slack",
+      "qubit": 8
+    },
+    {
+      "constraint": "cap:node-big:cpu_millicores",
+      "kind": "slack",
+      "qubit": 9
+    }
+  ],
+  "required_qubits": 10,
+  "slack_qubits": 2,
+  "source": {
+    "snapshot_id": "m3-scenario-g-triple-capacity",
+    "source_sha256": "d2a82a960b2b770cd5111e2f3a553b321992e9113a09fb5ac70c0a94b20b8fe8"
+  },
+  "status": "SUPPORTED",
+  "target_node": "source"
+}

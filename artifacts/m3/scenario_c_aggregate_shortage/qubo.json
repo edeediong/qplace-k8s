@@ -1,0 +1,335 @@
+{
+  "artifact": "qubo",
+  "artifact_schema_version": "1.0",
+  "constraints": [
+    {
+      "capacity": 1,
+      "coefficients": [
+        1,
+        1
+      ],
+      "encoding": "AT_MOST_ONE_PAIRWISE",
+      "name": "one:apps/worker-9c8d7e-aaaaa",
+      "penalty_pairs": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        1
+      ]
+    },
+    {
+      "capacity": 1,
+      "coefficients": [
+        1,
+        1
+      ],
+      "encoding": "AT_MOST_ONE_PAIRWISE",
+      "name": "one:apps/worker-9c8d7e-bbbbb",
+      "penalty_pairs": [
+        [
+          2,
+          3
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        2,
+        3
+      ]
+    },
+    {
+      "capacity": 1,
+      "coefficients": [
+        1,
+        1
+      ],
+      "encoding": "AT_MOST_ONE_PAIRWISE",
+      "name": "one:apps/worker-9c8d7e-ccccc",
+      "penalty_pairs": [
+        [
+          4,
+          5
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        4,
+        5
+      ]
+    },
+    {
+      "capacity": 2000,
+      "coefficients": [
+        1500,
+        1500,
+        1500
+      ],
+      "encoding": "CAPACITY_PAIRWISE_EXACT",
+      "name": "cap:node-1:cpu_millicores",
+      "penalty_pairs": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "capacity": 4294967296,
+      "coefficients": [
+        1073741824,
+        1073741824,
+        1073741824
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-1:memory_bytes",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "capacity": 110,
+      "coefficients": [
+        1,
+        1,
+        1
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-1:pods",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "capacity": 2000,
+      "coefficients": [
+        1500,
+        1500,
+        1500
+      ],
+      "encoding": "CAPACITY_PAIRWISE_EXACT",
+      "name": "cap:node-2:cpu_millicores",
+      "penalty_pairs": [
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "capacity": 4294967296,
+      "coefficients": [
+        1073741824,
+        1073741824,
+        1073741824
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-2:memory_bytes",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "capacity": 110,
+      "coefficients": [
+        1,
+        1,
+        1
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-2:pods",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        1,
+        3,
+        5
+      ]
+    }
+  ],
+  "correctness_evidence": {
+    "every_max_assignment_reaches_minimum": true,
+    "feasible_energy_exact": true,
+    "infeasible_strictly_above_minimum": true,
+    "ising_matches_qubo": true,
+    "max_feasible_pods": 2,
+    "min_energy": -2,
+    "min_infeasible_energy": 3,
+    "minima_all_feasible_max_cardinality": true,
+    "minimum_states": 6,
+    "states_enumerated": 64,
+    "valid": true
+  },
+  "fixture": "scenario_c_aggregate_shortage",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "objective": "minimize -sum(assignment x) + penalties; primary M2 objective (pods placed) only",
+  "penalty": 6,
+  "penalty_rule": "P = number of assignment variables; any violated term costs >= P",
+  "qubo": {
+    "constant": 0,
+    "linear": [
+      {
+        "coefficient": -1,
+        "i": 0
+      },
+      {
+        "coefficient": -1,
+        "i": 1
+      },
+      {
+        "coefficient": -1,
+        "i": 2
+      },
+      {
+        "coefficient": -1,
+        "i": 3
+      },
+      {
+        "coefficient": -1,
+        "i": 4
+      },
+      {
+        "coefficient": -1,
+        "i": 5
+      }
+    ],
+    "num_variables": 6,
+    "quadratic": [
+      {
+        "coefficient": 6,
+        "i": 0,
+        "j": 1
+      },
+      {
+        "coefficient": 6,
+        "i": 0,
+        "j": 2
+      },
+      {
+        "coefficient": 6,
+        "i": 0,
+        "j": 4
+      },
+      {
+        "coefficient": 6,
+        "i": 1,
+        "j": 3
+      },
+      {
+        "coefficient": 6,
+        "i": 1,
+        "j": 5
+      },
+      {
+        "coefficient": 6,
+        "i": 2,
+        "j": 3
+      },
+      {
+        "coefficient": 6,
+        "i": 2,
+        "j": 4
+      },
+      {
+        "coefficient": 6,
+        "i": 3,
+        "j": 5
+      },
+      {
+        "coefficient": 6,
+        "i": 4,
+        "j": 5
+      }
+    ]
+  },
+  "source": {
+    "snapshot_id": "m2-scenario-c-aggregate-shortage",
+    "source_sha256": "5c383c7a611bb77f9a0cbc97fa5df5f729b5134e887d657acc21065849d461fd"
+  },
+  "status": "SUPPORTED",
+  "target_node": "source"
+}

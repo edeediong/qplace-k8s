@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qplace.invalid/schemas/m3-comparison-results-1.0.schema.json",
+  "title": "QPlace comparison_results.json artifact (M3), version 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact",
+    "artifact_schema_version",
+    "generator",
+    "fixture",
+    "source",
+    "target_node",
+    "observational",
+    "classical",
+    "quantum",
+    "quantum_skipped",
+    "claims",
+    "uniform_random_baseline"
+  ],
+  "properties": {
+    "artifact": {
+      "const": "comparison_results"
+    },
+    "artifact_schema_version": {
+      "const": "1.0"
+    },
+    "generator": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "milestone"
+      ],
+      "properties": {
+        "milestone": {
+          "const": "M3"
+        }
+      }
+    },
+    "fixture": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "snapshot_id",
+        "source_sha256"
+      ]
+    },
+    "target_node": {
+      "type": "string"
+    },
+    "observational": {
+      "const": true
+    },
+    "classical": {
+      "type": "object",
+      "required": [
+        "greedy",
+        "exact",
+        "candidates",
+        "m2_assessment",
+        "timing_seconds"
+      ]
+    },
+    "quantum": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "reps",
+          "qubits",
+          "circuit_depth",
+          "estimator_evaluations",
+          "sampler_jobs",
+          "training_seconds",
+          "sampling_seconds_median",
+          "exact_probability_of_optimal_count",
+          "per_seed",
+          "feasible_sample_rate_mean",
+          "best_verified_sample",
+          "optimality_gap_pods",
+          "solver_result",
+          "uniform_probability_of_optimal_count",
+          "ratio_to_uniform",
+          "better_than_uniform"
+        ],
+        "properties": {
+          "solver_result": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "solver": {
+                "const": "qaoa"
+              },
+              "optimality_proven": {
+                "const": false
+              }
+            }
+          },
+          "optimality_gap_pods": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "quantum_skipped": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "claims": {
+      "type": "object",
+      "required": [
+        "quantum_optimality_proven",
+        "operational_assessment",
+        "note"
+      ],
+      "properties": {
+        "quantum_optimality_proven": {
+          "const": false
+        }
+      }
+    },
+    "uniform_random_baseline": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "states",
+        "feasible_rate",
+        "nonempty_feasible_rate",
+        "exact_count_rate",
+        "probability_seed_hits_exact_count_in_shots",
+        "shots"
+      ]
+    }
+  }
+}

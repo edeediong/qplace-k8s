@@ -1,0 +1,129 @@
+{
+  "artifact": "ising_hamiltonian",
+  "artifact_schema_version": "1.0",
+  "circuit_scale": 2.0,
+  "circuit_scale_note": "QAOA uses H / max|coefficient|; eigenvectors and their order are unchanged",
+  "fixture": "fixture_a_healthy",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "ising": {
+    "J": [
+      {
+        "coefficient": "2/1",
+        "i": 0,
+        "j": 1
+      },
+      {
+        "coefficient": "2/1",
+        "i": 2,
+        "j": 3
+      },
+      {
+        "coefficient": "2/1",
+        "i": 4,
+        "j": 5
+      },
+      {
+        "coefficient": "2/1",
+        "i": 6,
+        "j": 7
+      }
+    ],
+    "convention": "z_i = 1 - 2 x_i; Pauli label qubit 0 = rightmost character",
+    "h": [
+      {
+        "coefficient": "-3/2",
+        "i": 0
+      },
+      {
+        "coefficient": "-3/2",
+        "i": 1
+      },
+      {
+        "coefficient": "-3/2",
+        "i": 2
+      },
+      {
+        "coefficient": "-3/2",
+        "i": 3
+      },
+      {
+        "coefficient": "-3/2",
+        "i": 4
+      },
+      {
+        "coefficient": "-3/2",
+        "i": 5
+      },
+      {
+        "coefficient": "-3/2",
+        "i": 6
+      },
+      {
+        "coefficient": "-3/2",
+        "i": 7
+      }
+    ],
+    "num_qubits": 8,
+    "offset": "4/1",
+    "pauli_terms": [
+      {
+        "coefficient": -1.5,
+        "label": "IIIIIIIZ"
+      },
+      {
+        "coefficient": -1.5,
+        "label": "IIIIIIZI"
+      },
+      {
+        "coefficient": -1.5,
+        "label": "IIIIIZII"
+      },
+      {
+        "coefficient": -1.5,
+        "label": "IIIIZIII"
+      },
+      {
+        "coefficient": -1.5,
+        "label": "IIIZIIII"
+      },
+      {
+        "coefficient": -1.5,
+        "label": "IIZIIIII"
+      },
+      {
+        "coefficient": -1.5,
+        "label": "IZIIIIII"
+      },
+      {
+        "coefficient": -1.5,
+        "label": "ZIIIIIII"
+      },
+      {
+        "coefficient": 2.0,
+        "label": "IIIIIIZZ"
+      },
+      {
+        "coefficient": 2.0,
+        "label": "IIIIZZII"
+      },
+      {
+        "coefficient": 2.0,
+        "label": "IIZZIIII"
+      },
+      {
+        "coefficient": 2.0,
+        "label": "ZZIIIIII"
+      }
+    ]
+  },
+  "source": {
+    "snapshot_id": "fixture-a-healthy",
+    "source_sha256": "9525703e0b2d45e72369401fdbc70ef241b97a18b4063538e9759ba4d55843b0"
+  },
+  "status": "SUPPORTED",
+  "target_node": "worker-03"
+}

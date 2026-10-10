@@ -1,0 +1,1352 @@
+{
+  "artifact": "quantum_samples",
+  "artifact_schema_version": "1.0",
+  "backend": "qiskit.primitives.StatevectorSampler (local, noiseless, shot-based sampling of the exact statevector)",
+  "bitstrings": {
+    "000001": {
+      "assignment": [
+        {
+          "node": "worker-01",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        }
+      ],
+      "bitstring": "000001",
+      "m2_objective": {
+        "assigned": 1,
+        "balance_leximin": [
+          "11/20",
+          "1/1"
+        ],
+        "min_free_fraction": "11/20"
+      },
+      "placed": 1,
+      "qubo_energy": -1,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "000101": {
+      "assignment": [
+        {
+          "node": "worker-01",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/cache-0"
+        }
+      ],
+      "bitstring": "000101",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "1/4",
+          "1/1"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "000110": {
+      "assignment": [
+        {
+          "node": "worker-02",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/cache-0"
+        }
+      ],
+      "bitstring": "000110",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "3/8",
+          "4/5"
+        ],
+        "min_free_fraction": "3/8"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "001001": {
+      "assignment": [
+        {
+          "node": "worker-01",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/cache-0"
+        }
+      ],
+      "bitstring": "001001",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "11/20",
+          "5/8"
+        ],
+        "min_free_fraction": "11/20"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "001010": {
+      "assignment": [
+        {
+          "node": "worker-02",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/cache-0"
+        }
+      ],
+      "bitstring": "001010",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "1/2",
+          "3/4"
+        ],
+        "min_free_fraction": "1/2"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "010001": {
+      "assignment": [
+        {
+          "node": "worker-01",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "010001",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "3/10",
+          "1/1"
+        ],
+        "min_free_fraction": "3/10"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "010010": {
+      "assignment": [
+        {
+          "node": "worker-02",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "010010",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "1/2",
+          "4/5"
+        ],
+        "min_free_fraction": "1/2"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "010100": {
+      "assignment": [
+        {
+          "node": "worker-01",
+          "pod": "shop/cache-0"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "010100",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "1/8",
+          "1/1"
+        ],
+        "min_free_fraction": "1/8"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "010101": {
+      "assignment": [
+        {
+          "node": "worker-01",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/cache-0"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "010101",
+      "m2_objective": {
+        "assigned": 3,
+        "balance_leximin": [
+          "0/1",
+          "1/1"
+        ],
+        "min_free_fraction": "0/1"
+      },
+      "placed": 3,
+      "qubo_energy": -3,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "010110": {
+      "assignment": [
+        {
+          "node": "worker-02",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/cache-0"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "010110",
+      "m2_objective": {
+        "assigned": 3,
+        "balance_leximin": [
+          "1/8",
+          "4/5"
+        ],
+        "min_free_fraction": "1/8"
+      },
+      "placed": 3,
+      "qubo_energy": -3,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "010111": {
+      "assignment": [
+        {
+          "node": "worker-01",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/cache-0"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "010111",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 2,
+      "raw_feasible": false,
+      "verification_errors": [
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "011000": {
+      "assignment": [
+        {
+          "node": "worker-02",
+          "pod": "shop/cache-0"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "011000",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "1/2",
+          "5/8"
+        ],
+        "min_free_fraction": "1/2"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "011001": {
+      "assignment": [
+        {
+          "node": "worker-01",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/cache-0"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "011001",
+      "m2_objective": {
+        "assigned": 3,
+        "balance_leximin": [
+          "3/10",
+          "5/8"
+        ],
+        "min_free_fraction": "3/10"
+      },
+      "placed": 3,
+      "qubo_energy": -3,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "011010": {
+      "assignment": [
+        {
+          "node": "worker-02",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/cache-0"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "011010",
+      "m2_objective": {
+        "assigned": 3,
+        "balance_leximin": [
+          "1/2",
+          "1/2"
+        ],
+        "min_free_fraction": "1/2"
+      },
+      "placed": 3,
+      "qubo_energy": -3,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "011101": {
+      "assignment": [
+        {
+          "node": "worker-01",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/cache-0"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/cache-0"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "011101",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 2,
+      "raw_feasible": false,
+      "verification_errors": [
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "100001": {
+      "assignment": [
+        {
+          "node": "worker-01",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "100001",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "11/20",
+          "3/4"
+        ],
+        "min_free_fraction": "11/20"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "100010": {
+      "assignment": [
+        {
+          "node": "worker-02",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "100010",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "11/20",
+          "3/4"
+        ],
+        "min_free_fraction": "11/20"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "100100": {
+      "assignment": [
+        {
+          "node": "worker-01",
+          "pod": "shop/cache-0"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "100100",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "3/8",
+          "3/4"
+        ],
+        "min_free_fraction": "3/8"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "100101": {
+      "assignment": [
+        {
+          "node": "worker-01",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/cache-0"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "100101",
+      "m2_objective": {
+        "assigned": 3,
+        "balance_leximin": [
+          "1/4",
+          "3/4"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "placed": 3,
+      "qubo_energy": -3,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "100110": {
+      "assignment": [
+        {
+          "node": "worker-02",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/cache-0"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "100110",
+      "m2_objective": {
+        "assigned": 3,
+        "balance_leximin": [
+          "3/8",
+          "11/20"
+        ],
+        "min_free_fraction": "3/8"
+      },
+      "placed": 3,
+      "qubo_energy": -3,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "100111": {
+      "assignment": [
+        {
+          "node": "worker-01",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-01",
+          "pod": "shop/cache-0"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "100111",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 2,
+      "raw_feasible": false,
+      "verification_errors": [
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "101000": {
+      "assignment": [
+        {
+          "node": "worker-02",
+          "pod": "shop/cache-0"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "101000",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "3/8",
+          "3/4"
+        ],
+        "min_free_fraction": "3/8"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "101001": {
+      "assignment": [
+        {
+          "node": "worker-01",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/cache-0"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "101001",
+      "m2_objective": {
+        "assigned": 3,
+        "balance_leximin": [
+          "3/8",
+          "11/20"
+        ],
+        "min_free_fraction": "3/8"
+      },
+      "placed": 3,
+      "qubo_energy": -3,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "101010": {
+      "assignment": [
+        {
+          "node": "worker-02",
+          "pod": "shop/api-6e5d4c-aaaaa"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/cache-0"
+        },
+        {
+          "node": "worker-02",
+          "pod": "shop/web-5d4c3b-bbbbb"
+        }
+      ],
+      "bitstring": "101010",
+      "m2_objective": {
+        "assigned": 3,
+        "balance_leximin": [
+          "1/4",
+          "3/4"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "placed": 3,
+      "qubo_energy": -3,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    }
+  },
+  "fixture": "scenario_a_feasible",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "observational": true,
+  "runs": [
+    {
+      "counts": {
+        "010101": 137,
+        "010110": 128,
+        "011001": 141,
+        "011010": 126,
+        "100101": 137,
+        "100110": 125,
+        "101001": 112,
+        "101010": 118
+      },
+      "decode_verify_seconds": 0.00029433309100568295,
+      "reps": 1,
+      "sampling_seconds": 0.008925624890252948,
+      "seed": 11,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-02",
+              "pod": "shop/api-6e5d4c-aaaaa"
+            },
+            {
+              "node": "worker-02",
+              "pod": "shop/cache-0"
+            },
+            {
+              "node": "worker-01",
+              "pod": "shop/web-5d4c3b-bbbbb"
+            }
+          ],
+          "bitstring": "011010",
+          "count": 126,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "1/2",
+              "1/2"
+            ],
+            "min_free_fraction": "1/2"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 8,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "010101": 149,
+        "010110": 125,
+        "011001": 128,
+        "011010": 115,
+        "100101": 135,
+        "100110": 139,
+        "101001": 136,
+        "101010": 97
+      },
+      "decode_verify_seconds": 0.00024545914493501186,
+      "reps": 1,
+      "sampling_seconds": 0.0031096250750124454,
+      "seed": 22,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-02",
+              "pod": "shop/api-6e5d4c-aaaaa"
+            },
+            {
+              "node": "worker-02",
+              "pod": "shop/cache-0"
+            },
+            {
+              "node": "worker-01",
+              "pod": "shop/web-5d4c3b-bbbbb"
+            }
+          ],
+          "bitstring": "011010",
+          "count": 115,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "1/2",
+              "1/2"
+            ],
+            "min_free_fraction": "1/2"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 8,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "010101": 137,
+        "010110": 137,
+        "011001": 147,
+        "011010": 122,
+        "100101": 115,
+        "100110": 125,
+        "101001": 131,
+        "101010": 110
+      },
+      "decode_verify_seconds": 0.00023133307695388794,
+      "reps": 1,
+      "sampling_seconds": 0.0030668750405311584,
+      "seed": 33,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-02",
+              "pod": "shop/api-6e5d4c-aaaaa"
+            },
+            {
+              "node": "worker-02",
+              "pod": "shop/cache-0"
+            },
+            {
+              "node": "worker-01",
+              "pod": "shop/web-5d4c3b-bbbbb"
+            }
+          ],
+          "bitstring": "011010",
+          "count": 122,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "1/2",
+              "1/2"
+            ],
+            "min_free_fraction": "1/2"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 8,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "010101": 144,
+        "010110": 142,
+        "011001": 129,
+        "011010": 137,
+        "100101": 102,
+        "100110": 124,
+        "101001": 139,
+        "101010": 107
+      },
+      "decode_verify_seconds": 0.00022983388043940067,
+      "reps": 1,
+      "sampling_seconds": 0.00306004099547863,
+      "seed": 44,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-02",
+              "pod": "shop/api-6e5d4c-aaaaa"
+            },
+            {
+              "node": "worker-02",
+              "pod": "shop/cache-0"
+            },
+            {
+              "node": "worker-01",
+              "pod": "shop/web-5d4c3b-bbbbb"
+            }
+          ],
+          "bitstring": "011010",
+          "count": 137,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "1/2",
+              "1/2"
+            ],
+            "min_free_fraction": "1/2"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 8,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "010101": 136,
+        "010110": 130,
+        "011001": 125,
+        "011010": 113,
+        "100101": 137,
+        "100110": 128,
+        "101001": 129,
+        "101010": 126
+      },
+      "decode_verify_seconds": 0.00024820887483656406,
+      "reps": 1,
+      "sampling_seconds": 0.0032766670919954777,
+      "seed": 55,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-02",
+              "pod": "shop/api-6e5d4c-aaaaa"
+            },
+            {
+              "node": "worker-02",
+              "pod": "shop/cache-0"
+            },
+            {
+              "node": "worker-01",
+              "pod": "shop/web-5d4c3b-bbbbb"
+            }
+          ],
+          "bitstring": "011010",
+          "count": 113,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "1/2",
+              "1/2"
+            ],
+            "min_free_fraction": "1/2"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 8,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "000101": 1,
+        "001001": 3,
+        "001010": 2,
+        "010010": 4,
+        "010100": 1,
+        "010101": 141,
+        "010110": 121,
+        "010111": 1,
+        "011000": 1,
+        "011001": 134,
+        "011010": 126,
+        "011101": 1,
+        "100001": 1,
+        "100010": 1,
+        "100100": 1,
+        "100101": 135,
+        "100110": 124,
+        "101000": 1,
+        "101001": 111,
+        "101010": 114
+      },
+      "decode_verify_seconds": 0.0005494169890880585,
+      "reps": 2,
+      "sampling_seconds": 0.003938707988709211,
+      "seed": 11,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-02",
+              "pod": "shop/api-6e5d4c-aaaaa"
+            },
+            {
+              "node": "worker-02",
+              "pod": "shop/cache-0"
+            },
+            {
+              "node": "worker-01",
+              "pod": "shop/web-5d4c3b-bbbbb"
+            }
+          ],
+          "bitstring": "011010",
+          "count": 126,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "1/2",
+              "1/2"
+            ],
+            "min_free_fraction": "1/2"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 0.982421875,
+        "best_count_shots": 1006,
+        "distinct_bitstrings": 20,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 0.982421875,
+        "exact_count_shots": 1006,
+        "feasible_sample_rate": 0.998046875,
+        "feasible_shots": 1022,
+        "invalid_raw_shots": 2,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "000101": 2,
+        "000110": 4,
+        "001001": 1,
+        "001010": 1,
+        "010001": 2,
+        "010010": 2,
+        "010101": 148,
+        "010110": 121,
+        "011000": 1,
+        "011001": 129,
+        "011010": 110,
+        "100001": 3,
+        "100010": 1,
+        "100100": 7,
+        "100101": 129,
+        "100110": 135,
+        "100111": 1,
+        "101000": 6,
+        "101001": 125,
+        "101010": 96
+      },
+      "decode_verify_seconds": 0.0005184579640626907,
+      "reps": 2,
+      "sampling_seconds": 0.003814124967902899,
+      "seed": 22,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-02",
+              "pod": "shop/api-6e5d4c-aaaaa"
+            },
+            {
+              "node": "worker-02",
+              "pod": "shop/cache-0"
+            },
+            {
+              "node": "worker-01",
+              "pod": "shop/web-5d4c3b-bbbbb"
+            }
+          ],
+          "bitstring": "011010",
+          "count": 110,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "1/2",
+              "1/2"
+            ],
+            "min_free_fraction": "1/2"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 0.9697265625,
+        "best_count_shots": 993,
+        "distinct_bitstrings": 20,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 0.9697265625,
+        "exact_count_shots": 993,
+        "feasible_sample_rate": 0.9990234375,
+        "feasible_shots": 1023,
+        "invalid_raw_shots": 1,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "000001": 1,
+        "000101": 2,
+        "000110": 1,
+        "001001": 1,
+        "001010": 4,
+        "010001": 2,
+        "010010": 1,
+        "010100": 1,
+        "010101": 133,
+        "010110": 138,
+        "011000": 1,
+        "011001": 140,
+        "011010": 120,
+        "100010": 3,
+        "100100": 2,
+        "100101": 113,
+        "100110": 123,
+        "101000": 1,
+        "101001": 128,
+        "101010": 109
+      },
+      "decode_verify_seconds": 0.0005189168732613325,
+      "reps": 2,
+      "sampling_seconds": 0.0034734171349555254,
+      "seed": 33,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-02",
+              "pod": "shop/api-6e5d4c-aaaaa"
+            },
+            {
+              "node": "worker-02",
+              "pod": "shop/cache-0"
+            },
+            {
+              "node": "worker-01",
+              "pod": "shop/web-5d4c3b-bbbbb"
+            }
+          ],
+          "bitstring": "011010",
+          "count": 120,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "1/2",
+              "1/2"
+            ],
+            "min_free_fraction": "1/2"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 0.98046875,
+        "best_count_shots": 1004,
+        "distinct_bitstrings": 20,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 0.98046875,
+        "exact_count_shots": 1004,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "000101": 1,
+        "000110": 2,
+        "001001": 4,
+        "001010": 1,
+        "010001": 2,
+        "010010": 3,
+        "010100": 6,
+        "010101": 141,
+        "010110": 134,
+        "010111": 1,
+        "011000": 2,
+        "011001": 124,
+        "011010": 134,
+        "100001": 4,
+        "100010": 3,
+        "100100": 1,
+        "100101": 97,
+        "100110": 122,
+        "101000": 5,
+        "101001": 132,
+        "101010": 105
+      },
+      "decode_verify_seconds": 0.0005125000607222319,
+      "reps": 2,
+      "sampling_seconds": 0.0035335419233888388,
+      "seed": 44,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-02",
+              "pod": "shop/api-6e5d4c-aaaaa"
+            },
+            {
+              "node": "worker-02",
+              "pod": "shop/cache-0"
+            },
+            {
+              "node": "worker-01",
+              "pod": "shop/web-5d4c3b-bbbbb"
+            }
+          ],
+          "bitstring": "011010",
+          "count": 134,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "1/2",
+              "1/2"
+            ],
+            "min_free_fraction": "1/2"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 0.9658203125,
+        "best_count_shots": 989,
+        "distinct_bitstrings": 21,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 0.9658203125,
+        "exact_count_shots": 989,
+        "feasible_sample_rate": 0.9990234375,
+        "feasible_shots": 1023,
+        "invalid_raw_shots": 1,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "000101": 2,
+        "000110": 2,
+        "001001": 3,
+        "001010": 3,
+        "010001": 3,
+        "010010": 3,
+        "010100": 2,
+        "010101": 130,
+        "010110": 127,
+        "011000": 5,
+        "011001": 117,
+        "011010": 112,
+        "100001": 10,
+        "100010": 1,
+        "100101": 130,
+        "100110": 124,
+        "101000": 1,
+        "101001": 126,
+        "101010": 123
+      },
+      "decode_verify_seconds": 0.0004825000651180744,
+      "reps": 2,
+      "sampling_seconds": 0.0036534168757498264,
+      "seed": 55,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-02",
+              "pod": "shop/api-6e5d4c-aaaaa"
+            },
+            {
+              "node": "worker-02",
+              "pod": "shop/cache-0"
+            },
+            {
+              "node": "worker-01",
+              "pod": "shop/web-5d4c3b-bbbbb"
+            }
+          ],
+          "bitstring": "011010",
+          "count": 112,
+          "m2_objective": {
+            "assigned": 3,
+            "balance_leximin": [
+              "1/2",
+              "1/2"
+            ],
+            "min_free_fraction": "1/2"
+          },
+          "placed": 3,
+          "qubo_energy": -3,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 0.9658203125,
+        "best_count_shots": 989,
+        "distinct_bitstrings": 19,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 0.9658203125,
+        "exact_count_shots": 989,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    }
+  ],
+  "source": {
+    "snapshot_id": "m2-scenario-a-feasible",
+    "source_sha256": "c63654c225a1f1ae508046a1f8cde3275e886e82ccc9ba1eafeb51c2a657db47"
+  },
+  "target_node": "worker-03"
+}

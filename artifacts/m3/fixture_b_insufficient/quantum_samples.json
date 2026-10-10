@@ -1,0 +1,492 @@
+{
+  "artifact": "quantum_samples",
+  "artifact_schema_version": "1.0",
+  "backend": "qiskit.primitives.StatevectorSampler (local, noiseless, shot-based sampling of the exact statevector)",
+  "bitstrings": {
+    "1": {
+      "assignment": [
+        {
+          "node": "worker-01",
+          "pod": "analytics/ingest-1a2b3c-aaaaa"
+        }
+      ],
+      "bitstring": "1",
+      "m2_objective": {
+        "assigned": 1,
+        "balance_leximin": [
+          "1/20"
+        ],
+        "min_free_fraction": "1/20"
+      },
+      "placed": 1,
+      "qubo_energy": -1,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    }
+  },
+  "fixture": "fixture_b_insufficient",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "observational": true,
+  "runs": [
+    {
+      "counts": {
+        "1": 1024
+      },
+      "decode_verify_seconds": 5.037500523030758e-05,
+      "reps": 1,
+      "sampling_seconds": 0.002039290964603424,
+      "seed": 11,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-01",
+              "pod": "analytics/ingest-1a2b3c-aaaaa"
+            }
+          ],
+          "bitstring": "1",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "1/20"
+            ],
+            "min_free_fraction": "1/20"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "1": 1024
+      },
+      "decode_verify_seconds": 3.474997356534004e-05,
+      "reps": 1,
+      "sampling_seconds": 0.0018337089568376541,
+      "seed": 22,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-01",
+              "pod": "analytics/ingest-1a2b3c-aaaaa"
+            }
+          ],
+          "bitstring": "1",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "1/20"
+            ],
+            "min_free_fraction": "1/20"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "1": 1024
+      },
+      "decode_verify_seconds": 3.779190592467785e-05,
+      "reps": 1,
+      "sampling_seconds": 0.0018029590137302876,
+      "seed": 33,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-01",
+              "pod": "analytics/ingest-1a2b3c-aaaaa"
+            }
+          ],
+          "bitstring": "1",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "1/20"
+            ],
+            "min_free_fraction": "1/20"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "1": 1024
+      },
+      "decode_verify_seconds": 3.2125040888786316e-05,
+      "reps": 1,
+      "sampling_seconds": 0.0018223330844193697,
+      "seed": 44,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-01",
+              "pod": "analytics/ingest-1a2b3c-aaaaa"
+            }
+          ],
+          "bitstring": "1",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "1/20"
+            ],
+            "min_free_fraction": "1/20"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "1": 1024
+      },
+      "decode_verify_seconds": 3.400002606213093e-05,
+      "reps": 1,
+      "sampling_seconds": 0.0017850419972091913,
+      "seed": 55,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-01",
+              "pod": "analytics/ingest-1a2b3c-aaaaa"
+            }
+          ],
+          "bitstring": "1",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "1/20"
+            ],
+            "min_free_fraction": "1/20"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "1": 1024
+      },
+      "decode_verify_seconds": 5.070888437330723e-05,
+      "reps": 2,
+      "sampling_seconds": 0.0020454591140151024,
+      "seed": 11,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-01",
+              "pod": "analytics/ingest-1a2b3c-aaaaa"
+            }
+          ],
+          "bitstring": "1",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "1/20"
+            ],
+            "min_free_fraction": "1/20"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "1": 1024
+      },
+      "decode_verify_seconds": 3.829202614724636e-05,
+      "reps": 2,
+      "sampling_seconds": 0.0018892078660428524,
+      "seed": 22,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-01",
+              "pod": "analytics/ingest-1a2b3c-aaaaa"
+            }
+          ],
+          "bitstring": "1",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "1/20"
+            ],
+            "min_free_fraction": "1/20"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "1": 1024
+      },
+      "decode_verify_seconds": 3.724987618625164e-05,
+      "reps": 2,
+      "sampling_seconds": 0.0018722908571362495,
+      "seed": 33,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-01",
+              "pod": "analytics/ingest-1a2b3c-aaaaa"
+            }
+          ],
+          "bitstring": "1",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "1/20"
+            ],
+            "min_free_fraction": "1/20"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "1": 1024
+      },
+      "decode_verify_seconds": 3.283401019871235e-05,
+      "reps": 2,
+      "sampling_seconds": 0.0018457078840583563,
+      "seed": 44,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-01",
+              "pod": "analytics/ingest-1a2b3c-aaaaa"
+            }
+          ],
+          "bitstring": "1",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "1/20"
+            ],
+            "min_free_fraction": "1/20"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "1": 1024
+      },
+      "decode_verify_seconds": 3.316602669656277e-05,
+      "reps": 2,
+      "sampling_seconds": 0.0018528341315686703,
+      "seed": 55,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "worker-01",
+              "pod": "analytics/ingest-1a2b3c-aaaaa"
+            }
+          ],
+          "bitstring": "1",
+          "count": 1024,
+          "m2_objective": {
+            "assigned": 1,
+            "balance_leximin": [
+              "1/20"
+            ],
+            "min_free_fraction": "1/20"
+          },
+          "placed": 1,
+          "qubo_energy": -1,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 1.0,
+        "best_count_shots": 1024,
+        "distinct_bitstrings": 1,
+        "empty_placement_shots": 0,
+        "exact_count_sample_rate": 1.0,
+        "exact_count_shots": 1024,
+        "feasible_sample_rate": 1.0,
+        "feasible_shots": 1024,
+        "invalid_raw_shots": 0,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    }
+  ],
+  "source": {
+    "snapshot_id": "fixture-b-insufficient",
+    "source_sha256": "6959fbc701e487288f5caeab3e42963506b4c1b773811f3d371a0316846ea04a"
+  },
+  "target_node": "worker-02"
+}

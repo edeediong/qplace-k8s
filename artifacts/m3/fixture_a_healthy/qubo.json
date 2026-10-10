@@ -1,0 +1,328 @@
+{
+  "artifact": "qubo",
+  "artifact_schema_version": "1.0",
+  "constraints": [
+    {
+      "capacity": 1,
+      "coefficients": [
+        1,
+        1
+      ],
+      "encoding": "AT_MOST_ONE_PAIRWISE",
+      "name": "one:shop/api-5c6b7d-aaaaa",
+      "penalty_pairs": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        1
+      ]
+    },
+    {
+      "capacity": 1,
+      "coefficients": [
+        1,
+        1
+      ],
+      "encoding": "AT_MOST_ONE_PAIRWISE",
+      "name": "one:shop/cart-0",
+      "penalty_pairs": [
+        [
+          2,
+          3
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        2,
+        3
+      ]
+    },
+    {
+      "capacity": 1,
+      "coefficients": [
+        1,
+        1
+      ],
+      "encoding": "AT_MOST_ONE_PAIRWISE",
+      "name": "one:shop/web-7d9f8c-aaaaa",
+      "penalty_pairs": [
+        [
+          4,
+          5
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        4,
+        5
+      ]
+    },
+    {
+      "capacity": 1,
+      "coefficients": [
+        1,
+        1
+      ],
+      "encoding": "AT_MOST_ONE_PAIRWISE",
+      "name": "one:shop/web-7d9f8c-bbbbb",
+      "penalty_pairs": [
+        [
+          6,
+          7
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        6,
+        7
+      ]
+    },
+    {
+      "capacity": 3300,
+      "coefficients": [
+        1000,
+        300,
+        500,
+        600
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:worker-01:cpu_millicores",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "capacity": 15502147584,
+      "coefficients": [
+        268435456,
+        1073741824,
+        536870912,
+        671088640
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:worker-01:memory_bytes",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "capacity": 108,
+      "coefficients": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:worker-01:pods",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "capacity": 2800,
+      "coefficients": [
+        1000,
+        300,
+        500,
+        600
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:worker-02:cpu_millicores",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        1,
+        3,
+        5,
+        7
+      ]
+    },
+    {
+      "capacity": 15770583040,
+      "coefficients": [
+        268435456,
+        1073741824,
+        536870912,
+        671088640
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:worker-02:memory_bytes",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        1,
+        3,
+        5,
+        7
+      ]
+    },
+    {
+      "capacity": 108,
+      "coefficients": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:worker-02:pods",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        1,
+        3,
+        5,
+        7
+      ]
+    }
+  ],
+  "correctness_evidence": {
+    "every_max_assignment_reaches_minimum": true,
+    "feasible_energy_exact": true,
+    "infeasible_strictly_above_minimum": true,
+    "ising_matches_qubo": true,
+    "max_feasible_pods": 4,
+    "min_energy": -4,
+    "min_infeasible_energy": 3,
+    "minima_all_feasible_max_cardinality": true,
+    "minimum_states": 16,
+    "states_enumerated": 256,
+    "valid": true
+  },
+  "fixture": "fixture_a_healthy",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "objective": "minimize -sum(assignment x) + penalties; primary M2 objective (pods placed) only",
+  "penalty": 8,
+  "penalty_rule": "P = number of assignment variables; any violated term costs >= P",
+  "qubo": {
+    "constant": 0,
+    "linear": [
+      {
+        "coefficient": -1,
+        "i": 0
+      },
+      {
+        "coefficient": -1,
+        "i": 1
+      },
+      {
+        "coefficient": -1,
+        "i": 2
+      },
+      {
+        "coefficient": -1,
+        "i": 3
+      },
+      {
+        "coefficient": -1,
+        "i": 4
+      },
+      {
+        "coefficient": -1,
+        "i": 5
+      },
+      {
+        "coefficient": -1,
+        "i": 6
+      },
+      {
+        "coefficient": -1,
+        "i": 7
+      }
+    ],
+    "num_variables": 8,
+    "quadratic": [
+      {
+        "coefficient": 8,
+        "i": 0,
+        "j": 1
+      },
+      {
+        "coefficient": 8,
+        "i": 2,
+        "j": 3
+      },
+      {
+        "coefficient": 8,
+        "i": 4,
+        "j": 5
+      },
+      {
+        "coefficient": 8,
+        "i": 6,
+        "j": 7
+      }
+    ]
+  },
+  "source": {
+    "snapshot_id": "fixture-a-healthy",
+    "source_sha256": "9525703e0b2d45e72369401fdbc70ef241b97a18b4063538e9759ba4d55843b0"
+  },
+  "status": "SUPPORTED",
+  "target_node": "worker-03"
+}

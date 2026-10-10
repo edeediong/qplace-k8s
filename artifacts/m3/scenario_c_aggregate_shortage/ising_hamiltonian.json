@@ -1,0 +1,158 @@
+{
+  "artifact": "ising_hamiltonian",
+  "artifact_schema_version": "1.0",
+  "circuit_scale": 4.0,
+  "circuit_scale_note": "QAOA uses H / max|coefficient|; eigenvectors and their order are unchanged",
+  "fixture": "scenario_c_aggregate_shortage",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "ising": {
+    "J": [
+      {
+        "coefficient": "3/2",
+        "i": 0,
+        "j": 1
+      },
+      {
+        "coefficient": "3/2",
+        "i": 0,
+        "j": 2
+      },
+      {
+        "coefficient": "3/2",
+        "i": 0,
+        "j": 4
+      },
+      {
+        "coefficient": "3/2",
+        "i": 1,
+        "j": 3
+      },
+      {
+        "coefficient": "3/2",
+        "i": 1,
+        "j": 5
+      },
+      {
+        "coefficient": "3/2",
+        "i": 2,
+        "j": 3
+      },
+      {
+        "coefficient": "3/2",
+        "i": 2,
+        "j": 4
+      },
+      {
+        "coefficient": "3/2",
+        "i": 3,
+        "j": 5
+      },
+      {
+        "coefficient": "3/2",
+        "i": 4,
+        "j": 5
+      }
+    ],
+    "convention": "z_i = 1 - 2 x_i; Pauli label qubit 0 = rightmost character",
+    "h": [
+      {
+        "coefficient": "-4/1",
+        "i": 0
+      },
+      {
+        "coefficient": "-4/1",
+        "i": 1
+      },
+      {
+        "coefficient": "-4/1",
+        "i": 2
+      },
+      {
+        "coefficient": "-4/1",
+        "i": 3
+      },
+      {
+        "coefficient": "-4/1",
+        "i": 4
+      },
+      {
+        "coefficient": "-4/1",
+        "i": 5
+      }
+    ],
+    "num_qubits": 6,
+    "offset": "21/2",
+    "pauli_terms": [
+      {
+        "coefficient": -4.0,
+        "label": "IIIIIZ"
+      },
+      {
+        "coefficient": -4.0,
+        "label": "IIIIZI"
+      },
+      {
+        "coefficient": -4.0,
+        "label": "IIIZII"
+      },
+      {
+        "coefficient": -4.0,
+        "label": "IIZIII"
+      },
+      {
+        "coefficient": -4.0,
+        "label": "IZIIII"
+      },
+      {
+        "coefficient": -4.0,
+        "label": "ZIIIII"
+      },
+      {
+        "coefficient": 1.5,
+        "label": "IIIIZZ"
+      },
+      {
+        "coefficient": 1.5,
+        "label": "IIIZIZ"
+      },
+      {
+        "coefficient": 1.5,
+        "label": "IZIIIZ"
+      },
+      {
+        "coefficient": 1.5,
+        "label": "IIZIZI"
+      },
+      {
+        "coefficient": 1.5,
+        "label": "ZIIIZI"
+      },
+      {
+        "coefficient": 1.5,
+        "label": "IIZZII"
+      },
+      {
+        "coefficient": 1.5,
+        "label": "IZIZII"
+      },
+      {
+        "coefficient": 1.5,
+        "label": "ZIZIII"
+      },
+      {
+        "coefficient": 1.5,
+        "label": "ZZIIII"
+      }
+    ]
+  },
+  "source": {
+    "snapshot_id": "m2-scenario-c-aggregate-shortage",
+    "source_sha256": "5c383c7a611bb77f9a0cbc97fa5df5f729b5134e887d657acc21065849d461fd"
+  },
+  "status": "SUPPORTED",
+  "target_node": "source"
+}

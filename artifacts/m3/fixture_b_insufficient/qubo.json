@@ -1,0 +1,113 @@
+{
+  "artifact": "qubo",
+  "artifact_schema_version": "1.0",
+  "constraints": [
+    {
+      "capacity": 1,
+      "coefficients": [
+        1
+      ],
+      "encoding": "AT_MOST_ONE_PAIRWISE",
+      "name": "one:analytics/ingest-1a2b3c-aaaaa",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0
+      ]
+    },
+    {
+      "capacity": 300,
+      "coefficients": [
+        200
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:worker-01:cpu_millicores",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0
+      ]
+    },
+    {
+      "capacity": 1073741824,
+      "coefficients": [
+        268435456
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:worker-01:memory_bytes",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0
+      ]
+    },
+    {
+      "capacity": 107,
+      "coefficients": [
+        1
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:worker-01:pods",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0
+      ]
+    }
+  ],
+  "correctness_evidence": {
+    "every_max_assignment_reaches_minimum": true,
+    "feasible_energy_exact": true,
+    "infeasible_strictly_above_minimum": true,
+    "ising_matches_qubo": true,
+    "max_feasible_pods": 1,
+    "min_energy": -1,
+    "min_infeasible_energy": null,
+    "minima_all_feasible_max_cardinality": true,
+    "minimum_states": 1,
+    "states_enumerated": 2,
+    "valid": true
+  },
+  "fixture": "fixture_b_insufficient",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "objective": "minimize -sum(assignment x) + penalties; primary M2 objective (pods placed) only",
+  "penalty": 1,
+  "penalty_rule": "P = number of assignment variables; any violated term costs >= P",
+  "qubo": {
+    "constant": 0,
+    "linear": [
+      {
+        "coefficient": -1,
+        "i": 0
+      }
+    ],
+    "num_variables": 1,
+    "quadratic": []
+  },
+  "source": {
+    "snapshot_id": "fixture-b-insufficient",
+    "source_sha256": "6959fbc701e487288f5caeab3e42963506b4c1b773811f3d371a0316846ea04a"
+  },
+  "status": "SUPPORTED",
+  "target_node": "worker-02"
+}

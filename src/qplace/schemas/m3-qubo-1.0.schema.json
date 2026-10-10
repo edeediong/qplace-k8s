@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qplace.invalid/schemas/m3-qubo-1.0.schema.json",
+  "title": "QPlace qubo.json artifact (M3), version 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact",
+    "artifact_schema_version",
+    "generator",
+    "fixture",
+    "source",
+    "target_node",
+    "status",
+    "objective",
+    "penalty",
+    "penalty_rule",
+    "constraints",
+    "qubo",
+    "correctness_evidence"
+  ],
+  "properties": {
+    "artifact": {
+      "const": "qubo"
+    },
+    "artifact_schema_version": {
+      "const": "1.0"
+    },
+    "generator": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "milestone"
+      ],
+      "properties": {
+        "milestone": {
+          "const": "M3"
+        }
+      }
+    },
+    "fixture": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "snapshot_id",
+        "source_sha256"
+      ]
+    },
+    "target_node": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "SUPPORTED",
+        "EMPTY",
+        "UNSUPPORTED_SIZE"
+      ]
+    },
+    "objective": {
+      "type": "string"
+    },
+    "penalty": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "penalty_rule": {
+      "type": "string"
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "encoding",
+          "variables",
+          "coefficients",
+          "capacity"
+        ],
+        "properties": {
+          "encoding": {
+            "enum": [
+              "AT_MOST_ONE_PAIRWISE",
+              "CAPACITY_REDUNDANT",
+              "CAPACITY_PAIRWISE_EXACT",
+              "CAPACITY_SLACK"
+            ]
+          }
+        }
+      }
+    },
+    "qubo": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "num_variables",
+        "constant",
+        "linear",
+        "quadratic"
+      ],
+      "properties": {
+        "constant": {
+          "type": "integer"
+        },
+        "linear": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "i",
+              "coefficient"
+            ],
+            "properties": {
+              "coefficient": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "quadratic": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "i",
+              "j",
+              "coefficient"
+            ],
+            "properties": {
+              "coefficient": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "correctness_evidence": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "valid",
+        "states_enumerated",
+        "max_feasible_pods",
+        "min_energy"
+      ],
+      "properties": {
+        "valid": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "SUPPORTED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "qubo": {
+            "type": "object"
+          },
+          "correctness_evidence": {
+            "type": "object",
+            "properties": {
+              "valid": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

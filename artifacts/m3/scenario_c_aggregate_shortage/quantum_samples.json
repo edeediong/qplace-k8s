@@ -1,0 +1,2536 @@
+{
+  "artifact": "quantum_samples",
+  "artifact_schema_version": "1.0",
+  "backend": "qiskit.primitives.StatevectorSampler (local, noiseless, shot-based sampling of the exact statevector)",
+  "bitstrings": {
+    "000000": {
+      "assignment": [],
+      "bitstring": "000000",
+      "m2_objective": {
+        "assigned": 0,
+        "balance_leximin": [
+          "1/1",
+          "1/1"
+        ],
+        "min_free_fraction": "1/1"
+      },
+      "placed": 0,
+      "qubo_energy": 0,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "000001": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        }
+      ],
+      "bitstring": "000001",
+      "m2_objective": {
+        "assigned": 1,
+        "balance_leximin": [
+          "1/4",
+          "1/1"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "placed": 1,
+      "qubo_energy": -1,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "000010": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        }
+      ],
+      "bitstring": "000010",
+      "m2_objective": {
+        "assigned": 1,
+        "balance_leximin": [
+          "1/4",
+          "1/1"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "placed": 1,
+      "qubo_energy": -1,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "000011": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        }
+      ],
+      "bitstring": "000011",
+      "m2_objective": null,
+      "placed": 2,
+      "qubo_energy": 4,
+      "raw_feasible": false,
+      "verification_errors": [
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "000100": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        }
+      ],
+      "bitstring": "000100",
+      "m2_objective": {
+        "assigned": 1,
+        "balance_leximin": [
+          "1/4",
+          "1/1"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "placed": 1,
+      "qubo_energy": -1,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "000101": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        }
+      ],
+      "bitstring": "000101",
+      "m2_objective": null,
+      "placed": 2,
+      "qubo_energy": 4,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED"
+      ],
+      "verified": false
+    },
+    "000110": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        }
+      ],
+      "bitstring": "000110",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "1/4",
+          "1/4"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "000111": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        }
+      ],
+      "bitstring": "000111",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 9,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "001000": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        }
+      ],
+      "bitstring": "001000",
+      "m2_objective": {
+        "assigned": 1,
+        "balance_leximin": [
+          "1/4",
+          "1/1"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "placed": 1,
+      "qubo_energy": -1,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "001001": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        }
+      ],
+      "bitstring": "001001",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "1/4",
+          "1/4"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "001010": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        }
+      ],
+      "bitstring": "001010",
+      "m2_objective": null,
+      "placed": 2,
+      "qubo_energy": 4,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED"
+      ],
+      "verified": false
+    },
+    "001011": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        }
+      ],
+      "bitstring": "001011",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 9,
+      "raw_feasible": false,
+      "verification_errors": [
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "001100": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        }
+      ],
+      "bitstring": "001100",
+      "m2_objective": null,
+      "placed": 2,
+      "qubo_energy": 4,
+      "raw_feasible": false,
+      "verification_errors": [
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "001101": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        }
+      ],
+      "bitstring": "001101",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 9,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "001110": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        }
+      ],
+      "bitstring": "001110",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 9,
+      "raw_feasible": false,
+      "verification_errors": [
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "001111": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        }
+      ],
+      "bitstring": "001111",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 20,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "010000": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "010000",
+      "m2_objective": {
+        "assigned": 1,
+        "balance_leximin": [
+          "1/4",
+          "1/1"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "placed": 1,
+      "qubo_energy": -1,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "010001": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "010001",
+      "m2_objective": null,
+      "placed": 2,
+      "qubo_energy": 4,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED"
+      ],
+      "verified": false
+    },
+    "010010": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "010010",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "1/4",
+          "1/4"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "010011": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "010011",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 9,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "010100": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "010100",
+      "m2_objective": null,
+      "placed": 2,
+      "qubo_energy": 4,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED"
+      ],
+      "verified": false
+    },
+    "010101": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "010101",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 15,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED"
+      ],
+      "verified": false
+    },
+    "010110": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "010110",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 3,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED"
+      ],
+      "verified": false
+    },
+    "010111": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "010111",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 20,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "011000": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "011000",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "1/4",
+          "1/4"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "011001": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "011001",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 3,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED"
+      ],
+      "verified": false
+    },
+    "011010": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "011010",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 3,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED"
+      ],
+      "verified": false
+    },
+    "011011": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "011011",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 14,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "011100": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "011100",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 9,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "011101": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "011101",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 20,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "011110": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "011110",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 14,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "011111": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "011111",
+      "m2_objective": null,
+      "placed": 5,
+      "qubo_energy": 31,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "100000": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "100000",
+      "m2_objective": {
+        "assigned": 1,
+        "balance_leximin": [
+          "1/4",
+          "1/1"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "placed": 1,
+      "qubo_energy": -1,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "100001": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "100001",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "1/4",
+          "1/4"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "100010": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "100010",
+      "m2_objective": null,
+      "placed": 2,
+      "qubo_energy": 4,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED"
+      ],
+      "verified": false
+    },
+    "100011": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "100011",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 9,
+      "raw_feasible": false,
+      "verification_errors": [
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "100100": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "100100",
+      "m2_objective": {
+        "assigned": 2,
+        "balance_leximin": [
+          "1/4",
+          "1/4"
+        ],
+        "min_free_fraction": "1/4"
+      },
+      "placed": 2,
+      "qubo_energy": -2,
+      "raw_feasible": true,
+      "verification_errors": [],
+      "verified": true
+    },
+    "100101": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "100101",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 3,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED"
+      ],
+      "verified": false
+    },
+    "100110": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "100110",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 3,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED"
+      ],
+      "verified": false
+    },
+    "100111": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "100111",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 14,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "101000": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "101000",
+      "m2_objective": null,
+      "placed": 2,
+      "qubo_energy": 4,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED"
+      ],
+      "verified": false
+    },
+    "101001": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "101001",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 3,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED"
+      ],
+      "verified": false
+    },
+    "101010": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "101010",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 15,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED"
+      ],
+      "verified": false
+    },
+    "101011": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "101011",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 20,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "101100": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "101100",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 9,
+      "raw_feasible": false,
+      "verification_errors": [
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "101101": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "101101",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 14,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "101110": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "101110",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 20,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "101111": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "101111",
+      "m2_objective": null,
+      "placed": 5,
+      "qubo_energy": 31,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "110000": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "110000",
+      "m2_objective": null,
+      "placed": 2,
+      "qubo_energy": 4,
+      "raw_feasible": false,
+      "verification_errors": [
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "110001": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "110001",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 9,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "110010": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "110010",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 9,
+      "raw_feasible": false,
+      "verification_errors": [
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "110100": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "110100",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 9,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "110101": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "110101",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 20,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "110110": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "110110",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 14,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "110111": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "110111",
+      "m2_objective": null,
+      "placed": 5,
+      "qubo_energy": 31,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "111000": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "111000",
+      "m2_objective": null,
+      "placed": 3,
+      "qubo_energy": 9,
+      "raw_feasible": false,
+      "verification_errors": [
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "111001": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "111001",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 14,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "111010": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "111010",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 20,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "111011": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "111011",
+      "m2_objective": null,
+      "placed": 5,
+      "qubo_energy": 31,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "111100": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "111100",
+      "m2_objective": null,
+      "placed": 4,
+      "qubo_energy": 20,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "111101": {
+      "assignment": [
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "111101",
+      "m2_objective": null,
+      "placed": 5,
+      "qubo_energy": 31,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    },
+    "111110": {
+      "assignment": [
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-aaaaa"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-bbbbb"
+        },
+        {
+          "node": "node-1",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        },
+        {
+          "node": "node-2",
+          "pod": "apps/worker-9c8d7e-ccccc"
+        }
+      ],
+      "bitstring": "111110",
+      "m2_objective": null,
+      "placed": 5,
+      "qubo_energy": 31,
+      "raw_feasible": false,
+      "verification_errors": [
+        "CPU_CAPACITY_EXCEEDED",
+        "DUPLICATE_ASSIGNMENT",
+        "DUPLICATE_ASSIGNMENT"
+      ],
+      "verified": false
+    }
+  },
+  "fixture": "scenario_c_aggregate_shortage",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "observational": true,
+  "runs": [
+    {
+      "counts": {
+        "000000": 312,
+        "000001": 96,
+        "000010": 89,
+        "000011": 3,
+        "000100": 77,
+        "000110": 28,
+        "000111": 1,
+        "001000": 88,
+        "001001": 20,
+        "001010": 3,
+        "001011": 4,
+        "001100": 4,
+        "001101": 3,
+        "001110": 3,
+        "001111": 1,
+        "010000": 84,
+        "010010": 13,
+        "010011": 4,
+        "010100": 4,
+        "010101": 11,
+        "010111": 4,
+        "011000": 15,
+        "011100": 2,
+        "100000": 87,
+        "100001": 20,
+        "100010": 1,
+        "100011": 2,
+        "100100": 16,
+        "100101": 1,
+        "100110": 2,
+        "101010": 7,
+        "101011": 1,
+        "101100": 7,
+        "110001": 2,
+        "110010": 2,
+        "110100": 2,
+        "111000": 3,
+        "111010": 1,
+        "111100": 1
+      },
+      "decode_verify_seconds": 0.0007044579833745956,
+      "reps": 1,
+      "sampling_seconds": 0.003547416068613529,
+      "seed": 11,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/worker-9c8d7e-aaaaa"
+            },
+            {
+              "node": "node-2",
+              "pod": "apps/worker-9c8d7e-bbbbb"
+            }
+          ],
+          "bitstring": "001001",
+          "count": 20,
+          "m2_objective": {
+            "assigned": 2,
+            "balance_leximin": [
+              "1/4",
+              "1/4"
+            ],
+            "min_free_fraction": "1/4"
+          },
+          "placed": 2,
+          "qubo_energy": -2,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 0.109375,
+        "best_count_shots": 112,
+        "distinct_bitstrings": 39,
+        "empty_placement_shots": 312,
+        "exact_count_sample_rate": 0.109375,
+        "exact_count_shots": 112,
+        "feasible_sample_rate": 0.9228515625,
+        "feasible_shots": 945,
+        "invalid_raw_shots": 79,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "000000": 311,
+        "000001": 93,
+        "000010": 78,
+        "000011": 1,
+        "000100": 92,
+        "000101": 3,
+        "000110": 20,
+        "000111": 2,
+        "001000": 82,
+        "001001": 26,
+        "001010": 1,
+        "001011": 1,
+        "001100": 8,
+        "001101": 1,
+        "001110": 4,
+        "001111": 1,
+        "010000": 97,
+        "010001": 2,
+        "010010": 28,
+        "010011": 4,
+        "010101": 1,
+        "011000": 18,
+        "011100": 5,
+        "100000": 78,
+        "100001": 23,
+        "100010": 1,
+        "100100": 18,
+        "101010": 5,
+        "101100": 2,
+        "101110": 2,
+        "110000": 3,
+        "110001": 2,
+        "110100": 1,
+        "110101": 1,
+        "111000": 2,
+        "111010": 4,
+        "111011": 2,
+        "111100": 1
+      },
+      "decode_verify_seconds": 0.0006685410626232624,
+      "reps": 1,
+      "sampling_seconds": 0.0032705420162528753,
+      "seed": 22,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/worker-9c8d7e-aaaaa"
+            },
+            {
+              "node": "node-2",
+              "pod": "apps/worker-9c8d7e-bbbbb"
+            }
+          ],
+          "bitstring": "001001",
+          "count": 26,
+          "m2_objective": {
+            "assigned": 2,
+            "balance_leximin": [
+              "1/4",
+              "1/4"
+            ],
+            "min_free_fraction": "1/4"
+          },
+          "placed": 2,
+          "qubo_energy": -2,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 0.1298828125,
+        "best_count_shots": 133,
+        "distinct_bitstrings": 38,
+        "empty_placement_shots": 311,
+        "exact_count_sample_rate": 0.1298828125,
+        "exact_count_shots": 133,
+        "feasible_sample_rate": 0.94140625,
+        "feasible_shots": 964,
+        "invalid_raw_shots": 60,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "000000": 318,
+        "000001": 105,
+        "000010": 83,
+        "000011": 2,
+        "000100": 75,
+        "000101": 1,
+        "000110": 25,
+        "000111": 2,
+        "001000": 75,
+        "001001": 22,
+        "001010": 1,
+        "001011": 2,
+        "001100": 1,
+        "001101": 2,
+        "001110": 2,
+        "010000": 90,
+        "010010": 22,
+        "010100": 1,
+        "010101": 10,
+        "010111": 3,
+        "011000": 26,
+        "011010": 1,
+        "011100": 2,
+        "011101": 1,
+        "100000": 83,
+        "100001": 21,
+        "100010": 1,
+        "100011": 1,
+        "100100": 17,
+        "100111": 2,
+        "101010": 5,
+        "101011": 3,
+        "101100": 3,
+        "101110": 1,
+        "110000": 3,
+        "110001": 2,
+        "110010": 1,
+        "110100": 3,
+        "110101": 1,
+        "111000": 2,
+        "111001": 1,
+        "111010": 1,
+        "111100": 1
+      },
+      "decode_verify_seconds": 0.000719000119715929,
+      "reps": 1,
+      "sampling_seconds": 0.003417917061597109,
+      "seed": 33,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/worker-9c8d7e-aaaaa"
+            },
+            {
+              "node": "node-2",
+              "pod": "apps/worker-9c8d7e-bbbbb"
+            }
+          ],
+          "bitstring": "001001",
+          "count": 22,
+          "m2_objective": {
+            "assigned": 2,
+            "balance_leximin": [
+              "1/4",
+              "1/4"
+            ],
+            "min_free_fraction": "1/4"
+          },
+          "placed": 2,
+          "qubo_energy": -2,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 0.1298828125,
+        "best_count_shots": 133,
+        "distinct_bitstrings": 43,
+        "empty_placement_shots": 318,
+        "exact_count_sample_rate": 0.1298828125,
+        "exact_count_shots": 133,
+        "feasible_sample_rate": 0.939453125,
+        "feasible_shots": 962,
+        "invalid_raw_shots": 62,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "000000": 335,
+        "000001": 82,
+        "000010": 95,
+        "000011": 6,
+        "000100": 72,
+        "000110": 20,
+        "001000": 66,
+        "001001": 19,
+        "001010": 2,
+        "001011": 1,
+        "001100": 6,
+        "001101": 3,
+        "001110": 4,
+        "010000": 91,
+        "010010": 22,
+        "010011": 5,
+        "010100": 2,
+        "010101": 6,
+        "010111": 2,
+        "011000": 26,
+        "011100": 2,
+        "011101": 1,
+        "011111": 2,
+        "100000": 87,
+        "100001": 20,
+        "100011": 1,
+        "100100": 18,
+        "100111": 1,
+        "101000": 2,
+        "101010": 10,
+        "101011": 2,
+        "101110": 1,
+        "110000": 2,
+        "110001": 1,
+        "110010": 2,
+        "110100": 2,
+        "110101": 3,
+        "111000": 2
+      },
+      "decode_verify_seconds": 0.0006457078270614147,
+      "reps": 1,
+      "sampling_seconds": 0.003349750069901347,
+      "seed": 44,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/worker-9c8d7e-aaaaa"
+            },
+            {
+              "node": "node-2",
+              "pod": "apps/worker-9c8d7e-bbbbb"
+            }
+          ],
+          "bitstring": "001001",
+          "count": 19,
+          "m2_objective": {
+            "assigned": 2,
+            "balance_leximin": [
+              "1/4",
+              "1/4"
+            ],
+            "min_free_fraction": "1/4"
+          },
+          "placed": 2,
+          "qubo_energy": -2,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 0.1220703125,
+        "best_count_shots": 125,
+        "distinct_bitstrings": 38,
+        "empty_placement_shots": 335,
+        "exact_count_sample_rate": 0.1220703125,
+        "exact_count_shots": 125,
+        "feasible_sample_rate": 0.9306640625,
+        "feasible_shots": 953,
+        "invalid_raw_shots": 71,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "000000": 319,
+        "000001": 73,
+        "000010": 70,
+        "000011": 5,
+        "000100": 90,
+        "000101": 1,
+        "000110": 20,
+        "000111": 1,
+        "001000": 95,
+        "001001": 13,
+        "001011": 3,
+        "001100": 5,
+        "001110": 1,
+        "010000": 100,
+        "010001": 2,
+        "010010": 32,
+        "010100": 1,
+        "010101": 8,
+        "010111": 3,
+        "011000": 17,
+        "011010": 1,
+        "011100": 2,
+        "011101": 3,
+        "100000": 80,
+        "100001": 17,
+        "100010": 1,
+        "100011": 4,
+        "100100": 23,
+        "100101": 1,
+        "101000": 1,
+        "101001": 2,
+        "101010": 10,
+        "101011": 2,
+        "101100": 2,
+        "101101": 1,
+        "101110": 1,
+        "110000": 3,
+        "110001": 1,
+        "110010": 1,
+        "110111": 2,
+        "111000": 4,
+        "111010": 2,
+        "111011": 1
+      },
+      "decode_verify_seconds": 0.0007345830090343952,
+      "reps": 1,
+      "sampling_seconds": 0.003362707793712616,
+      "seed": 55,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/worker-9c8d7e-aaaaa"
+            },
+            {
+              "node": "node-2",
+              "pod": "apps/worker-9c8d7e-bbbbb"
+            }
+          ],
+          "bitstring": "001001",
+          "count": 13,
+          "m2_objective": {
+            "assigned": 2,
+            "balance_leximin": [
+              "1/4",
+              "1/4"
+            ],
+            "min_free_fraction": "1/4"
+          },
+          "placed": 2,
+          "qubo_energy": -2,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 0.119140625,
+        "best_count_shots": 122,
+        "distinct_bitstrings": 43,
+        "empty_placement_shots": 319,
+        "exact_count_sample_rate": 0.119140625,
+        "exact_count_shots": 122,
+        "feasible_sample_rate": 0.9267578125,
+        "feasible_shots": 949,
+        "invalid_raw_shots": 75,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "000000": 6,
+        "000001": 71,
+        "000010": 71,
+        "000011": 2,
+        "000100": 57,
+        "000110": 102,
+        "000111": 1,
+        "001000": 66,
+        "001001": 111,
+        "001011": 3,
+        "001100": 2,
+        "001101": 2,
+        "010000": 55,
+        "010010": 110,
+        "010101": 2,
+        "010111": 2,
+        "011000": 92,
+        "011001": 1,
+        "011010": 1,
+        "011100": 2,
+        "011110": 2,
+        "100000": 58,
+        "100001": 92,
+        "100011": 2,
+        "100100": 91,
+        "100101": 1,
+        "100110": 1,
+        "101001": 2,
+        "101010": 5,
+        "110000": 2,
+        "110010": 3,
+        "110100": 1,
+        "111000": 2,
+        "111001": 1,
+        "111011": 1,
+        "111101": 1
+      },
+      "decode_verify_seconds": 0.0006897910498082638,
+      "reps": 2,
+      "sampling_seconds": 0.004541540984064341,
+      "seed": 11,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/worker-9c8d7e-aaaaa"
+            },
+            {
+              "node": "node-2",
+              "pod": "apps/worker-9c8d7e-bbbbb"
+            }
+          ],
+          "bitstring": "001001",
+          "count": 111,
+          "m2_objective": {
+            "assigned": 2,
+            "balance_leximin": [
+              "1/4",
+              "1/4"
+            ],
+            "min_free_fraction": "1/4"
+          },
+          "placed": 2,
+          "qubo_energy": -2,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 0.583984375,
+        "best_count_shots": 598,
+        "distinct_bitstrings": 36,
+        "empty_placement_shots": 6,
+        "exact_count_sample_rate": 0.583984375,
+        "exact_count_shots": 598,
+        "feasible_sample_rate": 0.958984375,
+        "feasible_shots": 982,
+        "invalid_raw_shots": 42,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "000000": 10,
+        "000001": 78,
+        "000010": 67,
+        "000011": 2,
+        "000100": 61,
+        "000101": 1,
+        "000110": 90,
+        "001000": 69,
+        "001001": 100,
+        "001100": 1,
+        "001110": 2,
+        "010000": 58,
+        "010010": 105,
+        "010011": 1,
+        "010101": 2,
+        "010111": 1,
+        "011000": 105,
+        "011001": 1,
+        "011010": 1,
+        "011100": 1,
+        "011110": 1,
+        "100000": 74,
+        "100001": 97,
+        "100010": 1,
+        "100011": 1,
+        "100100": 73,
+        "100101": 1,
+        "101001": 1,
+        "101010": 1,
+        "101011": 1,
+        "101100": 3,
+        "101111": 1,
+        "110001": 2,
+        "110100": 1,
+        "110110": 1,
+        "111000": 2,
+        "111010": 2,
+        "111011": 2,
+        "111100": 1,
+        "111101": 1,
+        "111110": 1
+      },
+      "decode_verify_seconds": 0.0007660409901291132,
+      "reps": 2,
+      "sampling_seconds": 0.003973332932218909,
+      "seed": 22,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/worker-9c8d7e-aaaaa"
+            },
+            {
+              "node": "node-2",
+              "pod": "apps/worker-9c8d7e-bbbbb"
+            }
+          ],
+          "bitstring": "001001",
+          "count": 100,
+          "m2_objective": {
+            "assigned": 2,
+            "balance_leximin": [
+              "1/4",
+              "1/4"
+            ],
+            "min_free_fraction": "1/4"
+          },
+          "placed": 2,
+          "qubo_energy": -2,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 0.556640625,
+        "best_count_shots": 570,
+        "distinct_bitstrings": 41,
+        "empty_placement_shots": 10,
+        "exact_count_sample_rate": 0.556640625,
+        "exact_count_shots": 570,
+        "feasible_sample_rate": 0.9638671875,
+        "feasible_shots": 987,
+        "invalid_raw_shots": 37,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "000000": 10,
+        "000001": 79,
+        "000010": 53,
+        "000011": 2,
+        "000100": 67,
+        "000110": 102,
+        "000111": 3,
+        "001000": 81,
+        "001001": 97,
+        "001011": 4,
+        "001100": 2,
+        "001101": 2,
+        "001111": 1,
+        "010000": 54,
+        "010001": 1,
+        "010010": 94,
+        "010011": 1,
+        "010101": 1,
+        "010110": 1,
+        "011000": 89,
+        "011011": 1,
+        "011101": 4,
+        "011110": 1,
+        "011111": 1,
+        "100000": 65,
+        "100001": 101,
+        "100010": 1,
+        "100100": 84,
+        "100110": 1,
+        "101000": 2,
+        "101010": 3,
+        "101100": 2,
+        "101111": 1,
+        "110000": 2,
+        "110001": 2,
+        "110100": 2,
+        "110101": 2,
+        "111000": 2,
+        "111001": 1,
+        "111010": 1,
+        "111101": 1
+      },
+      "decode_verify_seconds": 0.0007152080070227385,
+      "reps": 2,
+      "sampling_seconds": 0.004250457976013422,
+      "seed": 33,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/worker-9c8d7e-aaaaa"
+            },
+            {
+              "node": "node-2",
+              "pod": "apps/worker-9c8d7e-bbbbb"
+            }
+          ],
+          "bitstring": "001001",
+          "count": 97,
+          "m2_objective": {
+            "assigned": 2,
+            "balance_leximin": [
+              "1/4",
+              "1/4"
+            ],
+            "min_free_fraction": "1/4"
+          },
+          "placed": 2,
+          "qubo_energy": -2,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 0.5537109375,
+        "best_count_shots": 567,
+        "distinct_bitstrings": 41,
+        "empty_placement_shots": 10,
+        "exact_count_sample_rate": 0.5537109375,
+        "exact_count_shots": 567,
+        "feasible_sample_rate": 0.953125,
+        "feasible_shots": 976,
+        "invalid_raw_shots": 48,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "000000": 10,
+        "000001": 74,
+        "000010": 69,
+        "000100": 70,
+        "000110": 110,
+        "000111": 2,
+        "001000": 62,
+        "001001": 99,
+        "001011": 6,
+        "001100": 2,
+        "001101": 2,
+        "001110": 2,
+        "010000": 57,
+        "010010": 86,
+        "010101": 1,
+        "011000": 89,
+        "011010": 5,
+        "011100": 1,
+        "011101": 1,
+        "011111": 1,
+        "100000": 62,
+        "100001": 109,
+        "100011": 1,
+        "100100": 84,
+        "100101": 3,
+        "100110": 3,
+        "101100": 3,
+        "110000": 1,
+        "110001": 1,
+        "110010": 1,
+        "110100": 1,
+        "110101": 4,
+        "111000": 2
+      },
+      "decode_verify_seconds": 0.0006180410273373127,
+      "reps": 2,
+      "sampling_seconds": 0.004162583965808153,
+      "seed": 44,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/worker-9c8d7e-aaaaa"
+            },
+            {
+              "node": "node-2",
+              "pod": "apps/worker-9c8d7e-bbbbb"
+            }
+          ],
+          "bitstring": "001001",
+          "count": 99,
+          "m2_objective": {
+            "assigned": 2,
+            "balance_leximin": [
+              "1/4",
+              "1/4"
+            ],
+            "min_free_fraction": "1/4"
+          },
+          "placed": 2,
+          "qubo_energy": -2,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 0.5634765625,
+        "best_count_shots": 577,
+        "distinct_bitstrings": 33,
+        "empty_placement_shots": 10,
+        "exact_count_sample_rate": 0.5634765625,
+        "exact_count_shots": 577,
+        "feasible_sample_rate": 0.9580078125,
+        "feasible_shots": 981,
+        "invalid_raw_shots": 43,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    },
+    {
+      "counts": {
+        "000000": 12,
+        "000001": 70,
+        "000010": 63,
+        "000100": 67,
+        "000101": 1,
+        "000110": 102,
+        "000111": 1,
+        "001000": 52,
+        "001001": 87,
+        "001100": 1,
+        "001101": 1,
+        "001110": 1,
+        "010000": 71,
+        "010010": 101,
+        "010011": 2,
+        "010110": 1,
+        "011000": 88,
+        "011010": 1,
+        "011011": 3,
+        "011100": 3,
+        "011110": 2,
+        "011111": 2,
+        "100000": 77,
+        "100001": 95,
+        "100011": 1,
+        "100100": 98,
+        "100101": 1,
+        "100110": 1,
+        "100111": 1,
+        "101001": 1,
+        "101010": 2,
+        "101100": 1,
+        "101110": 2,
+        "101111": 1,
+        "110000": 1,
+        "110001": 1,
+        "110111": 1,
+        "111000": 3,
+        "111001": 2,
+        "111010": 2,
+        "111101": 1
+      },
+      "decode_verify_seconds": 0.0007175409700721502,
+      "reps": 2,
+      "sampling_seconds": 0.004135875031352043,
+      "seed": 55,
+      "shots": 1024,
+      "summary": {
+        "best": {
+          "assignment": [
+            {
+              "node": "node-1",
+              "pod": "apps/worker-9c8d7e-aaaaa"
+            },
+            {
+              "node": "node-2",
+              "pod": "apps/worker-9c8d7e-bbbbb"
+            }
+          ],
+          "bitstring": "001001",
+          "count": 87,
+          "m2_objective": {
+            "assigned": 2,
+            "balance_leximin": [
+              "1/4",
+              "1/4"
+            ],
+            "min_free_fraction": "1/4"
+          },
+          "placed": 2,
+          "qubo_energy": -2,
+          "raw_feasible": true,
+          "verification_errors": [],
+          "verified": true
+        },
+        "best_count_sample_rate": 0.5576171875,
+        "best_count_shots": 571,
+        "distinct_bitstrings": 41,
+        "empty_placement_shots": 12,
+        "exact_count_sample_rate": 0.5576171875,
+        "exact_count_shots": 571,
+        "feasible_sample_rate": 0.9599609375,
+        "feasible_shots": 983,
+        "invalid_raw_shots": 41,
+        "shots": 1024,
+        "status": "FEASIBLE_SAMPLE_MATCHES_EXACT_COUNT"
+      }
+    }
+  ],
+  "source": {
+    "snapshot_id": "m2-scenario-c-aggregate-shortage",
+    "source_sha256": "5c383c7a611bb77f9a0cbc97fa5df5f729b5134e887d657acc21065849d461fd"
+  },
+  "target_node": "source"
+}

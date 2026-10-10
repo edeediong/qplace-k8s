@@ -1,0 +1,108 @@
+{
+  "artifact": "quantum_problem",
+  "artifact_schema_version": "1.0",
+  "assignment_qubits": 8,
+  "bit_order": "Qiskit little-endian: qubit i is character [-1 - i] of a counts key",
+  "eliminated_variables": [],
+  "fixture": "fixture_a_healthy",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "m2_assessment": "MODELED_FEASIBLE",
+  "m2_conditions": [],
+  "m2_variables": [
+    {
+      "node": "worker-01",
+      "pod": "shop/api-5c6b7d-aaaaa"
+    },
+    {
+      "node": "worker-02",
+      "pod": "shop/api-5c6b7d-aaaaa"
+    },
+    {
+      "node": "worker-01",
+      "pod": "shop/cart-0"
+    },
+    {
+      "node": "worker-02",
+      "pod": "shop/cart-0"
+    },
+    {
+      "node": "worker-01",
+      "pod": "shop/web-7d9f8c-aaaaa"
+    },
+    {
+      "node": "worker-02",
+      "pod": "shop/web-7d9f8c-aaaaa"
+    },
+    {
+      "node": "worker-01",
+      "pod": "shop/web-7d9f8c-bbbbb"
+    },
+    {
+      "node": "worker-02",
+      "pod": "shop/web-7d9f8c-bbbbb"
+    }
+  ],
+  "qubit_budget": 12,
+  "qubits": [
+    {
+      "kind": "assignment",
+      "node": "worker-01",
+      "pod": "shop/api-5c6b7d-aaaaa",
+      "qubit": 0
+    },
+    {
+      "kind": "assignment",
+      "node": "worker-02",
+      "pod": "shop/api-5c6b7d-aaaaa",
+      "qubit": 1
+    },
+    {
+      "kind": "assignment",
+      "node": "worker-01",
+      "pod": "shop/cart-0",
+      "qubit": 2
+    },
+    {
+      "kind": "assignment",
+      "node": "worker-02",
+      "pod": "shop/cart-0",
+      "qubit": 3
+    },
+    {
+      "kind": "assignment",
+      "node": "worker-01",
+      "pod": "shop/web-7d9f8c-aaaaa",
+      "qubit": 4
+    },
+    {
+      "kind": "assignment",
+      "node": "worker-02",
+      "pod": "shop/web-7d9f8c-aaaaa",
+      "qubit": 5
+    },
+    {
+      "kind": "assignment",
+      "node": "worker-01",
+      "pod": "shop/web-7d9f8c-bbbbb",
+      "qubit": 6
+    },
+    {
+      "kind": "assignment",
+      "node": "worker-02",
+      "pod": "shop/web-7d9f8c-bbbbb",
+      "qubit": 7
+    }
+  ],
+  "required_qubits": 8,
+  "slack_qubits": 0,
+  "source": {
+    "snapshot_id": "fixture-a-healthy",
+    "source_sha256": "9525703e0b2d45e72369401fdbc70ef241b97a18b4063538e9759ba4d55843b0"
+  },
+  "status": "SUPPORTED",
+  "target_node": "worker-03"
+}

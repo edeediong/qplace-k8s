@@ -1,0 +1,151 @@
+{
+  "artifact": "qubo",
+  "artifact_schema_version": "1.0",
+  "constraints": [
+    {
+      "capacity": 1,
+      "coefficients": [
+        1
+      ],
+      "encoding": "AT_MOST_ONE_PAIRWISE",
+      "name": "one:apps/tiny-6f7a8b-aaaaa",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0
+      ]
+    },
+    {
+      "capacity": 1,
+      "coefficients": [
+        1
+      ],
+      "encoding": "AT_MOST_ONE_PAIRWISE",
+      "name": "one:apps/tiny-6f7a8b-bbbbb",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        1
+      ]
+    },
+    {
+      "capacity": 7900,
+      "coefficients": [
+        100,
+        100
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-1:cpu_millicores",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        1
+      ]
+    },
+    {
+      "capacity": 34225520640,
+      "coefficients": [
+        134217728,
+        134217728
+      ],
+      "encoding": "CAPACITY_REDUNDANT",
+      "name": "cap:node-1:memory_bytes",
+      "penalty_pairs": [],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        1
+      ]
+    },
+    {
+      "capacity": 1,
+      "coefficients": [
+        1,
+        1
+      ],
+      "encoding": "CAPACITY_PAIRWISE_EXACT",
+      "name": "cap:node-1:pods",
+      "penalty_pairs": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reduced_capacity": null,
+      "reduced_coefficients": [],
+      "scale": null,
+      "slack_qubits": [],
+      "slack_weights": [],
+      "variables": [
+        0,
+        1
+      ]
+    }
+  ],
+  "correctness_evidence": {
+    "every_max_assignment_reaches_minimum": true,
+    "feasible_energy_exact": true,
+    "infeasible_strictly_above_minimum": true,
+    "ising_matches_qubo": true,
+    "max_feasible_pods": 1,
+    "min_energy": -1,
+    "min_infeasible_energy": 0,
+    "minima_all_feasible_max_cardinality": true,
+    "minimum_states": 2,
+    "states_enumerated": 4,
+    "valid": true
+  },
+  "fixture": "scenario_f_pod_slots",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "objective": "minimize -sum(assignment x) + penalties; primary M2 objective (pods placed) only",
+  "penalty": 2,
+  "penalty_rule": "P = number of assignment variables; any violated term costs >= P",
+  "qubo": {
+    "constant": 0,
+    "linear": [
+      {
+        "coefficient": -1,
+        "i": 0
+      },
+      {
+        "coefficient": -1,
+        "i": 1
+      }
+    ],
+    "num_variables": 2,
+    "quadratic": [
+      {
+        "coefficient": 2,
+        "i": 0,
+        "j": 1
+      }
+    ]
+  },
+  "source": {
+    "snapshot_id": "m2-scenario-f-pod-slots",
+    "source_sha256": "b285404b3f20ebc7b5ced01fa9b2ee582806df1816d08939e2bdc3221e621587"
+  },
+  "status": "SUPPORTED",
+  "target_node": "source"
+}

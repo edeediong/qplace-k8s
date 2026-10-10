@@ -1,0 +1,58 @@
+{
+  "artifact": "quantum_problem",
+  "artifact_schema_version": "1.0",
+  "assignment_qubits": 3,
+  "bit_order": "Qiskit little-endian: qubit i is character [-1 - i] of a counts key",
+  "eliminated_variables": [],
+  "fixture": "scenario_b_greedy_trap",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "m2_assessment": "MODELED_FEASIBLE",
+  "m2_conditions": [],
+  "m2_variables": [
+    {
+      "node": "node-a",
+      "pod": "apps/batch-7a6b5c-aaaaa"
+    },
+    {
+      "node": "node-b",
+      "pod": "apps/batch-7a6b5c-aaaaa"
+    },
+    {
+      "node": "node-a",
+      "pod": "apps/indexer-8b7c6d-aaaaa"
+    }
+  ],
+  "qubit_budget": 12,
+  "qubits": [
+    {
+      "kind": "assignment",
+      "node": "node-a",
+      "pod": "apps/batch-7a6b5c-aaaaa",
+      "qubit": 0
+    },
+    {
+      "kind": "assignment",
+      "node": "node-b",
+      "pod": "apps/batch-7a6b5c-aaaaa",
+      "qubit": 1
+    },
+    {
+      "kind": "assignment",
+      "node": "node-a",
+      "pod": "apps/indexer-8b7c6d-aaaaa",
+      "qubit": 2
+    }
+  ],
+  "required_qubits": 3,
+  "slack_qubits": 0,
+  "source": {
+    "snapshot_id": "m2-scenario-b-greedy-trap",
+    "source_sha256": "eafeae381b34f7d4749591bff4823a8055a14c6c1bb52e803154e72af39a9031"
+  },
+  "status": "SUPPORTED",
+  "target_node": "source"
+}

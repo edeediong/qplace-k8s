@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qplace.invalid/schemas/m3-ising-hamiltonian-1.0.schema.json",
+  "title": "QPlace ising_hamiltonian.json artifact (M3), version 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact",
+    "artifact_schema_version",
+    "generator",
+    "fixture",
+    "source",
+    "target_node",
+    "status",
+    "ising",
+    "circuit_scale",
+    "circuit_scale_note"
+  ],
+  "properties": {
+    "artifact": {
+      "const": "ising_hamiltonian"
+    },
+    "artifact_schema_version": {
+      "const": "1.0"
+    },
+    "generator": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "milestone"
+      ],
+      "properties": {
+        "milestone": {
+          "const": "M3"
+        }
+      }
+    },
+    "fixture": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "snapshot_id",
+        "source_sha256"
+      ]
+    },
+    "target_node": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "SUPPORTED",
+        "EMPTY",
+        "UNSUPPORTED_SIZE"
+      ]
+    },
+    "ising": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "num_qubits",
+        "convention",
+        "offset",
+        "h",
+        "J",
+        "pauli_terms"
+      ],
+      "properties": {
+        "offset": {
+          "type": "string",
+          "pattern": "^-?[0-9]+/[0-9]+$"
+        },
+        "h": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "coefficient": {
+                "type": "string",
+                "pattern": "^-?[0-9]+/[0-9]+$"
+              }
+            }
+          }
+        },
+        "J": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "coefficient": {
+                "type": "string",
+                "pattern": "^-?[0-9]+/[0-9]+$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "circuit_scale": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "circuit_scale_note": {
+      "type": "string"
+    }
+  }
+}

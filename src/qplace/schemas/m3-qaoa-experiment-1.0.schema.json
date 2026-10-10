@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qplace.invalid/schemas/m3-qaoa-experiment-1.0.schema.json",
+  "title": "QPlace qaoa_experiment.json artifact (M3), version 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact",
+    "artifact_schema_version",
+    "generator",
+    "fixture",
+    "source",
+    "target_node",
+    "observational",
+    "backend",
+    "config",
+    "runs",
+    "skipped"
+  ],
+  "properties": {
+    "artifact": {
+      "const": "qaoa_experiment"
+    },
+    "artifact_schema_version": {
+      "const": "1.0"
+    },
+    "generator": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "milestone"
+      ],
+      "properties": {
+        "milestone": {
+          "const": "M3"
+        }
+      }
+    },
+    "fixture": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "snapshot_id",
+        "source_sha256"
+      ]
+    },
+    "target_node": {
+      "type": "string"
+    },
+    "observational": {
+      "const": true
+    },
+    "backend": {
+      "type": "string"
+    },
+    "config": {
+      "type": "object",
+      "required": [
+        "seed",
+        "shots",
+        "sampling_seeds",
+        "maxiter"
+      ]
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "reps",
+          "circuit",
+          "initial_parameters",
+          "final_parameters",
+          "scaled_energy",
+          "optimizer",
+          "estimator_evaluations",
+          "training_seconds"
+        ],
+        "properties": {
+          "reps": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "estimator_evaluations": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "training_seconds": {
+            "type": "number",
+            "minimum": 0
+          },
+          "circuit": {
+            "type": "object",
+            "required": [
+              "qubits",
+              "depth",
+              "size",
+              "gate_counts",
+              "two_qubit_gates"
+            ]
+          }
+        }
+      }
+    },
+    "skipped": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

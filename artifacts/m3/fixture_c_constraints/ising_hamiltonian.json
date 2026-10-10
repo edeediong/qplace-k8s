@@ -1,0 +1,62 @@
+{
+  "artifact": "ising_hamiltonian",
+  "artifact_schema_version": "1.0",
+  "circuit_scale": 0.75,
+  "circuit_scale_note": "QAOA uses H / max|coefficient|; eigenvectors and their order are unchanged",
+  "fixture": "fixture_c_constraints",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "ising": {
+    "J": [
+      {
+        "coefficient": "3/4",
+        "i": 0,
+        "j": 1
+      }
+    ],
+    "convention": "z_i = 1 - 2 x_i; Pauli label qubit 0 = rightmost character",
+    "h": [
+      {
+        "coefficient": "-1/4",
+        "i": 0
+      },
+      {
+        "coefficient": "-1/4",
+        "i": 1
+      },
+      {
+        "coefficient": "1/2",
+        "i": 2
+      }
+    ],
+    "num_qubits": 3,
+    "offset": "-3/4",
+    "pauli_terms": [
+      {
+        "coefficient": -0.25,
+        "label": "IIZ"
+      },
+      {
+        "coefficient": -0.25,
+        "label": "IZI"
+      },
+      {
+        "coefficient": 0.5,
+        "label": "ZII"
+      },
+      {
+        "coefficient": 0.75,
+        "label": "IZZ"
+      }
+    ]
+  },
+  "source": {
+    "snapshot_id": "fixture-c-constraints",
+    "source_sha256": "6ff5166fd6a7b53a6ea3a6aad8954968fcbd9bfd445865ac0f5e83aa41fa18b0"
+  },
+  "status": "SUPPORTED",
+  "target_node": "worker-03"
+}

@@ -1,0 +1,48 @@
+{
+  "artifact": "quantum_problem",
+  "artifact_schema_version": "1.0",
+  "assignment_qubits": 2,
+  "bit_order": "Qiskit little-endian: qubit i is character [-1 - i] of a counts key",
+  "eliminated_variables": [],
+  "fixture": "scenario_f_pod_slots",
+  "generator": {
+    "milestone": "M3",
+    "name": "qplace",
+    "version": "0.1.0"
+  },
+  "m2_assessment": "MODELED_BLOCKED",
+  "m2_conditions": [],
+  "m2_variables": [
+    {
+      "node": "node-1",
+      "pod": "apps/tiny-6f7a8b-aaaaa"
+    },
+    {
+      "node": "node-1",
+      "pod": "apps/tiny-6f7a8b-bbbbb"
+    }
+  ],
+  "qubit_budget": 12,
+  "qubits": [
+    {
+      "kind": "assignment",
+      "node": "node-1",
+      "pod": "apps/tiny-6f7a8b-aaaaa",
+      "qubit": 0
+    },
+    {
+      "kind": "assignment",
+      "node": "node-1",
+      "pod": "apps/tiny-6f7a8b-bbbbb",
+      "qubit": 1
+    }
+  ],
+  "required_qubits": 2,
+  "slack_qubits": 0,
+  "source": {
+    "snapshot_id": "m2-scenario-f-pod-slots",
+    "source_sha256": "b285404b3f20ebc7b5ced01fa9b2ee582806df1816d08939e2bdc3221e621587"
+  },
+  "status": "SUPPORTED",
+  "target_node": "source"
+}
