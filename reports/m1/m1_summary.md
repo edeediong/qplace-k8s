@@ -56,7 +56,7 @@
 
 ## B. Repository changes
 
-Initial state: `/Users/edidiongetuk/Documents/qollab` was **empty** and was not a git repository. No M0 existed. I ran `git init` locally (no remote, nothing pushed). I also created the minimum foundation that M1 needs: the package, `pyproject.toml`, pytest config, the README and the snapshot schema. **M0 is not claimed as complete.**
+Initial state: the project directory was **empty** and was not a git repository. No M0 existed. I ran `git init` locally (no remote, nothing pushed). I also created the minimum foundation that M1 needs: the package, `pyproject.toml`, pytest config, the README and the snapshot schema. **M0 is not claimed as complete.**
 
 | Added | Purpose |
 |---|---|

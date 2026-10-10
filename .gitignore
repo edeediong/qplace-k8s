@@ -1,8 +1,45 @@
+# Python
 .venv/
+venv/
+env/
 __pycache__/
-*.pyc
+*.py[cod]
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 *.egg-info/
 build/
 dist/
+
+# Secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+secrets/
+*secret*.json
+*secret*.yaml
+*secret*.yml
+
+# Kubernetes access (QPlace reads saved snapshots only; never commit cluster credentials)
+kubeconfig
+kubeconfig*
+*.kubeconfig
+.kube/
+
+# Local configuration
+.vscode/
+.idea/
+*.local
+*.local.*
+.claude/settings.local.json
+
+# OS
 .DS_Store
+Thumbs.db

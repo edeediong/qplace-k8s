@@ -41,6 +41,10 @@ print(model.eligible_destinations("shop/cart-0"))
 | `docs/m1/` | data contract, Kubernetes semantics, limitations, validation |
 | `reports/m1/` | milestone report |
 
+## License
+
+MIT. See [LICENSE](LICENSE).
+
 ## Safety
 
 QPlace contains no Kubernetes client and no network code. It never cordons, evicts, deletes or deploys anything. All fixtures are synthetic.
