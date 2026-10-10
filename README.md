@@ -1,8 +1,19 @@
-# QPlace
+# QPlace: Quantum-Assisted Kubernetes Pre-Drain Feasibility
 
-QPlace is a quantum-assisted Kubernetes pre-drain feasibility advisor. It is read-only.
+**This effort is supported by Qollab & IonQ**
 
-**Status: M1 (cluster state modeling), M2 (classical placement engine) and M3 (QAOA placement experiment).** QPlace loads a saved cluster snapshot and models nodes, pods, effective requests, drain-target classification and node eligibility (M1). It then checks whether the replacement pods could be packed onto eligible destinations by requested CPU, memory and pod slots, using a greedy solver and an exact solver. Every answer goes through an independent verifier (M2). M3 turns the placement problem into an exhaustively validated QUBO and Ising model, runs QAOA with Qiskit, and checks every quantum sample with the M2 verifier. There is no CLI and no live cluster access yet.
+Before you drain a Kubernetes node for maintenance, can its pods fit somewhere else? QPlace models the cluster from a saved snapshot. It solves the placement exactly with classical methods, encodes it as an exhaustively validated QUBO, and runs QAOA with Qiskit on Qollab. Every quantum sample is checked by an independent verifier. It is read-only and never touches a cluster.
+
+| Headline result | |
+|---|---|
+| Greedy-trap instance | greedy places 1/2 pods; exact places 2/2 |
+| QAOA on Qollab (hosted, 256 shots) | 2/2 placement sampled **84×** on the built-in simulator and **83×** on IonQ's simulator (Aria 1 noise model). Random guessing gets 12.5% (32×) |
+| Public data | on a Google cluster trace instance (CC-BY 4.0), greedy places 2/3 and exact places 3/3. QAOA samples the unique optimum (local simulator) |
+| Claim | a working, verified hybrid pipeline. **No quantum advantage is claimed** |
+
+The Qollab project page and demo are in [`qollab/`](qollab/README.md). Hosted evidence: [`docs/m3/hosted-evidence.md`](docs/m3/hosted-evidence.md). Provenance: [`docs/m5/provenance.md`](docs/m5/provenance.md).
+
+**Status:** M1 (cluster state modeling), M2 (classical placement engine) and M3 (QAOA placement experiment) are complete. M3 includes hosted Qollab runs. M4 (CLI and live cluster) is not started.
 
 | Done | Not yet |
 |---|---|
@@ -49,6 +60,7 @@ print(report.assessment, report.exact.result.assignment_map())
 | `qollab/` | standalone Qollab project (one QAOA job on the selected backend) |
 | `src/qplace/schemas/` | JSON Schemas: snapshot input, M1, M2 and M3 artifacts |
 | `fixtures/m1/`, `fixtures/m2/`, `fixtures/m3/` | synthetic reference snapshots (3 + 6 + 1) |
+| `fixtures/m5/` | public-data instance derived from the Google cluster trace (`scripts/derive_google_trace_fixture.py`) |
 | `artifacts/m1/`, `artifacts/m2/`, `artifacts/m3/` | generated reference artifacts |
 | `docs/m1/`, `docs/m2/`, `docs/m3/` | contracts, semantics, optimization and quantum models, limitations, validation |
 | `reports/m1/`, `reports/m2/`, `reports/m3/` | milestone reports |
