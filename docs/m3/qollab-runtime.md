@@ -79,6 +79,10 @@ The reported line number equals the line in our unmodified file. We cannot see Q
 
 These tests are compatibility checks. They are **not** proof of hosted execution.
 
+## 5b. Import order (owner-reported, 2026-10-10)
+
+On Qollab, `main.py` only worked when the two local project imports (`placement_data`, `quantum_demo`) came **before** `import sys`. The owner found this by trial in the hosted runtime, and `main.py` now uses that order. The exact cause inside Qollab's loader is not known. Keep the local imports first.
+
 ## 6. Hosted validation procedure (for the submitter)
 
 1. Create a Python/Qiskit project in Qollab. Upload exactly `main.py`, `quantum_demo.py`, `placement_data.py`, `requirements.txt` and `README.md` from `qollab/`. Do not upload `__pycache__/` or `.DS_Store`.

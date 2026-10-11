@@ -8,10 +8,10 @@ so it respects IonQ's one-job-per-run limit. QAOA angles were trained offline
 Run locally:  python main.py   (falls back to Qiskit's BasicSimulator, and says so)
 """
 
-import sys
-
 from placement_data import DATA
 from quantum_demo import active_qubits, analyse, run_once, uniform_baseline
+
+import sys
 
 
 def _short(pod: str) -> str:
