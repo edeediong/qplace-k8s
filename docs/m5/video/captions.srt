@@ -1,104 +1,200 @@
 1
-00:00:00,400 --> 00:00:07,167
-Before maintenance, an engineer drains a Kubernetes node, and every pod on it must fit somewhere else.
+00:00:00,333 --> 00:00:02,617
+Hi I'm Edi and this is QPlace.
 
 2
-00:00:07,167 --> 00:00:13,367
-Each node has limited CPU, memory and pod slots, and some pods may only run on certain nodes.
+00:00:02,900 --> 00:00:08,267
+So sometimes we need to take a server down to fix it and in Kubernetes we call that draining
 
 3
-00:00:13,367 --> 00:00:17,733
-QPlace checks whether that is possible before anything is evicted.
+00:00:08,267 --> 00:00:09,050
+a node.
 
 4
-00:00:18,733 --> 00:00:20,200
-Here is a small trap.
+00:00:09,267 --> 00:00:14,533
+So every app on that node we call them pods and those pods and basically those apps have
 
 5
-00:00:20,200 --> 00:00:27,133
-Greedy placement handles the biggest pod first and puts batch on the first node that fits, node-a.
+00:00:14,533 --> 00:00:18,183
+to move to another node first before we take it down and fix it.
 
 6
-00:00:27,133 --> 00:00:29,033
-That leaves 500 millicores.
+00:00:18,200 --> 00:00:23,300
+So the thing is in each node, each node only has like so much room and some pods can only
 
 7
-00:00:29,033 --> 00:00:35,167
-The indexer pod needs an SSD node, and node-a is the only one, so it has nowhere to go.
+00:00:23,300 --> 00:00:24,867
+run on some nodes.
 
 8
-00:00:35,167 --> 00:00:37,500
-Greedy places one pod out of two.
+00:00:24,867 --> 00:00:27,583
+So before you start bringing down your server to fix it,
 
 9
-00:00:38,500 --> 00:00:39,767
-A plan does exist.
+00:00:27,667 --> 00:00:33,283
+you need to ask yourself the question you want to know will every app fit on this new node
 
 10
-00:00:39,767 --> 00:00:46,567
-Our exact branch-and-bound solver puts batch on node-b and indexer on node-a, so both pods fit.
+00:00:34,067 --> 00:00:36,000
+Here's a small example right?
 
 11
-00:00:46,567 --> 00:00:56,033
-An independent verifier checks every assignment against the cluster model: eligibility, CPU, memory and pod slots, added up per node.
+00:00:36,000 --> 00:00:37,700
+Two pods, two nodes.
 
 12
-00:00:57,033 --> 00:01:03,167
-For the quantum experiment, each allowed pod-to-node choice becomes one qubit, three in total.
+00:00:37,700 --> 00:00:40,467
+Each node has room for 2.5 CPUs.
 
 13
-00:01:03,167 --> 00:01:11,267
-The QUBO rewards every placed pod and penalizes breaking a rule: putting one pod in two places, or overloading node-a's CPU.
+00:00:40,467 --> 00:00:43,567
+Now the batch pod itself needs two CPUs.
 
 14
-00:01:11,267 --> 00:01:19,167
-Before any quantum run, we check every bitstring to prove the lowest-energy states are exactly the best valid placements.
+00:00:43,567 --> 00:00:50,767
+The indexer pod needs 1.5, and it can only run on node A because node A has the fast disk.
 
 15
-00:01:19,167 --> 00:01:21,767
-QAOA at depth two then prepares a state,
+00:00:50,767 --> 00:00:55,267
+The easy way is to take the biggest pod first and put it on the first node with room,
 
 16
-00:01:21,767 --> 00:01:25,100
-and each measured bitstring decodes to a placement.
+00:00:55,267 --> 00:00:57,733
+so batch goes on node A.
 
 17
-00:01:31,100 --> 00:01:35,300
-We ran the project on Qollab with a single job per run.
+00:00:57,733 --> 00:01:00,400
+Now node A only has half a CPU left.
 
 18
-00:01:35,300 --> 00:01:40,733
-On the built-in simulator, 84 of 256 shots gave the complete placement.
+00:01:00,400 --> 00:01:04,267
+Indexer doesn't fit there, and node B won't take you know indexer itself.
 
 19
-00:01:40,733 --> 00:01:45,567
-On IonQ's simulator with the Aria 1 noise model, 83 of 256 did.
+00:01:04,267 --> 00:01:09,150
+So the easy way is to move one pod out of the two.
 
 20
-00:01:45,567 --> 00:01:50,067
-Random guessing would hit it only 12.5 percent of the time.
+00:01:10,967 --> 00:01:13,117
+But there's a way to actually fit both, right?
 
 21
-00:01:50,067 --> 00:01:56,100
-Every sample was decoded and checked; invalid ones are counted, never repaired.
+00:01:13,333 --> 00:01:20,333
+If you put batch on node B and indexer on node A, our normal solver tries every option and
 
 22
-00:01:57,100 --> 00:02:03,633
-The classical solver is still faster and proves optimality, so we claim no quantum advantage.
+00:01:20,333 --> 00:01:21,150
+finds that.
 
 23
-00:02:03,633 --> 00:02:12,367
-What QPlace shows is a working hybrid pipeline: from a cluster snapshot, to a verified quantum sample, with honest baselines.
+00:01:21,233 --> 00:01:23,717
+Then a separate checker goes over the plan.
 
 24
-00:02:12,367 --> 00:02:16,033
-It is read-only, and the demo instance is synthetic.
+00:01:24,000 --> 00:01:27,817
+If each pod on a node is allowed on, does each node have enough room?
 
 25
-00:02:16,033 --> 00:02:21,300
-The code is open source at github dot com slash edeediong slash qplace-k8s.
+00:01:29,967 --> 00:01:31,417
+Now the quantum part.
 
 26
-00:02:21,300 --> 00:02:24,367
-This effort is supported by Qollab and IonQ.
+00:01:31,600 --> 00:01:35,317
+Each choice, like batch goes to node A, becomes one qubit.
+
+27
+00:01:35,467 --> 00:01:37,617
+Here there are three choices, so three qubits.
+
+28
+00:01:37,967 --> 00:01:43,233
+We give each plan a score, it gets points for every pod it moves and loses a lot of points
+
+29
+00:01:43,233 --> 00:01:47,917
+if it breaks a rule, like putting one pod in two places or over filling a node.
+
+30
+00:01:48,000 --> 00:01:52,633
+Before we run anything, we try all 8 plans to make sure the best score really is the best
+
+31
+00:01:52,633 --> 00:01:53,083
+plan.
+
+32
+00:01:53,400 --> 00:01:55,850
+Then we run a quantum method called QAOA.
+
+33
+00:01:56,133 --> 00:01:59,750
+Each time we read the qubits, we get back one plan.
+
+34
+00:02:01,000 --> 00:02:02,683
+Here it is running on Qollab.
+
+35
+00:02:02,733 --> 00:02:03,783
+It sends one job.
+
+36
+00:02:03,967 --> 00:02:09,667
+When I ran it before, out of 256 shots or 256 tries, the built-in simulator gave the full
+
+37
+00:02:09,667 --> 00:02:11,183
+plan 84 times.
+
+38
+00:02:11,400 --> 00:02:15,783
+IonQ simulator, which copies the noise of the Aria 1 machine,
+
+39
+00:02:16,033 --> 00:02:17,617
+gave it 83 times.
+
+40
+00:02:17,967 --> 00:02:21,083
+So, if you just guess, you would get about one time in eight,
+
+41
+00:02:21,200 --> 00:02:22,683
+so about, you know, 32 times.
+
+42
+00:02:23,033 --> 00:02:27,333
+So, basically, we check every answer, if one breaks a rule, we count it and throw it away.
+
+43
+00:02:27,333 --> 00:02:28,183
+We don't fix it up.
+
+44
+00:02:29,300 --> 00:02:34,333
+Now, the normal computer still wins here, it's faster and it can prove it's found the best
+
+45
+00:02:34,333 --> 00:02:36,617
+plan, so we are not saying quantum is better.
+
+46
+00:02:36,800 --> 00:02:39,583
+What we built works end to end, it reads a saved copy of a cluster,
+
+47
+00:02:39,900 --> 00:02:43,417
+gives you back a plan that has been checked with the normal answers next to it to compare,
+
+48
+00:02:43,633 --> 00:02:45,733
+it only reads, it never changes the cluster.
+
+49
+00:02:45,733 --> 00:02:50,800
+The example here is made up, the code is on GitHub, and I basically built all of these
+
+50
+00:02:50,800 --> 00:02:52,850
+things using Qollab and IonQ, so thanks for watching.
 

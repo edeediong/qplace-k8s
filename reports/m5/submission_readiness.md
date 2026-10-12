@@ -73,7 +73,7 @@ Short description for Qollab:
 | Format | 1920×1080, H.264 + AAC, 30 fps |
 | Content | follows `docs/m5/video/script.md` word for word. Built from real data only: the circuit is drawn from the shipped demo circuit, the charts use the hosted-evidence numbers exactly, and the terminal excerpt is a real local run labeled "BasicSimulator fallback" |
 | Accessibility | high-contrast slides, ≥ 40 px text (except gate labels inside the Qiskit circuit drawing), captions on a solid band, ✓/✗ labels and hatching, so no meaning depends on colour alone |
-| Narration | **synthetic macOS voice (Samantha)**, disclosed on the end card. The owner may record their own voice-over instead |
+| Narration | **the author's own voice** (final cut `qplace-demo-final.mp4`, 2:56). Repeats and long pauses were trimmed, and the voice was sped up 1.22× with pitch kept. Captions follow the spoken words |
 | Not checked | how the synthetic voice pronounces "QUBO", "node-a" and "qplace-k8s" (nobody listened to the audio) |
 | Public URL | **pending (owner upload)**. Must open without sign-in |
 | Does not show | the Qollab web UI or live runs. Optionally, the owner can record a short screen capture of pressing Run on Qollab and splice it into segment 5 |

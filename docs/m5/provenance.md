@@ -27,7 +27,7 @@ Nothing from this project. The working directory was empty at the start.
 |---|---|
 | AI assistance | The code, tests and documentation were written by AI coding agents (Anthropic's Claude Code, using Claude models). The author set the milestone specifications and acceptance gates, and reviewed and directed the work. Separate AI reviewer agents audited each milestone; their findings and fixes are in the milestone reports |
 | Hosted runs | The author performed the Qollab hosted runs and supplied the results (`docs/m3/hosted-evidence.md`) |
-| Demo video narration | synthetic text-to-speech voice (macOS) |
+| Demo video narration | recorded by the author. The author's recordings were trimmed of repeats and pauses and sped up 1.22× (pitch kept) to fit the 3-minute limit |
 
 ## Third-party material
 
